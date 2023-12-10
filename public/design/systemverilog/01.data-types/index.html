@@ -1,0 +1,1900 @@
+<!DOCTYPE html>
+<html>
+  <head><meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="generator" content="Hugo 0.116.1">
+<meta name="viewport" content="width=device-width, initial-scale=1" /><title>SystemVerilog 数据类型 | Documentation du thème Shadocs</title>
+
+<link
+  rel="icon"
+  href="/images/favicon.png"
+  type="image/x-icon"
+/>
+<link
+    rel="stylesheet"
+    rel="preload"
+    type="text/css"
+    href="/css/main.css"
+  /><link
+      rel="stylesheet"
+      type="text/css"
+      href="/css/external/fontawesome.all.min.css"
+    /><link
+      rel="stylesheet"
+      type="text/css"
+      href="/css/external/overlay-scrollbars/overlayscrollbars.min.css"
+    /><link
+      rel="stylesheet"
+      type="text/css"
+      href="/css/shortcuts.min.css"
+    />
+</head>
+  <body onload="browserCompatibility()"><div id="navbarInfo" class="is-hidden modal-container">
+  <div class="modal-content-box modal-text-box">
+    <div class="card modal-title is-radiusless">
+      <div class="card-header">
+        <p class="card-header-title is-marginless">关于</p>
+      </div>
+    </div>
+    <div class="modal-content-container">
+      <div class="modal-content-block is-block"><div class="columns is-marginless is-multiline is-centered">
+  <div class="column">
+    <a
+      class="is-itext-link"
+      href="https://github.com/jgazeau/shadocs"
+      target="_blank"
+    >
+      <div>
+        <i class="fa-brands fa-github fa-2x"></i>
+        <p></p>
+      </div>
+    </a>
+  </div>
+  <div class="column">
+    <a
+      class="is-itext-link"
+      href="https://github.com/jgazeau/shadocs/archive/main.zip"
+      target="_blank"
+    >
+      <div>
+        <i class="fa-solid fa-download fa-2x"></i>
+        <p></p>
+      </div>
+    </a>
+  </div>
+  <div class="column">
+    <a
+      class="is-itext-link"
+      href="https://github.com/jgazeau/shadocs/issues"
+      target="_blank"
+    >
+      <div>
+        <i class="fa-solid fa-circle-info fa-2x"></i>
+        <p></p>
+      </div>
+    </a>
+  </div>
+  <div class="column">
+    <a
+      class="is-itext-link"
+      href="https://github.com/jgazeau/shadocs/fork"
+      target="_blank"
+    >
+      <div>
+        <i class="fa-solid fa-code-branch fa-2x"></i>
+        <p></p>
+      </div>
+    </a>
+  </div>
+</div>
+<p>(0.116.1)</p>
+<p>The MIT License (MIT) Copyright © 2023 Jordan GAZEAU</p>
+</div>
+    </div>
+  </div>
+</div>
+<div id="navbarShortcuts" class="is-hidden modal-container">
+  <div class="modal-content-box modal-text-box"><div class="card modal-title is-radiusless">
+        <div class="card-header">
+          <p class="card-header-title is-marginless">Keyboard shortcuts</p>
+        </div>
+      </div>
+      <div class="modal-content-container">
+        <div class="modal-content-block"><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>q</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Show current page QR code</p>
+  </div><div class="modal-content"><kbd>Escape</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Close modals</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>i</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Show website information</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>k</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Show shortcuts</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>h</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Go to homepage</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>f</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Find on website</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>m</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Collapse/Uncollapse sidebar</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>t</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Collapse/Uncollapse table of contents</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>↑</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Go to the top of the page</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>↓</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Go to the bottom of the page</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>p</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Print current page</p>
+  </div></div>
+      </div></div>
+</div>
+<div id="modalContainer" class="is-hidden modal-container">
+  <div id="modal" class="modal-content-box"></div>
+</div>
+<nav id="navbar" class="navbar" role="navigation" aria-label="main navigation">
+  <div id="navbarItemsContainer" class="navbar-brand"><div id="globalLogoContainer" class="is-flex">
+  <a
+    id="globalLogo"
+    class="navbar-item navbar-item-standard is-paddingless"
+    href="/"
+  >
+    <img
+      alt="主页"
+      src="/images/logo.png"
+    />
+  </a>
+  <a
+    id="globalTouchLogo"
+    class="navbar-item navbar-item-standard is-paddingless"
+    href="/"
+  >
+    <img
+      alt="主页"
+      src="/images/logoTouch.png"
+    />
+  </a>
+</div>
+<div id="navbarItems" class="is-flex">
+      <div id="navbarItemsStart" class="is-flex">
+        <div id="searchContainer" class="navbar-item"><div class="control has-icons-left">
+  <span id="searchInput" class="autocomplete">
+    <input
+      id="search"
+      autocomplete="off"
+      class="input"
+      type="search"
+      placeholder="搜索"
+    />
+  </span>
+  <span class="icon is-left">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </span>
+  <ul id="searchList" class="is-paddingless is-hidden"></ul>
+</div>
+</div>
+      </div>
+      <div id="navbarItemsEnd" class="is-flex is-invisible"><div class="navbar-item">
+  <a
+    id="printButton"
+    class="button navbar-item-standard"
+  >
+    <span class="icon-text">打印</span>
+    <span class="icon">
+      <i class="fa-solid fa-print fa-lg"></i>
+    </span>
+  </a>
+</div><div class="navbar-item"><div
+  id="taxonomiesSelectorContainer"
+  class="dropdown is-right"
+>
+  <div class="dropdown-trigger">
+    <button
+      id="taxonomiesSelector"
+      class="button navbar-item-standard"
+      aria-haspopup="true"
+      aria-controls="dropdown-menu"
+    >
+      <span class="icon-text">Taxonomies</span>
+      <span class="icon">
+        <i class="fa-solid fa-tags fa-lg"></i>
+      </span>
+    </button>
+  </div>
+  <div
+    id="dropdown-menu-taxonomies"
+    class="dropdown-menu"
+    role="menu"
+  >
+    <div class="dropdown-content is-paddingless"><a
+              href="/categories/"
+              class="dropdown-item has-text-weight-bold"
+            ><i class="fa-solid fa-table-cells"></i>Categories</a><a
+              href="/tags/"
+              class="dropdown-item has-text-weight-bold"
+            ><i class="fa-solid fa-tag"></i>Tags</a></div>
+  </div>
+</div>
+</div><div class="navbar-item">
+  <a
+    id="siteInfo"
+    trigger="navbarInfo"
+    class="button navbar-item-standard navbar-trigger"
+    title="关于"
+  >
+    <span class="icon-text">关于</span>
+    <span class="icon">
+      <i class="fa-solid fa-circle-question fa-lg"></i>
+    </span>
+  </a>
+</div>
+<div id="navbarExtend" class="navbar-item">
+  <div id="navbarExtendWrapper">
+    <a id="navbarExtendButton" class="button navbar-item-standard">
+      <span class="icon">
+        <i class="fa-solid fa-ellipsis fa-lg"></i>
+      </span>
+    </a>
+    <div id="navbarExtendItemsContainer">
+      <div id="navbarExtendItemsWrapper"><div class="navbar-item">
+  <a
+    id="printButtonExtend"
+    class="button navbar-item-standard"
+  >
+    <span class="icon-text">打印</span>
+    <span class="icon">
+      <i class="fa-solid fa-print fa-lg"></i>
+    </span>
+  </a>
+</div><div class="navbar-item"><div
+  id="taxonomiesSelectorContainerExtend"
+  class="dropdown is-right"
+>
+  <div class="dropdown-trigger">
+    <button
+      id="taxonomiesSelectorExtend"
+      class="button navbar-item-standard"
+      aria-haspopup="true"
+      aria-controls="dropdown-menu"
+    >
+      <span class="icon-text">Taxonomies</span>
+      <span class="icon">
+        <i class="fa-solid fa-tags fa-lg"></i>
+      </span>
+    </button>
+  </div>
+  <div
+    id="dropdown-menu-taxonomiesExtend"
+    class="dropdown-menu"
+    role="menu"
+  >
+    <div class="dropdown-content is-paddingless"><a
+              href="/categories/"
+              class="dropdown-item has-text-weight-bold"
+            ><i class="fa-solid fa-table-cells"></i>Categories</a><a
+              href="/tags/"
+              class="dropdown-item has-text-weight-bold"
+            ><i class="fa-solid fa-tag"></i>Tags</a></div>
+  </div>
+</div>
+</div><div class="navbar-item">
+  <a
+    id="siteInfoExtend"
+    trigger="navbarInfo"
+    class="button navbar-item-standard navbar-trigger"
+    title="关于"
+  >
+    <span class="icon-text">关于</span>
+    <span class="icon">
+      <i class="fa-solid fa-circle-question fa-lg"></i>
+    </span>
+  </a>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+</nav>
+<div id="navbarOverlay"></div>
+<div
+      class="columns is-mobile is-paddingless is-marginless"
+      id="mainContainer"
+    ><div
+  id="sidebarContainer"
+  class="column is-narrow is-paddingless is-marginless"
+>
+  <div id="sidebarWrapper" class="is-fixed">
+    <div id="sidebar" class="is-marginless">
+      <aside class="menu is-paddingless is-marginless">
+        <ul class="menu-list is-marginless is-paddingless"><div class="card is-fs-expandable-icon"><div class="card-header is-single-link">
+      <a
+        href='/digital/'
+        class='card-header-title'>
+        <i class='fa-solid fa-bars fa-lg'></i></a></div>
+      </div><div class="is-expandable">
+      <div class="is-sidebar-list-wrapper"><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/digital/'
+        class='card-header-title'
+          title='数字电路基础'>
+        <i class='fa-solid fa-bars fa-lg'></i><p class="pt-0 pb-0 pr-2 pl-1">数字电路基础</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="card is-fs-expandable-icon is-sidebar-active"><div class="card-header">
+      <a
+        href='/design/'
+        class='card-header-title'>
+        <i class='fa-solid fa-bars fa-lg'></i></a></div>
+      </div><div class="is-expandable">
+      <div class="is-sidebar-list-wrapper"><li class="is-marginless is-tree-active is-entries-expandable is-entries-expanded"><div
+            class="card"><div class="card-header">
+      <a
+        href='/design/'
+        class='card-header-title'
+          title='HDL 设计'>
+        <i class='fa-solid fa-bars fa-lg'></i><p class="pt-0 pb-0 pr-2 pl-1">HDL 设计</p></a><a class="card-header-icon is-icon-expandable is-paddingless is-icon-expanded">
+                <span class='icon'></span>
+              </a>
+            </div>
+          </div><ul class="is-marginless is-tree-active"><div class="">
+      <div class=""><li class="is-marginless is-entries-expandable is-entries-expanded"><div
+            class="card"><div class="card-header">
+      <a
+        href='/design/systemverilog/'
+        class='card-header-title'
+          title='SystemVerilog 教程'>
+        <i class='fa-solid fa-bars'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 教程</p></a><a class="card-header-icon is-icon-expandable is-paddingless is-icon-expanded">
+                <span class='icon'></span>
+              </a>
+            </div>
+          </div><ul class="is-marginless"><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card is-sidebar-active"id='sidebarActiveEntry'><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/01.data-types/'
+        class='card-header-title'
+          title='SystemVerilog 数据类型'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 数据类型</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/02.array/'
+        class='card-header-title'
+          title='SystemVerilog 数组'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 数组</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/03.structure-and-union/'
+        class='card-header-title'
+          title='SystemVerilog 结构体和联合体'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 结构体和联合体</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/04.user-defined/'
+        class='card-header-title'
+          title='SystemVerilog 用户自定义'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 用户自定义</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/05.operators/'
+        class='card-header-title'
+          title='SystemVerilog operators'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog operators</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/06.control-flow/'
+        class='card-header-title'
+          title='SystemVerilog 控制流'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 控制流</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/07.functions/'
+        class='card-header-title'
+          title='SystemVerilog 函数'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 函数</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/08.tasks/'
+        class='card-header-title'
+          title='SystemVerilog 任务'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 任务</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/09.loops/'
+        class='card-header-title'
+          title='SystemVerilog 循环'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 循环</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/10.scheduler-schematics/'
+        class='card-header-title'
+          title='Scheduler schematic'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Scheduler schematic</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/11.processes/'
+        class='card-header-title'
+          title='Processes'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Processes</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/12.fine-grain-process-control/'
+        class='card-header-title'
+          title='Fine Grain Process Control'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Fine Grain Process Control</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/13.interface/'
+        class='card-header-title'
+          title='Interface'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Interface</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/14.constraint/'
+        class='card-header-title'
+          title='Constraint'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Constraint</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/15.classes-and-oops/'
+        class='card-header-title'
+          title='类和面向对象'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">类和面向对象</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/17.functional-coverage/'
+        class='card-header-title'
+          title='Coverage'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Coverage</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/18.assertion/'
+        class='card-header-title'
+          title='Assertion'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Assertion</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/19.interprocess-communication/'
+        class='card-header-title'
+          title='Interprocess communication  '>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Interprocess communication  </p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/20.misc-constructs/'
+        class='card-header-title'
+          title='Program Block'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Program Block</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/choosing-an-array/'
+        class='card-header-title'
+          title='Choosing-an-array'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Choosing-an-array</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/control-flow-interview-questions/'
+        class='card-header-title'
+          title='Control-Flow-Interview-questions'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Control-Flow-Interview-questions</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/data-type-interview-questions/'
+        class='card-header-title'
+          title='Data-type-Interview-questions'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Data-type-Interview-questions</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/differences-between-macros-and-parameters/'
+        class='card-header-title'
+          title='Differences-between-macros-and-parameters'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Differences-between-macros-and-parameters</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/interface-interview-questions/'
+        class='card-header-title'
+          title='Interface-Interview-Questions'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Interface-Interview-Questions</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/processes-interviewquestions/'
+        class='card-header-title'
+          title='Processes-InterviewQuestions'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Processes-InterviewQuestions</p></a></div>
+          </div></li>
+      </div>
+    </div></ul></li>
+      </div>
+    </div></ul></li>
+      </div>
+    </div><div class="card is-fs-expandable-icon"><div class="card-header">
+      <a
+        href='/formal/'
+        class='card-header-title'>
+        <i class='fa-solid fa-bars fa-lg'></i></a></div>
+      </div><div class="is-expandable">
+      <div class="is-sidebar-list-wrapper"><li class="is-marginless is-entries-expandable is-entries-shrinked"><div
+            class="card"><div class="card-header">
+      <a
+        href='/formal/'
+        class='card-header-title'
+          title='形式验证'>
+        <i class='fa-solid fa-bars fa-lg'></i><p class="pt-0 pb-0 pr-2 pl-1">形式验证</p></a><a class="card-header-icon is-icon-expandable is-paddingless is-icon-shrinked">
+                <span class='icon'></span>
+              </a>
+            </div>
+          </div><ul class="is-marginless"><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/formal/model_checking/'
+        class='card-header-title'
+          title='模型检查'>
+        <i class='fa-solid fa-bars'></i><p class="pt-0 pb-0 pr-2 pl-0">模型检查</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/formal/equivalence_checking/'
+        class='card-header-title'
+          title='等价性检查'>
+        <i class='fa-solid fa-bars'></i><p class="pt-0 pb-0 pr-2 pl-0">等价性检查</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless is-entries-expandable is-entries-shrinked"><div
+            class="card"><div class="card-header">
+      <a
+        href='/formal/theorem_proving/'
+        class='card-header-title'
+          title='定理证明'>
+        <i class='fa-solid fa-bars'></i><p class="pt-0 pb-0 pr-2 pl-0">定理证明</p></a><a class="card-header-icon is-icon-expandable is-paddingless is-icon-shrinked">
+                <span class='icon'></span>
+              </a>
+            </div>
+          </div><ul class="is-marginless"><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/formal/theorem_proving/acl2/'
+        class='card-header-title'
+          title='一文了解定理证明器 ACL2'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">一文了解定理证明器 ACL2</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/formal/theorem_proving/acl2_hardware/'
+        class='card-header-title'
+          title='使用 ACL2 进行硬件验证'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">使用 ACL2 进行硬件验证</p></a></div>
+          </div></li>
+      </div>
+    </div></ul></li>
+      </div>
+    </div></ul></li>
+      </div>
+    </div></ul>
+      </aside>
+    </div>
+    <div id="sidebarCollapsible" class="is-marginless">
+      <div class="card is-uncollapse-action">
+        <div
+          id="sidebarUncollapse"
+          class="card-header is-single-link"
+          title="Collapse/Uncollapse sidebar"
+        >
+          <a class="card-header-title">
+            <i class="fa-solid fa-angles-right fa-lg"></i>
+          </a>
+        </div>
+      </div>
+      <div class="card is-collapse-action">
+        <div
+          id="sidebarCollapse"
+          class="card-header is-single-link"
+          title="Collapse/Uncollapse sidebar"
+        >
+          <a class="card-header-title">
+            <i class="fa-solid fa-angles-left fa-lg"></i>
+            <p>折叠</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="sidebarMobileWrapper" class="column is-narrow is-hidden-desktop"></div>
+<div class="columns is-mobile is-marginless is-scroll-smooth has-toc" id="contentContainer">
+  <div class="column" id="content"><div id="contentTitle">SystemVerilog 数据类型</div>
+<h1 id='systemverilog-数据类型'>SystemVerilog 数据类型<a href='#systemverilog-%e6%95%b0%e6%8d%ae%e7%b1%bb%e5%9e%8b' class='anchor'>#</a>
+</h1><p>在Verilog中，所有数据类型都是 4 值的，即可以表示 0、1、X 和 Z。但是，在 test benches 的中，不需要这些4态变量。例如，要计算数据包的数量，我们需要一个 2 值变量。因此，System Verilog 引入了一类新的 2 值变量，即 0 和 1。</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110448382/187842567-e575dc1c-9a1d-421c-a582-69d9fb9e48e0.png"
+  alt="data_type"
+  class="data_type"/>
+</p>
+<h2 id='数据类型备忘表'>数据类型备忘表<a href='#%e6%95%b0%e6%8d%ae%e7%b1%bb%e5%9e%8b%e5%a4%87%e5%bf%98%e8%a1%a8' class='anchor'>#</a>
+</h2><table>
+<thead>
+<tr>
+<th style="text-align:left">sr. no.</th>
+<th style="text-align:left"><strong>data type</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1.</td>
+<td style="text-align:left"><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/01.Data-Types#4-state-data-type-cheat-sheet"
+    class="is-pretty-link">4-state</a
+>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">2.</td>
+<td style="text-align:left"><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/01.Data-Types#2-state-data-type-cheat-sheet"
+    class="is-pretty-link">2-state</a
+>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">3.</td>
+<td style="text-align:left"><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/02.Array"
+    class="is-pretty-link">Arrays</a
+>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">4.</td>
+<td style="text-align:left"><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/01.Data-Types#string"
+    class="is-pretty-link">Strings</a
+>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">5.</td>
+<td style="text-align:left"><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/03.Structure-and-Union"
+    class="is-pretty-link">Structures and Union</a
+>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">6.</td>
+<td style="text-align:left"><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/01.Data-Types#enum"
+    class="is-pretty-link">Enumerated</a
+>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">7.</td>
+<td style="text-align:left"><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/04.User-defined"
+    class="is-pretty-link">User defined</a
+>
+</td>
+</tr>
+</tbody>
+</table>
+<pre><code>    Tabular column.1. data types
+</code></pre>
+<hr>
+<p><strong><strong>有符号和无符号数字</strong></strong></p>
+<p><strong><strong>无符号数</strong></strong>：无符号数的符号不使用任何标志，即无符号数只能存储正数。<br>
+无符号二进制数的范围从 0 到 <code>((2^n) - 1)</code>，n 表示位数。</p>
+<p><strong><strong>有符号数</strong></strong>：通过有符号数中的符号标志来区分正值和负值。有符号位的零有两种可能表示形式（正 (0) 和负 (1)）。<br>
+有符号二进制数的范围从 <code>-2^(n-1)</code> 到 <code>2^(n-1)-1</code>，n表示位数。</p>
+<p>有符号二进制数在计算机系统中，一般用补码来表示：</p>
+<p>有符号二进制数的<strong><strong>补码</strong></strong>：</p>
+<ol>
+<li>正数的补码：与原码相同。
+例如，+9的补码是00001001。</li>
+<li>负数的补码：符号位为1，其余位为该数绝对值的原码按位取反；然后整个数加1。
+例如，-7的补码：因为是负数，则符号位为“1”,整个为10000111；其余7位为-7的绝对值+7的原码 0000111按位取反为1111000；再加1，所以-7的补码是11111001。</li>
+</ol>
+<p>已知一个数的补码，求原码：</p>
+<ol>
+<li>如果补码的符号位为“0”，表示是一个正数，所以补码就是该数的原码。</li>
+<li>如果补码的符号位为“1”，表示是一个负数，求原码的操作可以是：符号位为1，其余各位取反，然后再整个数加1</li>
+</ol>
+<hr>
+<p><strong><strong>有符号数和无符号数的示例</strong></strong></p>
+<p>考虑 3 位，即 n =3,</p>
+<ul>
+<li><strong>无符号范围</strong><br>
+0 到 (2^(n) - 1，即 0 到 7</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>无符号位二进制数</strong></th>
+<th style="text-align:left"><strong>十进制值</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">000</td>
+<td style="text-align:left">0</td>
+</tr>
+<tr>
+<td style="text-align:left">001</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">010</td>
+<td style="text-align:left">2</td>
+</tr>
+<tr>
+<td style="text-align:left">011</td>
+<td style="text-align:left">3</td>
+</tr>
+<tr>
+<td style="text-align:left">100</td>
+<td style="text-align:left">4</td>
+</tr>
+<tr>
+<td style="text-align:left">101</td>
+<td style="text-align:left">5</td>
+</tr>
+<tr>
+<td style="text-align:left">110</td>
+<td style="text-align:left">6</td>
+</tr>
+<tr>
+<td style="text-align:left">111</td>
+<td style="text-align:left">7</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>有符号范围</strong><br>
+-2^(n-1) 到 2^(n-1)-1，即 -4 到 3</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>有符号位二进制数</strong></th>
+<th style="text-align:left"><strong>十进制数</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">000</td>
+<td style="text-align:left">0</td>
+</tr>
+<tr>
+<td style="text-align:left">001</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">010</td>
+<td style="text-align:left">2</td>
+</tr>
+<tr>
+<td style="text-align:left">011</td>
+<td style="text-align:left">3</td>
+</tr>
+<tr>
+<td style="text-align:left">100</td>
+<td style="text-align:left">-4</td>
+</tr>
+<tr>
+<td style="text-align:left">101</td>
+<td style="text-align:left">-3</td>
+</tr>
+<tr>
+<td style="text-align:left">110</td>
+<td style="text-align:left">-2</td>
+</tr>
+<tr>
+<td style="text-align:left">111</td>
+<td style="text-align:left">-1</td>
+</tr>
+</tbody>
+</table>
+<p>在上面的例子中，最高位为符号位，最高位为 0 表示正，1 则表示负。<br>
+对于上面的 100，1 是符号位，表示负。先对 00 取反得到 11，然后加 1 得到 100，即 4。所以有符号数 100 是 4。</p>
+<hr>
+<h2 id='4-值数据类型备忘表'>4 值数据类型备忘表<a href='#4-%e5%80%bc%e6%95%b0%e6%8d%ae%e7%b1%bb%e5%9e%8b%e5%a4%87%e5%bf%98%e8%a1%a8' class='anchor'>#</a>
+</h2><table>
+<thead>
+<tr>
+<th style="text-align:left">sr. no.</th>
+<th style="text-align:left"><strong>data type</strong></th>
+<th style="text-align:left"><strong>2-state/4-state</strong></th>
+<th style="text-align:left"><strong>bit</strong></th>
+<th style="text-align:left"><strong>signed/unsigned</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1.</td>
+<td style="text-align:left"><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/01.Data-Types#1-reg"
+    class="is-pretty-link">reg</a
+>
+</td>
+<td style="text-align:left">4</td>
+<td style="text-align:left">&gt;=1</td>
+<td style="text-align:left">unsigned</td>
+</tr>
+<tr>
+<td style="text-align:left">2.</td>
+<td style="text-align:left"><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/01.Data-Types#2-wire"
+    class="is-pretty-link">wire</a
+>
+</td>
+<td style="text-align:left">4</td>
+<td style="text-align:left">&gt;=1</td>
+<td style="text-align:left">unsigned</td>
+</tr>
+<tr>
+<td style="text-align:left">3.</td>
+<td style="text-align:left"><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/01.Data-Types#3-logic"
+    class="is-pretty-link">logic</a
+>
+</td>
+<td style="text-align:left">4</td>
+<td style="text-align:left">&gt;=1</td>
+<td style="text-align:left">unsigned</td>
+</tr>
+<tr>
+<td style="text-align:left">4.</td>
+<td style="text-align:left"><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/01.Data-Types#4-integer"
+    class="is-pretty-link">integer</a
+>
+</td>
+<td style="text-align:left">4</td>
+<td style="text-align:left">32</td>
+<td style="text-align:left">signed</td>
+</tr>
+<tr>
+<td style="text-align:left">5.</td>
+<td style="text-align:left"><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/01.Data-Types#5-time"
+    class="is-pretty-link">time</a
+>
+</td>
+<td style="text-align:left">4</td>
+<td style="text-align:left">64</td>
+<td style="text-align:left">unsigned</td>
+</tr>
+<tr>
+<td style="text-align:left">6.</td>
+<td style="text-align:left"><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/01.Data-Types#6-real"
+    class="is-pretty-link">real</a
+>
+</td>
+<td style="text-align:left">4</td>
+<td style="text-align:left">64</td>
+<td style="text-align:left">unsigned</td>
+</tr>
+</tbody>
+</table>
+<pre><code>     Tabular column.2. 4-state data type
+</code></pre>
+<hr>
+<h2 id='4-值'>4 值<a href='#4-%e5%80%bc' class='anchor'>#</a>
+</h2><p>下面的表格列代表 4 种不同的状态。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>状态</strong></th>
+<th style="text-align:left"><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">0</td>
+<td style="text-align:left">状态 0</td>
+</tr>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">状态 1</td>
+</tr>
+<tr>
+<td style="text-align:left">x or X</td>
+<td style="text-align:left">未知状态 (与 reg 有关)</td>
+</tr>
+<tr>
+<td style="text-align:left">z or Z</td>
+<td style="text-align:left">高阻态 (与 wire 有关)</td>
+</tr>
+</tbody>
+</table>
+<pre><code>                                      Tabular column.3. value of 4-state
+</code></pre>
+<hr>
+<h2 id='1-reg'>1. reg<a href='#1-reg' class='anchor'>#</a>
+</h2><p>reg 变量用于对锁存器、触发器和存储器等存储元件进行建模，它存储一个值并用于程序赋值。 reg 的默认值为 <strong>x</strong>。</p>
+<p><strong><strong>语法 :</strong></strong> <code>reg variable_name;</code></p>
+<hr>
+<h2 id='2-wire'>2. wire<a href='#2-wire' class='anchor'>#</a>
+</h2><p>连线是一种 Verilog 数据类型，用于连接元件以及连接由单个门或连续分配驱动的网络。导线的默认值为 <strong>z</strong>。</p>
+<p><strong><strong>Syntax :</strong></strong> <code>wire variable_name;</code></p>
+<hr>
+<h2 id='3-tri'>3. tri<a href='#3-tri' class='anchor'>#</a>
+</h2><p>tri 类型可用于多个 driver 驱动一个 net 的情况。</p>
+<hr>
+<h2 id='4-logic'>4. Logic<a href='#4-logic' class='anchor'>#</a>
+</h2><p>Logic 类型是 4 值类型，可以取值 0、1、x 和 z。Logic 类型，可以用来代替 wire 和 reg，因为 wire 数据类型没有多个 driver。<br>
+默认情况下 Logic 类型是无符号的，其初始值为 x。z。Logic 类型可以在过程块和连续赋值语句中驱动。</p>
+<p><strong><strong>语法 :</strong></strong> <code>logic variable_name;</code></p>
+<p><strong><strong>示例 :</strong></strong> <code>logic [2:0] logic_data_type;</code></p>
+<hr>
+<h2 id='5-integer'>5. integer<a href='#5-integer' class='anchor'>#</a>
+</h2><p>整数是 4 态数据类型，整数可以是 0,1,x 和 z，表示 32 位有符号数。整数的默认值为 x。整数可以保存范围从 -2^31 到 (2^31)-1 的值。</p>
+<p><strong><strong>语法 :</strong></strong> <code>integer variable_name;</code></p>
+<p><strong><strong>示例 :</strong></strong> <code>integer integer_data;</code></p>
+<hr>
+<h2 id='5-time'>5. time<a href='#5-time' class='anchor'>#</a>
+</h2><p>time 是用于模拟时间测量的特殊数据类型。它是 4 值类型，表示 64 位无符号整数，可以与 $time 系统函数结合使用来保存当前的仿真时间。</p>
+<p><strong><strong>语法 :</strong></strong> <code>time variable_name;</code></p>
+<p><strong><strong>示例 :</strong></strong> <code>time time_data;</code>    <br>
+<code>time_data = $time;</code></p>
+<hr>
+<h2 id='6-real'>6. real<a href='#6-real' class='anchor'>#</a>
+</h2><p>以 64 位实数实现的实数数据类型。实数可以用十进制记数法 (4.43) 或科学记数法 (42e8) 指定。 real 数据类型的默认值为 0。</p>
+<p><strong><strong>语法 :</strong></strong> <code>real variable_name;</code></p>
+<p><strong><strong>示例 :</strong></strong> <code>real real_data;</code>   <br>
+<code>real_data = 4.43;</code></p>
+<p>The below figure shows the output of real data type.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110448382/186825049-8e139a76-5e2d-43f1-af75-f8e886d79ef3.png"
+  alt="real"
+  class="real"/>
+</p>
+<pre><code>                                    Figure.4. real output
+</code></pre>
+<p>Github lab code link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/real_data_type/data_type_real.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/real_data_type/data_type_real.sv</a
+>
+</p>
+<p>Github lab output link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/real_data_type/data_type_real.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/real_data_type/data_type_real.log</a
+>
+</p>
+<hr>
+<h2 id='2-state-data-type-cheat-sheet'>2-state data type cheat sheet<a href='#2-state-data-type-cheat-sheet' class='anchor'>#</a>
+</h2><table>
+<thead>
+<tr>
+<th style="text-align:left">sr. no.</th>
+<th style="text-align:left"><strong>data type</strong></th>
+<th style="text-align:left"><strong>2-state/4-state</strong></th>
+<th style="text-align:left"><strong>bit</strong></th>
+<th style="text-align:left"><strong>signed/unsigned</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1.</td>
+<td style="text-align:left"><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/01.Data-Types#1-bit"
+    class="is-pretty-link">bit</a
+>
+</td>
+<td style="text-align:left">2</td>
+<td style="text-align:left">&gt;=1</td>
+<td style="text-align:left">unsigned</td>
+</tr>
+<tr>
+<td style="text-align:left">2.</td>
+<td style="text-align:left"><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/01.Data-Types#2-byte"
+    class="is-pretty-link">byte</a
+>
+</td>
+<td style="text-align:left">2</td>
+<td style="text-align:left">8</td>
+<td style="text-align:left">signed</td>
+</tr>
+<tr>
+<td style="text-align:left">3.</td>
+<td style="text-align:left"><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/01.Data-Types#3-shortint"
+    class="is-pretty-link">shortint</a
+>
+</td>
+<td style="text-align:left">2</td>
+<td style="text-align:left">16</td>
+<td style="text-align:left">signed</td>
+</tr>
+<tr>
+<td style="text-align:left">4.</td>
+<td style="text-align:left"><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/01.Data-Types#4-int"
+    class="is-pretty-link">int</a
+>
+</td>
+<td style="text-align:left">2</td>
+<td style="text-align:left">32</td>
+<td style="text-align:left">signed</td>
+</tr>
+<tr>
+<td style="text-align:left">5.</td>
+<td style="text-align:left"><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/01.Data-Types#5-longint"
+    class="is-pretty-link">longint</a
+>
+</td>
+<td style="text-align:left">2</td>
+<td style="text-align:left">64</td>
+<td style="text-align:left">signed</td>
+</tr>
+</tbody>
+</table>
+<pre><code>     Tabular column.4. 2-state data type
+</code></pre>
+<hr>
+<h2 id='1-bit'>1. bit<a href='#1-bit' class='anchor'>#</a>
+</h2><p>bit is 2-state which is used most often test benches. It can be either 0 or 1 which represents a single bit. Default value of bit data type is 0.</p>
+<p><strong><strong>Syntax :</strong></strong> <code>bit variable_name;</code></p>
+<p><strong><strong>Example :</strong></strong> <code>bit single_data;</code>     <br>
+<code>bit [3:0] multi_bit_data;</code></p>
+<p>The below figure shows the output of bit data type.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110448382/186825098-59e5284a-6a0f-4fdc-8ad6-ff434a685832.png"
+  alt="bit"
+  class="bit"/>
+</p>
+<pre><code>                                     Figure.5. bit output
+</code></pre>
+<p>Github lab code link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/bit_data_type/data_type_bit.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/bit_data_type/data_type_bit.sv</a
+>
+</p>
+<p>Github lab output link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/bit_data_type/data_type_bit.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/bit_data_type/data_type_bit.log</a
+>
+</p>
+<hr>
+<h2 id='2-byte'>2. byte<a href='#2-byte' class='anchor'>#</a>
+</h2><p>byte is 2-state data type which is used most often test benches. It can be either 0 or 1 which represent a 8-bit signed integer. Default value of byte is 0.</p>
+<p><strong><strong>Syntax :</strong></strong> <code>byte variable_name;</code></p>
+<p><strong><strong>Example :</strong></strong> <code>byte byte_data;</code></p>
+<p>The below figure shows the output of byte data type.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110448382/186825136-81275ffc-0942-43fe-b7bf-5aa42ba24ca9.png"
+  alt="byte"
+  class="byte"/>
+</p>
+<pre><code>                              Figure.6. byte output
+</code></pre>
+<p>Github lab code link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/byte_data_type/data_type_byte.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/byte_data_type/data_type_byte.sv</a
+>
+</p>
+<p>Github lab output link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/byte_data_type/data_type_byte.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/byte_data_type/data_type_byte.log</a
+>
+</p>
+<hr>
+<h2 id='3-shortint'>3. shortint<a href='#3-shortint' class='anchor'>#</a>
+</h2><p>shortint is 2-state data type. It can be either 0 or 1 which represent a 16-bit signed integer. Default value of shortint is 0.</p>
+<p><strong><strong>Syntax :</strong></strong> <code>shortint variable_name;</code></p>
+<p><strong><strong>Example :</strong></strong> <code>shortint shortint_data;</code></p>
+<p>The below figure shows the output of shortint data type.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110448382/186825172-17bb35a1-c1a4-4071-ad9f-6e45e9011b8f.png"
+  alt="shortint"
+  class="shortint"/>
+</p>
+<pre><code>                                   Figure.7. shortint output
+</code></pre>
+<p>Github lab code link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/shortint_data_type/data_type_shortint.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/shortint_data_type/data_type_shortint.sv</a
+>
+</p>
+<p>Github lab output link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/shortint_data_type/data_type_shortint.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/shortint_data_type/data_type_shortint.log</a
+>
+</p>
+<hr>
+<h2 id='4-int'>4. int<a href='#4-int' class='anchor'>#</a>
+</h2><p>int is 2-state data type which is used most often testbenches. It can be either 0 or 1 which represent a 32-bit signed integer. Default value of int is 0.</p>
+<p><strong><strong>Syntax :</strong></strong> <code>int variable_name;</code></p>
+<p><strong><strong>Example :</strong></strong> <code>int int_data;</code></p>
+<p>The below figure shows the output of int data type.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110448382/186825210-010b32ee-95c4-4c6e-b638-9f81ec703812.png"
+  alt="int"
+  class="int"/>
+</p>
+<pre><code>                                  Figure.8.int output
+</code></pre>
+<p>Github lab code link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/int_data_type/data_type_int.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/int_data_type/data_type_int.sv</a
+>
+</p>
+<p>Github lab output link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/int_data_type/data_type_int.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/int_data_type/data_type_int.log</a
+>
+</p>
+<hr>
+<h2 id='5-longint'>5. longint<a href='#5-longint' class='anchor'>#</a>
+</h2><p>longint is 2-state data type. It can be either 0 or 1 which represent a 64-bit signed integer. Default value of longint is 0.</p>
+<p><strong><strong>Syntax :</strong></strong> <code>longint variable_name;</code></p>
+<p><strong><strong>Example :</strong></strong> <code>longint longint_data;</code></p>
+<p>The below figure shows the output of longint data type.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110448382/186825249-c7470eb9-2738-4218-8d16-ce9634cd5c31.png"
+  alt="longint"
+  class="longint"/>
+</p>
+<pre><code>                                    Figure.9. longint output
+</code></pre>
+<p>Github lab code link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/longint_data_type/data_type_longint.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/longint_data_type/data_type_longint.sv</a
+>
+</p>
+<p>Github lab output link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/longint_data_type/data_type_longint.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/longint_data_type/data_type_longint.log</a
+>
+</p>
+<hr>
+<h1 id='data-type-casting'>Data type casting<a href='#data-type-casting' class='anchor'>#</a>
+</h1><p>casting means the conversion of one data type to another datatype.</p>
+<p>There are two types of casting,</p>
+<ul>
+<li>Static casting</li>
+<li>Dynamic casting</li>
+</ul>
+<p><strong><strong>static casting :</strong></strong> The casting happens at compile time. So, there will not be any run time error. static casting is only applicable to fixed data types. It does not apply to the Object-Oriented programming concept.</p>
+<p><strong><strong>Syntax :</strong></strong></p>
+<p><code>data_type'(variable or expression or value);</code></p>
+<p><strong><strong>dynamic casting :</strong></strong> Casting happens at run-time. If the casting is invalid, an error is reported. Dynamic casting is used to cast the assigned values to the variables that might not be ordinarily valid. The $cast is the system method. The $cast can be either function or task.</p>
+<p><strong><strong>Syntax :</strong></strong></p>
+<p><code>$cast(destination_variable, source_expression_or_variable);</code></p>
+<h2 id='static-casting'>static casting<a href='#static-casting' class='anchor'>#</a>
+</h2><h3 id='1-integer-to-int'>1. integer to int<a href='#1-integer-to-int' class='anchor'>#</a>
+</h3><p><strong><strong>Example :</strong></strong> <code>int_data = int'(integer_data);</code></p>
+<p>The below figure shows the output of integer to int casting.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110448382/187766327-ff3b8330-7dd5-43a3-a8fe-f8b9246a9ed2.png"
+  alt="integer_to_int"
+  class="integer_to_int"/>
+</p>
+<pre><code>                                   Figure.10. integer to int casting output
+</code></pre>
+<p>Github lab code link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/integer_to_int/integer_to_int.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/integer_to_int/integer_to_int.sv</a
+>
+</p>
+<p>Github lab output link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/integer_to_int/integer_to_int.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/integer_to_int/integer_to_int.log</a
+>
+</p>
+<h3 id='2-shortint-to--int-and-longint'>2. shortint to  int and longint<a href='#2-shortint-to--int-and-longint' class='anchor'>#</a>
+</h3><p><strong><strong>Example :</strong></strong> <code>int_data = int'(shortint_data);</code><br>
+<code>longint_data = longint'(shortint_data);</code></p>
+<p>The below figure shows the output of shortint to int and shortint to longint casting.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110448382/187766716-381f7e0a-3943-48d8-8a45-67bde4a80d44.png"
+  alt="shortint_to_i_l"
+  class="shortint_to_i_l"/>
+</p>
+<pre><code>                                   Figure.11. shortint to int and shortint to longint casting output
+</code></pre>
+<p>Github lab code link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/shortint/shortint_casting.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/shortint/shortint_casting.sv</a
+>
+</p>
+<p>Github lab output link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/shortint/shortint_casting.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/shortint/shortint_casting.log</a
+>
+</p>
+<h3 id='3-int-to-longint'>3. int to longint<a href='#3-int-to-longint' class='anchor'>#</a>
+</h3><p><strong><strong>Example :</strong></strong> <code>longint_data = longint'(int_data);</code></p>
+<p>The below figure shows the output of int to longint casting.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110448382/187766791-1c30b5a6-a71b-4bc2-b958-744e6c291330.png"
+  alt="int_to_longint"
+  class="int_to_longint"/>
+</p>
+<pre><code>                                   Figure.12. int to longint casting output
+</code></pre>
+<p>Github lab code link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/int_to_longint/int_to_longint.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/int_to_longint/int_to_longint.sv</a
+>
+</p>
+<p>Github lab output link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/int_to_longint/int_to_longint.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/int_to_longint/int_to_longint.log</a
+>
+</p>
+<h3 id='4-real-to-int'>4. real to int<a href='#4-real-to-int' class='anchor'>#</a>
+</h3><p><strong><strong>Example :</strong></strong> <code>int_data = int'(real_data);</code></p>
+<p>The below figure shows the output of real to int casting.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110448382/187766860-79a99293-f916-4314-824a-d77d92f624e8.png"
+  alt="real_to_int"
+  class="real_to_int"/>
+</p>
+<pre><code>                                   Figure.13. real to int casting output
+</code></pre>
+<p>Github lab code link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/real_to_int/real_to_int.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/real_to_int/real_to_int.sv</a
+>
+</p>
+<p>Github lab output link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/real_to_int/real_to_int.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/real_to_int/real_to_int.log</a
+>
+</p>
+<h3 id='5-real-to-time'>5. real to time<a href='#5-real-to-time' class='anchor'>#</a>
+</h3><p><strong><strong>Example :</strong></strong> <code>time_data = time'(real_data);</code></p>
+<p>The below figure shows the output of real to time casting.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110448382/187766904-fba98b9b-83a1-4e3d-96b8-1bde3deb23d6.png"
+  alt="real_to_time"
+  class="real_to_time"/>
+</p>
+<pre><code>                                   Figure.14. real to time casting output
+</code></pre>
+<p>Github lab code link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/real_to_time/real_to_time.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/real_to_time/real_to_time.sv</a
+>
+</p>
+<p>Github lab output link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/real_to_time/real_to_time.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/real_to_time/real_to_time.log</a
+>
+</p>
+<h3 id='6-logic-to-byte'>6. logic to byte<a href='#6-logic-to-byte' class='anchor'>#</a>
+</h3><p><strong><strong>Example :</strong></strong> <code>byte_data = byte'(logic_data);</code></p>
+<p>The below figure shows the output of logic to byte casting.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110448382/187766945-89a8639a-b1cf-45f3-acd5-ba1ffc44d49a.png"
+  alt="logic_to_byte"
+  class="logic_to_byte"/>
+</p>
+<pre><code>                                   Figure.15. logic to byte casting output
+</code></pre>
+<p>Github lab code link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/logic_to_byte/logic_to_byte.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/logic_to_byte/logic_to_byte.sv</a
+>
+</p>
+<p>Github lab output link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/logic_to_byte/logic_to_byte.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/logic_to_byte/logic_to_byte.log</a
+>
+</p>
+<h3 id='7-bit-to-byte'>7. bit to byte<a href='#7-bit-to-byte' class='anchor'>#</a>
+</h3><p><strong><strong>Example :</strong></strong> <code>byte_data = byte'(bit_data);</code></p>
+<p>The below figure shows the output of bit to byte casting.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110448382/187766988-72a478dd-16ec-4321-989e-35fcc69afd5c.png"
+  alt="bit_to_byte"
+  class="bit_to_byte"/>
+</p>
+<pre><code>                                   Figure.16. bit to byte casting output
+</code></pre>
+<p>Github lab code link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/bit_to_byte/bit_to_byte.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/bit_to_byte/bit_to_byte.sv</a
+>
+</p>
+<p>Github lab output link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/bit_to_byte/bit_ti_byte.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/bit_to_byte/bit_ti_byte.log</a
+>
+</p>
+<hr>
+<h1 id='enum'>enum<a href='#enum' class='anchor'>#</a>
+</h1><p>Enumerated data types defines a set of named values.</p>
+<p><strong><strong>Syntax</strong></strong> : <code>enum enum_base_type(optional) {</code> <br>
+<code>&lt;enum_name_declaration&gt; = constant_expr(optional)... </code><br>
+<code>}&lt;enum_type_identifier&gt;;</code></p>
+<p><strong><strong>Example :</strong></strong> <code>enum {MONDAY,</code> <br>
+<code>TUESDAY,</code> <br>
+<code> WEDNESDAY,</code> <br>
+<code>THURSDAY,</code> <br>
+<code> FRIDAY,</code>  <br>
+<code>SATURDAY,</code> <br>
+<code> SUNDAY</code> <br>
+<code>} days;</code></p>
+<ul>
+<li>An enumerated type is stored as type ‘int’ unless specified as something else.</li>
+<li>This type automatically gives a unique value to every name in the list.</li>
+<li>Values default to the ‘int’ type starting at 0 and then incrementing by 1.</li>
+<li>If a value is not specified for a name, it gets the value of the previous name in the list incremented by 1.</li>
+</ul>
+<p>In the below figure output of default value of enum.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110448382/187858568-1fbaa256-fe2c-4b54-87cd-5a66cfe8486e.png"
+  alt="default_value"
+  class="default_value"/>
+</p>
+<pre><code>                               Figure.17. Output of enum default value
+</code></pre>
+<p>Github lab code link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/enum_data_type/default_value_enum/default_value_enum.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/enum_data_type/default_value_enum/default_value_enum.sv</a
+>
+</p>
+<p>Github lab output link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/enum_data_type/default_value_enum/default_value_enum.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/enum_data_type/default_value_enum/default_value_enum.log</a
+>
+</p>
+<p>In the below figure output of set value of enum.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110448382/187858661-cb20f4cf-b251-4448-bc72-3efecd8f8098.png"
+  alt="set_value"
+  class="set_value"/>
+</p>
+<pre><code>                               Figure.18. Output of set enum value
+</code></pre>
+<p>Github lab code link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/enum_data_type/set_value_enum/set_value_enum.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/enum_data_type/set_value_enum/set_value_enum.sv</a
+>
+</p>
+<p>Github lab output link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/enum_data_type/set_value_enum/set_value_enum.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/enum_data_type/set_value_enum/set_value_enum.log</a
+>
+</p>
+<hr>
+<p><strong><strong>enum method :</strong></strong></p>
+<table>
+<thead>
+<tr>
+<th>sl.no</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>first()</td>
+<td>returns the value of the first member of the enumeration</td>
+</tr>
+<tr>
+<td>2</td>
+<td>last()</td>
+<td>returns the value of the last member of the enumeration</td>
+</tr>
+<tr>
+<td>3</td>
+<td>next()</td>
+<td>returns the value of next member of the enumeration</td>
+</tr>
+<tr>
+<td>4</td>
+<td>prev()</td>
+<td>returns the value of previous member of the enumeration</td>
+</tr>
+<tr>
+<td>5</td>
+<td>num()</td>
+<td>returns the number of elements in the given enumeration</td>
+</tr>
+<tr>
+<td>6</td>
+<td>name()</td>
+<td>returns the string representation of the given enumeration value</td>
+</tr>
+</tbody>
+</table>
+<pre><code>                                      Tabular column.5. enum methods 
+</code></pre>
+<hr>
+<h3 id='typedef-enumerated-data-type'>typedef enumerated data type<a href='#typedef-enumerated-data-type' class='anchor'>#</a>
+</h3><p>In typedef a type name can be given so that the same type can be used in many places.</p>
+<p><strong><strong>Syntax</strong></strong> : <code>typedef enum enum_base_type(optional) {</code><br>
+<code>&lt;enum_name_declaration&gt; = constant_expr(optional)...</code><br>
+<code>} &lt;enum_type_identifier&gt;;</code></p>
+<p><strong><strong>Example :</strong></strong> <code>typedef enum {MONDAY,</code><br>
+<code>TUESDAY,</code> <br>
+<code> WEDNESDAY,</code> <br>
+<code>THURSDAY,</code> <br>
+<code> FRIDAY,</code>  <br>
+<code>SATURDAY,</code> <br>
+<code> SUNDAY</code>
+<code>} week_e;</code><br>
+<code>week_e day;</code></p>
+<p>In below figure declare typedef type and output using enum methods.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110448382/187858749-d04ff2bd-96c8-4c20-8ab3-b6b7bc0e9ca3.png"
+  alt="enum_typedef"
+  class="enum_typedef"/>
+</p>
+<pre><code>                               Figure.19. Output of typedef enum using enum method
+</code></pre>
+<p>Github lab code link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/enum_data_type/typedef_enum/typedef_enum.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/enum_data_type/typedef_enum/typedef_enum.sv</a
+>
+</p>
+<p>Github lab output link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/enum_data_type/typedef_enum/typedef_enum.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/enum_data_type/typedef_enum/typedef_enum.log</a
+>
+</p>
+<hr>
+<h1 id='string'>String<a href='#string' class='anchor'>#</a>
+</h1><p>A string type is a variable-length ordered collection of characters. The length of a string is the number of characters in the collection.</p>
+<p><strong><strong>Syntax</strong></strong> :<code>string variable_name =initial_value;</code></p>
+<p><strong><strong>Example</strong></strong>: <code>string str = &quot;Manipal&quot;;</code></p>
+<ul>
+<li>The memory space for strings is dynamically allocated.</li>
+<li>The indices of string variables shall be numbered from 0 to N–1 (where N is the length of the string) so that index 0 is the first (leftmost) character of the string and index N–1 is the last (rightmost) character of the string.</li>
+<li>An un-initialized or empty string is represented with the special value “”. An empty string has 0 length.</li>
+</ul>
+<hr>
+<p><strong><strong>String operators cheat sheet</strong></strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Operation</th>
+<th style="text-align:left"><strong>Operator</strong></th>
+<th style="text-align:left"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Equality</td>
+<td style="text-align:left">str1==str2</td>
+<td style="text-align:left">Returns 1 if the two strings are equal and 0 if they are not</td>
+</tr>
+<tr>
+<td style="text-align:left">Inequality</td>
+<td style="text-align:left">str1!=str2</td>
+<td style="text-align:left">Returns 1 if the two strings are not equal and 0 if they are</td>
+</tr>
+<tr>
+<td style="text-align:left">Comparison</td>
+<td style="text-align:left">str1 &lt; str2, str1 &lt;= str2, str1 &gt; str2, str1 &gt;= str2</td>
+<td style="text-align:left">Returns 1 if the corresponding condition is true and 0 if false</td>
+</tr>
+<tr>
+<td style="text-align:left">Concatenation</td>
+<td style="text-align:left">{str1, str2, &hellip;, strN}</td>
+<td style="text-align:left">All strings will be concatenated into one resultant string</td>
+</tr>
+<tr>
+<td style="text-align:left">Replication</td>
+<td style="text-align:left">{multiplier{str}}</td>
+<td style="text-align:left">Replicates the string N number of times, where N is specified by the multiplier</td>
+</tr>
+<tr>
+<td style="text-align:left">Indexing</td>
+<td style="text-align:left">str[index]</td>
+<td style="text-align:left">Returns a byte, the ASCII code at the given index. If given index is out of range, it returns 0</td>
+</tr>
+</tbody>
+</table>
+<pre><code>                                      Tabular column.6.string operators
+</code></pre>
+<p><strong><strong>Example:</strong></strong></p>
+<p>Consider 2 strings, str1 as Manipal and str2 as Udupi,</p>
+<ul>
+<li>
+<p><strong><strong>Equality operator</strong></strong> (str1 == str2), here the string 1 each letter ASCII value will be compared with string 2&rsquo;s of each letter sequentially, if it is equal then it will return 1 or else 0, here instead of 1 and 0 we&rsquo;re using statements. In this example, strings are not equal, because the ascii value of U is 85 and M is 77. Here the first letters ascii value are not same so it will display as strings are not equal.</p>
+</li>
+<li>
+<p><strong><strong>Inequality operator</strong></strong> (str1 != str2) , here the string 1 each letter ASCII value will be compared with string 2&rsquo;s of each letter sequentially, if it is not equal then it will return 1 or else 0, here instead of 1 and 0 we&rsquo;re using statements. In this example, strings are not equal, because the ascii value of U is 85 and M is 77. Here the first letters ascii value are not same so it will display as strings are not equal.</p>
+</li>
+<li>
+<p><strong><strong>Comparison operator</strong></strong>(&gt;, =&gt; ,&lt;, =&lt;), here the string 1 each letter ASCII value will be compared with string 2&rsquo;s of each letter sequentially, here it will check for &gt;, =&gt; ,&lt;, =&lt; condition, if any of these becomes true, it will return 1. Here as we discussed in the above points, U as large ascii value, so here string1 &lt; string2 and string1 =&lt; string2.</p>
+</li>
+<li>
+<p><strong><strong>Concatenation operator</strong></strong> ({str1,str2}), here 2 strings are concatenated and resultant is single string. So output will be ManipalUdupi.</p>
+</li>
+</ul>
+<p><strong><strong>Note</strong></strong>: Using concatenation operator, we can concatenate the undeclared strings also, for example,<br>
+<code>{str1,&quot;Mangalore&quot;,str2}</code>    <br>
+<strong>Output</strong> - ManipalMangaloreUdupi</p>
+<ul>
+<li>
+<p><strong><strong>Replication operator</strong></strong> ({2{str1}}), here it replicates the string N number of times, where N is specified by the multiplier. Here we&rsquo;re considering N as 2, so string1 will be replicated 2 times, and the output is ManipalManipal.</p>
+</li>
+<li>
+<p><strong><strong>Displaying index letter</strong></strong> (str1[i]), here we&rsquo;ll get the ascii character at mentioned index number. In this case, we&rsquo;ve included for loop to display all the ascii characters of a string, so we get the output as<br>
+M<br>
+a<br>
+n<br>
+i<br>
+p<br>
+a<br>
+l</p>
+</li>
+</ul>
+<p>The below figure.1 illustrates the output for string operators</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110443214/186822122-a5f85160-9938-41d3-811f-5b155df68cb2.png"
+  alt="string_oper2"
+  class="string_oper2"/>
+</p>
+<pre><code>                               Figure.20. Output of string operators
+</code></pre>
+<p>Github lab code link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/string/string_op/string_op.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/string/string_op/string_op.sv</a
+>
+</p>
+<p>Github lab output link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/string/string_op/string_op.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/string/string_op/string_op.log</a
+>
+</p>
+<hr>
+<p><strong><strong>String Methods cheat sheet</strong></strong></p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>str.len()</td>
+<td>Returns length of string.</td>
+</tr>
+<tr>
+<td>str.putc()</td>
+<td>Used to assign one character of string.</td>
+</tr>
+<tr>
+<td>str.getc()</td>
+<td>Returns a character.</td>
+</tr>
+<tr>
+<td>str.tolower()</td>
+<td>Returns the lowercase of string.</td>
+</tr>
+<tr>
+<td>str.toupper()</td>
+<td>Returns the uppercase of string.</td>
+</tr>
+<tr>
+<td>str.compare(s)</td>
+<td>Returns the string compare result as ascii value.</td>
+</tr>
+<tr>
+<td>str.icompare(s)</td>
+<td>Returns caseless string compare result as ascii value.</td>
+</tr>
+<tr>
+<td>str.substr(i,j)</td>
+<td>Returns the sub string of main string.</td>
+</tr>
+</tbody>
+</table>
+<pre><code>             Tabular column.7. string methods
+</code></pre>
+<p><strong><strong>Example:</strong></strong></p>
+<p>Consider a string Manipal,</p>
+<ul>
+<li>
+<p><strong><strong>str.len()</strong></strong>, here it will give the length of a string. As we considered Manipal, here there are 7 ascii character. So the output is 7.</p>
+</li>
+<li>
+<p><strong><strong>str.putc()</strong></strong>, it is used to assign one character of a string. So consider one temp variable to store the changes of the string and assign character &ldquo;t&rdquo; for 3rd index as given temp.putc(3, &ldquo;t&rdquo;). And the output we&rsquo;ll get as Mantpal.</p>
+</li>
+<li>
+<p><strong><strong>str.getc()</strong></strong>, it returns a character as output. Here mention the index of a character, which we want to get as output as given str.getc(1). And the output we get as a.</p>
+</li>
+<li>
+<p><strong><strong>str.tolower()</strong></strong>, it gives a string in lowercase. So the output will be manipal.</p>
+</li>
+<li>
+<p><strong><strong>str.toupper()</strong></strong>, it gives a string in uppercase. So the output will be MANIPAL.</p>
+</li>
+<li>
+<p><strong><strong>str.compare(s)</strong></strong>, it will compare the string and gives output in ascii value. To make comparison, declare one more string as mirafra, and compare Manipal with mirafra. Here comparison will takes place with each character of a string Manipal with the each character of mirafra sequentially. Here ascii value of M = 77 and m = 109. So the difference between 77-109 is -32. So we get the output as -32.</p>
+</li>
+<li>
+<p><strong><strong>str.icompare(s)</strong></strong>, it will compare the string without considering the cases of letters, and gives output in ascii value. As mentioned above, the strings are Manipal and mirafra, here it&rsquo;s a case insensitive comparison, M and m will consider as same, and next letters are a = 97 and i = 105, hence the difference between them is (97 - 105) -8. So the output is -8.</p>
+</li>
+<li>
+<p><strong><strong>str.substr(i,j)</strong></strong>, it gives the sub string of main string. So we should mention the sub string indices which are to be displayed as given, str.substr(1,2). In Manipal the 1 and 2 index ascii characters are a and n. So the output will be an.</p>
+</li>
+</ul>
+<p>The below figure.2. shows the output of string methods.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110443214/187138876-6128baa0-5a0b-40cc-8a3a-4a7eded269ed.png"
+  alt="string_method"
+  class="string_method"/>
+</p>
+<pre><code>                                      Figure.21. Output of string methods
+</code></pre>
+<p>Github lab code link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/string/string_me/string_method.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/string/string_me/string_method.sv</a
+>
+</p>
+<p>Github lab output link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/string/string_me/string_method.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/string/string_me/string_method.log</a
+>
+</p>
+<hr>
+</div><div class="column is-sticky is-paddingless" id="tocWrapper">
+  <div class="is-paddingless" id="tocContainer">
+    <div class="toc-header">
+      <h6 class="toc-title is-marginless">On this page:</h6>
+      <i
+        title="Back to top"
+        id="tocBackToTop"
+        class="fa-solid fa-circle-arrow-up"
+      ></i>
+    </div>
+    <div id="tocContent">
+      <div id="toc"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#systemverilog-数据类型">SystemVerilog 数据类型</a>
+      <ul>
+        <li><a href="#数据类型备忘表">数据类型备忘表</a></li>
+        <li><a href="#4-值数据类型备忘表">4 值数据类型备忘表</a></li>
+        <li><a href="#4-值">4 值</a></li>
+        <li><a href="#1-reg">1. reg</a></li>
+        <li><a href="#2-wire">2. wire</a></li>
+        <li><a href="#3-tri">3. tri</a></li>
+        <li><a href="#4-logic">4. Logic</a></li>
+        <li><a href="#5-integer">5. integer</a></li>
+        <li><a href="#5-time">5. time</a></li>
+        <li><a href="#6-real">6. real</a></li>
+        <li><a href="#2-state-data-type-cheat-sheet">2-state data type cheat sheet</a></li>
+        <li><a href="#1-bit">1. bit</a></li>
+        <li><a href="#2-byte">2. byte</a></li>
+        <li><a href="#3-shortint">3. shortint</a></li>
+        <li><a href="#4-int">4. int</a></li>
+        <li><a href="#5-longint">5. longint</a></li>
+      </ul>
+    </li>
+    <li><a href="#data-type-casting">Data type casting</a>
+      <ul>
+        <li><a href="#static-casting">static casting</a>
+          <ul>
+            <li><a href="#1-integer-to-int">1. integer to int</a></li>
+            <li><a href="#2-shortint-to--int-and-longint">2. shortint to  int and longint</a></li>
+            <li><a href="#3-int-to-longint">3. int to longint</a></li>
+            <li><a href="#4-real-to-int">4. real to int</a></li>
+            <li><a href="#5-real-to-time">5. real to time</a></li>
+            <li><a href="#6-logic-to-byte">6. logic to byte</a></li>
+            <li><a href="#7-bit-to-byte">7. bit to byte</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#enum">enum</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#typedef-enumerated-data-type">typedef enumerated data type</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#string">String</a></li>
+  </ul>
+</nav></div>
+      <div id="taxonomies"><div class="taxonomy-wrapper"><div class="toc-header">
+                  <h6 class="toc-title is-marginless">Categories</h6>
+                </div><a href="/categories/systemverilog/" class="taxonomy"
+                    ><i class="fa-solid fa-circle-dot"></i>SystemVerilog</a
+                  ></div><div class="taxonomy-wrapper"><div class="toc-header">
+                  <h6 class="toc-title is-marginless">Tags</h6>
+                </div><a href="/tags/sv/" class="taxonomy"
+                    ><i class="fa-solid fa-circle-dot"></i>sv</a
+                  ></div></div>
+    </div>
+  </div>
+  <div
+    class="is-paddingless"
+    id="tocCollapsible"
+    title="Collapse/Uncollapse table of contents"
+  >
+    <i class="fa-solid fa-angles-right fa-lg"></i>
+  </div>
+</div>
+</div>
+</div><script type='text/javascript'>
+  const baseUrl = '\/';
+  const codeCopyBefore = 'Copy to clipboard';
+  const codeCopyAfter = 'Copied to clipboard';
+  const svgDownloadLabel = 'Download as SVG';
+  const helperLoadingLabel = 'Loading';
+  const searchNoResults = '没有找到';
+  const introNextLabel = 'Next';
+  const introPrevLabel = 'Previous';
+  const introSkipLabel = '✗';
+  const introDoneLabel = 'Done';
+  const printLabel = 'Print current page';
+  const qrCodeLabel = 'Show current page QR code';
+  const naCommonLabel = 'Not available';
+</script>
+<script
+      type="module"
+      src="/js/theme/modules/const.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/modules/helpers.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/modules/helpersGlobal.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/init.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/navbar.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/print.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/qrcode.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/search.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/shortcuts.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/sidebar.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/toc.min.js"
+    ></script><script
+      type="module"
+      src="/js/shortcuts.min.js"
+    ></script><script
+      type="text/javascript"
+      src="/js/theme/browserCompatibility.min.js"
+    ></script><script
+      type="text/javascript"
+      src="/js/external/flexsearch/flexsearch.bundle.min.js"
+    ></script><script
+      type="text/javascript"
+      src="/js/external/qrious/qrious.min.js"
+    ></script><script
+      type="text/javascript"
+      src="/js/external/overlay-scrollbars/overlayscrollbars.min.js"
+    ></script>
+</body>
+</html>

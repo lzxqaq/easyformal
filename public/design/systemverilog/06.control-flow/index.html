@@ -1,0 +1,2161 @@
+<!DOCTYPE html>
+<html>
+  <head><meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="generator" content="Hugo 0.116.1">
+<meta name="viewport" content="width=device-width, initial-scale=1" /><title>SystemVerilog 控制流 | Documentation du thème Shadocs</title>
+
+<link
+  rel="icon"
+  href="/images/favicon.png"
+  type="image/x-icon"
+/>
+<link
+    rel="stylesheet"
+    rel="preload"
+    type="text/css"
+    href="/css/main.css"
+  /><link
+      rel="stylesheet"
+      type="text/css"
+      href="/css/external/fontawesome.all.min.css"
+    /><link
+      rel="stylesheet"
+      type="text/css"
+      href="/css/external/overlay-scrollbars/overlayscrollbars.min.css"
+    /><link
+      rel="stylesheet"
+      type="text/css"
+      href="/css/shortcuts.min.css"
+    />
+</head>
+  <body onload="browserCompatibility()"><div id="navbarInfo" class="is-hidden modal-container">
+  <div class="modal-content-box modal-text-box">
+    <div class="card modal-title is-radiusless">
+      <div class="card-header">
+        <p class="card-header-title is-marginless">关于</p>
+      </div>
+    </div>
+    <div class="modal-content-container">
+      <div class="modal-content-block is-block"><div class="columns is-marginless is-multiline is-centered">
+  <div class="column">
+    <a
+      class="is-itext-link"
+      href="https://github.com/jgazeau/shadocs"
+      target="_blank"
+    >
+      <div>
+        <i class="fa-brands fa-github fa-2x"></i>
+        <p></p>
+      </div>
+    </a>
+  </div>
+  <div class="column">
+    <a
+      class="is-itext-link"
+      href="https://github.com/jgazeau/shadocs/archive/main.zip"
+      target="_blank"
+    >
+      <div>
+        <i class="fa-solid fa-download fa-2x"></i>
+        <p></p>
+      </div>
+    </a>
+  </div>
+  <div class="column">
+    <a
+      class="is-itext-link"
+      href="https://github.com/jgazeau/shadocs/issues"
+      target="_blank"
+    >
+      <div>
+        <i class="fa-solid fa-circle-info fa-2x"></i>
+        <p></p>
+      </div>
+    </a>
+  </div>
+  <div class="column">
+    <a
+      class="is-itext-link"
+      href="https://github.com/jgazeau/shadocs/fork"
+      target="_blank"
+    >
+      <div>
+        <i class="fa-solid fa-code-branch fa-2x"></i>
+        <p></p>
+      </div>
+    </a>
+  </div>
+</div>
+<p>(0.116.1)</p>
+<p>The MIT License (MIT) Copyright © 2023 Jordan GAZEAU</p>
+</div>
+    </div>
+  </div>
+</div>
+<div id="navbarShortcuts" class="is-hidden modal-container">
+  <div class="modal-content-box modal-text-box"><div class="card modal-title is-radiusless">
+        <div class="card-header">
+          <p class="card-header-title is-marginless">Keyboard shortcuts</p>
+        </div>
+      </div>
+      <div class="modal-content-container">
+        <div class="modal-content-block"><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>q</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Show current page QR code</p>
+  </div><div class="modal-content"><kbd>Escape</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Close modals</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>i</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Show website information</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>k</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Show shortcuts</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>h</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Go to homepage</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>f</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Find on website</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>m</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Collapse/Uncollapse sidebar</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>t</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Collapse/Uncollapse table of contents</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>↑</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Go to the top of the page</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>↓</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Go to the bottom of the page</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>p</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Print current page</p>
+  </div></div>
+      </div></div>
+</div>
+<div id="modalContainer" class="is-hidden modal-container">
+  <div id="modal" class="modal-content-box"></div>
+</div>
+<nav id="navbar" class="navbar" role="navigation" aria-label="main navigation">
+  <div id="navbarItemsContainer" class="navbar-brand"><div id="globalLogoContainer" class="is-flex">
+  <a
+    id="globalLogo"
+    class="navbar-item navbar-item-standard is-paddingless"
+    href="/"
+  >
+    <img
+      alt="主页"
+      src="/images/logo.png"
+    />
+  </a>
+  <a
+    id="globalTouchLogo"
+    class="navbar-item navbar-item-standard is-paddingless"
+    href="/"
+  >
+    <img
+      alt="主页"
+      src="/images/logoTouch.png"
+    />
+  </a>
+</div>
+<div id="navbarItems" class="is-flex">
+      <div id="navbarItemsStart" class="is-flex">
+        <div id="searchContainer" class="navbar-item"><div class="control has-icons-left">
+  <span id="searchInput" class="autocomplete">
+    <input
+      id="search"
+      autocomplete="off"
+      class="input"
+      type="search"
+      placeholder="搜索"
+    />
+  </span>
+  <span class="icon is-left">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </span>
+  <ul id="searchList" class="is-paddingless is-hidden"></ul>
+</div>
+</div>
+      </div>
+      <div id="navbarItemsEnd" class="is-flex is-invisible"><div class="navbar-item">
+  <a
+    id="printButton"
+    class="button navbar-item-standard"
+  >
+    <span class="icon-text">打印</span>
+    <span class="icon">
+      <i class="fa-solid fa-print fa-lg"></i>
+    </span>
+  </a>
+</div><div class="navbar-item"><div
+  id="taxonomiesSelectorContainer"
+  class="dropdown is-right"
+>
+  <div class="dropdown-trigger">
+    <button
+      id="taxonomiesSelector"
+      class="button navbar-item-standard"
+      aria-haspopup="true"
+      aria-controls="dropdown-menu"
+    >
+      <span class="icon-text">Taxonomies</span>
+      <span class="icon">
+        <i class="fa-solid fa-tags fa-lg"></i>
+      </span>
+    </button>
+  </div>
+  <div
+    id="dropdown-menu-taxonomies"
+    class="dropdown-menu"
+    role="menu"
+  >
+    <div class="dropdown-content is-paddingless"><a
+              href="/categories/"
+              class="dropdown-item has-text-weight-bold"
+            ><i class="fa-solid fa-table-cells"></i>Categories</a><a
+              href="/tags/"
+              class="dropdown-item has-text-weight-bold"
+            ><i class="fa-solid fa-tag"></i>Tags</a></div>
+  </div>
+</div>
+</div><div class="navbar-item">
+  <a
+    id="siteInfo"
+    trigger="navbarInfo"
+    class="button navbar-item-standard navbar-trigger"
+    title="关于"
+  >
+    <span class="icon-text">关于</span>
+    <span class="icon">
+      <i class="fa-solid fa-circle-question fa-lg"></i>
+    </span>
+  </a>
+</div>
+<div id="navbarExtend" class="navbar-item">
+  <div id="navbarExtendWrapper">
+    <a id="navbarExtendButton" class="button navbar-item-standard">
+      <span class="icon">
+        <i class="fa-solid fa-ellipsis fa-lg"></i>
+      </span>
+    </a>
+    <div id="navbarExtendItemsContainer">
+      <div id="navbarExtendItemsWrapper"><div class="navbar-item">
+  <a
+    id="printButtonExtend"
+    class="button navbar-item-standard"
+  >
+    <span class="icon-text">打印</span>
+    <span class="icon">
+      <i class="fa-solid fa-print fa-lg"></i>
+    </span>
+  </a>
+</div><div class="navbar-item"><div
+  id="taxonomiesSelectorContainerExtend"
+  class="dropdown is-right"
+>
+  <div class="dropdown-trigger">
+    <button
+      id="taxonomiesSelectorExtend"
+      class="button navbar-item-standard"
+      aria-haspopup="true"
+      aria-controls="dropdown-menu"
+    >
+      <span class="icon-text">Taxonomies</span>
+      <span class="icon">
+        <i class="fa-solid fa-tags fa-lg"></i>
+      </span>
+    </button>
+  </div>
+  <div
+    id="dropdown-menu-taxonomiesExtend"
+    class="dropdown-menu"
+    role="menu"
+  >
+    <div class="dropdown-content is-paddingless"><a
+              href="/categories/"
+              class="dropdown-item has-text-weight-bold"
+            ><i class="fa-solid fa-table-cells"></i>Categories</a><a
+              href="/tags/"
+              class="dropdown-item has-text-weight-bold"
+            ><i class="fa-solid fa-tag"></i>Tags</a></div>
+  </div>
+</div>
+</div><div class="navbar-item">
+  <a
+    id="siteInfoExtend"
+    trigger="navbarInfo"
+    class="button navbar-item-standard navbar-trigger"
+    title="关于"
+  >
+    <span class="icon-text">关于</span>
+    <span class="icon">
+      <i class="fa-solid fa-circle-question fa-lg"></i>
+    </span>
+  </a>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+</nav>
+<div id="navbarOverlay"></div>
+<div
+      class="columns is-mobile is-paddingless is-marginless"
+      id="mainContainer"
+    ><div
+  id="sidebarContainer"
+  class="column is-narrow is-paddingless is-marginless"
+>
+  <div id="sidebarWrapper" class="is-fixed">
+    <div id="sidebar" class="is-marginless">
+      <aside class="menu is-paddingless is-marginless">
+        <ul class="menu-list is-marginless is-paddingless"><div class="card is-fs-expandable-icon"><div class="card-header is-single-link">
+      <a
+        href='/digital/'
+        class='card-header-title'>
+        <i class='fa-solid fa-bars fa-lg'></i></a></div>
+      </div><div class="is-expandable">
+      <div class="is-sidebar-list-wrapper"><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/digital/'
+        class='card-header-title'
+          title='数字电路基础'>
+        <i class='fa-solid fa-bars fa-lg'></i><p class="pt-0 pb-0 pr-2 pl-1">数字电路基础</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="card is-fs-expandable-icon is-sidebar-active"><div class="card-header">
+      <a
+        href='/design/'
+        class='card-header-title'>
+        <i class='fa-solid fa-bars fa-lg'></i></a></div>
+      </div><div class="is-expandable">
+      <div class="is-sidebar-list-wrapper"><li class="is-marginless is-tree-active is-entries-expandable is-entries-expanded"><div
+            class="card"><div class="card-header">
+      <a
+        href='/design/'
+        class='card-header-title'
+          title='HDL 设计'>
+        <i class='fa-solid fa-bars fa-lg'></i><p class="pt-0 pb-0 pr-2 pl-1">HDL 设计</p></a><a class="card-header-icon is-icon-expandable is-paddingless is-icon-expanded">
+                <span class='icon'></span>
+              </a>
+            </div>
+          </div><ul class="is-marginless is-tree-active"><div class="">
+      <div class=""><li class="is-marginless is-entries-expandable is-entries-expanded"><div
+            class="card"><div class="card-header">
+      <a
+        href='/design/systemverilog/'
+        class='card-header-title'
+          title='SystemVerilog 教程'>
+        <i class='fa-solid fa-bars'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 教程</p></a><a class="card-header-icon is-icon-expandable is-paddingless is-icon-expanded">
+                <span class='icon'></span>
+              </a>
+            </div>
+          </div><ul class="is-marginless"><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/01.data-types/'
+        class='card-header-title'
+          title='SystemVerilog 数据类型'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 数据类型</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/02.array/'
+        class='card-header-title'
+          title='SystemVerilog 数组'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 数组</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/03.structure-and-union/'
+        class='card-header-title'
+          title='SystemVerilog 结构体和联合体'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 结构体和联合体</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/04.user-defined/'
+        class='card-header-title'
+          title='SystemVerilog 用户自定义'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 用户自定义</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/05.operators/'
+        class='card-header-title'
+          title='SystemVerilog operators'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog operators</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card is-sidebar-active"id='sidebarActiveEntry'><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/06.control-flow/'
+        class='card-header-title'
+          title='SystemVerilog 控制流'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 控制流</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/07.functions/'
+        class='card-header-title'
+          title='SystemVerilog 函数'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 函数</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/08.tasks/'
+        class='card-header-title'
+          title='SystemVerilog 任务'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 任务</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/09.loops/'
+        class='card-header-title'
+          title='SystemVerilog 循环'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 循环</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/10.scheduler-schematics/'
+        class='card-header-title'
+          title='Scheduler schematic'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Scheduler schematic</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/11.processes/'
+        class='card-header-title'
+          title='Processes'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Processes</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/12.fine-grain-process-control/'
+        class='card-header-title'
+          title='Fine Grain Process Control'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Fine Grain Process Control</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/13.interface/'
+        class='card-header-title'
+          title='Interface'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Interface</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/14.constraint/'
+        class='card-header-title'
+          title='Constraint'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Constraint</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/15.classes-and-oops/'
+        class='card-header-title'
+          title='类和面向对象'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">类和面向对象</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/17.functional-coverage/'
+        class='card-header-title'
+          title='Coverage'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Coverage</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/18.assertion/'
+        class='card-header-title'
+          title='Assertion'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Assertion</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/19.interprocess-communication/'
+        class='card-header-title'
+          title='Interprocess communication  '>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Interprocess communication  </p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/20.misc-constructs/'
+        class='card-header-title'
+          title='Program Block'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Program Block</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/choosing-an-array/'
+        class='card-header-title'
+          title='Choosing-an-array'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Choosing-an-array</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/control-flow-interview-questions/'
+        class='card-header-title'
+          title='Control-Flow-Interview-questions'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Control-Flow-Interview-questions</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/data-type-interview-questions/'
+        class='card-header-title'
+          title='Data-type-Interview-questions'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Data-type-Interview-questions</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/differences-between-macros-and-parameters/'
+        class='card-header-title'
+          title='Differences-between-macros-and-parameters'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Differences-between-macros-and-parameters</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/interface-interview-questions/'
+        class='card-header-title'
+          title='Interface-Interview-Questions'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Interface-Interview-Questions</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/processes-interviewquestions/'
+        class='card-header-title'
+          title='Processes-InterviewQuestions'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Processes-InterviewQuestions</p></a></div>
+          </div></li>
+      </div>
+    </div></ul></li>
+      </div>
+    </div></ul></li>
+      </div>
+    </div><div class="card is-fs-expandable-icon"><div class="card-header">
+      <a
+        href='/formal/'
+        class='card-header-title'>
+        <i class='fa-solid fa-bars fa-lg'></i></a></div>
+      </div><div class="is-expandable">
+      <div class="is-sidebar-list-wrapper"><li class="is-marginless is-entries-expandable is-entries-shrinked"><div
+            class="card"><div class="card-header">
+      <a
+        href='/formal/'
+        class='card-header-title'
+          title='形式验证'>
+        <i class='fa-solid fa-bars fa-lg'></i><p class="pt-0 pb-0 pr-2 pl-1">形式验证</p></a><a class="card-header-icon is-icon-expandable is-paddingless is-icon-shrinked">
+                <span class='icon'></span>
+              </a>
+            </div>
+          </div><ul class="is-marginless"><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/formal/model_checking/'
+        class='card-header-title'
+          title='模型检查'>
+        <i class='fa-solid fa-bars'></i><p class="pt-0 pb-0 pr-2 pl-0">模型检查</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/formal/equivalence_checking/'
+        class='card-header-title'
+          title='等价性检查'>
+        <i class='fa-solid fa-bars'></i><p class="pt-0 pb-0 pr-2 pl-0">等价性检查</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless is-entries-expandable is-entries-shrinked"><div
+            class="card"><div class="card-header">
+      <a
+        href='/formal/theorem_proving/'
+        class='card-header-title'
+          title='定理证明'>
+        <i class='fa-solid fa-bars'></i><p class="pt-0 pb-0 pr-2 pl-0">定理证明</p></a><a class="card-header-icon is-icon-expandable is-paddingless is-icon-shrinked">
+                <span class='icon'></span>
+              </a>
+            </div>
+          </div><ul class="is-marginless"><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/formal/theorem_proving/acl2/'
+        class='card-header-title'
+          title='一文了解定理证明器 ACL2'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">一文了解定理证明器 ACL2</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/formal/theorem_proving/acl2_hardware/'
+        class='card-header-title'
+          title='使用 ACL2 进行硬件验证'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">使用 ACL2 进行硬件验证</p></a></div>
+          </div></li>
+      </div>
+    </div></ul></li>
+      </div>
+    </div></ul></li>
+      </div>
+    </div></ul>
+      </aside>
+    </div>
+    <div id="sidebarCollapsible" class="is-marginless">
+      <div class="card is-uncollapse-action">
+        <div
+          id="sidebarUncollapse"
+          class="card-header is-single-link"
+          title="Collapse/Uncollapse sidebar"
+        >
+          <a class="card-header-title">
+            <i class="fa-solid fa-angles-right fa-lg"></i>
+          </a>
+        </div>
+      </div>
+      <div class="card is-collapse-action">
+        <div
+          id="sidebarCollapse"
+          class="card-header is-single-link"
+          title="Collapse/Uncollapse sidebar"
+        >
+          <a class="card-header-title">
+            <i class="fa-solid fa-angles-left fa-lg"></i>
+            <p>折叠</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="sidebarMobileWrapper" class="column is-narrow is-hidden-desktop"></div>
+<div class="columns is-mobile is-marginless is-scroll-smooth has-toc" id="contentContainer">
+  <div class="column" id="content"><div id="contentTitle">SystemVerilog 控制流</div>
+<p><img
+  src="https://user-images.githubusercontent.com/110447788/189053837-bb8f5e98-b889-41e5-b9c3-d8dcce09f234.png"
+  alt="Untitled Diagram-Page-2 drawio (17)"
+  class="Untitled Diagram-Page-2 drawio (17)"/>
+</p>
+<pre><code>                                               Fig -1: Control Flow  
+</code></pre>
+<h1 id='control-flow'>Control flow<a href='#control-flow' class='anchor'>#</a>
+</h1><h2 id='conditional-statements'>Conditional Statements<a href='#conditional-statements' class='anchor'>#</a>
+</h2><p>Conditional statements are used to check whether the statements in the blocks are executed or not. Conditional statements create the block of statements. If the expression given is -<br>
+<strong>true</strong> - Execute the set of statements in the block.<br>
+<strong>false</strong> - the statements inside that block will not be executed.<br>
+<strong>else</strong> - if the expressions are false then the else block statements will execute at last.</p>
+<p>There are different types of conditional statements. These are &ndash;</p>
+<p><strong>Cheat Sheet</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">S.No</th>
+<th style="text-align:left">Conditional Statement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1.</td>
+<td style="text-align:left"><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/06.Control-Flow#1-if-without-else"
+    class="is-pretty-link">if</a
+>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">2.</td>
+<td style="text-align:left"><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/06.Control-Flow#2-if-else"
+    class="is-pretty-link">if-else</a
+>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">3.</td>
+<td style="text-align:left"><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/06.wiki/Control-Flow#3-if-else-ladder"
+    class="is-pretty-link">if-else ladder</a
+>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">4.</td>
+<td style="text-align:left"><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/06.Control-Flow#4-unique-if"
+    class="is-pretty-link">unique if</a
+>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">5.</td>
+<td style="text-align:left"><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/06.Control-Flow#5unique0if"
+    class="is-pretty-link">unique0 if</a
+>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">6.</td>
+<td style="text-align:left"><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/06.Control-Flow#6priority-if"
+    class="is-pretty-link">priority if</a
+>
+</td>
+</tr>
+</tbody>
+</table>
+<h3 id='1-if-without-else'>1. if without else<a href='#1-if-without-else' class='anchor'>#</a>
+</h3><p><img
+  src="https://user-images.githubusercontent.com/110443268/189035735-e654c6ac-be0a-4023-8aae-5bd6c483bedb.png"
+  alt="if without else"
+  class="if without else"/>
+</p>
+<pre><code>                           fig -2: if flow chart
+</code></pre>
+<p>This conditional statement is used for the basic codes where only need to make a decision by giving one condition. If the expression in the condition is -<br>
+<strong>true</strong> - execute the statements in the block.<br>
+<strong>false</strong> - will not execute the statement.</p>
+<p><strong>Syntax</strong> <br>
+<code>if(condition)begin  </code><br>
+<code>Statements;  </code><br>
+<code>end  </code></p>
+<p><em>Note</em><br>
+For more than one statement in conditional blocks, need to use begin end block. Statements inside the begin end block execute in a sequential manner.</p>
+<p><strong>Example</strong>  -  <br>
+Here, the variable declare is a and value assigned to it is 10. The compiler will check the if conditional expression and condition are true a=10. So, the compiler will execute the set of statements inside the if block.</p>
+<p><strong>Code snippet</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>    <span style="color:#66d9ef">bit</span> [<span style="color:#ae81ff">3</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>]a;   
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">initial</span> <span style="color:#66d9ef">begin</span>  
+</span></span><span style="display:flex;"><span>     a<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>;  
+</span></span><span style="display:flex;"><span>    $display (<span style="color:#e6db74">&#34;Value of a = %0d&#34;</span>,a);  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (a<span style="color:#f92672">==</span><span style="color:#ae81ff">10</span>)<span style="color:#66d9ef">begin</span>  
+</span></span><span style="display:flex;"><span>       $display (<span style="color:#e6db74">&#34;if the expression is true, Successfully entered into the if block&#34;</span>); 
+</span></span><span style="display:flex;"><span>       $display ( <span style="color:#e6db74">&#34;a is equal to 10 &#34;</span> );  
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span>      $display(<span style="color:#e6db74">&#34;out of if block&#34;</span>);  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>  
+</span></span></code></pre></div><p><strong>Output Snap</strong><br>
+The below figure shows the output of if conditional statement.</p>
+<!-- raw HTML omitted -->
+<pre><code>                              fig -1 : Output - if
+</code></pre>
+<p><strong>GitHub Lab Code link</strong>:- <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/if/if_code.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/if/if_code.sv</a
+>
+</p>
+<p><strong>GitHub Lab Output link</strong>:- <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/if/if_code_log.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/if/if_code_log.log</a
+>
+</p>
+<h3 id='2-if-else'>2. if else<a href='#2-if-else' class='anchor'>#</a>
+</h3><p><img
+  src="https://user-images.githubusercontent.com/110443268/189035814-cd1a193d-2078-4ada-88cb-519949451923.png"
+  alt="if else (1)"
+  class="if else (1)"/>
+</p>
+<pre><code>                             fig -3: Flow chart-if else 
+</code></pre>
+<p>This conditional statement has two sets of statements, one in the if block and another in the else block. If the expression in the <code>if</code> block is true, statements inside it will execute, or if the expression is false, statements inside the <code>else</code> block will execute.<br>
+<code>else</code> block doesn&rsquo;t check any expression to execute statements inside it, it just executes after if the expression is false.<br>
+<strong>Syntax</strong><br>
+<code>if(condition) begin  </code><br>
+<code>Statement1;</code><br>
+<code>Statement2;</code><br>
+<code>------</code><br>
+<code>StatementN;  </code><br>
+<code>end  </code><br>
+<code>else begin  </code><br>
+<code>Statement1;  </code><br>
+<code>Statement2;  </code><br>
+<code>---------  </code><br>
+<code>StatementN;</code><br>
+<code>end </code></p>
+<p><strong>Example</strong>  -</p>
+<p>Here the variable declares a is byte type(signed) and the value assigned to it is -1. If the conditional expression is false as a is less than 0.</p>
+<p><strong>Code Snippet</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>    <span style="color:#66d9ef">byte</span> a;  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">initial</span> <span style="color:#66d9ef">begin</span>  
+</span></span><span style="display:flex;"><span>    a <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;  
+</span></span><span style="display:flex;"><span>     $display (<span style="color:#e6db74">&#34;Assign the value of a = %0d &#34;</span>,a);  
+</span></span><span style="display:flex;"><span>     $display(<span style="color:#e6db74">&#34;-------------------------------------&#34;</span>);  
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">if</span>(a<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span>)<span style="color:#66d9ef">begin</span> <span style="color:#75715e">//false    
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>       $display (<span style="color:#e6db74">&#34;Successfully enters into if block&#34;</span>);    
+</span></span><span style="display:flex;"><span>       $display (<span style="color:#e6db74">&#34;a is a positive number&#34;</span>);  
+</span></span><span style="display:flex;"><span>       $display (<span style="color:#e6db74">&#34;----------------------------------&#34;</span>);   
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">end</span>   
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">else</span>  
+</span></span><span style="display:flex;"><span>       $display (<span style="color:#e6db74">&#34;Number is negative&#34;</span>);  
+</span></span><span style="display:flex;"><span>      $display (<span style="color:#e6db74">&#34;Out of if else block&#34;</span>);  
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">end</span>  
+</span></span></code></pre></div><p><strong>Output Snap</strong><br>
+The below figure shows the output of if-else conditional statement.</p>
+<!-- raw HTML omitted -->
+<pre><code>                       fig -2 : Output -if else
+</code></pre>
+<p><strong>GitHub Lab Code link</strong>:- <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/if_else/if_else.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/if_else/if_else.sv</a
+>
+</p>
+<p><strong>GitHub Lab Output link</strong>:-https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/if_else/if_else_log.log</p>
+<hr>
+<h3 id='3-if-else-ladder'>3. if else ladder<a href='#3-if-else-ladder' class='anchor'>#</a>
+</h3><p><img
+  src="https://user-images.githubusercontent.com/110412468/188856002-aefd1408-82d7-42e1-a9b6-6cfbcda1dc99.png"
+  alt="if else ladder"
+  class="if else ladder"/>
+</p>
+<pre><code>               fig-4 :flow chart-if else ladder
+</code></pre>
+<p>This conditional statement helps us to decide among multiple options or expressions. As soon as the expression becomes true, the statements inside it execute and the remaining code blocks are bypassed. If none of the expressions is true, the else block executes.<br>
+else block is an optional block in the ladder. It is used to avoid confusion in code.</p>
+<p><strong>Syntax</strong></p>
+<p><code>if(condition) begin  </code><br>
+<code>Statement1;</code><br>
+<code>Statement2;</code><br>
+<code>------</code><br>
+<code>StatementN;  </code><br>
+<code>end  </code><br>
+<code>elseif begin  </code><br>
+<code>Statement1;</code><br>
+<code>Statement2;</code><br>
+<code>------</code><br>
+<code>StatementN;  </code><br>
+<code>end   </code></p>
+<p><code>else begin  </code><br>
+<code>Statement1;  </code><br>
+<code>Statement2;  </code><br>
+<code>---------  </code><br>
+<code>StatementN;</code><br>
+<code>end </code></p>
+<p><strong>a. without else</strong></p>
+<p>Sequentially all the conditional expressions will be checked. The compiler will execute the set of statements that has valid condition expression.</p>
+<p><strong>Example</strong>  -</p>
+<p>The below example has three variables a,b and c. The value assigned to them is 10,12 and 13. the compiler will check the conditional expression one after the other. Here the second conditional expression is true or valid. The output will be the set of statements inside the else if block.</p>
+<p><strong>Code Snippet</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>         <span style="color:#66d9ef">int</span> a,b,c;  
+</span></span><span style="display:flex;"><span>         <span style="color:#66d9ef">initial</span> <span style="color:#66d9ef">begin</span>    
+</span></span><span style="display:flex;"><span>         a <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;      
+</span></span><span style="display:flex;"><span>         b <span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span>;   
+</span></span><span style="display:flex;"><span>         c <span style="color:#f92672">=</span> <span style="color:#ae81ff">13</span>;   
+</span></span><span style="display:flex;"><span>         $display (<span style="color:#e6db74">&#34;Assign the value of a = %0d , b= %0d , c =%0d  &#34;</span> ,a,b,c);    
+</span></span><span style="display:flex;"><span>         $display (<span style="color:#e6db74">&#34;------------------------------------------------------&#34;</span>);    
+</span></span><span style="display:flex;"><span>         <span style="color:#66d9ef">if</span> (a<span style="color:#f92672">&gt;</span>b)<span style="color:#66d9ef">begin</span> <span style="color:#75715e">//false      
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>           $display (<span style="color:#e6db74">&#34;Successfully enters into if block &#34;</span>);  
+</span></span><span style="display:flex;"><span>           $display (<span style="color:#e6db74">&#34;Value of a &lt; b&#34;</span>);  
+</span></span><span style="display:flex;"><span>           $display (<span style="color:#e6db74">&#34;----------------------------------&#34;</span>);    
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">end</span>    
+</span></span><span style="display:flex;"><span>         <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (b<span style="color:#f92672">&lt;</span>c)<span style="color:#66d9ef">begin</span> <span style="color:#75715e">//true    
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>           $display (<span style="color:#e6db74">&#34;Successfully enters into else if block &#34;</span>);  
+</span></span><span style="display:flex;"><span>           $display (<span style="color:#e6db74">&#34;value of b&lt;c&#34;</span>);  
+</span></span><span style="display:flex;"><span>           $display (<span style="color:#e6db74">&#34;----------------------------------------------------&#34;</span>);  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">end</span>    
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (c<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">begin</span> <span style="color:#75715e">//false    
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            $display (<span style="color:#e6db74">&#34;Successfully enters into second elseif block &#34;</span>);  
+</span></span><span style="display:flex;"><span>           $display (<span style="color:#e6db74">&#34;c is a negative number &#34;</span>);    
+</span></span><span style="display:flex;"><span>           $display (<span style="color:#e6db74">&#34;--------------------------------------------&#34;</span>);  
+</span></span><span style="display:flex;"><span>         <span style="color:#66d9ef">end</span>    
+</span></span><span style="display:flex;"><span>        $display (<span style="color:#e6db74">&#34;Out from ladder block&#34;</span>);  
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">end</span>  
+</span></span></code></pre></div><p><strong>output Snap</strong><br>
+The below figure shows the output of the if else ladder without the else conditional statement.</p>
+<!-- raw HTML omitted -->
+<pre><code>                                fig -3: output - if else ladder without else
+</code></pre>
+<p><strong>GitHub Lab Code link</strong>:-https://github.com/muneeb-mbytes/SystemVerilog_Course/tree/production/conditional_statement/if_variants/if_else_ladder/if_else_ladder_withoutelse</p>
+<p><strong>GitHub Lab Output link</strong>:- <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/if_else_ladder/if_else_ladder_withoutelse/if_elseif_log.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/if_else_ladder/if_else_ladder_withoutelse/if_elseif_log.log</a
+>
+</p>
+<p><strong>b. with else</strong><br>
+When none of the conditional expressions is true, the compiler will execute the set of statements of the else block.<br>
+<strong>Example</strong><br>
+Here the example shows the execution of the else block.</p>
+<p><strong>Code snippet</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> a, b,c;  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">initial</span> <span style="color:#66d9ef">begin</span>  
+</span></span><span style="display:flex;"><span>    a <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">12</span>;  
+</span></span><span style="display:flex;"><span>    b <span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span>;  
+</span></span><span style="display:flex;"><span>    c <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;  
+</span></span><span style="display:flex;"><span>    $display (<span style="color:#e6db74">&#34;Assign the value of a =%0d  b = %0d  c = %0d &#34;</span>, a,b,c);  
+</span></span><span style="display:flex;"><span>    $display (<span style="color:#e6db74">&#34;------------------------------------------------------&#34;</span>);  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (a<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span>) <span style="color:#75715e">//false condition    
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">begin</span><span style="color:#960050;background-color:#1e0010">`</span>   
+</span></span><span style="display:flex;"><span>    $display (<span style="color:#e6db74">&#34;Entered into if block &#34;</span>);  
+</span></span><span style="display:flex;"><span>    $display (<span style="color:#e6db74">&#34;a is a negative number&#34;</span>);  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (a<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">begin</span>  <span style="color:#75715e">// false condition  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>       $display (<span style="color:#e6db74">&#34;Entered into first elseif block &#34;</span>);  
+</span></span><span style="display:flex;"><span>       $display (<span style="color:#e6db74">&#34;a is a negative number &#34;</span>);  
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (b<span style="color:#f92672">&lt;</span>c)<span style="color:#66d9ef">begin</span> <span style="color:#75715e">// false condition  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>       $display (<span style="color:#e6db74">&#34;Entered into second else if block &#34;</span>);  
+</span></span><span style="display:flex;"><span>       $display (<span style="color:#e6db74">&#34;b is less than c &#34;</span>);  
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">begin</span>  
+</span></span><span style="display:flex;"><span>       $display (<span style="color:#e6db74">&#34;None of the condition is true in if-else if blocks &#34;</span>);  
+</span></span><span style="display:flex;"><span>       $display (<span style="color:#e6db74">&#34;-------------------------------------------------&#34;</span>);  
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span>     $display (<span style="color:#e6db74">&#34;Out of the conditional block &#34;</span>);  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>  
+</span></span></code></pre></div><p><strong>output Snap</strong><br>
+The below figure shows the output of the if-else ladder with else conditional statement.</p>
+<!-- raw HTML omitted -->
+<pre><code>                            fig -4: Output-if else ladder with else
+</code></pre>
+<p><strong>GitHub Lab Code link</strong>:- <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/if_else_ladder/if_else_ladder_withelse/if_elseif_else.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/if_else_ladder/if_else_ladder_withelse/if_elseif_else.sv</a
+>
+</p>
+<p><strong>GitHub Lab Output link</strong>:- <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/if_else_ladder/if_else_ladder_withelse/if_elseif_else_log.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/if_else_ladder/if_else_ladder_withelse/if_elseif_else_log.log</a
+>
+</p>
+<hr>
+<p>In SystemVerilog, there are three versions of a conditional statement updated. These are -</p>
+<h3 id='4-unique-if'>4. unique if<a href='#4-unique-if' class='anchor'>#</a>
+</h3><p><img
+  src="https://user-images.githubusercontent.com/110443268/189036148-eb8d42dc-69a0-4f1b-8d93-d12163549797.png"
+  alt="unique if without else"
+  class="unique if without else"/>
+</p>
+<pre><code>                                fig-5 :flow chart:unique_if 
+</code></pre>
+<p>This is the updated conditional statement. In a unique, if conditional statement, unlike the if-else block the compiler read all the blocks sequentially whether the block is true or not.</p>
+<p><strong>Syntax</strong><br>
+<code>unique if(condition)begin  </code><br>
+<code>Statements;  </code><br>
+<code>end   </code><br>
+<code>else if (condition) begin  </code><br>
+<code>Statements;  </code><br>
+<code>end  </code><br>
+<code>else if (condition) begin  </code><br>
+<code>Statements;  </code><br>
+<code>end  </code></p>
+<p>There are three possibilities to know the working of a unique if block and these are<br>
+<strong>a. Only one expression is true</strong>  <br>
+If only the expression is true unique if conditional statement will work the same as the basic if else block. The output will be the, set of statements inside the block which is executing.</p>
+<p><strong>Example</strong>-<br>
+The below example shows the three conditional blocks unique if, else if, else if. Here, there are two variables declared one is bit type and the other is int type.<br>
+size() is a default function of SV, use to get the size of the given variable. The size of a is 5 and b is 32 (default size if int data type ). So, the size of b is greater than a, which means unique if the conditional expression is true. Then, the compiler jumps from the conditional block code and does not execute other conditional blocks (else if blocks).</p>
+<p><strong>Code snippet</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>     <span style="color:#66d9ef">bit</span> [<span style="color:#ae81ff">4</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] a;  
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">int</span> b;  
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">initial</span> <span style="color:#66d9ef">begin</span>  
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">unique</span> <span style="color:#66d9ef">if</span> ($size(a)<span style="color:#f92672">&lt;</span>$size(b))<span style="color:#66d9ef">begin</span> <span style="color:#75715e">//True    
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>       $display (<span style="color:#e6db74">&#34;Inside the unique if block&#34;</span>);  
+</span></span><span style="display:flex;"><span>       $display (<span style="color:#e6db74">&#34;The size of a is smaller than b &#34;</span>);  
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> ($size(a)<span style="color:#f92672">==</span>$size(b)) <span style="color:#66d9ef">begin</span> <span style="color:#75715e">//False  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        $display (<span style="color:#e6db74">&#34;Inside the first else if block&#34;</span>);  
+</span></span><span style="display:flex;"><span>        $display (<span style="color:#e6db74">&#34;Size of a = Size of b&#34;</span>);  
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> ($size(a)<span style="color:#f92672">&gt;</span>$size(b))<span style="color:#66d9ef">begin</span> <span style="color:#75715e">//False  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        $display (<span style="color:#e6db74">&#34;Inside the second else if block&#34;</span>);  
+</span></span><span style="display:flex;"><span>        $display (<span style="color:#e6db74">&#34;Size of a is greater than the size of b &#34;</span>);  
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span>      $display (<span style="color:#e6db74">&#34;Out from conditional block &#34;</span>);    
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">end</span>  
+</span></span></code></pre></div><p><strong>output Snap</strong></p>
+<p>The below figure shows the output of the unique if for only one true condition.</p>
+<!-- raw HTML omitted -->
+<pre><code>                             fig -5: output: unique if - only one true condition
+</code></pre>
+<p><strong>GitHub Lab Code link</strong>:- <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/unique_if/unique_if1/unique_if1.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/unique_if/unique_if1/unique_if1.sv</a
+>
+</p>
+<p><strong>GitHub Lab Outputlink</strong>:- <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/unique_if/unique_if1/unique_if1_log.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/unique_if/unique_if1/unique_if1_log.log</a
+>
+</p>
+<p><strong>b. None of the conditions is true</strong></p>
+<p>**with else **- else block statements execute.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110443268/189036388-c92b5599-4528-49ef-b72b-c4b3852dc61a.png"
+  alt="unique if fl"
+  class="unique if fl"/>
+</p>
+<pre><code>                              fig -6:flow chart:  with else unique if 
+</code></pre>
+<p>Example -</p>
+<p>The below example shows the execution of a set of statements inside the else block.<br>
+Here, the variable is money, and the value assigned to the variable is 900. First conditional statements unique if will be false because money is less than 1000. Then, the compiler will check the else if condition, and again condition becomes false. Then, the compiler at last will execute the else block.<br>
+The output will be the set of statements inside the else block.</p>
+<p><strong>Code snippet</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span>  money;  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">initial</span> <span style="color:#66d9ef">begin</span>  
+</span></span><span style="display:flex;"><span>    money <span style="color:#f92672">=</span> <span style="color:#ae81ff">900</span>;  
+</span></span><span style="display:flex;"><span>    $display (<span style="color:#e6db74">&#34;Money in account  = %0d&#34;</span>,money);  
+</span></span><span style="display:flex;"><span>    $display (<span style="color:#e6db74">&#34;------------------------&#34;</span>);  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">unique</span> <span style="color:#66d9ef">if</span> (money<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">1000</span>)<span style="color:#66d9ef">begin</span> <span style="color:#75715e">//false  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      $display (<span style="color:#e6db74">&#34;Inside the unique if block &#34;</span>);  
+</span></span><span style="display:flex;"><span>      $display (<span style="color:#e6db74">&#34;can withdraw money  &#34;</span>);  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (money<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>)<span style="color:#66d9ef">begin</span> <span style="color:#75715e">//false  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>     $display (<span style="color:#e6db74">&#34;Inside the first else if block &#34;</span>);  
+</span></span><span style="display:flex;"><span>     $display (<span style="color:#e6db74">&#34;Account block .&#34;</span>);  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>  
+</span></span><span style="display:flex;"><span>    $display (<span style="color:#e6db74">&#34;Money withdrawal not allowed .&#34;</span>);  
+</span></span><span style="display:flex;"><span>    $display (<span style="color:#e6db74">&#34;--------------------------------&#34;</span>);  
+</span></span><span style="display:flex;"><span>    $display (<span style="color:#e6db74">&#34;Out of the conditional block &#34;</span>);  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>  
+</span></span></code></pre></div><p><strong>Output snap</strong></p>
+<p>The below figure shows the output of the unique if -none of the conditions is true with else.</p>
+<!-- raw HTML omitted -->
+<pre><code>                                fig -6: output - unique if -none of the conditions is true with else
+</code></pre>
+<p><strong>GitHub Lab Code link</strong>:- <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/unique_if/unique_if4/unique_if4.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/unique_if/unique_if4/unique_if4.sv</a
+>
+</p>
+<p><strong>GitHub Lab Output link</strong>:- <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/unique_if/unique_if4/unique_if4_log.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/unique_if/unique_if4/unique_if4_log.log</a
+>
+</p>
+<p><strong>without else</strong> - The compiler will read all the conditional blocks and gives a warning.</p>
+<p><strong>Flow chart</strong> - Refer fig -4.</p>
+<p><strong>Example</strong>-</p>
+<p>The below example shows execute of code with the else block. <br>
+Here, the variable is a and the value assigned to it is 13. Now, the compiler will check the condition sequentially. First, the unique if conditional expression will be checked. As  (a %2) is not equal to 0 so, this conditional expression becomes false. Then, the compiler will go to first else if block and as (a&gt;2) again the conditional expression becomes false. Then, the compiler will check for the next else if block and as a is not equal to 13 again condition becomes false. At last, the compiler will jump from the conditional block and executes the statements outside the conditional blocks.</p>
+<p><strong>Code Snippet</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>     <span style="color:#66d9ef">initial</span> <span style="color:#66d9ef">begin</span> 
+</span></span><span style="display:flex;"><span>      a <span style="color:#f92672">=</span><span style="color:#ae81ff">13</span>;  
+</span></span><span style="display:flex;"><span>      $display (<span style="color:#e6db74">&#34;The value of a = %0d&#34;</span>, a);  
+</span></span><span style="display:flex;"><span>      $display (<span style="color:#e6db74">&#34;------------------------&#34;</span>);  
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">unique</span> <span style="color:#66d9ef">if</span> (a<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)<span style="color:#66d9ef">begin</span>  <span style="color:#75715e">// false  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        $display (<span style="color:#e6db74">&#34;Inside the unique if block &#34;</span>);  
+</span></span><span style="display:flex;"><span>        $display (<span style="color:#e6db74">&#34;a is an even number&#34;</span>);  
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">end</span>     
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (a <span style="color:#f92672">&lt;</span><span style="color:#ae81ff">2</span>)<span style="color:#66d9ef">begin</span> <span style="color:#75715e">// false  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>       $display (<span style="color:#e6db74">&#34; Inside the else if block &#34;</span>);  
+</span></span><span style="display:flex;"><span>       $display (<span style="color:#e6db74">&#34;a is smaller than 2 &#34;</span>);  
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (a <span style="color:#f92672">!=</span><span style="color:#ae81ff">13</span>) <span style="color:#66d9ef">begin</span> <span style="color:#75715e">// False  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        $display (<span style="color:#e6db74">&#34;Inside the second else if block &#34;</span>);  
+</span></span><span style="display:flex;"><span>        $display (<span style="color:#e6db74">&#34;a is not equal to 13 &#34;</span>);     
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">end</span>    
+</span></span><span style="display:flex;"><span>      $display (<span style="color:#e6db74">&#34;Out of the conditional block &#34;</span>);    
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">end</span>  
+</span></span></code></pre></div><p><strong>Output Snap</strong></p>
+<p>The below figure shows the output of the unique if -none of the conditions is true without else.</p>
+<!-- raw HTML omitted -->
+<pre><code>                                fig -7: output - unique if -none of the conditions is true without else
+</code></pre>
+<p><strong>GitHub Lab Code Link</strong>:- <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/unique_if/unique_if3/unique_if3.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/unique_if/unique_if3/unique_if3.sv</a
+>
+</p>
+<p><strong>GitHub Lab Output Link</strong>:- <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/unique_if/unique_if3/unique_if3_log.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/unique_if/unique_if3/unique_if3_log.log</a
+>
+</p>
+<p><strong>c. More than one condition is true</strong></p>
+<p>The compiler read all conditional blocks sequentially whether the expression is true or not. If more than one conditional block is valid, the output compiler executes the statements which are inside the first valid block. The output will be the set of statements inside the first true conditional block that also gives a warning.<br>
+<strong>Example</strong> - Here the variable declaration is &ldquo;a&rdquo; and value assigned to it is 12. The compiler will check the first condition, as (a%2==0) is true and then the compiler will execute the unique if conditional block statements. But, here the compiler task is not finished yet. The compiler will go to the next conditional blocks and will check the conditional expression. As both else, if the conditional statement is true because a &gt;0 and a = 12. After that, the compiler will come out from the conditional blocks and executes the statements from the conditional block.<br>
+The output will be the set of statements of unique if block and one warning are also there.</p>
+<p><strong>Code snippet</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>     <span style="color:#66d9ef">bit</span> [<span style="color:#ae81ff">3</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] a;  
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">initial</span> <span style="color:#66d9ef">begin</span>  
+</span></span><span style="display:flex;"><span>     a <span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span>;  
+</span></span><span style="display:flex;"><span>     $display (<span style="color:#e6db74">&#34;The value of a = %0d&#34;</span>, a);  
+</span></span><span style="display:flex;"><span>     $display (<span style="color:#e6db74">&#34;------------------------&#34;</span>);  
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">unique</span> <span style="color:#66d9ef">if</span> (a<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>)<span style="color:#66d9ef">begin</span>  
+</span></span><span style="display:flex;"><span>       $display (<span style="color:#e6db74">&#34;Inside the unique if block &#34;</span>);  
+</span></span><span style="display:flex;"><span>       $display (<span style="color:#e6db74">&#34;a is an even number.&#34;</span>);  
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (a<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span>)<span style="color:#66d9ef">begin</span>  
+</span></span><span style="display:flex;"><span>      $display (<span style="color:#e6db74">&#34;Inside the first else if block &#34;</span>);  
+</span></span><span style="display:flex;"><span>      $display (<span style="color:#e6db74">&#34;a is a positive number&#34;</span>);  
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (a <span style="color:#f92672">==</span><span style="color:#ae81ff">12</span>)<span style="color:#66d9ef">begin</span>  
+</span></span><span style="display:flex;"><span>       $display (<span style="color:#e6db74">&#34;Inside the second else if block &#34;</span>);  
+</span></span><span style="display:flex;"><span>       $display (<span style="color:#e6db74">&#34;Value of a =12&#34;</span>);  
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span>      $display (<span style="color:#e6db74">&#34;Out from the conditional blocks&#34;</span>);  
+</span></span><span style="display:flex;"><span>      $display (<span style="color:#e6db74">&#34;---------------------------------&#34;</span>);    
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">end</span>    
+</span></span></code></pre></div><p><strong>Output Snap</strong></p>
+<p>The below figure shows the output of the unique if -more than the conditions is true.</p>
+<!-- raw HTML omitted -->
+<pre><code>                               fig -8: Output - unique if -more than one condition is true  
+</code></pre>
+<p><strong>GitHub Lab Code link</strong>:- <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/unique_if/unique_if2/unique_if2.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/unique_if/unique_if2/unique_if2.sv</a
+>
+</p>
+<p><strong>GitHub Lab Output link</strong>:- <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/unique_if/unique_if2/unique_if2_log.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/unique_if/unique_if2/unique_if2_log.log</a
+>
+</p>
+<hr>
+<h3 id='5unique0if'>5.unique0if<a href='#5unique0if' class='anchor'>#</a>
+</h3><p><img
+  src="https://user-images.githubusercontent.com/110443268/189036489-d59d3658-14df-437f-b964-7eb9c2fd0835.png"
+  alt="unique0 if"
+  class="unique0 if"/>
+</p>
+<pre><code>                              fig -7 :flow chart: unique0_if  
+</code></pre>
+<p>Unique0if is the same as unique if but unlike unique if does not report a violation if none of the conditions is true. unique0if is not synthesizable because it does not display a warning in the output, so the programmer can&rsquo;t be able to read the dead code or the error in the code properly.<br>
+<strong>Syntax</strong></p>
+<p><code>unique0if(condition)begin  </code><br>
+<code>Statements;  </code><br>
+<code>end   </code><br>
+<code>else if (condition) begin  </code><br>
+<code>Statements;  </code><br>
+<code>end  </code><br>
+<code>else if (condition) begin  </code><br>
+<code>Statements;  </code><br>
+<code>end  </code></p>
+<p><strong>Example</strong> -</p>
+<p>The below example show the working of unique if condition.<br>
+Here, the variable declared is age and the value assigned to it is 17. The compiler will check all the conditional expression and as we can see all the conditional expression is false. So, as the output, after simulation, there will be a set of statements which are out from the conditional block.</p>
+<p><strong>Code Snippet</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span>  age;  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">initial</span> <span style="color:#66d9ef">begin</span>  
+</span></span><span style="display:flex;"><span>      age <span style="color:#f92672">=</span> <span style="color:#ae81ff">17</span>;  
+</span></span><span style="display:flex;"><span>      $display (<span style="color:#e6db74">&#34;The age of the person = %0d &#34;</span>,age);  
+</span></span><span style="display:flex;"><span>      $display (<span style="color:#e6db74">&#34;----------------------------------&#34;</span>);  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">unique0</span> <span style="color:#66d9ef">if</span>(age <span style="color:#f92672">&gt;</span><span style="color:#ae81ff">18</span>)<span style="color:#66d9ef">begin</span> <span style="color:#75715e">// false  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        $display (<span style="color:#e6db74">&#34;Inside the unique 0 if block &#34;</span>);  
+</span></span><span style="display:flex;"><span>       $display (<span style="color:#e6db74">&#34;Eligible for voting&#34;</span>);  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>   
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span>(age<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">30</span>) <span style="color:#66d9ef">begin</span> <span style="color:#75715e">//false  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      $display (<span style="color:#e6db74">&#34;Inside the first else if block &#34;</span>);  
+</span></span><span style="display:flex;"><span>      $display (<span style="color:#e6db74">&#34;Eligible as candidate for PM election in India &#34;</span>);  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span>(age <span style="color:#f92672">==</span><span style="color:#ae81ff">10</span>)<span style="color:#66d9ef">begin</span> <span style="color:#75715e">// false  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      $display (<span style="color:#e6db74">&#34;Inside the second else if block &#34;</span>);  
+</span></span><span style="display:flex;"><span>      $display (<span style="color:#e6db74">&#34;Wait for 8 years more. &#34;</span>);    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span>    $display (<span style="color:#e6db74">&#34;Out from the conditional block &#34;</span>);  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>  
+</span></span></code></pre></div><p><strong>Output Snap</strong><br>
+The below figure shows the output of the unique0 if -none of the conditions is true.</p>
+<!-- raw HTML omitted -->
+<pre><code>                                   fig-9 : Output-unique0 if
+</code></pre>
+<p><strong>GitHub Lab Code link</strong>:- <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/unique0_if/unique0_if.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/unique0_if/unique0_if.sv</a
+>
+</p>
+<p><strong>GitHub Lab Output link</strong>:- <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/unique0_if/unique0_if_log.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/unique0_if/unique0_if_log.log</a
+>
+</p>
+<hr>
+<h3 id='6priority-if'>6.priority if<a href='#6priority-if' class='anchor'>#</a>
+</h3><p><img
+  src="https://user-images.githubusercontent.com/110443268/189036593-02121013-a664-4334-9f4b-ffc39eabff92.png"
+  alt="priority without else"
+  class="priority without else"/>
+</p>
+<pre><code>                                 fig -8: flow chart: priority if
+</code></pre>
+<p>priority if executes conditions sequentially. It is also the same as if-else conditional statement but there are some differences. The below explanation will give a clear picture of how the priority if block works.</p>
+<p><strong>Syntax</strong></p>
+<p><code>priority if (cond_expression)begin  </code><br>
+<code>Statements;  </code><br>
+<code>end  </code><br>
+<code>else if (cond_expression)begin  </code><br>
+<code>Statements;  </code><br>
+<code>end  </code><br>
+<code>-------</code><br>
+<code>else begin //(optional) </code><br>
+<code>Statements ;</code><br>
+<code>end </code></p>
+<p>To get the clarity of working on priority if, three conditions are specified and these are -</p>
+<p><strong>a. only one conditional expression is true</strong><br>
+When only one condition is true, the priority if block is as same as the if else if &hellip; block.</p>
+<p><strong>Example</strong></p>
+<p>Here, there are three variables declared a,b, and c. The default size of the int data type is 32 bits and the byte is 8 bits. $bit() is the default function of System Verilog which will give the size of the variable. The value assign to a=10 ,b=12 and c =13. First, the priority if the block expression is false because the value of a is not equal to the size of a (12 != 32) and then the compiler will check the next statement. The first else if the condition is true because both a and c are of the same data type.<br>
+As the output, the execution of statements inside the first else if block.<br>
+It is just the same as the if else if block.</p>
+<p><strong>Code Snippet</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> a;  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">byte</span> b;  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> c;  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">initial</span> <span style="color:#66d9ef">begin</span> 
+</span></span><span style="display:flex;"><span>     $display (<span style="color:#e6db74">&#34;The default size of a = &#34;</span>,$bits(a));  
+</span></span><span style="display:flex;"><span>     $display (<span style="color:#e6db74">&#34;The default size of b = &#34;</span>,$bits(b));  
+</span></span><span style="display:flex;"><span>     $display (<span style="color:#e6db74">&#34;The default size of c = &#34;</span>,$bits(c));  
+</span></span><span style="display:flex;"><span>     $display (<span style="color:#e6db74">&#34;-----------------------------------&#34;</span>);  
+</span></span><span style="display:flex;"><span>     a <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>; <span style="color:#75715e">//assign value  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>     b<span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span>;  <span style="color:#75715e">// assign value  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    c<span style="color:#f92672">=</span><span style="color:#ae81ff">13</span>;   <span style="color:#75715e">// assign value  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">priority</span> <span style="color:#66d9ef">if</span> (a <span style="color:#f92672">==</span> $bits(a))<span style="color:#66d9ef">begin</span> <span style="color:#75715e">//false  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>     $display (<span style="color:#e6db74">&#34;Inside the priority if block&#34;</span>);  
+</span></span><span style="display:flex;"><span>     $display (<span style="color:#e6db74">&#34;Here , value assign to a = default size of a &#34;</span>);  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> ($bits(a)<span style="color:#f92672">==</span> $bits(c))<span style="color:#66d9ef">begin</span> <span style="color:#75715e">//true  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      $display (<span style="color:#e6db74">&#34;Inside the first else if block &#34;</span>);  
+</span></span><span style="display:flex;"><span>      $display ( <span style="color:#e6db74">&#34; Default size of a = default size of c &#34;</span>);  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (a<span style="color:#f92672">&gt;</span>b)<span style="color:#66d9ef">begin</span> <span style="color:#75715e">//false  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      $display (<span style="color:#e6db74">&#34;Inside the second else if block &#34;</span>);  
+</span></span><span style="display:flex;"><span>      $display (<span style="color:#e6db74">&#34;value of a is greater than b &#34;</span>);  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span>    $display (<span style="color:#e6db74">&#34;-----------------------------&#34;</span>);  
+</span></span><span style="display:flex;"><span>    $display (<span style="color:#e6db74">&#34;Out from the block &#34;</span>);  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span> 
+</span></span></code></pre></div><p><strong>Output Snap</strong></p>
+<p>The below figure shows the output of the priority if - only one condition is true.</p>
+<!-- raw HTML omitted -->
+<pre><code>                                fig -10:Output-priority if -only one condition is true
+</code></pre>
+<p><strong>GitHub Lab Code link</strong>:- <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/priority_if/priorityif_1/priorityif_1.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/priority_if/priorityif_1/priorityif_1.sv</a
+>
+</p>
+<p><strong>GitHub Lab Output link</strong>:- <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/priority_if/priorityif_1/priorityif_1_log.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/priority_if/priorityif_1/priorityif_1_log.log</a
+>
+</p>
+<p><strong>b. More than one conditional expression is true</strong></p>
+<p>The compiler will check the conditional expression sequentially. It will execute all the statements and after simulation, the output will be a set of statements inside the first true conditional block with no warning.</p>
+<p><strong>Example</strong> - Here, the variable is a,b and c, and the value assigned to it is 10,20 and 30. We can see the first conditional expression a&gt;b is false. Then, the compiler will check the next block. First and second else if block both have true conditional expression. But, the compiler only checks the first true expression, executes it, and comes out from the conditional block. The output will be the set of statements inside the first true else if blocked with no warning.</p>
+<p><strong>Code Snap</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>     <span style="color:#66d9ef">int</span> a,b,c;  
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">initial</span> <span style="color:#66d9ef">begin</span>  
+</span></span><span style="display:flex;"><span>      a <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;  
+</span></span><span style="display:flex;"><span>      b <span style="color:#f92672">=</span><span style="color:#ae81ff">20</span>;  
+</span></span><span style="display:flex;"><span>      c <span style="color:#f92672">=</span> <span style="color:#ae81ff">30</span>;  
+</span></span><span style="display:flex;"><span>     $display ( <span style="color:#e6db74">&#34;The value of a =%0d  b = %0d  c = %0d &#34;</span>, a,b,c);  
+</span></span><span style="display:flex;"><span>     $display (<span style="color:#e6db74">&#34;-----------------------------------------------&#34;</span>);  
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">priority</span> <span style="color:#66d9ef">if</span> (a<span style="color:#f92672">&gt;</span>b)<span style="color:#66d9ef">begin</span> <span style="color:#75715e">//false  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>       $display (<span style="color:#e6db74">&#34;Inside the priority if block &#34;</span>);  
+</span></span><span style="display:flex;"><span>       $display (<span style="color:#e6db74">&#34; a &lt;b&#34;</span>);  
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> ( b <span style="color:#f92672">&lt;</span>c )<span style="color:#66d9ef">begin</span> <span style="color:#75715e">//true  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      $display (<span style="color:#e6db74">&#34;Inside the first else if block&#34;</span>);  
+</span></span><span style="display:flex;"><span>      $display (<span style="color:#e6db74">&#34;b&lt;c&#34;</span>); 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (a <span style="color:#f92672">&lt;</span>c )<span style="color:#66d9ef">begin</span> <span style="color:#75715e">//true  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      $display (<span style="color:#e6db74">&#34;Inside the second else if block &#34;</span>);  
+</span></span><span style="display:flex;"><span>      $display ( <span style="color:#e6db74">&#34;a &lt; c &#34;</span>);  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span>    $display (<span style="color:#e6db74">&#34;Out from the conditional block &#34;</span>);  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>  
+</span></span></code></pre></div><p><strong>Output Snap</strong></p>
+<p>The below figure shows the output of the priority if - more than one condition is true.</p>
+<!-- raw HTML omitted -->
+<pre><code>                                fig -11: Output -priority if -more than one true condition
+</code></pre>
+<p><strong>GitHub Lab Code link</strong>:- <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/priority_if/priorityif_2/priorityif_2.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/priority_if/priorityif_2/priorityif_2.sv</a
+>
+</p>
+<p><strong>GitHub Lab Output link</strong>:- <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/priority_if/priorityif_2/priorityif_2_log.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/priority_if/priorityif_2/priorityif_2_log.log</a
+>
+</p>
+<p><strong>c.none of the condition is true</strong></p>
+<p><strong>c1. without else</strong><br>
+When none of the conditional expressions is true, the compiler will come out from the conditional blocks and execute the statements which are out from the conditional block and display a warning.</p>
+<p><strong>Example</strong> -</p>
+<p>Here, there are three conditional expressions. The compiler checks the conditional expression because all are false. Then, the output will be the set of statements out from the block and display a warning.</p>
+<p><strong>Code Snippet</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>     <span style="color:#66d9ef">int</span> bill;  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">initial</span> <span style="color:#66d9ef">begin</span>  
+</span></span><span style="display:flex;"><span>     bill <span style="color:#f92672">=</span> <span style="color:#ae81ff">6000</span>; <span style="color:#75715e">// assign the value  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    $display (<span style="color:#e6db74">&#34;Total bill = %0d&#34;</span>,bill);  
+</span></span><span style="display:flex;"><span>    $display (<span style="color:#e6db74">&#34;------------------------&#34;</span>);  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">priority</span> <span style="color:#66d9ef">if</span> (bill <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1000</span>)<span style="color:#66d9ef">begin</span> <span style="color:#75715e">// false  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      $display (<span style="color:#e6db74">&#34;Inside the priority if &#34;</span>)  
+</span></span><span style="display:flex;"><span>      $display (<span style="color:#e6db74">&#34;No discount&#34;</span>);  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (bill <span style="color:#f92672">==</span><span style="color:#ae81ff">8000</span>)<span style="color:#66d9ef">begin</span> <span style="color:#75715e">//false  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      $display (<span style="color:#e6db74">&#34;Inside the first else if block &#34;</span>);  
+</span></span><span style="display:flex;"><span>      $display (<span style="color:#e6db74">&#34;10% discount available &#34;</span>);  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (bill <span style="color:#f92672">&gt;</span><span style="color:#ae81ff">8000</span>)<span style="color:#66d9ef">begin</span> <span style="color:#75715e">// false  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      $display (<span style="color:#e6db74">&#34;Inside the second else if block &#34;</span>);  
+</span></span><span style="display:flex;"><span>      $display (<span style="color:#e6db74">&#34;15% discount available&#34;</span>);  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span>    $display (<span style="color:#e6db74">&#34;Out from the conditional block&#34;</span>);  
+</span></span><span style="display:flex;"><span>    $display (<span style="color:#e6db74">&#34;Do more shopping for more discount ......&#34;</span>);  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>  
+</span></span></code></pre></div><p><strong>Output Snap</strong></p>
+<p>The below figure shows the output of the priority if - none of the conditions is true without else.</p>
+<!-- raw HTML omitted -->
+<pre><code>                                fig -12:Output - priority if -none of the conditions is true without else
+</code></pre>
+<p><strong>GitHub Lab Code link</strong>:- <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/priority_if/priorityif_3/priorityif_3.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/priority_if/priorityif_3/priorityif_3.sv</a
+>
+</p>
+<p><strong>GitHub Lab Output link</strong>:- <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/priority_if/priorityif_3/priorityif_3_log.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/priority_if/priorityif_3/priorityif_3_log.log</a
+>
+</p>
+<p><strong>c2.with else</strong></p>
+<p><img
+  src="https://user-images.githubusercontent.com/110443268/189036781-3ddbe9a6-cd01-4890-94e1-753a4734b25d.png"
+  alt="priority with else"
+  class="priority with else"/>
+</p>
+<pre><code>                             fig -9: flow chart: with else priority if
+</code></pre>
+<p>When none of the conditional expressions is true by default compiler to execute the statements which are inside the else block.<br>
+<strong>Example</strong> -   <br>
+In the below example, all the conditional expression is false and then the compiler will execute the statements inside the else block.</p>
+<p><strong>Code Snippet</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>     <span style="color:#66d9ef">int</span> bill;  
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">initial</span> <span style="color:#66d9ef">begin</span>  
+</span></span><span style="display:flex;"><span>     bill <span style="color:#f92672">=</span> <span style="color:#ae81ff">6000</span>; <span style="color:#75715e">// assign the value  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>     $display (<span style="color:#e6db74">&#34;Total bill = %0d&#34;</span>,bill);  
+</span></span><span style="display:flex;"><span>     $display (<span style="color:#e6db74">&#34;------------------------&#34;</span>);  
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">priority</span> <span style="color:#66d9ef">if</span> (bill <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1000</span>)<span style="color:#66d9ef">begin</span> <span style="color:#75715e">// false  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      $display (<span style="color:#e6db74">&#34;Inside the priority if &#34;</span>);  
+</span></span><span style="display:flex;"><span>      $display (<span style="color:#e6db74">&#34;No discount&#34;</span>);  
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (bill <span style="color:#f92672">==</span><span style="color:#ae81ff">8000</span>)<span style="color:#66d9ef">begin</span> <span style="color:#75715e">//false  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      $display (<span style="color:#e6db74">&#34;Inside the first else if block &#34;</span>);  
+</span></span><span style="display:flex;"><span>      $display (<span style="color:#e6db74">&#34;10 percent  discount available &#34;</span>);  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (bill <span style="color:#f92672">&gt;</span><span style="color:#ae81ff">8000</span>)<span style="color:#66d9ef">begin</span> <span style="color:#75715e">// false  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>     $display (<span style="color:#e6db74">&#34;Inside the second else if block &#34;</span>);  
+</span></span><span style="display:flex;"><span>     $display (<span style="color:#e6db74">&#34;15 percent discount available&#34;</span>);  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">begin</span>  
+</span></span><span style="display:flex;"><span>     $display (<span style="color:#e6db74">&#34;Inside the else block &#34;</span>);  
+</span></span><span style="display:flex;"><span>     $display (<span style="color:#e6db74">&#34;5 percent discount available &#34;</span>);  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span>    $display (<span style="color:#e6db74">&#34;Out from the conditional block&#34;</span>);  
+</span></span><span style="display:flex;"><span>    $display (<span style="color:#e6db74">&#34;Do more shopping for more discount ......&#34;</span>);  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>  
+</span></span></code></pre></div><p><strong>Output Snap</strong><br>
+The below figure shows the output of the priority if - more than one condition is true without else.</p>
+<!-- raw HTML omitted -->
+<pre><code>                           fig -13: Output - priority if -none of the conditions is true without else
+</code></pre>
+<p><strong>GitHub Lab Code link</strong>:- <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/priority_if/priorityif_4/priorityif_4.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/priority_if/priorityif_4/priorityif_4.sv</a
+>
+</p>
+<p><strong>GitHub Lab Output link</strong>:- <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/priority_if/priorityif_4/priorityif_4_log.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/if_variants/priority_if/priorityif_4/priorityif_4_log.log</a
+>
+</p>
+<hr>
+<h3 id='difference-between-conditional-statements'>Difference between conditional statements<a href='#difference-between-conditional-statements' class='anchor'>#</a>
+</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">S.No.</th>
+<th style="text-align:left">Condition</th>
+<th style="text-align:left">if elseif</th>
+<th style="text-align:left">unique if</th>
+<th style="text-align:left">unique0 if</th>
+<th style="text-align:left">priority if</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1.</td>
+<td style="text-align:left">only one conditional expression is true</td>
+<td style="text-align:left">execute the set of statements inside the true conditional block</td>
+<td style="text-align:left">execute the set of statements inside the true conditional block</td>
+<td style="text-align:left">execute the set of statements inside the true conditional block</td>
+<td style="text-align:left">execute the set of statements inside the true conditional block</td>
+</tr>
+<tr>
+<td style="text-align:left">2.</td>
+<td style="text-align:left">more than one conditional expression is true</td>
+<td style="text-align:left">executes the first true conditional block statements, no warning display</td>
+<td style="text-align:left">executes the first true conditional block statements, a warning display</td>
+<td style="text-align:left">executes the first true conditional block statements, a warning display</td>
+<td style="text-align:left">executes the first true conditional block statements, no warning display</td>
+</tr>
+<tr>
+<td style="text-align:left">3.</td>
+<td style="text-align:left">none of the conditional expressions is true without else</td>
+<td style="text-align:left">execute the statements out from the conditional block, no warning display</td>
+<td style="text-align:left">execute the statements out from the conditional block, a warning display</td>
+<td style="text-align:left">execute the statements out from the conditional block, no warning display</td>
+<td style="text-align:left">execute the statements out from the conditional block, a warning display</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id='purpose-of-warning'>Purpose of warning<a href='#purpose-of-warning' class='anchor'>#</a>
+</h2><p>The unique if, unique0 if, and priority if are the updated versions of if-else conditional statements in the system Verilog. These conditional statements display the warning which helps to detect the dead code or unused conditional statements.</p>
+<h3 id='dead-code'>Dead code<a href='#dead-code' class='anchor'>#</a>
+</h3><p>Dead code is code that doesn’t have any effect on your simulation or synthesis. Examples of dead code are signals that are never used or conditions that are never triggered.</p>
+<p>Dead code does not bother the simulator or the synthesis tool. However, it consumes the mental energy of anybody reading the code. People will try to figure out the purpose of a given statement and it may take a while before they realize that they are dealing with a dead code. This makes it more expensive to review code and reuse code. In general, the dead code is a form of technical debt that should be avoided.</p>
+<hr>
+<hr>
+<h2 id='case'>case<a href='#case' class='anchor'>#</a>
+</h2><p>The case statement allows us to execute the code for the particular case expression. This will give the proper structure for a long code and decrease the complexity of the code also.</p>
+<p>A case statement evaluates a given expression and based on the evaluated value(matching a certain condition), it executes the statements associated with it. Basically, it is used to perform different actions based on different conditions.</p>
+<p>A system Verilog case statement starts with the case keyword and ends with the endcase keyword. A block of multiple statements must be grouped within the begin and end statements.</p>
+<p><strong>Flowchart:</strong></p>
+<p><img
+  src="https://user-images.githubusercontent.com/110447788/188362145-06201cc7-c397-4b46-b399-afb77f1dcc5e.png"
+  alt="Untitled Diagram drawio (23)"
+  class="Untitled Diagram drawio (23)"/>
+</p>
+<pre><code>                              Fig -10: flow chart: case statement with default statement
+</code></pre>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>        <span style="color:#66d9ef">case</span>(condition)
+</span></span><span style="display:flex;"><span>        condition_1: Statements ;
+</span></span><span style="display:flex;"><span>        condition_2: Statements ;
+</span></span><span style="display:flex;"><span>        ...........
+</span></span><span style="display:flex;"><span>        conditon_N: Statements;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">default</span>   <span style="color:#f92672">:</span> Statements;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">endcase</span>
+</span></span></code></pre></div><p><strong>case statement in which no conditions are true</strong></p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>            x <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span><span style="color:#ae81ff">&#39;b11</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">case</span>(x)
+</span></span><span style="display:flex;"><span>            <span style="color:#ae81ff">00</span> <span style="color:#f92672">:</span> $display(<span style="color:#e6db74">&#34;Value of x = %0b&#34;</span>, x);
+</span></span><span style="display:flex;"><span>            <span style="color:#ae81ff">01</span> <span style="color:#f92672">:</span> $display(<span style="color:#e6db74">&#34;Value of x = %0b&#34;</span>,x);
+</span></span><span style="display:flex;"><span>            <span style="color:#ae81ff">10</span> <span style="color:#f92672">:</span> $display(<span style="color:#e6db74">&#34;Value of x = %0b&#34;</span>,x);
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//11 : $display(&#34;Value of x = %0b&#34; ,x);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">default</span> <span style="color:#f92672">:</span> $display(<span style="color:#e6db74">&#34;Value of x is not found&#34;</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">endcase</span>
+</span></span></code></pre></div><p>In the above example,  here expression= &ldquo;x&rdquo; should match one of the case items but here no condition is true. In this &lsquo;11&rsquo; value is given to the x so the case item &lsquo;11&rsquo; is not matched with the expression = &lsquo;x&rsquo;. Then default get executes.
+If none of the conditions is true then the default statement gets executed. This will display &lsquo;Value of x is not found&rsquo; in the output.</p>
+<p><strong>Output Snap:</strong></p>
+<p>The below figure shows the output of the case statement in which one condition is true.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110447788/188300504-805f8740-4cf9-41c7-be1a-6c50a2986b45.png"
+  alt="Untitled Diagram-Page-5 drawio (1)"
+  class="Untitled Diagram-Page-5 drawio (1)"/>
+</p>
+<pre><code>                             Fig -14: Output: case statement in which one condition is true
+</code></pre>
+<p>In the above output, the case statement will execute for all conditions and be true for one of the conditions. This will print the Value of x = 1 in the output.</p>
+<p><strong>GitHub Lab Code link</strong> :- <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/case/case.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/case/case.sv</a
+>
+</p>
+<p><strong>GitHub Lab Output link</strong> :- <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/case/case_op.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/case/case_op.log</a
+>
+</p>
+<p><strong>Using of Case statement without a default</strong></p>
+<p>In case statements, the default statement is used. The default statement is optional, and there can be only one default statement in a case statement.  <br>
+If none of the given case conditions is true, the statement within the default statement is executed. <br>
+Execution will exit the case block without doing anything if none of the items matches the condition and a default statement is not given.</p>
+<p><strong>Flowchart:</strong></p>
+<p><img
+  src="https://user-images.githubusercontent.com/110447788/188387249-68cd086b-7cd0-4ec8-97cc-5d96d511eeb8.png"
+  alt="Untitled Diagram drawio (24)"
+  class="Untitled Diagram drawio (24)"/>
+</p>
+<pre><code>                                   Fig -11: flow chart: case statement without default statement
+</code></pre>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>            <span style="color:#66d9ef">case</span>(condition)  
+</span></span><span style="display:flex;"><span>            condition_1: Statements ;   
+</span></span><span style="display:flex;"><span>            condition_2: Statements ;  
+</span></span><span style="display:flex;"><span>            ...........  
+</span></span><span style="display:flex;"><span>            conditon_N: Statements;  
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">endcase</span>  
+</span></span></code></pre></div><p><strong>Example:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>              x <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span><span style="color:#ae81ff">&#39;b01</span>;  
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">case</span>(x)  
+</span></span><span style="display:flex;"><span>              <span style="color:#ae81ff">00</span> <span style="color:#f92672">:</span> $display(<span style="color:#e6db74">&#34;Value of x = %0b&#34;</span>, x);  
+</span></span><span style="display:flex;"><span>              <span style="color:#ae81ff">01</span> <span style="color:#f92672">:</span> $display(<span style="color:#e6db74">&#34;Value of x = %0b&#34;</span>,x);  
+</span></span><span style="display:flex;"><span>              <span style="color:#ae81ff">10</span> <span style="color:#f92672">:</span> $display(<span style="color:#e6db74">&#34;Value of x = %0b&#34;</span>,x);  
+</span></span><span style="display:flex;"><span>              <span style="color:#ae81ff">11</span> <span style="color:#f92672">:</span> $display(<span style="color:#e6db74">&#34;Value of x = %0b&#34;</span> ,x);  
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">endcase</span>  
+</span></span></code></pre></div><p>In the above example, a case statement is used without the default statement. A default statement is used when none of the conditions is true. In this one of the conditions is true and it will print that the value of x as &lsquo;1&rsquo; <br>
+In this example, if none of the case conditions is true or no default statement is not given then execution will exit the case block without doing anything</p>
+<p><strong>Output Snap:</strong></p>
+<p>The below figure shows the output of the case statement without using the default statement.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110447788/188394434-8c70750b-388b-4537-a9d8-f7c7db2f507d.png"
+  alt="Untitled Diagram-Page-2 drawio (8)"
+  class="Untitled Diagram-Page-2 drawio (8)"/>
+</p>
+<pre><code>                                Fig -15: Output: case statement in which one condition is true
+</code></pre>
+<p>In the above output, the case statement is used without a default statement. In this one case condition is true, at the time of execution the output will come to &lsquo;Value of x = 1&rsquo;.If none of the conditions is true or the default statement is not given then the execution will exit the case block without anything.</p>
+<p><strong>GitHub Lab Code link</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/case_default/case_without_default.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/case_default/case_without_default.sv</a
+>
+</p>
+<p><strong>GitHub Lab output link</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/case_default/case_without_default_op.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/case_default/case_without_default_op.log</a
+>
+</p>
+<p><strong>Using of range in case statement with the use of inside statement:</strong></p>
+<p>In this, the range is declared in the case statement with the use of an inside statement. <br>
+If we want to give a range value in a case statement, this will be done with help of an inside statement.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>           <span style="color:#66d9ef">case</span>(condition) <span style="color:#66d9ef">inside</span>
+</span></span><span style="display:flex;"><span>           condition_1_[a:b]<span style="color:#f92672">:</span> Statements ;
+</span></span><span style="display:flex;"><span>           condition_2:_[c:d] Statements ;
+</span></span><span style="display:flex;"><span>           ...........
+</span></span><span style="display:flex;"><span>           conditon_N_[y:z]<span style="color:#f92672">:</span> Statements;
+</span></span><span style="display:flex;"><span>           <span style="color:#66d9ef">endcase</span>
+</span></span></code></pre></div><p><strong>Example:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>               <span style="color:#66d9ef">case</span>(x) <span style="color:#66d9ef">inside</span>
+</span></span><span style="display:flex;"><span>              [<span style="color:#ae81ff">2</span><span style="color:#f92672">:</span><span style="color:#ae81ff">3</span>] <span style="color:#f92672">:</span> $display(<span style="color:#e6db74">&#34;Value of x = %0d&#34;</span>, x);
+</span></span><span style="display:flex;"><span>              [<span style="color:#ae81ff">4</span><span style="color:#f92672">:</span><span style="color:#ae81ff">5</span>] <span style="color:#f92672">:</span>$display(<span style="color:#e6db74">&#34;Value of x = %0d&#34;</span>,x);
+</span></span><span style="display:flex;"><span>              [<span style="color:#ae81ff">6</span><span style="color:#f92672">:</span><span style="color:#ae81ff">9</span>] <span style="color:#f92672">:</span> $display(<span style="color:#e6db74">&#34;Value of x = %0d&#34;</span>,x);
+</span></span><span style="display:flex;"><span>              [<span style="color:#ae81ff">8</span><span style="color:#f92672">:</span><span style="color:#ae81ff">9</span>]  <span style="color:#f92672">:</span> $display(<span style="color:#e6db74">&#34;Value of x = %0d&#34;</span> ,x);
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">default</span> <span style="color:#f92672">:</span> $display(<span style="color:#e6db74">&#34;Value of x is not found&#34;</span>);
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">endcase</span>
+</span></span></code></pre></div><p>In the above example, we are declaring a range in a case statement with the use of <strong>inside</strong> statement. In this, they will get the value from the declared range by the use of an inside statement.</p>
+<p><strong>Output Snap:</strong></p>
+<p>The below figure shows the output of the case statement with a range.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110447788/188553176-7f10aa14-ce7c-4fb6-beca-acd912dd8fbb.png"
+  alt="Untitled Diagram-Page-6 drawio (4)"
+  class="Untitled Diagram-Page-6 drawio (4)"/>
+</p>
+<pre><code>                              Fig -16: Output: case statement with a range
+</code></pre>
+<p>In the above output, the case statement will get executed with the use of an inside statement. The case statement will get executed and displays the output &lsquo;Value of x = 6&rsquo;</p>
+<p><strong>GitHub Lab Code link</strong>  <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/case_range/case_range.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/case_range/case_range.sv</a
+>
+</p>
+<p><strong>GitHub Lab Output link</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/case_range/case_range_op.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/case_range/case_range_op.log</a
+>
+</p>
+<p><strong>Use of Break statement inside the case statement:</strong></p>
+<p>The break statement is not allowed to use within the loops. while using a break inside the case statement, an error has occurred.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>            <span style="color:#66d9ef">case</span>(condition) <span style="color:#66d9ef">inside</span>
+</span></span><span style="display:flex;"><span>            condition_1: Statements ;
+</span></span><span style="display:flex;"><span>            condition_2: <span style="color:#66d9ef">begin</span>
+</span></span><span style="display:flex;"><span>                       Statements ;
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>            ...........
+</span></span><span style="display:flex;"><span>            conditon_N: Statements;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">endcase</span>
+</span></span></code></pre></div><p><strong>Example:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>              <span style="color:#66d9ef">case</span>(x)
+</span></span><span style="display:flex;"><span>              <span style="color:#ae81ff">00</span> <span style="color:#f92672">:</span> $display(<span style="color:#e6db74">&#34;Value of x = %0b&#34;</span>, x);
+</span></span><span style="display:flex;"><span>              <span style="color:#ae81ff">01</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">begin</span>
+</span></span><span style="display:flex;"><span>              $display(<span style="color:#e6db74">&#34;Value of x = %0b&#34;</span>,x);
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#ae81ff">10</span> <span style="color:#f92672">:</span> $display(<span style="color:#e6db74">&#34;Value of x = %0b&#34;</span>,x);
+</span></span><span style="display:flex;"><span>              <span style="color:#ae81ff">11</span> <span style="color:#f92672">:</span> $display(<span style="color:#e6db74">&#34;Value of x = %0b&#34;</span> ,x);
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">default</span> <span style="color:#f92672">:</span> $display(<span style="color:#e6db74">&#34;Value of x is not find&#34;</span>);
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">endcase</span>
+</span></span></code></pre></div><p>In the above example, here we use a break statement inside the case statement. This will throw an error, i.e. break statement is not allowed within the case statement.</p>
+<p><strong>Output Snap:</strong></p>
+<p>The below figure shows the output of using a break statement inside the case statement.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110447788/188432824-01ddb873-d877-44d1-b65d-78116d2b6020.png"
+  alt="Untitled Diagram-Page-4 drawio (4)"
+  class="Untitled Diagram-Page-4 drawio (4)"/>
+</p>
+<pre><code>                                Fig - 17: Output: break statement is not allowed inside the case
+</code></pre>
+<p>In the above output, a break statement is used inside the case statement. System Verilog does not allow the use of a break statement inside the case statement.<br>
+In this, an error will occur.</p>
+<p><strong>GitHub Lab Code link</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/break_case/break_case.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/break_case/break_case.sv</a
+>
+</p>
+<p><strong>GitHub Lab Output link</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/break_case/break_case_op.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/break_case/break_case_op.log</a
+>
+</p>
+<p><strong>Using of disable keyword to disable the nested loop inside the task</strong></p>
+<p>Using the disable keyword followed by a task will only disable tasks and named blocks.
+The disable statement discontinues the execution of a named group of statements.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>            <span style="color:#66d9ef">task</span> nes();
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;i<span style="color:#f92672">&lt;=</span><span style="color:#ae81ff">3</span>;i<span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">begin</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> j<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;j<span style="color:#f92672">&lt;=</span><span style="color:#ae81ff">3</span>;j<span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">begin</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span>(i<span style="color:#f92672">==</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">begin</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">disable</span> nes;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>            $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74"> i= %0d , j= %0d &#34;</span>,i,j);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">endtask</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">endmodule</span><span style="color:#f92672">:</span>nested_loop
+</span></span></code></pre></div><p>In the above example, disable keyword is used to disable the task at a particular iteration. Inside the task, we declared the two nested &ldquo;for&rdquo; loops in which we use the if condition to move out from the loops with the use of disable keyword. Inside the task, the &lsquo;if&rsquo; condition has been declared at iteration &lsquo;2&rsquo;. At iteration &lsquo;2&rsquo; if the condition matches and it will disable the task with the help of disable keyword.</p>
+<p><strong>Output Snap</strong></p>
+<p>The below figure shows the output in which disable keyword is used to disables the task.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110447788/188873987-430a7984-a3df-4d51-bfa1-2e562f509844.png"
+  alt="Screenshot (24)"
+  class="Screenshot (24)"/>
+</p>
+<pre><code>                      Fig - : Output: Using of disable keyword inside the task
+</code></pre>
+<p><strong>GitHub Lab Code link:</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/nested_loop_break/nested_loop.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/nested_loop_break/nested_loop.sv</a
+>
+</p>
+<p><strong>GitHub Lab Output Code:</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/nested_loop_break/nested_loop_op.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/nested_loop_break/nested_loop_op.log</a
+>
+</p>
+<p>There are three updates for the case statement in the system Verilog and these are -</p>
+<ul>
+<li>unique case</li>
+<li>unique0 case</li>
+<li>priority case</li>
+</ul>
+<hr>
+<h3 id='1-unique-case'>1. unique case<a href='#1-unique-case' class='anchor'>#</a>
+</h3><p>In a unique case, if all the case condition is false, it will display a warning (no match is found for the case statement ) with no error.<br>
+If all the conditions are true or more than one condition is true, it will read the first right or matched case condition and will display the output with one warning and no error.</p>
+<p><strong>Syntax :</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>      <span style="color:#66d9ef">unique</span> <span style="color:#66d9ef">case</span>(condition)
+</span></span><span style="display:flex;"><span>      condition_1: Statements ;
+</span></span><span style="display:flex;"><span>      condition_2: Statements ;
+</span></span><span style="display:flex;"><span>      ............
+</span></span><span style="display:flex;"><span>      conditon_N: Statements;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">endcase</span>
+</span></span></code></pre></div><p><strong>Example:</strong></p>
+<p><strong>all the conditions are false-</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>          x <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span><span style="color:#ae81ff">&#39;b01</span>;
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">unique</span> <span style="color:#66d9ef">case</span>(x)
+</span></span><span style="display:flex;"><span>          <span style="color:#ae81ff">00</span> <span style="color:#f92672">:</span> $display(<span style="color:#e6db74">&#34; Value of x is = %0b&#34;</span>, x);
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e">//01 : $display(&#34; Value of x is = %0b&#34;, x);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>          <span style="color:#ae81ff">10</span> <span style="color:#f92672">:</span> $display(<span style="color:#e6db74">&#34; Value of x is = %0b&#34;</span>, x);
+</span></span><span style="display:flex;"><span>          <span style="color:#ae81ff">11</span> <span style="color:#f92672">:</span> $display(<span style="color:#e6db74">&#34; Value of x is = %0b&#34;</span>, x);
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">endcase</span>
+</span></span></code></pre></div><p>In the above example, the unique case statement is used. Here all the conditions are false, this will print the output with a warning and no error.</p>
+<p><strong>Output Snap:</strong></p>
+<p>The below figure shows the output of a unique case statement in which no conditions are true.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110447788/188300519-a4af7834-91ea-44c9-9f11-c61f7497efbb.png"
+  alt="Untitled Diagram-Page-6 drawio (3)"
+  class="Untitled Diagram-Page-6 drawio (3)"/>
+</p>
+<pre><code>                                  Fig - 18: Output: In a unique case, no conditions are true 
+</code></pre>
+<p>In the above output, all the condition is false so the unique case gives a warning with no error.</p>
+<p><strong>GitHub Lab Code link</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/unique_case/unique_none_true/unique_case.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/unique_case/unique_none_true/unique_case.sv</a
+>
+</p>
+<p><strong>GitHub Lab Output link</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/unique_case/unique_none_true/unique_case_op.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/unique_case/unique_none_true/unique_case_op.log</a
+>
+</p>
+<p><strong>more than one condition is true</strong></p>
+<p>In a unique case, if all the case condition is false, it will display a warning (no match is found for the case statement ) with no error.  <br>
+If all the conditions are true or more than one condition is true, it will read the first right or matched case condition and will display the output with one warning and no error.</p>
+<p><strong>Flowchart:</strong></p>
+<p><img
+  src="https://user-images.githubusercontent.com/110447788/188631312-47429f33-e575-4f20-977b-2ee272f46f3a.jpg"
+  alt="Untitled Diagram-Page-2 (1)"
+  class="Untitled Diagram-Page-2 (1)"/>
+</p>
+<pre><code>                          Fig -12: flow chart: unique case statement
+</code></pre>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>             x <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span><span style="color:#ae81ff">&#39;b00</span>;
+</span></span><span style="display:flex;"><span>             <span style="color:#66d9ef">unique</span> <span style="color:#66d9ef">case</span>(x)
+</span></span><span style="display:flex;"><span>             <span style="color:#ae81ff">00</span> <span style="color:#f92672">:</span> $display(<span style="color:#e6db74">&#34;Value of x is =%0b&#34;</span> , x);
+</span></span><span style="display:flex;"><span>             <span style="color:#ae81ff">00</span> <span style="color:#f92672">:</span> $display(<span style="color:#e6db74">&#34;Value of x is =%0b&#34;</span> , x);
+</span></span><span style="display:flex;"><span>             <span style="color:#ae81ff">01</span> <span style="color:#f92672">:</span> $display(<span style="color:#e6db74">&#34;Value of x is =%0b&#34;</span> , x);
+</span></span><span style="display:flex;"><span>             <span style="color:#ae81ff">10</span>  <span style="color:#f92672">:</span> $display(<span style="color:#e6db74">&#34;Value of x is =%0b&#34;</span> , x);
+</span></span><span style="display:flex;"><span>             <span style="color:#ae81ff">11</span>  <span style="color:#f92672">:</span>$display(<span style="color:#e6db74">&#34;Value of x is =%0b&#34;</span> , x);
+</span></span><span style="display:flex;"><span>             <span style="color:#66d9ef">endcase</span>
+</span></span></code></pre></div><p>In the above example, a unique case statement is used. In the unique case, if more than one condition is true, it will read the first right or matched case condition and will display the output with one warning and no error. <br>
+If these two condition is true, at the time of execution this will take the first matched condition and print the value of x = &lsquo;0&rsquo; with a warning(no error)</p>
+<p><strong>Output Snap:</strong></p>
+<p>The below figure shows the output of a unique case statement in which more than one condition is true.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110447788/188424211-6e39fd47-a153-47be-8154-a808116d2dbb.png"
+  alt="Untitled Diagram-Page-3 drawio (2)"
+  class="Untitled Diagram-Page-3 drawio (2)"/>
+</p>
+<pre><code>                           Fig -19: Output: unique case in which more than one condition is true
+</code></pre>
+<p>In the above output, a unique case statement is used. In this more than one condition is true, the unique case will read the first matched condition and will give the Value of x = &lsquo;0&rsquo; with a warning (no error).</p>
+<p><strong>GitHub Code Lab link</strong>  <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/unique_case/unique_case_default/unique_case_default.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/unique_case/unique_case_default/unique_case_default.sv</a
+>
+</p>
+<p><strong>GitHub Lab Output link</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/unique_case/unique_case_default/unique_case_default_op.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/unique_case/unique_case_default/unique_case_default_op.log</a
+>
+</p>
+<h3 id='unique-case-with-default-statement'>unique case with default statement<a href='#unique-case-with-default-statement' class='anchor'>#</a>
+</h3><p>In this, we will use the default statement inside the unique case statement. <br>
+If none of the conditions is true inside the unique case statement then the default statement will get executed.</p>
+<p><strong>Flowchart:</strong></p>
+<p><img
+  src="https://user-images.githubusercontent.com/110447788/188619322-f903de48-023e-46cf-9f2d-38b42cfdb295.png"
+  alt="Untitled Diagram-Page-2 drawio (12)"
+  class="Untitled Diagram-Page-2 drawio (12)"/>
+</p>
+<pre><code>                           Fig -13: flow chart: unique case with default statement
+</code></pre>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>           <span style="color:#66d9ef">unique</span> <span style="color:#66d9ef">case</span>(condition)
+</span></span><span style="display:flex;"><span>           condition_1: Statements ;
+</span></span><span style="display:flex;"><span>           condition_2: Statements ;
+</span></span><span style="display:flex;"><span>           ............
+</span></span><span style="display:flex;"><span>           conditon_N: Statements;
+</span></span><span style="display:flex;"><span>           <span style="color:#66d9ef">default</span> <span style="color:#f92672">:</span>   Statements;
+</span></span><span style="display:flex;"><span>           <span style="color:#66d9ef">endcase</span> 
+</span></span></code></pre></div><p><strong>Example:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>            x <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span><span style="color:#ae81ff">&#39;b01</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">unique</span> <span style="color:#66d9ef">case</span>(x)
+</span></span><span style="display:flex;"><span>            <span style="color:#ae81ff">00</span> <span style="color:#f92672">:</span> $display(<span style="color:#e6db74">&#34;Value of x is =%0b&#34;</span> , x);
+</span></span><span style="display:flex;"><span>           <span style="color:#75715e">// 01 : $display(&#34;Value of x is =%0b&#34; , x);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#ae81ff">10</span> <span style="color:#f92672">:</span> $display(<span style="color:#e6db74">&#34;Value of x is =%0b&#34;</span> , x);
+</span></span><span style="display:flex;"><span>            <span style="color:#ae81ff">11</span> <span style="color:#f92672">:</span> $display(<span style="color:#e6db74">&#34;Value of x is =%0b&#34;</span> , x);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">default</span>  <span style="color:#f92672">:</span>$display(<span style="color:#e6db74">&#34;Value of x is =%0b&#34;</span> , x);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">endcase</span>
+</span></span></code></pre></div><p>In the above example, the default statement is used inside the unique case statement.<br>
+In this, if no conditions of the case statement are true then the default statement will get executed.</p>
+<p><strong>Output Snap:</strong></p>
+<p>The below figure shows the output of a unique case statement by using the default statement.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110447788/188492977-950cee1a-5762-440c-ba60-fcb911e155ec.png"
+  alt="Untitled Diagram-Page-5 drawio (2)"
+  class="Untitled Diagram-Page-5 drawio (2)"/>
+</p>
+<pre><code>                            Fig - 20: Output: no conditions are true, default statement gets executed 
+</code></pre>
+<p>In the above output, there is no condition is true inside the case statement, then the default statement is get executed and prints the &lsquo;Value of x = 1&rsquo;
+in the output.</p>
+<p><strong>GitHub Code Lab link</strong>  <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/unique_case/unique_case_default/unique_case_default.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/unique_case/unique_case_default/unique_case_default.sv</a
+>
+</p>
+<p><strong>GitHub Lab Output link</strong>  <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/unique_case/unique_case_default/unique_case_default_op.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/unique_case/unique_case_default/unique_case_default_op.log</a
+>
+</p>
+<h3 id='2-uniuqe0-case'>2. uniuqe0 case<a href='#2-uniuqe0-case' class='anchor'>#</a>
+</h3><p>In the unique0 case, if all the case condition is false, it will not display a warning with no error.<br>
+If all the conditions are true or more than one condition is true, it will read the first right or matched case condition and will display the output with one warning and no error.</p>
+<p><strong>Syntax :</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>       <span style="color:#66d9ef">unique0</span> <span style="color:#66d9ef">case</span>(condition)
+</span></span><span style="display:flex;"><span>       condition_1: Statements ;
+</span></span><span style="display:flex;"><span>       condition_2: Statements ;
+</span></span><span style="display:flex;"><span>       ...........
+</span></span><span style="display:flex;"><span>       conditon_N: Statements;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">endcase</span>
+</span></span></code></pre></div><p><strong>Example:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>            x <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span><span style="color:#ae81ff">&#39;b01</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">unique0</span> <span style="color:#66d9ef">case</span>(x)
+</span></span><span style="display:flex;"><span>            <span style="color:#ae81ff">00</span> <span style="color:#f92672">:</span> $display(<span style="color:#e6db74">&#34; Value of x is = %0b&#34;</span>, x);
+</span></span><span style="display:flex;"><span>            <span style="color:#ae81ff">01</span> <span style="color:#f92672">:</span> $display(<span style="color:#e6db74">&#34; Value of x is = %0b&#34;</span>, x);
+</span></span><span style="display:flex;"><span>            <span style="color:#ae81ff">10</span> <span style="color:#f92672">:</span> $display(<span style="color:#e6db74">&#34; Value of x is = %0b&#34;</span>, x);
+</span></span><span style="display:flex;"><span>            <span style="color:#ae81ff">11</span> <span style="color:#f92672">:</span> $display(<span style="color:#e6db74">&#34; Value of x is = %0b&#34;</span>, x);
+</span></span><span style="display:flex;"><span>            <span style="color:#ae81ff">01</span> <span style="color:#f92672">:</span> $display(<span style="color:#e6db74">&#34; Value of x is = %0b&#34;</span>, x);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">endcase</span>
+</span></span></code></pre></div><p>In the above example, the unique0 case is used. In these two conditions is true and unique0 will read the first right or matched condition and print the output Value of x = &ldquo;1&rdquo; with the warning.</p>
+<p><strong>Output Snap:</strong></p>
+<p>The below figure shows the output of the unique0 case statement in which two conditions are true.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110447788/188300546-eb50b6e6-a5b8-44a4-94fe-e73f828b8e9a.png"
+  alt="Untitled Diagram-Page-8 drawio (3)"
+  class="Untitled Diagram-Page-8 drawio (3)"/>
+</p>
+<pre><code>                                Fig -21: Output: unique0 case in which two conditions are true
+</code></pre>
+<p>In the above output, two conditions are true at a time this will make the case statement not unique, uniquq0 will read the first right matched condition and display the  Value of x is 1 with the warning</p>
+<p><strong>GitHub Code Lab link</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/unique0_case/unique0_case.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/unique0_case/unique0_case.sv</a
+>
+</p>
+<p><strong>GitHub Lab Output link</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/unique0_case/unique0_case_op.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/unique0_case/unique0_case_op.log</a
+>
+</p>
+<h3 id='3-priority-case'>3. priority case<a href='#3-priority-case' class='anchor'>#</a>
+</h3><p>In this type of case statement, if more than one case condition is true, it will display the output without giving any error with no warning.</p>
+<p><strong>Flowchart:</strong></p>
+<p><img
+  src="https://user-images.githubusercontent.com/110447788/188636662-ce0699fb-568e-4863-b106-6f347b439e50.jpg"
+  alt="Untitled Diagram-Page-2 (2)"
+  class="Untitled Diagram-Page-2 (2)"/>
+</p>
+<pre><code>                            Fig -14: flow chart: priority case statement
+</code></pre>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>             <span style="color:#66d9ef">priority</span> <span style="color:#66d9ef">case</span>(condition)
+</span></span><span style="display:flex;"><span>             condition_1: Statements ;
+</span></span><span style="display:flex;"><span>             condition_2: Statements ;
+</span></span><span style="display:flex;"><span>             ...........
+</span></span><span style="display:flex;"><span>             conditon_N: Statements;
+</span></span><span style="display:flex;"><span>             <span style="color:#66d9ef">endcase</span>
+</span></span></code></pre></div><p><strong>Example:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>            pqr <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">priority</span> <span style="color:#66d9ef">case</span> (pqr)
+</span></span><span style="display:flex;"><span>            <span style="color:#ae81ff">5</span> <span style="color:#f92672">:</span> $display (<span style="color:#e6db74">&#34;Found to be 5&#34;</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#ae81ff">5</span> <span style="color:#f92672">:</span> $display (<span style="color:#e6db74">&#34;Again found to be 5&#34;</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#ae81ff">7</span> <span style="color:#f92672">:</span> $display (<span style="color:#e6db74">&#34;Found to be 7&#34;</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">endcase</span>
+</span></span></code></pre></div><p>In the above example, the priority case is used. In these two conditions is the right or matched condition so the priority case will read the first right condition and execute it and display the output with no warning and no error.</p>
+<p><strong>Output Snap:</strong></p>
+<p>The below figure shows the output of the priority case statement in which two conditions are true.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110447788/188300570-d5fc26b9-0fac-4499-9cbf-8785c03171f2.png"
+  alt="Untitled Diagram-Page-9 drawio (4)"
+  class="Untitled Diagram-Page-9 drawio (4)"/>
+</p>
+<pre><code>                           Fig -22: Output: priority case statement in which two conditions are true
+</code></pre>
+<p>In the above output, more than one condition is true. priority case checks the first right matched condition, executes it, and displays the output without warning and error.</p>
+<p><strong>GitHub Code Lab link</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/priority_case/priority_case.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/priority_case/priority_case.sv</a
+>
+</p>
+<p><strong>GitHub Lab Output link</strong>  <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/priority_case/priority_case_op.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/conditional_statement/case_variants/priority_case/priority_case_op.log</a
+>
+</p>
+<hr>
+<hr>
+<h3 id='break'>break<a href='#break' class='anchor'>#</a>
+</h3><p>A break statement is used to terminate the loop immediately. When a break statement is encountered inside a loop, the loop iteration stops there. Generally, we use break after giving the condition in code using the if statement.</p>
+<p>We can use break statements in any loop(for, foreach, forever, do-while, while, do-while,), for terminating the execution of a loop. It is always used inside the loop. The break statement ends the loop immediately when it is encountered.</p>
+<p><strong>Flowchart:</strong></p>
+<p><img
+  src="https://user-images.githubusercontent.com/110447788/188305065-221831fc-8e53-48dd-b9de-da445a1a4861.png"
+  alt="Untitled Diagram-Page-1 drawio (5)"
+  class="Untitled Diagram-Page-1 drawio (5)"/>
+</p>
+<pre><code>                                  Fig-:15 flow chart: break statement
+</code></pre>
+<p><strong>Syntax</strong>:</p>
+<p><code>break;</code></p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>            <span style="color:#66d9ef">foreach</span>(array[i])
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span>(i<span style="color:#f92672">==</span><span style="color:#ae81ff">2</span>)<span style="color:#66d9ef">begin</span>
+</span></span><span style="display:flex;"><span>            $display(<span style="color:#e6db74">&#34;----Calling break----&#34;</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">end</span>
+</span></span></code></pre></div><p>In the above example, a break statement is used inside the loop which terminates the loop when condition is true. In this break is used at index 2 so that the loop stops at index 2 and comes out of the loop.</p>
+<p><strong>Output Snap:</strong></p>
+<p>The below figure shows the output of using the break statement.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110447788/188300378-7daf30b0-062b-47c6-b265-bacb850aa0ed.png"
+  alt="Untitled Diagram-Page-3 drawio (1)"
+  class="Untitled Diagram-Page-3 drawio (1)"/>
+</p>
+<pre><code>                      Fig -23 : Output: break statement gets executed at iteration 2
+</code></pre>
+<p>In the above output, a break statement is used inside the loop. The output shows the value for index 0 &amp; 1, after this break statement is encountered and display &ldquo;Calling break&rdquo;</p>
+<p><strong>GitHub Lab Code link</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/break_continue/break/break.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/break_continue/break/break.sv</a
+>
+</p>
+<p><strong>GitHub Lab Output link</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/break_continue/break/break_op.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/break_continue/break/break_op.log</a
+>
+</p>
+<hr>
+<h3 id='continue'>continue:<a href='#continue' class='anchor'>#</a>
+</h3><p>The continue statement is used to skip the current iteration of a loop. We can use the continue statement inside any type of loop such as for, while, and do-while loop. Basically, continue statements are used in situations when we want to continue the loop but do not want the particular iteration in the loop.</p>
+<p>Using continue, we can skip the current iteration of a loop and jumps to the next iteration of the loop immediately</p>
+<p><strong>Flowchart:</strong></p>
+<p><img
+  src="https://user-images.githubusercontent.com/110447788/188305077-aca9f33b-5b5c-4c4c-a674-a262c6c6cf7c.png"
+  alt="Untitled Diagram-Page-1 drawio (6)"
+  class="Untitled Diagram-Page-1 drawio (6)"/>
+</p>
+<pre><code>                                    Fig - 16: flow chart: continue statement
+</code></pre>
+<p><strong>Syntax</strong>:</p>
+<p><code>continue;</code></p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>            <span style="color:#66d9ef">foreach</span>(array[i])
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">begin</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span>(i<span style="color:#f92672">==</span><span style="color:#ae81ff">2</span>)<span style="color:#66d9ef">begin</span>
+</span></span><span style="display:flex;"><span>            $display(<span style="color:#e6db74">&#34;-----Calling Continue----&#34;</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">continue</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">end</span>
+</span></span></code></pre></div><p>In the above example, <strong>continue</strong> statement is used inside the loop that skips the current iteration of a loop. In the following loop <strong>continue</strong> is used at index 2 so that the loop skips the particular iteration at index 2 and goes for the next iteration.</p>
+<p><strong>Output Snap:</strong></p>
+<p>The below figure shows the output of using the continue statement.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110447788/188300409-2097d70f-2fc7-4105-9a32-d4fc9c24c9af.png"
+  alt="Untitled Diagram-Page-4 drawio (3)"
+  class="Untitled Diagram-Page-4 drawio (3)"/>
+</p>
+<pre><code>                              Fig -24 : Output: continue statement executes at iteration 2 
+</code></pre>
+<p>In the above output, the continue statement is used inside the loop. The output shows the value for iterations 0 &amp; 1 and for iteration 2  continue statement is encountered and displays &ldquo;Calling continue&rdquo; and after this jumps to the next iteration immediately and prints the value for iterations 3 &amp; 4</p>
+<p><strong>GitHub Lab Code link</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/break_continue/continue/continue.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/break_continue/continue/continue.sv</a
+>
+</p>
+<p><strong>GitHub Lab output link</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/break_continue/continue/continue_sv_op.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/break_continue/continue/continue_sv_op.log</a
+>
+</p>
+<hr>
+</div><div class="column is-sticky is-paddingless" id="tocWrapper">
+  <div class="is-paddingless" id="tocContainer">
+    <div class="toc-header">
+      <h6 class="toc-title is-marginless">On this page:</h6>
+      <i
+        title="Back to top"
+        id="tocBackToTop"
+        class="fa-solid fa-circle-arrow-up"
+      ></i>
+    </div>
+    <div id="tocContent">
+      <div id="toc"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#control-flow">Control flow</a>
+      <ul>
+        <li><a href="#conditional-statements">Conditional Statements</a>
+          <ul>
+            <li><a href="#1-if-without-else">1. if without else</a></li>
+            <li><a href="#2-if-else">2. if else</a></li>
+            <li><a href="#3-if-else-ladder">3. if else ladder</a></li>
+            <li><a href="#4-unique-if">4. unique if</a></li>
+            <li><a href="#5unique0if">5.unique0if</a></li>
+            <li><a href="#6priority-if">6.priority if</a></li>
+            <li><a href="#difference-between-conditional-statements">Difference between conditional statements</a></li>
+          </ul>
+        </li>
+        <li><a href="#purpose-of-warning">Purpose of warning</a>
+          <ul>
+            <li><a href="#dead-code">Dead code</a></li>
+          </ul>
+        </li>
+        <li><a href="#case">case</a>
+          <ul>
+            <li><a href="#1-unique-case">1. unique case</a></li>
+            <li><a href="#unique-case-with-default-statement">unique case with default statement</a></li>
+            <li><a href="#2-uniuqe0-case">2. uniuqe0 case</a></li>
+            <li><a href="#3-priority-case">3. priority case</a></li>
+            <li><a href="#break">break</a></li>
+            <li><a href="#continue">continue:</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      <div id="taxonomies"><div class="taxonomy-wrapper"><div class="toc-header">
+                  <h6 class="toc-title is-marginless">Categories</h6>
+                </div><a href="/categories/systemverilog/" class="taxonomy"
+                    ><i class="fa-solid fa-circle-dot"></i>SystemVerilog</a
+                  ></div><div class="taxonomy-wrapper"><div class="toc-header">
+                  <h6 class="toc-title is-marginless">Tags</h6>
+                </div><a href="/tags/sv/" class="taxonomy"
+                    ><i class="fa-solid fa-circle-dot"></i>sv</a
+                  ></div></div>
+    </div>
+  </div>
+  <div
+    class="is-paddingless"
+    id="tocCollapsible"
+    title="Collapse/Uncollapse table of contents"
+  >
+    <i class="fa-solid fa-angles-right fa-lg"></i>
+  </div>
+</div>
+</div>
+</div><script type='text/javascript'>
+  const baseUrl = '\/';
+  const codeCopyBefore = 'Copy to clipboard';
+  const codeCopyAfter = 'Copied to clipboard';
+  const svgDownloadLabel = 'Download as SVG';
+  const helperLoadingLabel = 'Loading';
+  const searchNoResults = '没有找到';
+  const introNextLabel = 'Next';
+  const introPrevLabel = 'Previous';
+  const introSkipLabel = '✗';
+  const introDoneLabel = 'Done';
+  const printLabel = 'Print current page';
+  const qrCodeLabel = 'Show current page QR code';
+  const naCommonLabel = 'Not available';
+</script>
+<script
+      type="module"
+      src="/js/theme/modules/const.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/modules/helpers.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/modules/helpersGlobal.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/init.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/navbar.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/print.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/qrcode.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/search.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/shortcuts.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/sidebar.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/toc.min.js"
+    ></script><script
+      type="module"
+      src="/js/shortcuts.min.js"
+    ></script><script
+      type="text/javascript"
+      src="/js/theme/browserCompatibility.min.js"
+    ></script><script
+      type="text/javascript"
+      src="/js/external/flexsearch/flexsearch.bundle.min.js"
+    ></script><script
+      type="text/javascript"
+      src="/js/external/qrious/qrious.min.js"
+    ></script><script
+      type="text/javascript"
+      src="/js/external/overlay-scrollbars/overlayscrollbars.min.js"
+    ></script>
+</body>
+</html>

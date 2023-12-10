@@ -1,0 +1,1896 @@
+<!DOCTYPE html>
+<html>
+  <head><meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="generator" content="Hugo 0.116.1">
+<meta name="viewport" content="width=device-width, initial-scale=1" /><title>SystemVerilog 数组 | Documentation du thème Shadocs</title>
+
+<link
+  rel="icon"
+  href="/images/favicon.png"
+  type="image/x-icon"
+/>
+<link
+    rel="stylesheet"
+    rel="preload"
+    type="text/css"
+    href="/css/main.css"
+  /><link
+      rel="stylesheet"
+      type="text/css"
+      href="/css/external/fontawesome.all.min.css"
+    /><link
+      rel="stylesheet"
+      type="text/css"
+      href="/css/external/overlay-scrollbars/overlayscrollbars.min.css"
+    /><link
+      rel="stylesheet"
+      type="text/css"
+      href="/css/shortcuts.min.css"
+    />
+</head>
+  <body onload="browserCompatibility()"><div id="navbarInfo" class="is-hidden modal-container">
+  <div class="modal-content-box modal-text-box">
+    <div class="card modal-title is-radiusless">
+      <div class="card-header">
+        <p class="card-header-title is-marginless">关于</p>
+      </div>
+    </div>
+    <div class="modal-content-container">
+      <div class="modal-content-block is-block"><div class="columns is-marginless is-multiline is-centered">
+  <div class="column">
+    <a
+      class="is-itext-link"
+      href="https://github.com/jgazeau/shadocs"
+      target="_blank"
+    >
+      <div>
+        <i class="fa-brands fa-github fa-2x"></i>
+        <p></p>
+      </div>
+    </a>
+  </div>
+  <div class="column">
+    <a
+      class="is-itext-link"
+      href="https://github.com/jgazeau/shadocs/archive/main.zip"
+      target="_blank"
+    >
+      <div>
+        <i class="fa-solid fa-download fa-2x"></i>
+        <p></p>
+      </div>
+    </a>
+  </div>
+  <div class="column">
+    <a
+      class="is-itext-link"
+      href="https://github.com/jgazeau/shadocs/issues"
+      target="_blank"
+    >
+      <div>
+        <i class="fa-solid fa-circle-info fa-2x"></i>
+        <p></p>
+      </div>
+    </a>
+  </div>
+  <div class="column">
+    <a
+      class="is-itext-link"
+      href="https://github.com/jgazeau/shadocs/fork"
+      target="_blank"
+    >
+      <div>
+        <i class="fa-solid fa-code-branch fa-2x"></i>
+        <p></p>
+      </div>
+    </a>
+  </div>
+</div>
+<p>(0.116.1)</p>
+<p>The MIT License (MIT) Copyright © 2023 Jordan GAZEAU</p>
+</div>
+    </div>
+  </div>
+</div>
+<div id="navbarShortcuts" class="is-hidden modal-container">
+  <div class="modal-content-box modal-text-box"><div class="card modal-title is-radiusless">
+        <div class="card-header">
+          <p class="card-header-title is-marginless">Keyboard shortcuts</p>
+        </div>
+      </div>
+      <div class="modal-content-container">
+        <div class="modal-content-block"><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>q</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Show current page QR code</p>
+  </div><div class="modal-content"><kbd>Escape</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Close modals</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>i</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Show website information</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>k</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Show shortcuts</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>h</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Go to homepage</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>f</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Find on website</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>m</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Collapse/Uncollapse sidebar</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>t</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Collapse/Uncollapse table of contents</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>↑</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Go to the top of the page</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>↓</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Go to the bottom of the page</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>p</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Print current page</p>
+  </div></div>
+      </div></div>
+</div>
+<div id="modalContainer" class="is-hidden modal-container">
+  <div id="modal" class="modal-content-box"></div>
+</div>
+<nav id="navbar" class="navbar" role="navigation" aria-label="main navigation">
+  <div id="navbarItemsContainer" class="navbar-brand"><div id="globalLogoContainer" class="is-flex">
+  <a
+    id="globalLogo"
+    class="navbar-item navbar-item-standard is-paddingless"
+    href="/"
+  >
+    <img
+      alt="主页"
+      src="/images/logo.png"
+    />
+  </a>
+  <a
+    id="globalTouchLogo"
+    class="navbar-item navbar-item-standard is-paddingless"
+    href="/"
+  >
+    <img
+      alt="主页"
+      src="/images/logoTouch.png"
+    />
+  </a>
+</div>
+<div id="navbarItems" class="is-flex">
+      <div id="navbarItemsStart" class="is-flex">
+        <div id="searchContainer" class="navbar-item"><div class="control has-icons-left">
+  <span id="searchInput" class="autocomplete">
+    <input
+      id="search"
+      autocomplete="off"
+      class="input"
+      type="search"
+      placeholder="搜索"
+    />
+  </span>
+  <span class="icon is-left">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </span>
+  <ul id="searchList" class="is-paddingless is-hidden"></ul>
+</div>
+</div>
+      </div>
+      <div id="navbarItemsEnd" class="is-flex is-invisible"><div class="navbar-item">
+  <a
+    id="printButton"
+    class="button navbar-item-standard"
+  >
+    <span class="icon-text">打印</span>
+    <span class="icon">
+      <i class="fa-solid fa-print fa-lg"></i>
+    </span>
+  </a>
+</div><div class="navbar-item"><div
+  id="taxonomiesSelectorContainer"
+  class="dropdown is-right"
+>
+  <div class="dropdown-trigger">
+    <button
+      id="taxonomiesSelector"
+      class="button navbar-item-standard"
+      aria-haspopup="true"
+      aria-controls="dropdown-menu"
+    >
+      <span class="icon-text">Taxonomies</span>
+      <span class="icon">
+        <i class="fa-solid fa-tags fa-lg"></i>
+      </span>
+    </button>
+  </div>
+  <div
+    id="dropdown-menu-taxonomies"
+    class="dropdown-menu"
+    role="menu"
+  >
+    <div class="dropdown-content is-paddingless"><a
+              href="/categories/"
+              class="dropdown-item has-text-weight-bold"
+            ><i class="fa-solid fa-table-cells"></i>Categories</a><a
+              href="/tags/"
+              class="dropdown-item has-text-weight-bold"
+            ><i class="fa-solid fa-tag"></i>Tags</a></div>
+  </div>
+</div>
+</div><div class="navbar-item">
+  <a
+    id="siteInfo"
+    trigger="navbarInfo"
+    class="button navbar-item-standard navbar-trigger"
+    title="关于"
+  >
+    <span class="icon-text">关于</span>
+    <span class="icon">
+      <i class="fa-solid fa-circle-question fa-lg"></i>
+    </span>
+  </a>
+</div>
+<div id="navbarExtend" class="navbar-item">
+  <div id="navbarExtendWrapper">
+    <a id="navbarExtendButton" class="button navbar-item-standard">
+      <span class="icon">
+        <i class="fa-solid fa-ellipsis fa-lg"></i>
+      </span>
+    </a>
+    <div id="navbarExtendItemsContainer">
+      <div id="navbarExtendItemsWrapper"><div class="navbar-item">
+  <a
+    id="printButtonExtend"
+    class="button navbar-item-standard"
+  >
+    <span class="icon-text">打印</span>
+    <span class="icon">
+      <i class="fa-solid fa-print fa-lg"></i>
+    </span>
+  </a>
+</div><div class="navbar-item"><div
+  id="taxonomiesSelectorContainerExtend"
+  class="dropdown is-right"
+>
+  <div class="dropdown-trigger">
+    <button
+      id="taxonomiesSelectorExtend"
+      class="button navbar-item-standard"
+      aria-haspopup="true"
+      aria-controls="dropdown-menu"
+    >
+      <span class="icon-text">Taxonomies</span>
+      <span class="icon">
+        <i class="fa-solid fa-tags fa-lg"></i>
+      </span>
+    </button>
+  </div>
+  <div
+    id="dropdown-menu-taxonomiesExtend"
+    class="dropdown-menu"
+    role="menu"
+  >
+    <div class="dropdown-content is-paddingless"><a
+              href="/categories/"
+              class="dropdown-item has-text-weight-bold"
+            ><i class="fa-solid fa-table-cells"></i>Categories</a><a
+              href="/tags/"
+              class="dropdown-item has-text-weight-bold"
+            ><i class="fa-solid fa-tag"></i>Tags</a></div>
+  </div>
+</div>
+</div><div class="navbar-item">
+  <a
+    id="siteInfoExtend"
+    trigger="navbarInfo"
+    class="button navbar-item-standard navbar-trigger"
+    title="关于"
+  >
+    <span class="icon-text">关于</span>
+    <span class="icon">
+      <i class="fa-solid fa-circle-question fa-lg"></i>
+    </span>
+  </a>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+</nav>
+<div id="navbarOverlay"></div>
+<div
+      class="columns is-mobile is-paddingless is-marginless"
+      id="mainContainer"
+    ><div
+  id="sidebarContainer"
+  class="column is-narrow is-paddingless is-marginless"
+>
+  <div id="sidebarWrapper" class="is-fixed">
+    <div id="sidebar" class="is-marginless">
+      <aside class="menu is-paddingless is-marginless">
+        <ul class="menu-list is-marginless is-paddingless"><div class="card is-fs-expandable-icon"><div class="card-header is-single-link">
+      <a
+        href='/digital/'
+        class='card-header-title'>
+        <i class='fa-solid fa-bars fa-lg'></i></a></div>
+      </div><div class="is-expandable">
+      <div class="is-sidebar-list-wrapper"><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/digital/'
+        class='card-header-title'
+          title='数字电路基础'>
+        <i class='fa-solid fa-bars fa-lg'></i><p class="pt-0 pb-0 pr-2 pl-1">数字电路基础</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="card is-fs-expandable-icon is-sidebar-active"><div class="card-header">
+      <a
+        href='/design/'
+        class='card-header-title'>
+        <i class='fa-solid fa-bars fa-lg'></i></a></div>
+      </div><div class="is-expandable">
+      <div class="is-sidebar-list-wrapper"><li class="is-marginless is-tree-active is-entries-expandable is-entries-expanded"><div
+            class="card"><div class="card-header">
+      <a
+        href='/design/'
+        class='card-header-title'
+          title='HDL 设计'>
+        <i class='fa-solid fa-bars fa-lg'></i><p class="pt-0 pb-0 pr-2 pl-1">HDL 设计</p></a><a class="card-header-icon is-icon-expandable is-paddingless is-icon-expanded">
+                <span class='icon'></span>
+              </a>
+            </div>
+          </div><ul class="is-marginless is-tree-active"><div class="">
+      <div class=""><li class="is-marginless is-entries-expandable is-entries-expanded"><div
+            class="card"><div class="card-header">
+      <a
+        href='/design/systemverilog/'
+        class='card-header-title'
+          title='SystemVerilog 教程'>
+        <i class='fa-solid fa-bars'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 教程</p></a><a class="card-header-icon is-icon-expandable is-paddingless is-icon-expanded">
+                <span class='icon'></span>
+              </a>
+            </div>
+          </div><ul class="is-marginless"><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/01.data-types/'
+        class='card-header-title'
+          title='SystemVerilog 数据类型'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 数据类型</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card is-sidebar-active"id='sidebarActiveEntry'><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/02.array/'
+        class='card-header-title'
+          title='SystemVerilog 数组'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 数组</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/03.structure-and-union/'
+        class='card-header-title'
+          title='SystemVerilog 结构体和联合体'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 结构体和联合体</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/04.user-defined/'
+        class='card-header-title'
+          title='SystemVerilog 用户自定义'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 用户自定义</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/05.operators/'
+        class='card-header-title'
+          title='SystemVerilog operators'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog operators</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/06.control-flow/'
+        class='card-header-title'
+          title='SystemVerilog 控制流'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 控制流</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/07.functions/'
+        class='card-header-title'
+          title='SystemVerilog 函数'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 函数</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/08.tasks/'
+        class='card-header-title'
+          title='SystemVerilog 任务'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 任务</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/09.loops/'
+        class='card-header-title'
+          title='SystemVerilog 循环'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 循环</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/10.scheduler-schematics/'
+        class='card-header-title'
+          title='Scheduler schematic'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Scheduler schematic</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/11.processes/'
+        class='card-header-title'
+          title='Processes'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Processes</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/12.fine-grain-process-control/'
+        class='card-header-title'
+          title='Fine Grain Process Control'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Fine Grain Process Control</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/13.interface/'
+        class='card-header-title'
+          title='Interface'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Interface</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/14.constraint/'
+        class='card-header-title'
+          title='Constraint'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Constraint</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/15.classes-and-oops/'
+        class='card-header-title'
+          title='类和面向对象'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">类和面向对象</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/17.functional-coverage/'
+        class='card-header-title'
+          title='Coverage'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Coverage</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/18.assertion/'
+        class='card-header-title'
+          title='Assertion'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Assertion</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/19.interprocess-communication/'
+        class='card-header-title'
+          title='Interprocess communication  '>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Interprocess communication  </p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/20.misc-constructs/'
+        class='card-header-title'
+          title='Program Block'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Program Block</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/choosing-an-array/'
+        class='card-header-title'
+          title='Choosing-an-array'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Choosing-an-array</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/control-flow-interview-questions/'
+        class='card-header-title'
+          title='Control-Flow-Interview-questions'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Control-Flow-Interview-questions</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/data-type-interview-questions/'
+        class='card-header-title'
+          title='Data-type-Interview-questions'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Data-type-Interview-questions</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/differences-between-macros-and-parameters/'
+        class='card-header-title'
+          title='Differences-between-macros-and-parameters'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Differences-between-macros-and-parameters</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/interface-interview-questions/'
+        class='card-header-title'
+          title='Interface-Interview-Questions'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Interface-Interview-Questions</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/processes-interviewquestions/'
+        class='card-header-title'
+          title='Processes-InterviewQuestions'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Processes-InterviewQuestions</p></a></div>
+          </div></li>
+      </div>
+    </div></ul></li>
+      </div>
+    </div></ul></li>
+      </div>
+    </div><div class="card is-fs-expandable-icon"><div class="card-header">
+      <a
+        href='/formal/'
+        class='card-header-title'>
+        <i class='fa-solid fa-bars fa-lg'></i></a></div>
+      </div><div class="is-expandable">
+      <div class="is-sidebar-list-wrapper"><li class="is-marginless is-entries-expandable is-entries-shrinked"><div
+            class="card"><div class="card-header">
+      <a
+        href='/formal/'
+        class='card-header-title'
+          title='形式验证'>
+        <i class='fa-solid fa-bars fa-lg'></i><p class="pt-0 pb-0 pr-2 pl-1">形式验证</p></a><a class="card-header-icon is-icon-expandable is-paddingless is-icon-shrinked">
+                <span class='icon'></span>
+              </a>
+            </div>
+          </div><ul class="is-marginless"><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/formal/model_checking/'
+        class='card-header-title'
+          title='模型检查'>
+        <i class='fa-solid fa-bars'></i><p class="pt-0 pb-0 pr-2 pl-0">模型检查</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/formal/equivalence_checking/'
+        class='card-header-title'
+          title='等价性检查'>
+        <i class='fa-solid fa-bars'></i><p class="pt-0 pb-0 pr-2 pl-0">等价性检查</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless is-entries-expandable is-entries-shrinked"><div
+            class="card"><div class="card-header">
+      <a
+        href='/formal/theorem_proving/'
+        class='card-header-title'
+          title='定理证明'>
+        <i class='fa-solid fa-bars'></i><p class="pt-0 pb-0 pr-2 pl-0">定理证明</p></a><a class="card-header-icon is-icon-expandable is-paddingless is-icon-shrinked">
+                <span class='icon'></span>
+              </a>
+            </div>
+          </div><ul class="is-marginless"><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/formal/theorem_proving/acl2/'
+        class='card-header-title'
+          title='一文了解定理证明器 ACL2'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">一文了解定理证明器 ACL2</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/formal/theorem_proving/acl2_hardware/'
+        class='card-header-title'
+          title='使用 ACL2 进行硬件验证'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">使用 ACL2 进行硬件验证</p></a></div>
+          </div></li>
+      </div>
+    </div></ul></li>
+      </div>
+    </div></ul></li>
+      </div>
+    </div></ul>
+      </aside>
+    </div>
+    <div id="sidebarCollapsible" class="is-marginless">
+      <div class="card is-uncollapse-action">
+        <div
+          id="sidebarUncollapse"
+          class="card-header is-single-link"
+          title="Collapse/Uncollapse sidebar"
+        >
+          <a class="card-header-title">
+            <i class="fa-solid fa-angles-right fa-lg"></i>
+          </a>
+        </div>
+      </div>
+      <div class="card is-collapse-action">
+        <div
+          id="sidebarCollapse"
+          class="card-header is-single-link"
+          title="Collapse/Uncollapse sidebar"
+        >
+          <a class="card-header-title">
+            <i class="fa-solid fa-angles-left fa-lg"></i>
+            <p>折叠</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="sidebarMobileWrapper" class="column is-narrow is-hidden-desktop"></div>
+<div class="columns is-mobile is-marginless is-scroll-smooth has-toc" id="contentContainer">
+  <div class="column" id="content"><div id="contentTitle">SystemVerilog 数组</div>
+<h1 id='arrays'>Arrays<a href='#arrays' class='anchor'>#</a>
+</h1><p>An array is a collection of elements, all of the same type, and accessed using its name and one or more indices. Verilog 2001 required that the low and high array limits must be part of the array declaration. System Verilog has introduced the compact array declaration style, where just giving the array size along with the array name declaration is enough.</p>
+<p>The below figure shows the different types of arrays used in System Verilog.
+<img
+  src="https://user-images.githubusercontent.com/110448056/187371213-6de08da7-079a-4a4c-974b-9cc3304ae162.png"
+  alt="arrays_sv"
+  class="arrays_sv"/>
+</p>
+<pre><code>                                                 Fig.1 Types of arrays in SV
+</code></pre>
+<h2 id='arrays-cheat-sheet'>Arrays cheat sheet<a href='#arrays-cheat-sheet' class='anchor'>#</a>
+</h2><table>
+<thead>
+<tr>
+<th><strong>Sr No.</strong></th>
+<th><strong>Arrays Types</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/02.Array#1packed-arrays"
+    class="is-pretty-link">Packed Array</a
+>
+</td>
+<td>Dimension of array declared before array name declaration</td>
+</tr>
+<tr>
+<td>2</td>
+<td><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/02.Array#2unpacked-arrays"
+    class="is-pretty-link">Unpacked Array</a
+>
+</td>
+<td>Dimension of the array declared after array name declaration</td>
+</tr>
+<tr>
+<td>3</td>
+<td><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/02.Array#3dynamic-arrays"
+    class="is-pretty-link">Dynamic Array</a
+>
+</td>
+<td>Memories will be allocated at run time</td>
+</tr>
+<tr>
+<td>4</td>
+<td><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/02.Array#4associative-arrays"
+    class="is-pretty-link">Associative Array</a
+>
+</td>
+<td>Memories allocated only when it is used and any index type is used for indexing the array</td>
+</tr>
+<tr>
+<td>5</td>
+<td><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/02.Array#5queue"
+    class="is-pretty-link">Queue</a
+>
+</td>
+<td>It is similar to fifo and we can add and remove elements from queue at run time</td>
+</tr>
+<tr>
+<td>6</td>
+<td><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/02.Array#6array-manipulation-method"
+    class="is-pretty-link">Array Manipulation Methods</a
+>
+</td>
+<td>It consist of array locator method, Array ordering method and Array Reduction method</td>
+</tr>
+<tr>
+<td>Table.1. Array cheat sheet</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id='static-arraysfixed-size-arrays'>Static Arrays(Fixed size arrays):<a href='#static-arraysfixed-size-arrays' class='anchor'>#</a>
+</h2><p>In fixed size array / Static arrays, array size will be constant throughout the simulation, Once the array is declared no need to create it. By default, the array will be initialized with value ‘0’. In this type of arrays memories will be occupied during compilation stage and we can&rsquo;t able to rellocate the memories at run time.</p>
+<h2 id='static-arrays-has-two-types'>Static arrays has two types:<a href='#static-arrays-has-two-types' class='anchor'>#</a>
+</h2><ol>
+<li>Packed Arrays</li>
+<li>Unpacked Arrays.</li>
+</ol>
+<hr>
+<h3 id='1packed-arrays'>1.Packed Arrays:<a href='#1packed-arrays' class='anchor'>#</a>
+</h3><p>A packed array is one where the dimensions of the array is declared before the array name. In this multiple bits of array stored in one memory location.</p>
+<p><strong>Note:-</strong> It can be made of any single bit data types bit, logic and reg. we can&rsquo;t use multi bits data types for packed arrays.</p>
+<p><strong>Syntax:-</strong> <code>[data_type] [dimensions] [array_name];</code></p>
+<p><strong>Example,</strong></p>
+<p><code>1) bit [3:0]abc = 4'b0110</code><br>
+<code>2) logic [15:0]pqr = 16'h10fe</code><br>
+<code>3) reg [7:0]xyz = 8'd16</code></p>
+<p><strong>Some Points about packed arrays:</strong></p>
+<ul>
+<li>If a packed array is declared as signed, then the array viewed as a single vector shall be signed. The individual elements of the array are unsigned unless they are of a named type declared as signed.</li>
+<li>The maximum size of a packed array can be limited, but shall be at least 65536 (2^16) bits.</li>
+<li>Packed arrays are synthesizable.</li>
+</ul>
+<p>The below figure shows the output of single dimension packed array, here packed array consists of reg, logic and bit data type as mentioned in the above example.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110448056/186883341-d960ed62-8e66-4ff9-b729-2f03c7ffd57f.png"
+  alt="single_packed"
+  class="single_packed"/>
+</p>
+<pre><code>                               Figure.2 single dimension packed array ouptut
+</code></pre>
+<p><strong>Github lab code link:-</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/packed_array/single_packed/packed_array.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/packed_array/single_packed/packed_array.sv</a
+>
+</p>
+<p><strong>Github lab output link:-</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/packed_array/single_packed/packed_array.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/packed_array/single_packed/packed_array.log</a
+>
+</p>
+<hr>
+<p>The below figure shows how the array elements stored in 2-dimensional packed array. for <code>bit [2:0][3:0]xyz</code> example going from left to right in dimensions elements will occupied the memory.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110448056/187356323-2d671f63-2de6-4082-938f-c43ea6724534.png"
+  alt="2d-packed"
+  class="2d-packed"/>
+</p>
+<pre><code>                             Figure.3 two dimensional packed array memory layout
+</code></pre>
+<p>The below figure shows the output of multi dimension packed array, here it consists of <code>bit [2:0][3:0]xyz=12'hdfe</code>.
+Here, 2 dimensional packed array declared and and we can similarly create 3 dimensional array as same.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110448056/187356692-03d6a7a1-e02c-42d3-81af-7505e5d37c99.png"
+  alt="multi_packed"
+  class="multi_packed"/>
+</p>
+<pre><code>                              Figure.4 multi dimensional packed array output
+</code></pre>
+<p><strong>Github lab code link:-</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/packed_array/multi_packed/multi_packed.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/packed_array/multi_packed/multi_packed.sv</a
+>
+</p>
+<p><strong>Github lab output link:-</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/packed_array/multi_packed/multi_packed.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/packed_array/multi_packed/multi_packed.log</a
+>
+</p>
+<hr>
+<p><strong>Applications of packed arrays:</strong></p>
+<p>They are used to store packet structures on which bit-select and part-select operations could be performed.</p>
+<hr>
+<h3 id='2unpacked-arrays'>2.Unpacked Arrays:<a href='#2unpacked-arrays' class='anchor'>#</a>
+</h3><p>A unpacked array is one where the dimensions of the array is declared after the array name. In this multiple bits will be stored in different memory locations.</p>
+<p><strong>Syntax:-</strong>  <code>[data_type] [array_name] [dimension];</code></p>
+<p><strong>Example,</strong></p>
+<p><code>byte a[8] = '{4,5,6,2,3,7,9,10}</code></p>
+<p><code>int abc[10] = $urandom_range(10,50);</code></p>
+<p>where, $urandom_range is inbuilt function which generates random numbers between 10 to 50.</p>
+<p><strong>Some Points about unpacked arrays:</strong></p>
+<ul>
+<li>They can be of any data type.</li>
+<li>If an unpacked array is declared as signed, then this applies to the individual elements of the array, since the whole array cannot be viewed as a single vector.</li>
+<li>The unpacked dimensions can be arranged in memory in any way that the simulator chooses – does not have to be contiguous.</li>
+<li>They could be fixed-size arrays, dynamic arrays, associative arrays or queues.</li>
+<li>Unpacked arrays are Non-synthesizable.</li>
+</ul>
+<p>The below figure shows the output of single dimension unpacked array.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110448056/186889154-0f23c201-ca8b-47cd-ae46-8fcd3c0d0cfd.png"
+  alt="single_unpacked"
+  class="single_unpacked"/>
+</p>
+<pre><code>                              Figure.5 single dimensional unpacked array output
+</code></pre>
+<p><strong>Github lab code link:-</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/unpacked_array/single_unpacked/unpacked.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/unpacked_array/single_unpacked/unpacked.sv</a
+>
+</p>
+<p><strong>Github lab output link:-</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/unpacked_array/single_unpacked/unpacked_array.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/unpacked_array/single_unpacked/unpacked_array.log</a
+>
+</p>
+<hr>
+<p>The below figure shows how the array elements stored in 2-dimensional unpacked array. for <code>int abc[2][3]</code> example going from left to right in dimensions elements will occupied the memory.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110448056/190572695-27a9bd88-04a6-4fdf-a6af-68a9fb986244.png"
+  alt="2d-unpacked"
+  class="2d-unpacked"/>
+</p>
+<pre><code>                               Figure.6 two dimensional unpacked array memory layout
+</code></pre>
+<p>The below figure shows the output of multi dimension unpacked array, here it consists of <code>int abc[2][3] = $urandom_range(10,50)</code>.
+Here, 2 dimensional packed array declared and and we can similarly create 3 dimensional array as same.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110448056/186889779-c6758475-6199-4e4e-9cbf-e25e0e2abd29.png"
+  alt="multi_unpacked"
+  class="multi_unpacked"/>
+</p>
+<pre><code>                               Figure.5 multi dimensional unpacked array output
+</code></pre>
+<p><strong>Github lab code link:-</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/unpacked_array/multi_unpacked/multi_unpacked.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/unpacked_array/multi_unpacked/multi_unpacked.sv</a
+>
+</p>
+<p><strong>Github lab output link:-</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/unpacked_array/multi_unpacked/multi_unpacked.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/unpacked_array/multi_unpacked/multi_unpacked.log</a
+>
+</p>
+<hr>
+<p><strong>Applications of unpacked arrays:</strong></p>
+<p>They are used to model Random Access Memories (RAMs), Read Only Memories (ROMs) and register files where one element is accessed at a time.</p>
+<hr>
+<h2 id='mixed-multi-dimensional-arrays'>Mixed Multi Dimensional Arrays:<a href='#mixed-multi-dimensional-arrays' class='anchor'>#</a>
+</h2><p>Mix of Packed arrays and unpacked arrays are known as mixed multi dimensional array.</p>
+<p><strong>Syntax:-</strong>  <code>[data_type] [dimensions] [array_name] [dimensions];</code></p>
+<p><strong>Example,</strong></p>
+<p><code>logic [2:0][3:0] mixed_array [2:0][3:0];</code></p>
+<p><strong>Some Points about mixed multidimensional arrays:</strong></p>
+<ul>
+<li>All unpacked dimensions are first referenced from the left-most to the right-most dimension in that order.</li>
+<li>All packed dimensions are then referenced from the left-most to the right-most dimension in that order.</li>
+</ul>
+<p>In the given example, going from left to right side the memory will be allocated and for that first unpacked array dimension are considered as shown in diagram below and after that packed array dimensions are considered.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110448056/190611850-07ad5b94-e594-44c8-a107-5aeb3768a508.png"
+  alt="mixed-arrays"
+  class="mixed-arrays"/>
+</p>
+<pre><code>                           Figure.7 mixed multi dimensional array memory allocation-
+</code></pre>
+<hr>
+<h2 id='3dynamic-arrays'>3.Dynamic Arrays:<a href='#3dynamic-arrays' class='anchor'>#</a>
+</h2><p>A dynamic array is an unpacked array whose size can be set or changed at run time. The space for a dynamic array does not exist until the array is explicitly created at run-time.</p>
+<p><strong>Syntax:-</strong> <code>&lt;data_type&gt; array_name []</code></p>
+<p><strong>Example,</strong></p>
+<p><code>int abc[] = new[7];</code></p>
+<p><code>abc[7] = '{11,12,13,14,15,16,17};</code></p>
+<p><strong>Some Points about unpacked arrays:</strong></p>
+<ul>
+<li>The default size of an un-initialized dynamic array is 0.</li>
+<li>Dynamic arrays support all variable data types as element types, including arrays.</li>
+<li>An out-of-bound access in a dynamic array leads to a default value of the data type.</li>
+</ul>
+<p><strong>Dynamic Arrays Methods cheat sheet:</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Sr No.</strong></th>
+<th><strong>Methods</strong></th>
+<th><strong>Example</strong></th>
+<th><strong>description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>constructor new [value]</td>
+<td>abc.new[]</td>
+<td>Sets the size of a dynamic array and initializes its elements or changes the size of the array at run-time. If the value is zero, the array shall become empty. If the value is negative, then it is an error.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>function int size()</td>
+<td>abc.size()</td>
+<td>The size() method returns the current size of a dynamic array or returns zero if the array has not been created</td>
+</tr>
+<tr>
+<td>3</td>
+<td>function void delete()</td>
+<td>abc.delete()</td>
+<td>The delete() method empties the array, resulting in a zero-sized array</td>
+</tr>
+</tbody>
+</table>
+<pre><code>                             Table.2. dynamic array methods
+</code></pre>
+<p>The below figure shows the output of dynamic array.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110448056/186890744-7a0a6733-b3a1-4e87-ae49-7956d8b5a7d1.png"
+  alt="dynamic"
+  class="dynamic"/>
+</p>
+<pre><code>                             Figure.8 dynamic array output
+</code></pre>
+<p><strong>Github lab code link:-</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/dynamic_array/dynamic/dynamic.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/dynamic_array/dynamic/dynamic.sv</a
+>
+</p>
+<p><strong>Github lab output link:-</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/dynamic_array/dynamic/dynamic_array.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/dynamic_array/dynamic/dynamic_array.log</a
+>
+</p>
+<hr>
+<p>The below figure shows the output of dynamic array methods.
+In example,</p>
+<p><code>int xyz[] = new[10];</code></p>
+<p><code>xyz = '{11,12,13,14,15,16,17,18,19,20};</code></p>
+<p><img
+  src="https://user-images.githubusercontent.com/110448056/186891136-81fbb195-14c4-42b0-b355-fb280346ecc7.png"
+  alt="methods_dynamic"
+  class="methods_dynamic"/>
+</p>
+<pre><code>                          Figure.9 dynamic array methods output
+</code></pre>
+<p><strong>Github lab code link:-</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/dynamic_array/dynamic_method/methods.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/dynamic_array/dynamic_method/methods.sv</a
+>
+</p>
+<p><strong>Github lab output link:-</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/dynamic_array/dynamic_method/methods_dynamic.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/dynamic_array/dynamic_method/methods_dynamic.log</a
+>
+</p>
+<hr>
+<p>The below figure shows the output of out-of-bound access in a dynamic array leads to default value of data_type.
+In example,</p>
+<p><code>int da[] =new[5];</code></p>
+<p><code>da[5] = '{1,2,5,6,8};</code></p>
+<p><code>out of bound access of dynamic array da[1024] = 0;</code></p>
+<p><img
+  src="https://user-images.githubusercontent.com/110412474/187175379-fa7e35e3-df71-4421-a5dd-a5fcabb4fb84.JPG"
+  alt="dynamic"
+  class="dynamic"/>
+</p>
+<pre><code>                             Figure.10 out-of-bound access of Dynamic array  
+</code></pre>
+<p><strong>Github lab code link:</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/dynamic_array/dynamic_unbound/dynamic.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/dynamic_array/dynamic_unbound/dynamic.sv</a
+>
+</p>
+<p><strong>Github lab output link:</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/dynamic_array/dynamic_unbound/dynamic.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/dynamic_array/dynamic_unbound/dynamic.log</a
+>
+</p>
+<hr>
+<p><strong>Applications of dynamic arrays:</strong></p>
+<p>A dynamic array that can be allocated and re-sized during simulation will avoid this unnecessary memory allocation.</p>
+<hr>
+<h2 id='4associative-arrays'>4.Associative Arrays:<a href='#4associative-arrays' class='anchor'>#</a>
+</h2><p>An associative array is an unpacked array data-type. It does not have any storage allocated until it is used, and the index type used to access elements is not restricted to integers.</p>
+<p><strong>Syntax:-</strong> <code>&lt;data_type&gt; array_name [index_type]</code></p>
+<p>where, index type is any data type or it&rsquo;s wildcard &ldquo;*&rdquo;.</p>
+<p><strong>Example,</strong></p>
+<p><code>int abc[*];</code></p>
+<p><code>abc  = '{ 1:20, 25:22, 38:66};</code></p>
+<p><code>string pqr[string];</code></p>
+<p><code>pqr = '{&quot;fruits&quot;:&quot;mango&quot; , &quot;vegetables&quot;:&quot;cucumber&quot; , &quot;season&quot;:&quot;monsoon&quot;};</code></p>
+<p><strong>Some Points about unpacked arrays:</strong></p>
+<ul>
+<li>Associative array elements are unpacked.</li>
+<li>It can be stored by the simulator as a hash (lookup) table for extremely fast access of its elements. A hash table contains an array of groups of elements. A function called hash function generates a unique key to compute the index into this array, from which the correct array element value is obtained.</li>
+<li>Elements in an associative array can be accessed in a similar way as those in a one-dimensional array.</li>
+<li>If an attempt is made to read an invalid (non-existent) associative array entry, then the simulator will issue a warning and will return the value ‘x’ for a 4-state integral type or a value ‘0’ for a 2-state integral type.</li>
+<li>Use of &ldquo;*&rdquo; this wild card will increases the simulation time so avoid to use that while declaring the array.</li>
+</ul>
+<p><strong>Associative Arrays Methods cheat sheet:</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Sr. No</strong></th>
+<th><strong>Function</strong></th>
+<th><strong>Example</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>int num ()</td>
+<td>abc.num()</td>
+<td>Returns the number of entries in the associative array</td>
+</tr>
+<tr>
+<td>2</td>
+<td>int size ()</td>
+<td>abc.size()</td>
+<td>Also returns the number of entries, if empty 0 is returned</td>
+</tr>
+<tr>
+<td>3</td>
+<td>void delete ([input index])</td>
+<td>abc.delete(index)</td>
+<td>index when specified deletes the entry at that index, else the whole array is deleted</td>
+</tr>
+<tr>
+<td>4</td>
+<td>int exists (input index)</td>
+<td>abc.exists(index)</td>
+<td>Checks whether an element exists at specified index; returns 1 if it does, else 0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>int first (ref index)</td>
+<td>abc.first(index)</td>
+<td>Assigns to the given index variable the value of the first index; returns 0 for empty array</td>
+</tr>
+<tr>
+<td>6</td>
+<td>int last (ref index)</td>
+<td>abc.last(index)</td>
+<td>Assigns to given index variable the value of the last index; returns 0 for empty array</td>
+</tr>
+<tr>
+<td>7</td>
+<td>int next (ref index)</td>
+<td>abc.next(index)</td>
+<td>Finds the smallest index whose value is greater than the given index</td>
+</tr>
+<tr>
+<td>8</td>
+<td>int prev (ref index)</td>
+<td>abc.prev(index)</td>
+<td>Finds the largest index whose value is smaller than the given index</td>
+</tr>
+</tbody>
+</table>
+<pre><code>                              Table.3. associative arrays methods
+</code></pre>
+<p>The below figure shows the output of associative array.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110448056/186892320-543d76d4-30e2-4f1b-adbc-dd9a68969c25.png"
+  alt="associative"
+  class="associative"/>
+</p>
+<pre><code>                             Figure.11 associative array output
+</code></pre>
+<p><strong>Github lab code link:-</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/associative_array/associative/associative_array.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/associative_array/associative/associative_array.sv</a
+>
+</p>
+<p><strong>Github lab output link:-</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/associative_array/associative/associative_array.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/associative_array/associative/associative_array.log</a
+>
+</p>
+<hr>
+<p>The below figure shows the output of associative array methods.
+In example,</p>
+<p><code>int abc[string];</code></p>
+<p><code>abc = '{&quot;vadodara&quot; : 10, &quot;ahmedabad&quot; : 25, &quot;rajkot&quot; : 55, &quot;surendranagar&quot; : 38, &quot;surat&quot;:48};</code></p>
+<p><img
+  src="https://user-images.githubusercontent.com/110448056/187507122-51b4629c-b817-4e74-9ce3-3d9f7b2ff9a2.png"
+  alt="associative_methods"
+  class="associative_methods"/>
+</p>
+<pre><code>                            Figure.12 associative methods output
+</code></pre>
+<p><strong>Github lab code link:-</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/associative_array/associative_methods/associative_methods.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/associative_array/associative_methods/associative_methods.sv</a
+>
+</p>
+<p><strong>Github lab output link:-</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/associative_array/associative_methods/associative_mthod.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/associative_array/associative_methods/associative_mthod.log</a
+>
+</p>
+<hr>
+<p><strong>Applications of associative arrays:</strong></p>
+<p>Associative arrays used to design Content Addressable Memories (CAMs). Random read or write tests for verification of memories could use associative arrays for storing data only for addresses which have been written. This would take up significantly much lesser memory than the entire array normally used in Verilog.</p>
+<hr>
+<h1 id='5queue'>5.Queue<a href='#5queue' class='anchor'>#</a>
+</h1><p>Queue is a datatype used to have the variable size ordered collection of same datatypes in unpacked array format, it is used to insert the element in the array and delete the element in the array by both the ends. It is like buffer, used to model the first in first out(FIFO) and last in first out (LIFO).</p>
+<p><strong><strong>Syntax</strong></strong>: <code>data_type name[$];</code></p>
+<p>data_type - data_type of queue element<br>
+name - name of the queue<br>
+[$] - declare the unbounded queue</p>
+<p>There are two types of queue declaration</p>
+<h2 id='1-bounded'>1. bounded<a href='#1-bounded' class='anchor'>#</a>
+</h2><p>The queue as the size limit. we need to provide the max value while declare the queue</p>
+<p>syntax: <code>data_type name[$:255];</code></p>
+<p>Here $- first element
+255 - last element</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110412474/186423427-f222976c-7179-40ac-83fb-0ae011222e72.jpg"
+  alt="bounded queue"
+  class="bounded queue"/>
+</p>
+<pre><code>                        Figure.13 Bounded queue with push and pop operation
+</code></pre>
+<hr>
+<h2 id='2-unbounded'>2. unbounded<a href='#2-unbounded' class='anchor'>#</a>
+</h2><p>The queue as no size limit. we do not provide an size of queue it is a variable size queue.</p>
+<p>syntax: <code>data_type name[$];</code></p>
+<p>Here 0 - first element
+$ - last element</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110412474/186423948-b22286aa-8de7-4dde-9b0e-08bbdf394306.jpg"
+  alt="unbounded queue"
+  class="unbounded queue"/>
+</p>
+<pre><code>                        Figure.14 Unbounded queue with push and pop operation                         
+</code></pre>
+<hr>
+<p><strong><strong>Queue method cheat sheet</strong></strong></p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>function int size ();</td>
+<td>queue1.size();</td>
+<td>returns the number of items in the queue</td>
+</tr>
+<tr>
+<td>function void insert (input integer index, input element_t item);</td>
+<td>queue1.insert(int 0, 2);</td>
+<td>inserts the given item at the specified index position</td>
+</tr>
+<tr>
+<td>function void delete ( [input integer index] );</td>
+<td>queue1.delete(0);</td>
+<td>deletes the item at the specified index position</td>
+</tr>
+<tr>
+<td>function element_t push_front (input element_t item);</td>
+<td>queue1.push_front(&ldquo;yelahanka&rdquo;);</td>
+<td>inserts the given element at the front of the queue</td>
+</tr>
+<tr>
+<td>function element_t push_back (input element_t item);</td>
+<td>queue1.push_back(&ldquo;udupi&rdquo;);</td>
+<td>inserts the given element at the end of the queue</td>
+</tr>
+<tr>
+<td>function void pop_front ();</td>
+<td>queue1.pop_front()</td>
+<td>removes and returns the first element of the queue</td>
+</tr>
+<tr>
+<td>function void pop_back ();</td>
+<td>queue1.pop_back()</td>
+<td>removes and returns the last element of the queue</td>
+</tr>
+</tbody>
+</table>
+<pre><code>                Table.4 Queue Methods
+</code></pre>
+<hr>
+<h2 id='queue-methods'>Queue Methods<a href='#queue-methods' class='anchor'>#</a>
+</h2><p>Example.1 : consider the variable size queue named as queue1 = {2,7,1,9,9,7}, the output is shown in Fig.1</p>
+<ul>
+<li><strong><strong>size():</strong></strong></li>
+</ul>
+<p>Display the number of element in the queue ,if the queue is empty display the empty array.<br>
+Expression: queue1.size()- It is used to display the size of the array queue1.<br>
+output : 6</p>
+<ul>
+<li><strong><strong>delete():</strong></strong></li>
+</ul>
+<p>It is used to delete the queue element of specified index position.<br>
+Expression : queue.delete(0) - It delete the array element &lsquo;2&rsquo; in the zeroth index position in the queue1.<br>
+ouput: &lsquo;{7, 1, 9, 9, 7}</p>
+<ul>
+<li>
+<p><strong><strong>insert(index, queue_element):</strong></strong></p>
+<p>It is used to insert the queue element in the particular index position.<br>
+Expression: insert(0, 2)- It insert the array element &lsquo;2&rsquo; in the zeroth index position in the queue1.<br>
+output: &lsquo;{ 2, 7, 1, 9, 9, 7}</p>
+</li>
+</ul>
+<p>The below Figure.12 shows the output for size(), delete(), insert() Methods of Queue.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110412474/186829636-ba817def-7c37-4c16-9f50-af55f1bc9f84.JPG"
+  alt="newqueue1"
+  class="newqueue1"/>
+</p>
+<pre><code>                      Figure.15 Queue Method Example.1
+</code></pre>
+<p>Github lab code link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/Queue/queue_method1/queue.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/Queue/queue_method1/queue.sv</a
+>
+</p>
+<p>Github lab output link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/Queue/queue_method1/queue_data_type.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/Queue/queue_method1/queue_data_type.log</a
+>
+</p>
+<hr>
+<p>The below Figure.12.1 show the output to delete the whole array element in the queue1.<br>
+considering the variable size queue named as queue1 = {2,7,1,9,9,7}</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110412474/187353273-93ea69e7-4923-4281-8096-539d30436525.JPG"
+  alt="queue12"
+  class="queue12"/>
+</p>
+<pre><code>                               Figure.16 Queue Method Example.1
+</code></pre>
+<p><strong>Github code lab link:</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/Queue/queue_method3/queue.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/Queue/queue_method3/queue.sv</a
+>
+</p>
+<p><strong>Github code output link:</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/Queue/queue_method3/makefile"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/Queue/queue_method3/makefile</a
+>
+</p>
+<hr>
+<p>Example.2 : consider the variable size queue named as<br>
+queue1 ={&ldquo;manipal&rdquo;, &ldquo;bangalore&rdquo;, &ldquo;udupi&rdquo;};</p>
+<ul>
+<li><strong><strong>pop.front():</strong></strong></li>
+</ul>
+<p>It remove the queue element from the front of the queue and return the first queue element.<br>
+In the above example, the array element from the front of the queue1 is removed i.e &ldquo;manipal&rdquo;.     <br>
+Now  After removing the array element the queue1 as the elements. queue1 ={ &ldquo;bangalore&rdquo;, &ldquo;udupi&rdquo;};</p>
+<ul>
+<li><strong><strong>pop.back():</strong></strong></li>
+</ul>
+<p>It remove the queue element from the back of the queue and return the queue last queue element.<br>
+In the above example, the array element from the back of the queue1 is removed i.e &ldquo;udupi&rdquo;. <br>
+Now After removing the array element the queue1 as the elements. queue1 = `{&ldquo;bangalore&rdquo;}</p>
+<ul>
+<li><strong><strong>push.front():</strong></strong></li>
+</ul>
+<p>It insert the queue element to the front of the queue.<br>
+Expression: push.front(&ldquo;yelahanka&rdquo;) - Insert the array element to the front of the queue1.<br>
+After push.front() the array elements of queue1 is &lsquo;{&ldquo;yelahanka&rdquo;, &ldquo;bangalore&rdquo;}</p>
+<ul>
+<li><strong><strong>push.back():</strong></strong></li>
+</ul>
+<p>It insert the queue element to the back of the queue.<br>
+Expression: push.back(&ldquo;udupi&rdquo;)- Insert the array element to the back of the queue1<br>
+After push,back() the array elements of the queue1 is &lsquo;{&ldquo;yelahanka&rdquo;, &ldquo;bangalore&rdquo;, &ldquo;udupi&rdquo;}</p>
+<p>The below Figure.2 shows the output of pop.front(), pop.back(), push.front(), push.back(), Methods of Queue.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110412474/186828222-396f58a1-fdb4-4e89-88a6-506185f9495a.JPG"
+  alt="newqueue2"
+  class="newqueue2"/>
+</p>
+<pre><code>                         Figure.17 Queue Method Example.2
+</code></pre>
+<p>Github lab code link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/Queue/queue_method2/queue.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/Queue/queue_method2/queue.sv</a
+>
+</p>
+<p>Github lab output link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/Queue/queue_method2/queue_data.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/Queue/queue_method2/queue_data.log</a
+>
+</p>
+<hr>
+<h2 id='advantages-and-disadvantages-of-arrays'>Advantages and disadvantages of Arrays:<a href='#advantages-and-disadvantages-of-arrays' class='anchor'>#</a>
+</h2><table>
+<thead>
+<tr>
+<th><strong>Arrays Type</strong></th>
+<th><strong>Advantage</strong></th>
+<th><strong>Disadvantage</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fixed Size Arrays</td>
+<td>1) Size can be calculated previously before run time. 2) Memory allocated in ROM in bss section of memory and simulation time less compared to unpacked arrays.</td>
+<td>1)  Size is fixed we can’t expands the arrays.   2) Memory wastage.</td>
+</tr>
+<tr>
+<td>Dynamic Arrays</td>
+<td>1) Continues memory allocation   2) We can jump from one memory location to another using loops.  3) We can travel in array at ease due to order   4) Time taken to execute is less compared to queues</td>
+<td>1) We can’t insert and delete the value at particular index location   2) Memories allocated in heap memory and so simulation time is more compared to fixed arrays</td>
+</tr>
+<tr>
+<td>Associative Arrays</td>
+<td>1) It’s Memory friendly   2) Any data type is used for indexing  3) We can insert and delete the values at particular index</td>
+<td>1) Memories allocation is discontinuous    2) No fixed relation between indexing and so travelling through array is difficult 3) Id/keys required to jump to the other memory location in array</td>
+</tr>
+<tr>
+<td>Queues</td>
+<td>1) We can insert and delete the values at particular index    2) We can insert elements in between existing elements   3) Large amount of data can manage efficiently with ease.  4) Push &amp;   pop operation can be performed easily so better than associative arrays</td>
+<td>1) Time taken to execute is more compared to the dynamic arrays   2) It is bit complex as it expands / increases compared to dynamic arrays.</td>
+</tr>
+</tbody>
+</table>
+<h1 id='6array-manipulation-method'>6.Array Manipulation Method<a href='#6array-manipulation-method' class='anchor'>#</a>
+</h1><p>In the System Verilog the array Manipulation method are the built in method used to searching and ordering. The array manipulation method iterate through the each array element to evaluate the expression given by the with clause. The with clause is must for the some of the method and for some it is optional. &ldquo;with&rdquo; is refer to evaluate the existing array with the conditions.The below figure shows the Flow chart of Array Manipulation Method</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110412474/186419438-45f9dc16-d26b-4846-a7a1-ba8c3da67a46.jpg"
+  alt="Array Manipulation Method"
+  class="Array Manipulation Method"/>
+</p>
+<pre><code>                                    Figure.18 Flow chart of Array Manipulation Method
+</code></pre>
+<h3 id='array-manipulation-method-cheat-sheet'>Array Manipulation Method Cheat Sheet<a href='#array-manipulation-method-cheat-sheet' class='anchor'>#</a>
+</h3><p><strong><strong>Note</strong></strong> :Non-Destructive-The array whose output is stored in the another array it will not effect the original array)</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>find() with condition();</td>
+<td>array.find(check) with (check &gt;=&ldquo;oldtown&rdquo;)</td>
+<td>Returns all elements satisfying the given expression</td>
+</tr>
+<tr>
+<td>find_index() with condition();</td>
+<td>array.find_index(check) with (check ==&ldquo;yelahanka&rdquo;);</td>
+<td>Returns the indices of all elements satisfying the given expression</td>
+</tr>
+<tr>
+<td>find_first() with condition();</td>
+<td>array.find_first(check) with (check &lt; &ldquo;yelahanka&rdquo; &amp; check &gt;= &ldquo;newton&rdquo; );</td>
+<td>Returns the first element satisfying the given expression</td>
+</tr>
+<tr>
+<td>find_first_index() with condition();</td>
+<td>array.find_first_index(check) with (check &lt; &ldquo;yelahanka&rdquo;);</td>
+<td>Returns the index of the first element satisfying the given expression</td>
+</tr>
+<tr>
+<td>find_last() with condition();</td>
+<td>array.find_last(check) with (check &lt; &ldquo;oldtown&rdquo;);</td>
+<td>Returns the last element satisfying the given expression</td>
+</tr>
+<tr>
+<td>find_last_index() with condition();</td>
+<td>array.find_last_index(check) with (check &lt; &ldquo;oldtown&rdquo;);</td>
+<td>Returns the index of the last element satisfying the given expression</td>
+</tr>
+<tr>
+<td>function max();</td>
+<td>array.max();</td>
+<td>Return the element which as maximum value</td>
+</tr>
+<tr>
+<td>function min();</td>
+<td>array.min();</td>
+<td>Return the element which as minimum value</td>
+</tr>
+<tr>
+<td>function unique();</td>
+<td>array.unique();</td>
+<td>Return the all elements which as unique value</td>
+</tr>
+<tr>
+<td>function unique_index();</td>
+<td>array.unique_index();</td>
+<td>Return the all index place which as unique value</td>
+</tr>
+<tr>
+<td>function sum();</td>
+<td>array.sum();</td>
+<td>return the sum of all the element</td>
+</tr>
+<tr>
+<td>function product();</td>
+<td>array.product();</td>
+<td>return the product of all the element</td>
+</tr>
+<tr>
+<td>function and();</td>
+<td>array.and();</td>
+<td>Return the bitwise AND(&amp;) of all the element</td>
+</tr>
+<tr>
+<td>function or();</td>
+<td>array.or();</td>
+<td>Return the bitwise OR of all the element in an array</td>
+</tr>
+<tr>
+<td>function xor();</td>
+<td>array.xor();</td>
+<td>Return the bitwise XOR(^) of all the element in an array</td>
+</tr>
+</tbody>
+</table>
+<pre><code>     Table.6.1. Array Manipulation Method
+</code></pre>
+<h3 id='array-manipulation-method-cheat-sheet-1'>Array Manipulation Method Cheat Sheet<a href='#array-manipulation-method-cheat-sheet-1' class='anchor'>#</a>
+</h3><p><strong><strong>Note</strong></strong>: Destructive-The array whose output is directly effected to the original array</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>function reverse();</td>
+<td>array.reverse();</td>
+<td>Reverse the order of array element</td>
+</tr>
+<tr>
+<td>function sort();</td>
+<td>array.sort();</td>
+<td>sort the array element in ascending order</td>
+</tr>
+<tr>
+<td>function rsort();</td>
+<td>array.rsort();</td>
+<td>sort the array element in descending order</td>
+</tr>
+<tr>
+<td>function shuffle();</td>
+<td>array.shuffle();</td>
+<td>shuffle the array element such that the value of index is in Randomized order</td>
+</tr>
+</tbody>
+</table>
+<pre><code>          Table.6.2. Array Manipulation Method
+</code></pre>
+<h2 id='array-locator-method'>Array locator Method<a href='#array-locator-method' class='anchor'>#</a>
+</h2><p>We declare the array with some elements by using the array locator method we can filter the values of the existing array by using the with clause evaluation conditions and all the element satisfyingly the condition are put in an array or return the value. The array locator method uses the with clause  for the below methods,</p>
+<p>Example:  consider the array of five elements, shown the output in Fig.2.1:,</p>
+<p>array[5] = {&ldquo;bangalore&rdquo;, &ldquo;yelahanka&rdquo;, &ldquo;maruthinagar&rdquo;, &ldquo;oldtown&rdquo;, &ldquo;newtown&rdquo;};</p>
+<p>The ASCII value for b=098, y=121, m=109, o=111, n=110.</p>
+<p>Note: Here the comparison happens with the each ascii character of a string with the another string&rsquo;s of each ascii character sequentially. If the first ascii value of each character of a string is same, then it will compare the next ascii character of a string.</p>
+<ul>
+<li><strong><strong>find():</strong></strong></li>
+</ul>
+<p>This method is used to find the value in the existing array based on with clause conditional expressions.</p>
+<p>Expression: result = array.find(check) with (check &gt;=&ldquo;oldtown&rdquo;)<br>
+It will find the string from the existing array based on the condition (check &gt;=&ldquo;oldtown), here the ascii value of &lsquo;y&rsquo; is greater than o ,so it will print the output &lsquo;{&ldquo;yelahanka&rdquo;, &ldquo;oldtown&rdquo;}.</p>
+<ul>
+<li><strong><strong>find_index():</strong></strong></li>
+</ul>
+<p>It is used to write the indices of all the element which satisfy the condition or given expressions.</p>
+<p>Expression :  a = array.find_index(check) with (check ==&ldquo;yelahanka&rdquo;);<br>
+It will find the index position of the string &ldquo;yelahanka&rdquo; and print the output index position of string &ldquo;yelahanka&rdquo; as &lsquo;{1}.</p>
+<ul>
+<li><strong><strong>find_first():</strong></strong></li>
+</ul>
+<p>Write the first element which satisfy the given expression or condition and does not check the condition for other element in the array it will return only the first element.</p>
+<p>Expression : result = array.find_first(check) with (check &lt; &ldquo;yelahanka&rdquo; &amp; check &gt;= &ldquo;newton&rdquo; );
+It will find the string which will satisfy the condition, here the &lsquo;o&rsquo; has great ascii value than n and lesser than y, so it will return the first string from the output array as &lsquo;{&ldquo;oldtown&rdquo;}.</p>
+<ul>
+<li><strong><strong>find_first_index():</strong></strong></li>
+</ul>
+<p>Used to return the first index of an array based on the given condition.</p>
+<p>Expression: a = array.find_first_index(check) with (check &lt; &ldquo;yelahanka&rdquo;);<br>
+It will find the index position of the string if the string match with the condition then it will print the index position of matched string it will not check for the other string character in the existing string it only print the first index position of an array, here &lsquo;b&rsquo; as less ascii value compared to &lsquo;y&rsquo;, so the output is &lsquo;{0}.</p>
+<ul>
+<li><strong><strong>find_last():</strong></strong></li>
+</ul>
+<p>Return the last value of the array which satisfy the given expression the given expression is evaluate for whole existing array, then the resultant array last element is used to display.</p>
+<p>Expression :  result = array.find_last(check) with (check &lt; &ldquo;oldtown&rdquo;);<br>
+It will find all the array element which will match the condition, here &lsquo;b&rsquo;, &rsquo;m&rsquo; and &rsquo;n&rsquo; are having less ascii value compared to &lsquo;o&rsquo;, so it will print only the last array element as &lsquo;{&ldquo;newtown&rdquo;} .</p>
+<ul>
+<li><strong><strong>find_last_index():</strong></strong></li>
+</ul>
+<p>Return the last index of the array which satisfy the given expression the given expression is evaluate for whole existing array, then the resultant array last element index is used to display.</p>
+<p>Expression:  a = array.find_last_index(check) with (check &lt; &ldquo;oldtown&rdquo;);<br>
+It will find all the index position of the element which will match the condition, here &lsquo;b&rsquo;, &rsquo;m&rsquo; and &rsquo;n&rsquo; are having less ascii value compared to &lsquo;o&rsquo;, so it will print only the last array index position as &lsquo;{4} .</p>
+<p>The below Figure 15 shows the output of Array locator methods of function find()</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110412474/186823831-8aa6de65-6db3-446e-8c13-b9b541aca0aa.JPG"
+  alt="newarrayfind"
+  class="newarrayfind"/>
+</p>
+<pre><code>                                           Figure.19 Array Locator Method 
+</code></pre>
+<p>Github lab code link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/Array_methods/Array_find/array.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/Array_methods/Array_find/array.sv</a
+>
+</p>
+<p>Github lab output link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/Array_methods/Array_find/arrayfind.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/Array_methods/Array_find/arrayfind.log</a
+>
+</p>
+<hr>
+<h1 id='the-array-locator-method-optional-with-clause'>The Array Locator Method optional &lsquo;with&rsquo; clause<a href='#the-array-locator-method-optional-with-clause' class='anchor'>#</a>
+</h1><p><strong><strong>Example</strong></strong>: consider array of five elements, shown the output in Figure.16</p>
+<p>array[8] = {1,9,9,7,2,7,0,6}</p>
+<ul>
+<li><strong><strong>min()</strong></strong>:</li>
+</ul>
+<p>Write the element with minimum value or based on the condition that is evaluated to minimum.<br>
+In the above example, the minimum value is 0, so output: &lsquo;{0}.</p>
+<ul>
+<li><strong>max()</strong>:</li>
+</ul>
+<p>Write the element with maximum value or based on the condition that is evaluated to maximum.<br>
+In the above example, the maximum value is 9, so output: &lsquo;{9}</p>
+<ul>
+<li><strong><strong>unique()</strong></strong>:</li>
+</ul>
+<p>It will return the unique value form the array, if the values are repeated it will return only once.<br>
+So the output for above example is, &lsquo;{0,1,2,6,7,9}.</p>
+<ul>
+<li><strong><strong>unique_index()</strong></strong>:</li>
+</ul>
+<p>Return the array element index whose values are different based on the unique expression/condition return the index of each different/unique values<br>
+Expression: unique_index(): Return all the indices which is having the unique value. output = &lsquo;{6,0,4,7,3,1}</p>
+<p>The below Figure 2.2 shows the output  for display the minimum value, maximum value , unique value and unique indices function of Array Manipulation Method.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110412474/186824043-319638ce-3631-427c-89c4-1a27dd814504.JPG"
+  alt="newmax2"
+  class="newmax2"/>
+</p>
+<pre><code>                                        Figure.20 Array Locator Method
+</code></pre>
+<p>Github lab code link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/Array_methods/Array_max/arraymax.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/Array_methods/Array_max/arraymax.sv</a
+>
+</p>
+<p>Github lab output link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/Array_methods/Array_max/arraymax.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/Array_methods/Array_max/arraymax.log</a
+>
+</p>
+<hr>
+<h1 id='array-ordering-method'>Array Ordering method<a href='#array-ordering-method' class='anchor'>#</a>
+</h1><p>The Array ordering method used to sort the array in reverse manner, sort the element in ascending and descending order.</p>
+<p>Example: consider the array of eight element, shown the output in Fig.3:</p>
+<p>array[8] : {2,7,1,9,9,7,0,6}</p>
+<ul>
+<li><strong><strong>Reverse():</strong></strong></li>
+</ul>
+<p>Return the Array element in the reverse order.<br>
+Output for above example is, &lsquo;{6,0,7,9,9,1,7,2}.</p>
+<ul>
+<li><strong><strong>sort():</strong></strong></li>
+</ul>
+<p>Sort the array element in the ascending order.<br>
+So Output = &lsquo;{0,1,2,6,7,7,9,9}</p>
+<ul>
+<li><strong><strong>rsort():</strong></strong></li>
+</ul>
+<p>Sort the array elements in the descending order reverse of sort() method.<br>
+So Ouptut = &lsquo;{9,9,7,7,6,2,1,0)</p>
+<ul>
+<li><strong><strong>shuffle():</strong></strong></li>
+</ul>
+<p>Shuffle the order of the array element such that the index position of the existing array does not match with the resultant array. we can use the loop to shuffle the location of the array element.<br>
+Expression: shuffle() - shuffle the array element such that the indcies place value should be different for each shuffle
+for loop is used to shuffle the array elements
+output: 1st shuffle:&rsquo;{9,0,9,2,7,6,7,1}<br>
+2nd shuffle:&rsquo;{2,7,7,1,9,9,6,0}<br>
+3rd shuffle:&rsquo;{1,0,6,9,7,7.2.9}</p>
+<p>The below Figure.3 shows the output of Array Ordering Method.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110412474/186827961-0f1a61c5-c71e-4e70-90ce-2ddaf9c95a7c.JPG"
+  alt="neworder3"
+  class="neworder3"/>
+</p>
+<pre><code>                                       Figure.21 Array ordering method
+</code></pre>
+<p>Github lab code link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/Array_methods/Array_ordering/arrayorder.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/Array_methods/Array_ordering/arrayorder.sv</a
+>
+</p>
+<p>Github lab output link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/Array_methods/Array_ordering/array_order.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/Array_methods/Array_ordering/array_order.log</a
+>
+</p>
+<hr>
+<h1 id='array-reduction-method'>Array Reduction Method<a href='#array-reduction-method' class='anchor'>#</a>
+</h1><p>Example: consider array of four element, shown the output in Fig.4:
+array[4]: {2,7,0,6}</p>
+<ul>
+<li><strong><strong>sum():</strong></strong></li>
+</ul>
+<p>Return the output by adding the all the element in the existing array.
+Here 2+7+0+6 = 15<br>
+So, output : 15</p>
+<ul>
+<li><strong><strong>product()</strong></strong>:</li>
+</ul>
+<p>Return the output by multiplying the all the element in the existing array.<br>
+So, output: 0</p>
+<ul>
+<li><strong><strong>and():</strong></strong></li>
+</ul>
+<p>Return the output by doing the bitwise AND (&amp;) operation to the all array element.</p>
+<pre><code>Here   010    
+       111    
+       000    
+ (&amp;)   110    
+output:000
+</code></pre>
+<ul>
+<li><strong><strong>or():</strong></strong></li>
+</ul>
+<p>Return the output by doing the bitwise OR(|) operation for all array element.</p>
+<pre><code> Here   010      
+        111      
+        000      
+  (|)   110   
+ouptut: 111    
+</code></pre>
+<ul>
+<li><strong><strong>xor():</strong></strong></li>
+</ul>
+<p>Return the output by doing the bitwise XOR(^) operation for all array element</p>
+<pre><code>   Here   010      
+          111      
+          000      
+    (^)   110   
+  ouptut: 011    
+</code></pre>
+<p>The below Figure.18 shows the output for Array Reduction Method.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110412474/186825000-4e4f6341-d933-47e1-8638-4fad88e1d0f5.JPG"
+  alt="newreduction4"
+  class="newreduction4"/>
+</p>
+<pre><code>                                                 Figure.22 Array Reduction Method
+</code></pre>
+<p>Github lab code link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/Array_methods/Array_Reduction/arrayreduction.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/Array_methods/Array_Reduction/arrayreduction.sv</a
+>
+</p>
+<p>Github lab output link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/Array_methods/Array_Reduction/array_reduction.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/Array_methods/Array_Reduction/array_reduction.log</a
+>
+</p>
+</div><div class="column is-sticky is-paddingless" id="tocWrapper">
+  <div class="is-paddingless" id="tocContainer">
+    <div class="toc-header">
+      <h6 class="toc-title is-marginless">On this page:</h6>
+      <i
+        title="Back to top"
+        id="tocBackToTop"
+        class="fa-solid fa-circle-arrow-up"
+      ></i>
+    </div>
+    <div id="tocContent">
+      <div id="toc"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#arrays">Arrays</a>
+      <ul>
+        <li><a href="#arrays-cheat-sheet">Arrays cheat sheet</a></li>
+        <li><a href="#static-arraysfixed-size-arrays">Static Arrays(Fixed size arrays):</a></li>
+        <li><a href="#static-arrays-has-two-types">Static arrays has two types:</a>
+          <ul>
+            <li><a href="#1packed-arrays">1.Packed Arrays:</a></li>
+            <li><a href="#2unpacked-arrays">2.Unpacked Arrays:</a></li>
+          </ul>
+        </li>
+        <li><a href="#mixed-multi-dimensional-arrays">Mixed Multi Dimensional Arrays:</a></li>
+        <li><a href="#3dynamic-arrays">3.Dynamic Arrays:</a></li>
+        <li><a href="#4associative-arrays">4.Associative Arrays:</a></li>
+      </ul>
+    </li>
+    <li><a href="#5queue">5.Queue</a>
+      <ul>
+        <li><a href="#1-bounded">1. bounded</a></li>
+        <li><a href="#2-unbounded">2. unbounded</a></li>
+        <li><a href="#queue-methods">Queue Methods</a></li>
+        <li><a href="#advantages-and-disadvantages-of-arrays">Advantages and disadvantages of Arrays:</a></li>
+      </ul>
+    </li>
+    <li><a href="#6array-manipulation-method">6.Array Manipulation Method</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#array-manipulation-method-cheat-sheet">Array Manipulation Method Cheat Sheet</a></li>
+            <li><a href="#array-manipulation-method-cheat-sheet-1">Array Manipulation Method Cheat Sheet</a></li>
+          </ul>
+        </li>
+        <li><a href="#array-locator-method">Array locator Method</a></li>
+      </ul>
+    </li>
+    <li><a href="#the-array-locator-method-optional-with-clause">The Array Locator Method optional &lsquo;with&rsquo; clause</a></li>
+    <li><a href="#array-ordering-method">Array Ordering method</a></li>
+    <li><a href="#array-reduction-method">Array Reduction Method</a></li>
+  </ul>
+</nav></div>
+      <div id="taxonomies"><div class="taxonomy-wrapper"><div class="toc-header">
+                  <h6 class="toc-title is-marginless">Categories</h6>
+                </div><a href="/categories/systemverilog/" class="taxonomy"
+                    ><i class="fa-solid fa-circle-dot"></i>SystemVerilog</a
+                  ></div><div class="taxonomy-wrapper"><div class="toc-header">
+                  <h6 class="toc-title is-marginless">Tags</h6>
+                </div><a href="/tags/sv/" class="taxonomy"
+                    ><i class="fa-solid fa-circle-dot"></i>sv</a
+                  ></div></div>
+    </div>
+  </div>
+  <div
+    class="is-paddingless"
+    id="tocCollapsible"
+    title="Collapse/Uncollapse table of contents"
+  >
+    <i class="fa-solid fa-angles-right fa-lg"></i>
+  </div>
+</div>
+</div>
+</div><script type='text/javascript'>
+  const baseUrl = '\/';
+  const codeCopyBefore = 'Copy to clipboard';
+  const codeCopyAfter = 'Copied to clipboard';
+  const svgDownloadLabel = 'Download as SVG';
+  const helperLoadingLabel = 'Loading';
+  const searchNoResults = '没有找到';
+  const introNextLabel = 'Next';
+  const introPrevLabel = 'Previous';
+  const introSkipLabel = '✗';
+  const introDoneLabel = 'Done';
+  const printLabel = 'Print current page';
+  const qrCodeLabel = 'Show current page QR code';
+  const naCommonLabel = 'Not available';
+</script>
+<script
+      type="module"
+      src="/js/theme/modules/const.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/modules/helpers.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/modules/helpersGlobal.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/init.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/navbar.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/print.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/qrcode.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/search.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/shortcuts.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/sidebar.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/toc.min.js"
+    ></script><script
+      type="module"
+      src="/js/shortcuts.min.js"
+    ></script><script
+      type="text/javascript"
+      src="/js/theme/browserCompatibility.min.js"
+    ></script><script
+      type="text/javascript"
+      src="/js/external/flexsearch/flexsearch.bundle.min.js"
+    ></script><script
+      type="text/javascript"
+      src="/js/external/qrious/qrious.min.js"
+    ></script><script
+      type="text/javascript"
+      src="/js/external/overlay-scrollbars/overlayscrollbars.min.js"
+    ></script>
+</body>
+</html>

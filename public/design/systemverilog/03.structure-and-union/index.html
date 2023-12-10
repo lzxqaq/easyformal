@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html>
+  <head><meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="generator" content="Hugo 0.116.1">
+<meta name="viewport" content="width=device-width, initial-scale=1" /><title>SystemVerilog 结构体和联合体 | Documentation du thème Shadocs</title>
+
+<link
+  rel="icon"
+  href="/images/favicon.png"
+  type="image/x-icon"
+/>
+<link
+    rel="stylesheet"
+    rel="preload"
+    type="text/css"
+    href="/css/main.css"
+  /><link
+      rel="stylesheet"
+      type="text/css"
+      href="/css/external/fontawesome.all.min.css"
+    /><link
+      rel="stylesheet"
+      type="text/css"
+      href="/css/external/overlay-scrollbars/overlayscrollbars.min.css"
+    /><link
+      rel="stylesheet"
+      type="text/css"
+      href="/css/shortcuts.min.css"
+    />
+</head>
+  <body onload="browserCompatibility()"><div id="navbarInfo" class="is-hidden modal-container">
+  <div class="modal-content-box modal-text-box">
+    <div class="card modal-title is-radiusless">
+      <div class="card-header">
+        <p class="card-header-title is-marginless">关于</p>
+      </div>
+    </div>
+    <div class="modal-content-container">
+      <div class="modal-content-block is-block"><div class="columns is-marginless is-multiline is-centered">
+  <div class="column">
+    <a
+      class="is-itext-link"
+      href="https://github.com/jgazeau/shadocs"
+      target="_blank"
+    >
+      <div>
+        <i class="fa-brands fa-github fa-2x"></i>
+        <p></p>
+      </div>
+    </a>
+  </div>
+  <div class="column">
+    <a
+      class="is-itext-link"
+      href="https://github.com/jgazeau/shadocs/archive/main.zip"
+      target="_blank"
+    >
+      <div>
+        <i class="fa-solid fa-download fa-2x"></i>
+        <p></p>
+      </div>
+    </a>
+  </div>
+  <div class="column">
+    <a
+      class="is-itext-link"
+      href="https://github.com/jgazeau/shadocs/issues"
+      target="_blank"
+    >
+      <div>
+        <i class="fa-solid fa-circle-info fa-2x"></i>
+        <p></p>
+      </div>
+    </a>
+  </div>
+  <div class="column">
+    <a
+      class="is-itext-link"
+      href="https://github.com/jgazeau/shadocs/fork"
+      target="_blank"
+    >
+      <div>
+        <i class="fa-solid fa-code-branch fa-2x"></i>
+        <p></p>
+      </div>
+    </a>
+  </div>
+</div>
+<p>(0.116.1)</p>
+<p>The MIT License (MIT) Copyright © 2023 Jordan GAZEAU</p>
+</div>
+    </div>
+  </div>
+</div>
+<div id="navbarShortcuts" class="is-hidden modal-container">
+  <div class="modal-content-box modal-text-box"><div class="card modal-title is-radiusless">
+        <div class="card-header">
+          <p class="card-header-title is-marginless">Keyboard shortcuts</p>
+        </div>
+      </div>
+      <div class="modal-content-container">
+        <div class="modal-content-block"><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>q</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Show current page QR code</p>
+  </div><div class="modal-content"><kbd>Escape</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Close modals</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>i</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Show website information</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>k</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Show shortcuts</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>h</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Go to homepage</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>f</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Find on website</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>m</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Collapse/Uncollapse sidebar</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>t</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Collapse/Uncollapse table of contents</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>↑</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Go to the top of the page</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>↓</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Go to the bottom of the page</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>p</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Print current page</p>
+  </div></div>
+      </div></div>
+</div>
+<div id="modalContainer" class="is-hidden modal-container">
+  <div id="modal" class="modal-content-box"></div>
+</div>
+<nav id="navbar" class="navbar" role="navigation" aria-label="main navigation">
+  <div id="navbarItemsContainer" class="navbar-brand"><div id="globalLogoContainer" class="is-flex">
+  <a
+    id="globalLogo"
+    class="navbar-item navbar-item-standard is-paddingless"
+    href="/"
+  >
+    <img
+      alt="主页"
+      src="/images/logo.png"
+    />
+  </a>
+  <a
+    id="globalTouchLogo"
+    class="navbar-item navbar-item-standard is-paddingless"
+    href="/"
+  >
+    <img
+      alt="主页"
+      src="/images/logoTouch.png"
+    />
+  </a>
+</div>
+<div id="navbarItems" class="is-flex">
+      <div id="navbarItemsStart" class="is-flex">
+        <div id="searchContainer" class="navbar-item"><div class="control has-icons-left">
+  <span id="searchInput" class="autocomplete">
+    <input
+      id="search"
+      autocomplete="off"
+      class="input"
+      type="search"
+      placeholder="搜索"
+    />
+  </span>
+  <span class="icon is-left">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </span>
+  <ul id="searchList" class="is-paddingless is-hidden"></ul>
+</div>
+</div>
+      </div>
+      <div id="navbarItemsEnd" class="is-flex is-invisible"><div class="navbar-item">
+  <a
+    id="printButton"
+    class="button navbar-item-standard"
+  >
+    <span class="icon-text">打印</span>
+    <span class="icon">
+      <i class="fa-solid fa-print fa-lg"></i>
+    </span>
+  </a>
+</div><div class="navbar-item"><div
+  id="taxonomiesSelectorContainer"
+  class="dropdown is-right"
+>
+  <div class="dropdown-trigger">
+    <button
+      id="taxonomiesSelector"
+      class="button navbar-item-standard"
+      aria-haspopup="true"
+      aria-controls="dropdown-menu"
+    >
+      <span class="icon-text">Taxonomies</span>
+      <span class="icon">
+        <i class="fa-solid fa-tags fa-lg"></i>
+      </span>
+    </button>
+  </div>
+  <div
+    id="dropdown-menu-taxonomies"
+    class="dropdown-menu"
+    role="menu"
+  >
+    <div class="dropdown-content is-paddingless"><a
+              href="/categories/"
+              class="dropdown-item has-text-weight-bold"
+            ><i class="fa-solid fa-table-cells"></i>Categories</a><a
+              href="/tags/"
+              class="dropdown-item has-text-weight-bold"
+            ><i class="fa-solid fa-tag"></i>Tags</a></div>
+  </div>
+</div>
+</div><div class="navbar-item">
+  <a
+    id="siteInfo"
+    trigger="navbarInfo"
+    class="button navbar-item-standard navbar-trigger"
+    title="关于"
+  >
+    <span class="icon-text">关于</span>
+    <span class="icon">
+      <i class="fa-solid fa-circle-question fa-lg"></i>
+    </span>
+  </a>
+</div>
+<div id="navbarExtend" class="navbar-item">
+  <div id="navbarExtendWrapper">
+    <a id="navbarExtendButton" class="button navbar-item-standard">
+      <span class="icon">
+        <i class="fa-solid fa-ellipsis fa-lg"></i>
+      </span>
+    </a>
+    <div id="navbarExtendItemsContainer">
+      <div id="navbarExtendItemsWrapper"><div class="navbar-item">
+  <a
+    id="printButtonExtend"
+    class="button navbar-item-standard"
+  >
+    <span class="icon-text">打印</span>
+    <span class="icon">
+      <i class="fa-solid fa-print fa-lg"></i>
+    </span>
+  </a>
+</div><div class="navbar-item"><div
+  id="taxonomiesSelectorContainerExtend"
+  class="dropdown is-right"
+>
+  <div class="dropdown-trigger">
+    <button
+      id="taxonomiesSelectorExtend"
+      class="button navbar-item-standard"
+      aria-haspopup="true"
+      aria-controls="dropdown-menu"
+    >
+      <span class="icon-text">Taxonomies</span>
+      <span class="icon">
+        <i class="fa-solid fa-tags fa-lg"></i>
+      </span>
+    </button>
+  </div>
+  <div
+    id="dropdown-menu-taxonomiesExtend"
+    class="dropdown-menu"
+    role="menu"
+  >
+    <div class="dropdown-content is-paddingless"><a
+              href="/categories/"
+              class="dropdown-item has-text-weight-bold"
+            ><i class="fa-solid fa-table-cells"></i>Categories</a><a
+              href="/tags/"
+              class="dropdown-item has-text-weight-bold"
+            ><i class="fa-solid fa-tag"></i>Tags</a></div>
+  </div>
+</div>
+</div><div class="navbar-item">
+  <a
+    id="siteInfoExtend"
+    trigger="navbarInfo"
+    class="button navbar-item-standard navbar-trigger"
+    title="关于"
+  >
+    <span class="icon-text">关于</span>
+    <span class="icon">
+      <i class="fa-solid fa-circle-question fa-lg"></i>
+    </span>
+  </a>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+</nav>
+<div id="navbarOverlay"></div>
+<div
+      class="columns is-mobile is-paddingless is-marginless"
+      id="mainContainer"
+    ><div
+  id="sidebarContainer"
+  class="column is-narrow is-paddingless is-marginless"
+>
+  <div id="sidebarWrapper" class="is-fixed">
+    <div id="sidebar" class="is-marginless">
+      <aside class="menu is-paddingless is-marginless">
+        <ul class="menu-list is-marginless is-paddingless"><div class="card is-fs-expandable-icon"><div class="card-header is-single-link">
+      <a
+        href='/digital/'
+        class='card-header-title'>
+        <i class='fa-solid fa-bars fa-lg'></i></a></div>
+      </div><div class="is-expandable">
+      <div class="is-sidebar-list-wrapper"><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/digital/'
+        class='card-header-title'
+          title='数字电路基础'>
+        <i class='fa-solid fa-bars fa-lg'></i><p class="pt-0 pb-0 pr-2 pl-1">数字电路基础</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="card is-fs-expandable-icon is-sidebar-active"><div class="card-header">
+      <a
+        href='/design/'
+        class='card-header-title'>
+        <i class='fa-solid fa-bars fa-lg'></i></a></div>
+      </div><div class="is-expandable">
+      <div class="is-sidebar-list-wrapper"><li class="is-marginless is-tree-active is-entries-expandable is-entries-expanded"><div
+            class="card"><div class="card-header">
+      <a
+        href='/design/'
+        class='card-header-title'
+          title='HDL 设计'>
+        <i class='fa-solid fa-bars fa-lg'></i><p class="pt-0 pb-0 pr-2 pl-1">HDL 设计</p></a><a class="card-header-icon is-icon-expandable is-paddingless is-icon-expanded">
+                <span class='icon'></span>
+              </a>
+            </div>
+          </div><ul class="is-marginless is-tree-active"><div class="">
+      <div class=""><li class="is-marginless is-entries-expandable is-entries-expanded"><div
+            class="card"><div class="card-header">
+      <a
+        href='/design/systemverilog/'
+        class='card-header-title'
+          title='SystemVerilog 教程'>
+        <i class='fa-solid fa-bars'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 教程</p></a><a class="card-header-icon is-icon-expandable is-paddingless is-icon-expanded">
+                <span class='icon'></span>
+              </a>
+            </div>
+          </div><ul class="is-marginless"><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/01.data-types/'
+        class='card-header-title'
+          title='SystemVerilog 数据类型'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 数据类型</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/02.array/'
+        class='card-header-title'
+          title='SystemVerilog 数组'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 数组</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card is-sidebar-active"id='sidebarActiveEntry'><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/03.structure-and-union/'
+        class='card-header-title'
+          title='SystemVerilog 结构体和联合体'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 结构体和联合体</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/04.user-defined/'
+        class='card-header-title'
+          title='SystemVerilog 用户自定义'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 用户自定义</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/05.operators/'
+        class='card-header-title'
+          title='SystemVerilog operators'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog operators</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/06.control-flow/'
+        class='card-header-title'
+          title='SystemVerilog 控制流'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 控制流</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/07.functions/'
+        class='card-header-title'
+          title='SystemVerilog 函数'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 函数</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/08.tasks/'
+        class='card-header-title'
+          title='SystemVerilog 任务'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 任务</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/09.loops/'
+        class='card-header-title'
+          title='SystemVerilog 循环'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 循环</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/10.scheduler-schematics/'
+        class='card-header-title'
+          title='Scheduler schematic'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Scheduler schematic</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/11.processes/'
+        class='card-header-title'
+          title='Processes'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Processes</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/12.fine-grain-process-control/'
+        class='card-header-title'
+          title='Fine Grain Process Control'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Fine Grain Process Control</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/13.interface/'
+        class='card-header-title'
+          title='Interface'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Interface</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/14.constraint/'
+        class='card-header-title'
+          title='Constraint'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Constraint</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/15.classes-and-oops/'
+        class='card-header-title'
+          title='类和面向对象'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">类和面向对象</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/17.functional-coverage/'
+        class='card-header-title'
+          title='Coverage'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Coverage</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/18.assertion/'
+        class='card-header-title'
+          title='Assertion'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Assertion</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/19.interprocess-communication/'
+        class='card-header-title'
+          title='Interprocess communication  '>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Interprocess communication  </p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/20.misc-constructs/'
+        class='card-header-title'
+          title='Program Block'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Program Block</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/choosing-an-array/'
+        class='card-header-title'
+          title='Choosing-an-array'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Choosing-an-array</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/control-flow-interview-questions/'
+        class='card-header-title'
+          title='Control-Flow-Interview-questions'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Control-Flow-Interview-questions</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/data-type-interview-questions/'
+        class='card-header-title'
+          title='Data-type-Interview-questions'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Data-type-Interview-questions</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/differences-between-macros-and-parameters/'
+        class='card-header-title'
+          title='Differences-between-macros-and-parameters'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Differences-between-macros-and-parameters</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/interface-interview-questions/'
+        class='card-header-title'
+          title='Interface-Interview-Questions'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Interface-Interview-Questions</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/processes-interviewquestions/'
+        class='card-header-title'
+          title='Processes-InterviewQuestions'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Processes-InterviewQuestions</p></a></div>
+          </div></li>
+      </div>
+    </div></ul></li>
+      </div>
+    </div></ul></li>
+      </div>
+    </div><div class="card is-fs-expandable-icon"><div class="card-header">
+      <a
+        href='/formal/'
+        class='card-header-title'>
+        <i class='fa-solid fa-bars fa-lg'></i></a></div>
+      </div><div class="is-expandable">
+      <div class="is-sidebar-list-wrapper"><li class="is-marginless is-entries-expandable is-entries-shrinked"><div
+            class="card"><div class="card-header">
+      <a
+        href='/formal/'
+        class='card-header-title'
+          title='形式验证'>
+        <i class='fa-solid fa-bars fa-lg'></i><p class="pt-0 pb-0 pr-2 pl-1">形式验证</p></a><a class="card-header-icon is-icon-expandable is-paddingless is-icon-shrinked">
+                <span class='icon'></span>
+              </a>
+            </div>
+          </div><ul class="is-marginless"><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/formal/model_checking/'
+        class='card-header-title'
+          title='模型检查'>
+        <i class='fa-solid fa-bars'></i><p class="pt-0 pb-0 pr-2 pl-0">模型检查</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/formal/equivalence_checking/'
+        class='card-header-title'
+          title='等价性检查'>
+        <i class='fa-solid fa-bars'></i><p class="pt-0 pb-0 pr-2 pl-0">等价性检查</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless is-entries-expandable is-entries-shrinked"><div
+            class="card"><div class="card-header">
+      <a
+        href='/formal/theorem_proving/'
+        class='card-header-title'
+          title='定理证明'>
+        <i class='fa-solid fa-bars'></i><p class="pt-0 pb-0 pr-2 pl-0">定理证明</p></a><a class="card-header-icon is-icon-expandable is-paddingless is-icon-shrinked">
+                <span class='icon'></span>
+              </a>
+            </div>
+          </div><ul class="is-marginless"><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/formal/theorem_proving/acl2/'
+        class='card-header-title'
+          title='一文了解定理证明器 ACL2'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">一文了解定理证明器 ACL2</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/formal/theorem_proving/acl2_hardware/'
+        class='card-header-title'
+          title='使用 ACL2 进行硬件验证'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">使用 ACL2 进行硬件验证</p></a></div>
+          </div></li>
+      </div>
+    </div></ul></li>
+      </div>
+    </div></ul></li>
+      </div>
+    </div></ul>
+      </aside>
+    </div>
+    <div id="sidebarCollapsible" class="is-marginless">
+      <div class="card is-uncollapse-action">
+        <div
+          id="sidebarUncollapse"
+          class="card-header is-single-link"
+          title="Collapse/Uncollapse sidebar"
+        >
+          <a class="card-header-title">
+            <i class="fa-solid fa-angles-right fa-lg"></i>
+          </a>
+        </div>
+      </div>
+      <div class="card is-collapse-action">
+        <div
+          id="sidebarCollapse"
+          class="card-header is-single-link"
+          title="Collapse/Uncollapse sidebar"
+        >
+          <a class="card-header-title">
+            <i class="fa-solid fa-angles-left fa-lg"></i>
+            <p>折叠</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="sidebarMobileWrapper" class="column is-narrow is-hidden-desktop"></div>
+<div class="columns is-mobile is-marginless is-scroll-smooth has-toc" id="contentContainer">
+  <div class="column" id="content"><div id="contentTitle">SystemVerilog 结构体和联合体</div>
+<h2 id='structure'>Structure<a href='#structure' class='anchor'>#</a>
+</h2><p>A structure contains different data types with different sizes which grouped under one single structure name. Structure  is originally unpacked form by default, but we can use &lsquo;packed&rsquo; keyword  for converting  into packed structure. Structure is different from normal array because array uses only same type of elements with sizes whereas structure uses different data types. The unpacked structure declared using &lsquo;struct&rsquo; keyword.</p>
+<p>The below figure shows different types of structures in System Verilog.
+<img
+  src="https://user-images.githubusercontent.com/110484152/186200139-5258a878-c717-4c94-8fa4-33a53a8d7680.png"
+  alt="image"
+  class="image"/>
+</p>
+<pre><code>                                            Fig 1: Structure Diagram  
+</code></pre>
+<h1 id='types-of-structure'>Types of structure<a href='#types-of-structure' class='anchor'>#</a>
+</h1><p>1.Unpacked structure<br>
+2.Packed structure</p>
+<h2 id='unpacked-structure'>Unpacked Structure<a href='#unpacked-structure' class='anchor'>#</a>
+</h2><p>Unpacked structure is the default structure syntax and is same as normal structure. The different variables holds different data inside the structure known as members of the structure. Structure members were treated as independent variables. when we want to assign values to  the members of structure, then use &lsquo;structure name. variable&rsquo;.</p>
+<p><strong><strong>Assignments To Struct Members:</strong></strong></p>
+<p>structure name = &lsquo;{value1, value2, value3};</p>
+<p><strong><strong>Alternate Method to assign values:</strong></strong></p>
+<p>structure name = &lsquo;{variable1 : value1 , variable2 : value2 , variable 3 : value3};<br>
+This method gives initialization done in one step. The variable and value can be separated by a colon &lsquo;.&rsquo; .</p>
+<p><strong>Syntax:</strong></p>
+<p><code>struct{</code> <br>
+<code>list of  different types of variables with sizes</code>   <br>
+<code>} structure name;</code></p>
+<p><strong>Example:</strong></p>
+<p><code>struct{</code><br>
+<code>string name;</code><br>
+<code>bit[15:0] salary;</code><br>
+<code>byte id;</code><br>
+<code>} employee_s;</code></p>
+<p>The below figure shows that the data alignment of unpacked structure.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110484152/187272132-8f676df5-921b-4ccd-9233-fd716266beaa.png"
+  alt="image"
+  class="image"/>
+</p>
+<pre><code>                                         Fig 2:  Data alignment of unpacked structure     
+</code></pre>
+<p>The &lsquo;string&rsquo; takes 24 bits for &ldquo;sam&rdquo; , here string treat as  ascii character. Then 16 bits for bit[15:0] and 8 bits for byte. Here bitstream size is 48. Unpacked structure has more memory footprint than packed structure.</p>
+<p><strong>Output:</strong></p>
+<p><strong>Note</strong>: Without using &lsquo;Typedef&rsquo;  and if we try to initialize the values line by line using alternate  method (Refer Alternate method to assign values), it will show  compile error. Without typedef, value initialization can only be done in one line itself.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110484152/187841989-ba37f227-09dd-4f8e-a9d4-715be7962493.png"
+  alt="unpack "
+  class="unpack "/>
+
+Fig 3: Compile error when not using typedef</p>
+<p>The below output shows the unpacked structure.
+<img
+  src="https://user-images.githubusercontent.com/110484152/187358167-5687962b-152f-4e88-9913-a9989e3308d1.png"
+  alt="unpacked structure"
+  class="unpacked structure"/>
+</p>
+<pre><code>                                              Fig 4: Unpacked structure  
+</code></pre>
+<p>The above output illustrates that the unpacked structure contains the different datatypes like string, int, byte etc. The string must be initialised within double quotes only. The variables like int , byte can be assign the value itself.</p>
+<p>Github Lab code link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/structure/struct-unpacked/structn.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/structure/struct-unpacked/structn.sv</a
+>
+</p>
+<p>Github Lab output link:https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/structure/struct-unpacked/structn.log</p>
+<h2 id='packed-structure'><strong>Packed structure</strong><a href='#packed-structure' class='anchor'>#</a>
+</h2><p>Packed structure can explicitly done using packed keyword. It stores all members of structures in the form of contiguous form in a specified order.
+In RTL code, a packed structure is treated as a single vector and each data type in the structure is represented as a bit field. The whole structure is packed together in memory without gaps. Only packed data types like bit , logic  and integer data types are also  allowed to use  in a packed structure.</p>
+<p>Note: Structure cannot be packed if it cannot be represented as a vector.</p>
+<p><strong>Syntax:</strong></p>
+<p><code>typedef struct packed{</code><br>
+<code>list of  different types of variables with sizes</code><br>
+<code>} structure name;</code></p>
+<p><strong>Example:</strong></p>
+<p><code>typedef struct packed{</code><br>
+<code>byte id;</code><br>
+<code>bit[7:0]experience;</code><br>
+<code>logic[15:0]salary;</code><br>
+<code>}employee_ details_s;</code></p>
+<p>The below figure shows that the data alignment of Packed structure.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110484152/187272734-a3fff0ec-94bf-4b03-b065-4faf0263a4b9.png"
+  alt="image"
+  class="image"/>
+</p>
+<pre><code>                                                Fig 5 : Data alignment of Packed structure     
+</code></pre>
+<p>The &lsquo;byte&rsquo; takes 8 bits , 8 bits for bit[7:0] and 16 bits for logic[15:0].Here bitstream size is 32 bit. Packed  structure has less footprint than unpacked structure.</p>
+<p><strong>Output:</strong></p>
+<p>The below output shows that output of packed structure</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110484152/187270250-0aa48a5a-9fc3-417f-957a-03921d06da1a.png"
+  alt="ps1"
+  class="ps1"/>
+</p>
+<pre><code>                                                 Fig 6: Packed structure  
+</code></pre>
+<p>The above output illustrates the output of packed structure. It contains the different datatypes like bit , logic . We can assign values and  display as output. Here we cannot  use string dataype inside the packed structure because string cannot be treated as single vector. It will show compile error.</p>
+<p>Github lab code link :https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/structure/struct-packed/struct-packed.sv</p>
+<p>Github lab output link:https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/structure/struct-packed/struct-packed.log</p>
+<h2 id='difference-of-packed-structure-and-unpacked-structure'>Difference of packed structure and Unpacked structure<a href='#difference-of-packed-structure-and-unpacked-structure' class='anchor'>#</a>
+</h2><table>
+<thead>
+<tr>
+<th style="text-align:left">sr. no.</th>
+<th style="text-align:left"><strong>Packed structure</strong></th>
+<th style="text-align:left"><strong>Unpacked structure</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1.</td>
+<td style="text-align:left">struct packed  keyword is used for define packed structure</td>
+<td style="text-align:left">struct keyword is used for define unpacked structure</td>
+</tr>
+<tr>
+<td style="text-align:left">2.</td>
+<td style="text-align:left">Smaller memory footprint because of single bit data declaration</td>
+<td style="text-align:left">Larger memory footprints because it includes all dataypes</td>
+</tr>
+<tr>
+<td style="text-align:left">3.</td>
+<td style="text-align:left">string datatype cannot be used and only packed datatypes and integer dataypes allowed</td>
+<td style="text-align:left">All datatypes can be used.</td>
+</tr>
+<tr>
+<td style="text-align:left">4.</td>
+<td style="text-align:left">It is used in RTL code because it can synthesis the code</td>
+<td style="text-align:left">It is not used in RTL code because it cannot synthesis by synthesis tool</td>
+</tr>
+<tr>
+<td style="text-align:left">5.</td>
+<td style="text-align:left">Entire structure packed together without memory gaps</td>
+<td style="text-align:left">Unpacked structure doesnot have a packing structure</td>
+</tr>
+</tbody>
+</table>
+<pre><code>                                 Table 1: Difference of packed structure and Unpacked structure  
+</code></pre>
+<hr>
+<h1 id='union'><strong>Union</strong><a href='#union' class='anchor'>#</a>
+</h1><p>The union is similar to structures while union shares the memory location. The largest datatype size will be the memory size for all members in the union. The &lsquo;union&rsquo; keyword is used for defined for Union. They are two types: Packed Union and Unpacked Union.</p>
+<h2 id='unpacked-union'>Unpacked Union<a href='#unpacked-union' class='anchor'>#</a>
+</h2><p>The unpacked structure use the keyword &lsquo;union&rsquo; keyword. It uses the datatypes like int, byte ,bit, logic .Only the largest datatype size should be taken for the whole union members. In this scenario, sometimes the whole memory space may not be used for all the union members. The value changed for one variable also effects other members inside the Union.</p>
+<h2 id='syntax'>syntax:<a href='#syntax' class='anchor'>#</a>
+</h2><p><code>union {</code><br>
+<code>list of elements</code><br>
+<code>} Union_name</code></p>
+<h2 id='example'>Example:<a href='#example' class='anchor'>#</a>
+</h2><p><code>union {</code><br>
+<code>int x;</code><br>
+<code>byte y;</code><br>
+<code>} data_u;</code></p>
+<h2 id='output'>Output:<a href='#output' class='anchor'>#</a>
+</h2><p>The below figure shows the output of Unpacked Union.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110484152/187967811-3bdc1911-a2b2-4fbd-b9f4-66633fb470a7.png"
+  alt="unss"
+  class="unss"/>
+</p>
+<pre><code>                                      Fig 1: Output of Unpacked Union.   
+</code></pre>
+<p>The unpacked union contains different datatypes and it should be different size. But the unpacked union shares the memory so, the member which have largest memory size should be same for all union members. Here in example, &lsquo;int&rsquo; and &lsquo;byte&rsquo; datatype is used and &lsquo;int&rsquo; size is 32 bit and &lsquo;byte&rsquo; is 8 bit ,&lsquo;int&rsquo; is largest among them so the size of all union members is 32 bit.</p>
+<h2 id='data-alignment-of-unpacked-union'>Data alignment of Unpacked union<a href='#data-alignment-of-unpacked-union' class='anchor'>#</a>
+</h2><p>The below figure shows that  Data alignment of Unpacked union</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110484152/187362996-28178b48-1556-4738-a604-3051c5f5835d.png"
+  alt="image"
+  class="image"/>
+</p>
+<pre><code>                                     Fig 2: Data alignment of Unpacked union       
+</code></pre>
+<p>The  figure shows that &lsquo;int&rsquo; takes 32 bit and &lsquo;byte&rsquo; takes 8 bit. But in unpacked union all members share the memory. Here &lsquo;int&rsquo; is the largest datatype, so 32 bits shared for all other members in union.</p>
+<p>Github Lab code link:https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/union/union-unpacked/union-unpack.sv</p>
+<p>Github lab output link:https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/union/union-unpacked/union-unpack.log</p>
+<h2 id='packed-union'>Packed Union<a href='#packed-union' class='anchor'>#</a>
+</h2><p>The Packed Union is defined by &lsquo;union packed&rsquo; keyword. It uses only same type elements like &lsquo;bit&rsquo; , &rsquo;logic&rsquo;, &lsquo;reg&rsquo;  with same size. This is one of the limitation of packed Union.</p>
+<h2 id='syntax-1'>syntax:<a href='#syntax-1' class='anchor'>#</a>
+</h2><p><code>typedef union packed  {</code><br>
+<code>list of  different elements</code><br>
+<code>} Union_name;</code></p>
+<h2 id='example-1'>Example:<a href='#example-1' class='anchor'>#</a>
+</h2><p><code>typedef union packed {</code><br>
+<code>bit [7:0];</code><br>
+<code>bit [7:0];</code> <br>
+<code>} abc_u ;</code></p>
+<h2 id='data-alignment-of-packed-union'>Data alignment of packed union<a href='#data-alignment-of-packed-union' class='anchor'>#</a>
+</h2><p>The below figure shows the Data alignment of packed union</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110484152/187362817-9881a485-8a1d-4801-a431-47fa6fac8ae9.png"
+  alt="image"
+  class="image"/>
+</p>
+<pre><code>                                              Fig 3:  Data alignment of packed union  
+</code></pre>
+<p>The figure shows that bit datatype  and 8bit  size is used. Inside packed union , all members should be same type of element and same size . Here 8 bit size allocated for all union members.</p>
+<h2 id='output-1'>Output:<a href='#output-1' class='anchor'>#</a>
+</h2><p>The below figure shows that the output of packed union.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110484152/187968006-a3f40ac9-7022-43e5-a60b-758576b64ef8.png"
+  alt="upss"
+  class="upss"/>
+</p>
+<pre><code>                                              Fig 4: Output of packed union.   
+</code></pre>
+<p>The packed union output shows that only same type of element  eg, &lsquo;bit&rsquo; and only with same size can be used as union members.</p>
+<p>Github Lab code link:https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/union/union-packed/unionpack.sv</p>
+<p>Github lab output link: <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/union/union-packed/unionpack.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/union/union-packed/unionpack.log</a
+>
+</p>
+<h2 id='difference-between-structure-and-union'>Difference between structure and union<a href='#difference-between-structure-and-union' class='anchor'>#</a>
+</h2><table>
+<thead>
+<tr>
+<th style="text-align:left">sr. no.</th>
+<th style="text-align:left"><strong>structure</strong></th>
+<th style="text-align:left"><strong>Union</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1.</td>
+<td style="text-align:left">struct keyword is used to create structure variable</td>
+<td style="text-align:left">Union keyword is used to define union variable</td>
+</tr>
+<tr>
+<td style="text-align:left">2.</td>
+<td style="text-align:left">Handle different types of element at a time</td>
+<td style="text-align:left">Handle single type of element at a time</td>
+</tr>
+<tr>
+<td style="text-align:left">3.</td>
+<td style="text-align:left">Each structure element gets memory separately</td>
+<td style="text-align:left">Every element share the memory space separately</td>
+</tr>
+<tr>
+<td style="text-align:left">4.</td>
+<td style="text-align:left">The value of element doesn&rsquo;t get changed when other elements change.</td>
+<td style="text-align:left">The element value will get changed  when other element value changes</td>
+</tr>
+<tr>
+<td style="text-align:left">5.</td>
+<td style="text-align:left">Structure variable size is same or greater than sum of elements</td>
+<td style="text-align:left">The size of union variable is same as the size of largest dataype</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</div><div class="column is-sticky is-paddingless" id="tocWrapper">
+  <div class="is-paddingless" id="tocContainer">
+    <div class="toc-header">
+      <h6 class="toc-title is-marginless">On this page:</h6>
+      <i
+        title="Back to top"
+        id="tocBackToTop"
+        class="fa-solid fa-circle-arrow-up"
+      ></i>
+    </div>
+    <div id="tocContent">
+      <div id="toc"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#structure">Structure</a></li>
+      </ul>
+    </li>
+    <li><a href="#types-of-structure">Types of structure</a>
+      <ul>
+        <li><a href="#unpacked-structure">Unpacked Structure</a></li>
+        <li><a href="#packed-structure"><strong>Packed structure</strong></a></li>
+        <li><a href="#difference-of-packed-structure-and-unpacked-structure">Difference of packed structure and Unpacked structure</a></li>
+      </ul>
+    </li>
+    <li><a href="#union"><strong>Union</strong></a>
+      <ul>
+        <li><a href="#unpacked-union">Unpacked Union</a></li>
+        <li><a href="#syntax">syntax:</a></li>
+        <li><a href="#example">Example:</a></li>
+        <li><a href="#output">Output:</a></li>
+        <li><a href="#data-alignment-of-unpacked-union">Data alignment of Unpacked union</a></li>
+        <li><a href="#packed-union">Packed Union</a></li>
+        <li><a href="#syntax-1">syntax:</a></li>
+        <li><a href="#example-1">Example:</a></li>
+        <li><a href="#data-alignment-of-packed-union">Data alignment of packed union</a></li>
+        <li><a href="#output-1">Output:</a></li>
+        <li><a href="#difference-between-structure-and-union">Difference between structure and union</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      <div id="taxonomies"><div class="taxonomy-wrapper"><div class="toc-header">
+                  <h6 class="toc-title is-marginless">Categories</h6>
+                </div><a href="/categories/systemverilog/" class="taxonomy"
+                    ><i class="fa-solid fa-circle-dot"></i>SystemVerilog</a
+                  ></div><div class="taxonomy-wrapper"><div class="toc-header">
+                  <h6 class="toc-title is-marginless">Tags</h6>
+                </div><a href="/tags/sv/" class="taxonomy"
+                    ><i class="fa-solid fa-circle-dot"></i>sv</a
+                  ></div></div>
+    </div>
+  </div>
+  <div
+    class="is-paddingless"
+    id="tocCollapsible"
+    title="Collapse/Uncollapse table of contents"
+  >
+    <i class="fa-solid fa-angles-right fa-lg"></i>
+  </div>
+</div>
+</div>
+</div><script type='text/javascript'>
+  const baseUrl = '\/';
+  const codeCopyBefore = 'Copy to clipboard';
+  const codeCopyAfter = 'Copied to clipboard';
+  const svgDownloadLabel = 'Download as SVG';
+  const helperLoadingLabel = 'Loading';
+  const searchNoResults = '没有找到';
+  const introNextLabel = 'Next';
+  const introPrevLabel = 'Previous';
+  const introSkipLabel = '✗';
+  const introDoneLabel = 'Done';
+  const printLabel = 'Print current page';
+  const qrCodeLabel = 'Show current page QR code';
+  const naCommonLabel = 'Not available';
+</script>
+<script
+      type="module"
+      src="/js/theme/modules/const.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/modules/helpers.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/modules/helpersGlobal.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/init.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/navbar.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/print.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/qrcode.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/search.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/shortcuts.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/sidebar.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/toc.min.js"
+    ></script><script
+      type="module"
+      src="/js/shortcuts.min.js"
+    ></script><script
+      type="text/javascript"
+      src="/js/theme/browserCompatibility.min.js"
+    ></script><script
+      type="text/javascript"
+      src="/js/external/flexsearch/flexsearch.bundle.min.js"
+    ></script><script
+      type="text/javascript"
+      src="/js/external/qrious/qrious.min.js"
+    ></script><script
+      type="text/javascript"
+      src="/js/external/overlay-scrollbars/overlayscrollbars.min.js"
+    ></script>
+</body>
+</html>

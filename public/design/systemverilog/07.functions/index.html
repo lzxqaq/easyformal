@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html>
+  <head><meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="generator" content="Hugo 0.116.1">
+<meta name="viewport" content="width=device-width, initial-scale=1" /><title>SystemVerilog 函数 | Documentation du thème Shadocs</title>
+
+<link
+  rel="icon"
+  href="/images/favicon.png"
+  type="image/x-icon"
+/>
+<link
+    rel="stylesheet"
+    rel="preload"
+    type="text/css"
+    href="/css/main.css"
+  /><link
+      rel="stylesheet"
+      type="text/css"
+      href="/css/external/fontawesome.all.min.css"
+    /><link
+      rel="stylesheet"
+      type="text/css"
+      href="/css/external/overlay-scrollbars/overlayscrollbars.min.css"
+    /><link
+      rel="stylesheet"
+      type="text/css"
+      href="/css/shortcuts.min.css"
+    />
+</head>
+  <body onload="browserCompatibility()"><div id="navbarInfo" class="is-hidden modal-container">
+  <div class="modal-content-box modal-text-box">
+    <div class="card modal-title is-radiusless">
+      <div class="card-header">
+        <p class="card-header-title is-marginless">关于</p>
+      </div>
+    </div>
+    <div class="modal-content-container">
+      <div class="modal-content-block is-block"><div class="columns is-marginless is-multiline is-centered">
+  <div class="column">
+    <a
+      class="is-itext-link"
+      href="https://github.com/jgazeau/shadocs"
+      target="_blank"
+    >
+      <div>
+        <i class="fa-brands fa-github fa-2x"></i>
+        <p></p>
+      </div>
+    </a>
+  </div>
+  <div class="column">
+    <a
+      class="is-itext-link"
+      href="https://github.com/jgazeau/shadocs/archive/main.zip"
+      target="_blank"
+    >
+      <div>
+        <i class="fa-solid fa-download fa-2x"></i>
+        <p></p>
+      </div>
+    </a>
+  </div>
+  <div class="column">
+    <a
+      class="is-itext-link"
+      href="https://github.com/jgazeau/shadocs/issues"
+      target="_blank"
+    >
+      <div>
+        <i class="fa-solid fa-circle-info fa-2x"></i>
+        <p></p>
+      </div>
+    </a>
+  </div>
+  <div class="column">
+    <a
+      class="is-itext-link"
+      href="https://github.com/jgazeau/shadocs/fork"
+      target="_blank"
+    >
+      <div>
+        <i class="fa-solid fa-code-branch fa-2x"></i>
+        <p></p>
+      </div>
+    </a>
+  </div>
+</div>
+<p>(0.116.1)</p>
+<p>The MIT License (MIT) Copyright © 2023 Jordan GAZEAU</p>
+</div>
+    </div>
+  </div>
+</div>
+<div id="navbarShortcuts" class="is-hidden modal-container">
+  <div class="modal-content-box modal-text-box"><div class="card modal-title is-radiusless">
+        <div class="card-header">
+          <p class="card-header-title is-marginless">Keyboard shortcuts</p>
+        </div>
+      </div>
+      <div class="modal-content-container">
+        <div class="modal-content-block"><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>q</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Show current page QR code</p>
+  </div><div class="modal-content"><kbd>Escape</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Close modals</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>i</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Show website information</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>k</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Show shortcuts</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>h</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Go to homepage</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>f</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Find on website</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>m</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Collapse/Uncollapse sidebar</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>t</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Collapse/Uncollapse table of contents</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>↑</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Go to the top of the page</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>↓</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Go to the bottom of the page</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>p</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Print current page</p>
+  </div></div>
+      </div></div>
+</div>
+<div id="modalContainer" class="is-hidden modal-container">
+  <div id="modal" class="modal-content-box"></div>
+</div>
+<nav id="navbar" class="navbar" role="navigation" aria-label="main navigation">
+  <div id="navbarItemsContainer" class="navbar-brand"><div id="globalLogoContainer" class="is-flex">
+  <a
+    id="globalLogo"
+    class="navbar-item navbar-item-standard is-paddingless"
+    href="/"
+  >
+    <img
+      alt="主页"
+      src="/images/logo.png"
+    />
+  </a>
+  <a
+    id="globalTouchLogo"
+    class="navbar-item navbar-item-standard is-paddingless"
+    href="/"
+  >
+    <img
+      alt="主页"
+      src="/images/logoTouch.png"
+    />
+  </a>
+</div>
+<div id="navbarItems" class="is-flex">
+      <div id="navbarItemsStart" class="is-flex">
+        <div id="searchContainer" class="navbar-item"><div class="control has-icons-left">
+  <span id="searchInput" class="autocomplete">
+    <input
+      id="search"
+      autocomplete="off"
+      class="input"
+      type="search"
+      placeholder="搜索"
+    />
+  </span>
+  <span class="icon is-left">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </span>
+  <ul id="searchList" class="is-paddingless is-hidden"></ul>
+</div>
+</div>
+      </div>
+      <div id="navbarItemsEnd" class="is-flex is-invisible"><div class="navbar-item">
+  <a
+    id="printButton"
+    class="button navbar-item-standard"
+  >
+    <span class="icon-text">打印</span>
+    <span class="icon">
+      <i class="fa-solid fa-print fa-lg"></i>
+    </span>
+  </a>
+</div><div class="navbar-item"><div
+  id="taxonomiesSelectorContainer"
+  class="dropdown is-right"
+>
+  <div class="dropdown-trigger">
+    <button
+      id="taxonomiesSelector"
+      class="button navbar-item-standard"
+      aria-haspopup="true"
+      aria-controls="dropdown-menu"
+    >
+      <span class="icon-text">Taxonomies</span>
+      <span class="icon">
+        <i class="fa-solid fa-tags fa-lg"></i>
+      </span>
+    </button>
+  </div>
+  <div
+    id="dropdown-menu-taxonomies"
+    class="dropdown-menu"
+    role="menu"
+  >
+    <div class="dropdown-content is-paddingless"><a
+              href="/categories/"
+              class="dropdown-item has-text-weight-bold"
+            ><i class="fa-solid fa-table-cells"></i>Categories</a><a
+              href="/tags/"
+              class="dropdown-item has-text-weight-bold"
+            ><i class="fa-solid fa-tag"></i>Tags</a></div>
+  </div>
+</div>
+</div><div class="navbar-item">
+  <a
+    id="siteInfo"
+    trigger="navbarInfo"
+    class="button navbar-item-standard navbar-trigger"
+    title="关于"
+  >
+    <span class="icon-text">关于</span>
+    <span class="icon">
+      <i class="fa-solid fa-circle-question fa-lg"></i>
+    </span>
+  </a>
+</div>
+<div id="navbarExtend" class="navbar-item">
+  <div id="navbarExtendWrapper">
+    <a id="navbarExtendButton" class="button navbar-item-standard">
+      <span class="icon">
+        <i class="fa-solid fa-ellipsis fa-lg"></i>
+      </span>
+    </a>
+    <div id="navbarExtendItemsContainer">
+      <div id="navbarExtendItemsWrapper"><div class="navbar-item">
+  <a
+    id="printButtonExtend"
+    class="button navbar-item-standard"
+  >
+    <span class="icon-text">打印</span>
+    <span class="icon">
+      <i class="fa-solid fa-print fa-lg"></i>
+    </span>
+  </a>
+</div><div class="navbar-item"><div
+  id="taxonomiesSelectorContainerExtend"
+  class="dropdown is-right"
+>
+  <div class="dropdown-trigger">
+    <button
+      id="taxonomiesSelectorExtend"
+      class="button navbar-item-standard"
+      aria-haspopup="true"
+      aria-controls="dropdown-menu"
+    >
+      <span class="icon-text">Taxonomies</span>
+      <span class="icon">
+        <i class="fa-solid fa-tags fa-lg"></i>
+      </span>
+    </button>
+  </div>
+  <div
+    id="dropdown-menu-taxonomiesExtend"
+    class="dropdown-menu"
+    role="menu"
+  >
+    <div class="dropdown-content is-paddingless"><a
+              href="/categories/"
+              class="dropdown-item has-text-weight-bold"
+            ><i class="fa-solid fa-table-cells"></i>Categories</a><a
+              href="/tags/"
+              class="dropdown-item has-text-weight-bold"
+            ><i class="fa-solid fa-tag"></i>Tags</a></div>
+  </div>
+</div>
+</div><div class="navbar-item">
+  <a
+    id="siteInfoExtend"
+    trigger="navbarInfo"
+    class="button navbar-item-standard navbar-trigger"
+    title="关于"
+  >
+    <span class="icon-text">关于</span>
+    <span class="icon">
+      <i class="fa-solid fa-circle-question fa-lg"></i>
+    </span>
+  </a>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+</nav>
+<div id="navbarOverlay"></div>
+<div
+      class="columns is-mobile is-paddingless is-marginless"
+      id="mainContainer"
+    ><div
+  id="sidebarContainer"
+  class="column is-narrow is-paddingless is-marginless"
+>
+  <div id="sidebarWrapper" class="is-fixed">
+    <div id="sidebar" class="is-marginless">
+      <aside class="menu is-paddingless is-marginless">
+        <ul class="menu-list is-marginless is-paddingless"><div class="card is-fs-expandable-icon"><div class="card-header is-single-link">
+      <a
+        href='/digital/'
+        class='card-header-title'>
+        <i class='fa-solid fa-bars fa-lg'></i></a></div>
+      </div><div class="is-expandable">
+      <div class="is-sidebar-list-wrapper"><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/digital/'
+        class='card-header-title'
+          title='数字电路基础'>
+        <i class='fa-solid fa-bars fa-lg'></i><p class="pt-0 pb-0 pr-2 pl-1">数字电路基础</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="card is-fs-expandable-icon is-sidebar-active"><div class="card-header">
+      <a
+        href='/design/'
+        class='card-header-title'>
+        <i class='fa-solid fa-bars fa-lg'></i></a></div>
+      </div><div class="is-expandable">
+      <div class="is-sidebar-list-wrapper"><li class="is-marginless is-tree-active is-entries-expandable is-entries-expanded"><div
+            class="card"><div class="card-header">
+      <a
+        href='/design/'
+        class='card-header-title'
+          title='HDL 设计'>
+        <i class='fa-solid fa-bars fa-lg'></i><p class="pt-0 pb-0 pr-2 pl-1">HDL 设计</p></a><a class="card-header-icon is-icon-expandable is-paddingless is-icon-expanded">
+                <span class='icon'></span>
+              </a>
+            </div>
+          </div><ul class="is-marginless is-tree-active"><div class="">
+      <div class=""><li class="is-marginless is-entries-expandable is-entries-expanded"><div
+            class="card"><div class="card-header">
+      <a
+        href='/design/systemverilog/'
+        class='card-header-title'
+          title='SystemVerilog 教程'>
+        <i class='fa-solid fa-bars'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 教程</p></a><a class="card-header-icon is-icon-expandable is-paddingless is-icon-expanded">
+                <span class='icon'></span>
+              </a>
+            </div>
+          </div><ul class="is-marginless"><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/01.data-types/'
+        class='card-header-title'
+          title='SystemVerilog 数据类型'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 数据类型</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/02.array/'
+        class='card-header-title'
+          title='SystemVerilog 数组'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 数组</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/03.structure-and-union/'
+        class='card-header-title'
+          title='SystemVerilog 结构体和联合体'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 结构体和联合体</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/04.user-defined/'
+        class='card-header-title'
+          title='SystemVerilog 用户自定义'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 用户自定义</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/05.operators/'
+        class='card-header-title'
+          title='SystemVerilog operators'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog operators</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/06.control-flow/'
+        class='card-header-title'
+          title='SystemVerilog 控制流'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 控制流</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card is-sidebar-active"id='sidebarActiveEntry'><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/07.functions/'
+        class='card-header-title'
+          title='SystemVerilog 函数'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 函数</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/08.tasks/'
+        class='card-header-title'
+          title='SystemVerilog 任务'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 任务</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/09.loops/'
+        class='card-header-title'
+          title='SystemVerilog 循环'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 循环</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/10.scheduler-schematics/'
+        class='card-header-title'
+          title='Scheduler schematic'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Scheduler schematic</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/11.processes/'
+        class='card-header-title'
+          title='Processes'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Processes</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/12.fine-grain-process-control/'
+        class='card-header-title'
+          title='Fine Grain Process Control'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Fine Grain Process Control</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/13.interface/'
+        class='card-header-title'
+          title='Interface'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Interface</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/14.constraint/'
+        class='card-header-title'
+          title='Constraint'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Constraint</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/15.classes-and-oops/'
+        class='card-header-title'
+          title='类和面向对象'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">类和面向对象</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/17.functional-coverage/'
+        class='card-header-title'
+          title='Coverage'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Coverage</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/18.assertion/'
+        class='card-header-title'
+          title='Assertion'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Assertion</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/19.interprocess-communication/'
+        class='card-header-title'
+          title='Interprocess communication  '>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Interprocess communication  </p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/20.misc-constructs/'
+        class='card-header-title'
+          title='Program Block'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Program Block</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/choosing-an-array/'
+        class='card-header-title'
+          title='Choosing-an-array'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Choosing-an-array</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/control-flow-interview-questions/'
+        class='card-header-title'
+          title='Control-Flow-Interview-questions'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Control-Flow-Interview-questions</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/data-type-interview-questions/'
+        class='card-header-title'
+          title='Data-type-Interview-questions'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Data-type-Interview-questions</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/differences-between-macros-and-parameters/'
+        class='card-header-title'
+          title='Differences-between-macros-and-parameters'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Differences-between-macros-and-parameters</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/interface-interview-questions/'
+        class='card-header-title'
+          title='Interface-Interview-Questions'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Interface-Interview-Questions</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/processes-interviewquestions/'
+        class='card-header-title'
+          title='Processes-InterviewQuestions'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Processes-InterviewQuestions</p></a></div>
+          </div></li>
+      </div>
+    </div></ul></li>
+      </div>
+    </div></ul></li>
+      </div>
+    </div><div class="card is-fs-expandable-icon"><div class="card-header">
+      <a
+        href='/formal/'
+        class='card-header-title'>
+        <i class='fa-solid fa-bars fa-lg'></i></a></div>
+      </div><div class="is-expandable">
+      <div class="is-sidebar-list-wrapper"><li class="is-marginless is-entries-expandable is-entries-shrinked"><div
+            class="card"><div class="card-header">
+      <a
+        href='/formal/'
+        class='card-header-title'
+          title='形式验证'>
+        <i class='fa-solid fa-bars fa-lg'></i><p class="pt-0 pb-0 pr-2 pl-1">形式验证</p></a><a class="card-header-icon is-icon-expandable is-paddingless is-icon-shrinked">
+                <span class='icon'></span>
+              </a>
+            </div>
+          </div><ul class="is-marginless"><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/formal/model_checking/'
+        class='card-header-title'
+          title='模型检查'>
+        <i class='fa-solid fa-bars'></i><p class="pt-0 pb-0 pr-2 pl-0">模型检查</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/formal/equivalence_checking/'
+        class='card-header-title'
+          title='等价性检查'>
+        <i class='fa-solid fa-bars'></i><p class="pt-0 pb-0 pr-2 pl-0">等价性检查</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless is-entries-expandable is-entries-shrinked"><div
+            class="card"><div class="card-header">
+      <a
+        href='/formal/theorem_proving/'
+        class='card-header-title'
+          title='定理证明'>
+        <i class='fa-solid fa-bars'></i><p class="pt-0 pb-0 pr-2 pl-0">定理证明</p></a><a class="card-header-icon is-icon-expandable is-paddingless is-icon-shrinked">
+                <span class='icon'></span>
+              </a>
+            </div>
+          </div><ul class="is-marginless"><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/formal/theorem_proving/acl2/'
+        class='card-header-title'
+          title='一文了解定理证明器 ACL2'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">一文了解定理证明器 ACL2</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/formal/theorem_proving/acl2_hardware/'
+        class='card-header-title'
+          title='使用 ACL2 进行硬件验证'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">使用 ACL2 进行硬件验证</p></a></div>
+          </div></li>
+      </div>
+    </div></ul></li>
+      </div>
+    </div></ul></li>
+      </div>
+    </div></ul>
+      </aside>
+    </div>
+    <div id="sidebarCollapsible" class="is-marginless">
+      <div class="card is-uncollapse-action">
+        <div
+          id="sidebarUncollapse"
+          class="card-header is-single-link"
+          title="Collapse/Uncollapse sidebar"
+        >
+          <a class="card-header-title">
+            <i class="fa-solid fa-angles-right fa-lg"></i>
+          </a>
+        </div>
+      </div>
+      <div class="card is-collapse-action">
+        <div
+          id="sidebarCollapse"
+          class="card-header is-single-link"
+          title="Collapse/Uncollapse sidebar"
+        >
+          <a class="card-header-title">
+            <i class="fa-solid fa-angles-left fa-lg"></i>
+            <p>折叠</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="sidebarMobileWrapper" class="column is-narrow is-hidden-desktop"></div>
+<div class="columns is-mobile is-marginless is-scroll-smooth has-toc" id="contentContainer">
+  <div class="column" id="content"><div id="contentTitle">SystemVerilog 函数</div>
+<h1 id='functions'>Functions<a href='#functions' class='anchor'>#</a>
+</h1><p>The main usage of a function is to write a piece of code that can be called at any time and n number of times by simply calling the function name which doesn&rsquo;t take any simulation time to execute.<br>
+Functions are return type that will return <strong>only</strong> a single value mentioned in the function declaration, if not mentioned then return a one-bit value</p>
+<p><strong>Syntax :</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span><span style="color:#66d9ef">initial</span>  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">begin</span> 
+</span></span><span style="display:flex;"><span>function_name(arguments); 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#f92672">&lt;</span>return_type(optional)<span style="color:#f92672">&gt;</span> function_name(arguments);<span style="color:#960050;background-color:#1e0010">`</span>
+</span></span><span style="display:flex;"><span>statement1;
+</span></span><span style="display:flex;"><span>statement2;
+</span></span><span style="display:flex;"><span>. 
+</span></span><span style="display:flex;"><span>.  
+</span></span><span style="display:flex;"><span>statementN;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">endfunction</span> 
+</span></span></code></pre></div><p><strong>limitations:</strong></p>
+<ul>
+<li>The code inside the functions is not allowed to have time-consuming statements like #, @, wait</li>
+<li>can only return one value</li>
+<li>cannot call a task from the function as the task is allowed to have time-consuming statements</li>
+</ul>
+<p>There are a lot of variations to call a function</p>
+<ul>
+<li><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/07.Functions#calling-a-function-with-values-as-arguments"
+    class="is-pretty-link">Calling a function with values as arguments</a
+>
+</li>
+<li><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/07.Functions#calling-a-function-with-variables-as-arguments"
+    class="is-pretty-link">Calling a function with variables as arguments</a
+>
+</li>
+<li><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/07.Functions#calling-a-function-with-values-from-an-expression"
+    class="is-pretty-link">Calling a function with values from an expression</a
+>
+</li>
+<li><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/07.Functions#calling-a-function-with-variables-with-positional-arguments"
+    class="is-pretty-link">Calling a function with variables with positional arguments</a
+>
+</li>
+<li><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/07.Functions#calling-an-automatic-function"
+    class="is-pretty-link">calling an automatic function</a
+>
+</li>
+<li><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/07.Functions#calling-a-function-with-variables-with-reference-of-variables"
+    class="is-pretty-link">calling a function with variables with reference of variables</a
+>
+</li>
+<li><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/07.Functions#calling-a-function-with-a-void-return-type"
+    class="is-pretty-link">calling a function with a void return type</a
+>
+</li>
+<li><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/07.Functions#Calling-a-function-by-passing-an-array"
+    class="is-pretty-link">Calling a function by passing an array</a
+>
+</li>
+<li><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/07.Functions#Calling-a-function-with-variables-that-had-default-values"
+    class="is-pretty-link">Calling a function with variables that had default values</a
+>
+</li>
+<li><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/07.Functions#calling-a-task-from-a-function"
+    class="is-pretty-link">Calling a task from function(exceptional case by using fork and join_none)</a
+>
+</li>
+</ul>
+<h2 id='calling-a-function-with-values-as-arguments'>Calling a function with values as arguments<a href='#calling-a-function-with-values-as-arguments' class='anchor'>#</a>
+</h2><p><strong>Example:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>          <span style="color:#66d9ef">int</span> result;  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">initial</span>  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">begin</span>  
+</span></span><span style="display:flex;"><span>          result<span style="color:#f92672">=</span>sum(<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">6</span>);  
+</span></span><span style="display:flex;"><span>          $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">returned from function and&#34;</span>);  
+</span></span><span style="display:flex;"><span>          $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">stored the value of sum in result&#34;</span>);    
+</span></span><span style="display:flex;"><span>          $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n\t</span><span style="color:#e6db74">@ %0t ns, value of sum is %0d&#34;</span>,$time,result);     
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">function</span> <span style="color:#66d9ef">int</span> sum(<span style="color:#66d9ef">int</span> var1,var2);    
+</span></span><span style="display:flex;"><span>          $display(<span style="color:#e6db74">&#34;entered into function&#34;</span>);   
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">return</span> var1<span style="color:#f92672">+</span>var2;  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">endfunction</span>   
+</span></span></code></pre></div><p>Here in the above example function name is sum which is of return type int i.e., it has return a one int value only.</p>
+<p><strong>Flowchart:</strong></p>
+<p><img
+  src="https://user-images.githubusercontent.com/110412468/189892056-30c667fc-ab3f-408f-abb9-e18e5f277078.png"
+  alt="01 (1)"
+  class="01 (1)"/>
+</p>
+<pre><code>                Flowchart.1- functions passing values  
+</code></pre>
+<p><strong>output:</strong></p>
+<p><img
+  src="https://user-images.githubusercontent.com/110412468/188588577-c1aef74b-1d62-4b46-adb3-7b43662f042b.png"
+  alt="func pass by val1"
+  class="func pass by val1"/>
+</p>
+<pre><code>          Fig.1- output for function with passing values as arguments  
+</code></pre>
+<p><strong>Github lab code link:</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/functions/func_pass_by_val/func_pass_by_val.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/functions/func_pass_by_val/func_pass_by_val.sv</a
+>
+<br>
+<strong>Github lab output link:</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/functions/func_pass_by_val/func_pass_by_val_log.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/functions/func_pass_by_val/func_pass_by_val_log.log</a
+>
+</p>
+<p>In the above example, the result is a variable declared as int to store the result of the function sum.<br>
+when the sum function is executed, the simulator checks for the function named sum is present or not, if yes then compares the arguments and return the type of function if all match then it proceeds with statements of the function. Then the value 5 is stored in var1, and 6 is stored in var2 After entering into the function it will display entered into function, and next, it will return the value of var1+var2 which will be caught by the variable result and displayed in the next line.</p>
+<h2 id='calling-a-function-with-variables-as-arguments'>Calling a function with variables as arguments<a href='#calling-a-function-with-variables-as-arguments' class='anchor'>#</a>
+</h2><p><strong>Example:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>          <span style="color:#66d9ef">int</span> result,a<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>,b<span style="color:#f92672">=</span><span style="color:#ae81ff">6</span>;    
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">initial</span>  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">begin</span>  
+</span></span><span style="display:flex;"><span>          $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">calling the function&#34;</span>);  
+</span></span><span style="display:flex;"><span>          result<span style="color:#f92672">=</span>sum(a,b);  
+</span></span><span style="display:flex;"><span>          $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">returned from function and&#34;</span>);  
+</span></span><span style="display:flex;"><span>          $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">stored the value of sum in result&#34;</span>);  
+</span></span><span style="display:flex;"><span>          $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n\t</span><span style="color:#e6db74">@ %0t ns, value of sum is %0d&#34;</span>,$time,result);    
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">function</span> <span style="color:#66d9ef">int</span> sum(<span style="color:#66d9ef">input</span> <span style="color:#66d9ef">int</span> a,b);  
+</span></span><span style="display:flex;"><span>          $display(<span style="color:#e6db74">&#34;entered into function&#34;</span>);   
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">return</span> a<span style="color:#f92672">+</span>b;  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">endfunction</span>  
+</span></span></code></pre></div><p><strong>Flowchart:</strong></p>
+<p><img
+  src="https://user-images.githubusercontent.com/110412468/189892087-8768c534-7af5-49ce-8dc4-aeab3ccd526c.png"
+  alt="02"
+  class="02"/>
+</p>
+<pre><code>                Flowchart.2- functions passing arguments as variables   
+</code></pre>
+<p><strong>output:</strong></p>
+<p><img
+  src="https://user-images.githubusercontent.com/110412468/188593334-04c163c0-df7c-4ddf-9dc0-832bf29a9bad.png"
+  alt="func pass by variables1"
+  class="func pass by variables1"/>
+</p>
+<pre><code>          Fig.2- output for function with passing values as variables  
+</code></pre>
+<p><strong>Github lab code link:</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/functions/func_pass_by_variables/func_pass_by_variables.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/functions/func_pass_by_variables/func_pass_by_variables.sv</a
+>
+<br>
+<strong>Github lab output link:</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/functions/func_pass_by_variables/func_pass_by_variables_log.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/functions/func_pass_by_variables/func_pass_by_variables_log.log</a
+>
+</p>
+<p>This is almost similar to the example of passing by values but here will just pass the values by storing the values in variables so that the same line can be reusable if needed and here the variables called in initial module a&amp;b are different than the a&amp;b in function i.e., they have separate memory if any change is made in function on variables a&amp;b then it won&rsquo;t be reflected with values of main modules a&amp;b until a&amp;b are declared as global.
+Here in the functional declaration we also mentioned input for variables whereas in the first example we didn&rsquo;t mention it, so we can give the directions of arguments if necessary and only one output is possible for functions.</p>
+<h2 id='calling-a-function-with-values-from-an-expression'>Calling a function with values from an expression<a href='#calling-a-function-with-values-from-an-expression' class='anchor'>#</a>
+</h2><p><strong>Example:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>          <span style="color:#66d9ef">initial</span>  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">begin</span>   
+</span></span><span style="display:flex;"><span>          $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n\t</span><span style="color:#e6db74">@ %0t ns, value of sum is %0d&#34;</span>,$time,sum(<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">6</span>));    
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">function</span> <span style="color:#66d9ef">int</span> sum(<span style="color:#66d9ef">int</span> var1,var2);  
+</span></span><span style="display:flex;"><span>          $display(<span style="color:#e6db74">&#34;entered into function&#34;</span>);   
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">return</span> var1<span style="color:#f92672">+</span>var2;  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">endfunction</span>  
+</span></span></code></pre></div><p><strong>output:</strong></p>
+<p><img
+  src="https://user-images.githubusercontent.com/110412468/188594048-7d9f5443-493d-4b26-805c-9e3e5f9c897d.png"
+  alt="func call from display1"
+  class="func call from display1"/>
+</p>
+<pre><code>          Fig.3- output for function call from an expression    
+</code></pre>
+<p><strong>Github lab code link:</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/functions/func_call_from_display/func_call_from_display.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/functions/func_call_from_display/func_call_from_display.sv</a
+>
+<br>
+<strong>Github lab output link:</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/functions/func_call_from_display/func_call_from_display_log.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/functions/func_call_from_display/func_call_from_display_log.log</a
+>
+</p>
+<p>In the above example, we didn&rsquo;t use any variables to store the values of the return type of the function, function is called directly from the display statement where the return value is passed to the display statement or else can be used in any expression i.e., function can be called as part of an expression (if we want to add 3 values of 4,5,6 then we can use as 4+sum(5,6).)</p>
+<h2 id='calling-a-function-with-variables-with-positional-arguments'>Calling a function with variables with positional arguments<a href='#calling-a-function-with-variables-with-positional-arguments' class='anchor'>#</a>
+</h2><p><strong>Example:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>          <span style="color:#66d9ef">initial</span>  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">begin</span>   
+</span></span><span style="display:flex;"><span>          result<span style="color:#f92672">=</span>sum(.var1(<span style="color:#ae81ff">5</span>),.var2(<span style="color:#ae81ff">6</span>));  
+</span></span><span style="display:flex;"><span>          $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">returned from function and&#34;</span>);  
+</span></span><span style="display:flex;"><span>          $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">stored the value of sum in result&#34;</span>);  
+</span></span><span style="display:flex;"><span>          $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n\t</span><span style="color:#e6db74">@ %0t ns, value of sum is %0d&#34;</span>,$time,result);      
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">function</span> <span style="color:#66d9ef">int</span> sum(<span style="color:#66d9ef">int</span> var1,var2); 
+</span></span><span style="display:flex;"><span>          $display(<span style="color:#e6db74">&#34;entered into function&#34;</span>);   
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">return</span> var1<span style="color:#f92672">+</span>var2;  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">endfunction</span>  
+</span></span></code></pre></div><p><strong>output:</strong></p>
+<p><img
+  src="https://user-images.githubusercontent.com/110412468/188599306-fc055066-b27a-4c07-8159-ea5ee63d940f.png"
+  alt="func pass by positional1"
+  class="func pass by positional1"/>
+</p>
+<pre><code>          Fig.4- output for function call passing positional arguments   
+</code></pre>
+<p><strong>Github lab code link:</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/functions/func_pass_by_positonal/func_pass_by_positional.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/functions/func_pass_by_positonal/func_pass_by_positional.sv</a
+>
+<br>
+<strong>Github lab output link:</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/functions/func_pass_by_positonal/func_pass_by_positional_log.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/functions/func_pass_by_positonal/func_pass_by_positional_log.log</a
+>
+</p>
+<p>In the above example, we are calling the function using positional arguments i.e., value 5 is pointed to var1 of the function and 6 to var2 and then after works as a normal function only.</p>
+<h2 id='calling-an-automatic-function'>calling an automatic function<a href='#calling-an-automatic-function' class='anchor'>#</a>
+</h2><p><strong>syntax:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#66d9ef">automatic</span> function_name(arguments);
+</span></span></code></pre></div><p><strong>Example:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>          <span style="color:#66d9ef">module</span> func_automatic();
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">int</span> result1,result2;
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">function</span> <span style="color:#66d9ef">int</span> factorial_static(<span style="color:#66d9ef">int</span> var1);
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">if</span>(var1<span style="color:#f92672">&gt;=</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>                result1<span style="color:#f92672">=</span>factorial_static(var1<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">*</span>var1;
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">begin</span>
+</span></span><span style="display:flex;"><span>                  result1<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> result1;
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">endfunction</span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">function</span> <span style="color:#66d9ef">automatic</span> <span style="color:#66d9ef">int</span> factorial_automatic(<span style="color:#66d9ef">int</span> var1);
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span>(var1<span style="color:#f92672">&gt;=</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>                  result2<span style="color:#f92672">=</span>factorial_automatic(var1<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">*</span>var1;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">begin</span>
+</span></span><span style="display:flex;"><span>                  result2<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> result2;
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">endfunction</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">initial</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">begin</span>
+</span></span><span style="display:flex;"><span>              
+</span></span><span style="display:flex;"><span>                result1<span style="color:#f92672">=</span>factorial_static(<span style="color:#ae81ff">5</span>);
+</span></span><span style="display:flex;"><span>                result2<span style="color:#f92672">=</span>factorial_automatic(<span style="color:#ae81ff">5</span>);
+</span></span><span style="display:flex;"><span>              
+</span></span><span style="display:flex;"><span>              $display(<span style="color:#e6db74">&#34;factorial_static:%0d&#34;</span>,result1);
+</span></span><span style="display:flex;"><span>              $display(<span style="color:#e6db74">&#34;factorial_automatic:%0d&#34;</span>,result2);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">endmodule</span><span style="color:#f92672">:</span> func_automatic  
+</span></span></code></pre></div><p>Here we are using the function with an automatic keyword which means whenever the function is called the new memory is created whereas in static the same memory is used whenever the function is called.</p>
+<p><strong>output:</strong></p>
+<p><img
+  src="https://user-images.githubusercontent.com/110412468/189047517-291148e2-d4df-4a37-8af4-4e3585c085dd.png"
+  alt="func fact static automatic"
+  class="func fact static automatic"/>
+</p>
+<pre><code>          Fig.5- output for automatic function     
+</code></pre>
+<p><strong>Github lab code link:</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/functions/func_automatic/func_automatic.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/functions/func_automatic/func_automatic.sv</a
+>
+<br>
+<strong>Github lab output link:</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/functions/func_automatic/func_automatic_log.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/functions/func_automatic/func_automatic_log.log</a
+>
+</p>
+<p>In the above example, we created two functions one is static &amp; other is automatic and calling the sum function twice in the fork so runs parallel and runs concurrently so in the static function the previous memory is overwritten with the old values so that&rsquo;s why lost the data of sum which is 5 but in automatic, it was showing as expected, so whenever automatic is used new memory is allocated for every call.</p>
+<h2 id='calling-a-function-with-variables-with-reference-of-variables'>calling a function with variables with reference of variables<a href='#calling-a-function-with-variables-with-reference-of-variables' class='anchor'>#</a>
+</h2><p><strong>syntax:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#66d9ef">automatic</span> data_type function_name(<span style="color:#66d9ef">ref</span> arguments);
+</span></span></code></pre></div><p><strong>Flowchart:</strong></p>
+<p><img
+  src="https://user-images.githubusercontent.com/110412468/189892137-4ae44093-5931-47b1-9849-7afee8174f24.png"
+  alt="03"
+  class="03"/>
+</p>
+<pre><code>                Flowchart.3- functions passing arguments as variables with reference  
+</code></pre>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>          <span style="color:#66d9ef">int</span> result,addend,augend;  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">initial</span>  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">begin</span>   
+</span></span><span style="display:flex;"><span>          addend<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>;  
+</span></span><span style="display:flex;"><span>          augend<span style="color:#f92672">=</span><span style="color:#ae81ff">6</span>;  
+</span></span><span style="display:flex;"><span>          $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">Before calling function -&gt; addend = %0d , augend = %0d&#34;</span>,addend,augend);  
+</span></span><span style="display:flex;"><span>          $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">calling the functions&#34;</span>);  
+</span></span><span style="display:flex;"><span>          result<span style="color:#f92672">=</span>sum_without_ref(addend,augend);  
+</span></span><span style="display:flex;"><span>          $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">after calling function without ref -&gt; addend = %0d, augend =%0d&#34;</span>,addend,augend);  
+</span></span><span style="display:flex;"><span>          result<span style="color:#f92672">=</span>sum_with_ref(addend,augend);  
+</span></span><span style="display:flex;"><span>          $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">after calling function with ref -&gt; addend = %0d, augend =%0d&#34;</span>,addend,augend);  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">function</span> <span style="color:#66d9ef">automatic</span> <span style="color:#66d9ef">int</span> sum_with_ref(<span style="color:#66d9ef">ref</span> <span style="color:#66d9ef">int</span> var1,var2);  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">int</span> temp;  
+</span></span><span style="display:flex;"><span>          $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n\t</span><span style="color:#e6db74">entered into with ref function&#34;</span>);  
+</span></span><span style="display:flex;"><span>          temp<span style="color:#f92672">=</span>var1;  
+</span></span><span style="display:flex;"><span>          var1<span style="color:#f92672">=</span>var2;  
+</span></span><span style="display:flex;"><span>          var2<span style="color:#f92672">=</span>temp;  
+</span></span><span style="display:flex;"><span>          $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">swapped variables by using ref &#34;</span>);  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">return</span> var1<span style="color:#f92672">+</span>var2;  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">endfunction</span> <span style="color:#f92672">:</span> sum_with_ref  
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">function</span> <span style="color:#66d9ef">int</span> sum_without_ref(<span style="color:#66d9ef">input</span> <span style="color:#66d9ef">int</span> var1,var2);  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">int</span> temp;  
+</span></span><span style="display:flex;"><span>          $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n\t</span><span style="color:#e6db74">entered into without ref function&#34;</span>);  
+</span></span><span style="display:flex;"><span>          temp<span style="color:#f92672">=</span>var1;  
+</span></span><span style="display:flex;"><span>          var1<span style="color:#f92672">=</span>var2;  
+</span></span><span style="display:flex;"><span>          var2<span style="color:#f92672">=</span>temp;  
+</span></span><span style="display:flex;"><span>          $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">swapped variables by without using ref &#34;</span>);  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">return</span> var1<span style="color:#f92672">+</span>var2;  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">endfunction</span> <span style="color:#f92672">:</span> sum_without_ref  
+</span></span></code></pre></div><p>when calling the function by passing variables reference, need to mention the keywords automatic and as well as ref for the arguments as shown in the above example.</p>
+<p><strong>output:</strong></p>
+<p><img
+  src="https://user-images.githubusercontent.com/110412468/188600795-1c972676-f695-4f83-8fcf-b2567a85cd43.png"
+  alt="func pass by ref1"
+  class="func pass by ref1"/>
+</p>
+<pre><code>          Fig.6- output for function call passing arguments with reference   
+</code></pre>
+<p><strong>Github lab code link:</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/functions/func_pass_by_ref/func_pass_by_ref.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/functions/func_pass_by_ref/func_pass_by_ref.sv</a
+>
+<br>
+<strong>Github lab output link:</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/functions/func_pass_by_ref/func_pass_by_ref_log.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/functions/func_pass_by_ref/func_pass_by_ref_log.log</a
+>
+</p>
+<p>In the above example, here trying to call the function by passing the variables reference which means the values addend and augend in the main module and in the automatic function both share the same space of memory. In the example mentioned both static and automatic were given the sum and swapped the variables which are performed in automatic but not in static function.</p>
+<h2 id='calling-a-function-with-a-void-return-type'>calling a function with a void return type<a href='#calling-a-function-with-a-void-return-type' class='anchor'>#</a>
+</h2><p><strong>syntax:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span><span style="color:#75715e">//type casting  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span>&#39;(function_name(arguments));
+</span></span></code></pre></div><p>or</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span><span style="color:#75715e">//declaring the function as void type which doesn&#39;t return any value.   
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#66d9ef">void</span> function_name(arguments);
+</span></span></code></pre></div><p><strong>Example:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>          <span style="color:#66d9ef">initial</span>  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">begin</span>  
+</span></span><span style="display:flex;"><span>          display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74"> ----output for function void return type-----&#34;</span>);  
+</span></span><span style="display:flex;"><span>          display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74"> passing string to function for displaying&#34;</span>);  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">function</span> <span style="color:#66d9ef">void</span> display(<span style="color:#66d9ef">string</span> str);  
+</span></span><span style="display:flex;"><span>          $display(<span style="color:#e6db74">&#34;%s&#34;</span>,str);    
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">endfunction</span><span style="color:#f92672">:</span> display  
+</span></span></code></pre></div><p><strong>output:</strong></p>
+<p><img
+  src="https://user-images.githubusercontent.com/110412468/188607672-a724034e-477d-4467-aa18-08e57e5c74be.png"
+  alt="func return void1"
+  class="func return void1"/>
+</p>
+<pre><code>          Fig.7- output for void function type     
+</code></pre>
+<p><strong>Github lab code link:</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/functions/func_return_void/func_return_void.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/functions/func_return_void/func_return_void.sv</a
+>
+<br>
+<strong>Github lab output link:</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/functions/func_return_void/func_return_void_log.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/functions/func_return_void/func_return_void_log.log</a
+>
+</p>
+<p>In the example, we are calling the function but don&rsquo;t care about the return value of the function, but if we don&rsquo;t mention then the compiler will through warning so in that case will use the convert the function data type to void or else can ignore at function calling point by using the type conversion</p>
+<h2 id='calling-a-function-by-passing-an-array'>Calling a function by passing an array<a href='#calling-a-function-by-passing-an-array' class='anchor'>#</a>
+</h2><p><strong>syntax:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>data_type array_name[size]; 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#66d9ef">automatic</span> return_type function_name(<span style="color:#66d9ef">ref</span> data_type array_name);  
+</span></span></code></pre></div><p><strong>Example:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>          <span style="color:#66d9ef">int</span> array[<span style="color:#ae81ff">5</span>];  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">void</span>&#39;(fun_arr(array));  
+</span></span><span style="display:flex;"><span>          $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">returned from function&#34;</span>);  
+</span></span><span style="display:flex;"><span>          $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n\t</span><span style="color:#e6db74">@ %0t ns, Array elements = %0p&#34;</span>,$time,array);  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">function</span> <span style="color:#66d9ef">automatic</span> <span style="color:#66d9ef">int</span> fun_arr(<span style="color:#66d9ef">ref</span> <span style="color:#66d9ef">int</span> arr[<span style="color:#ae81ff">5</span>]);  
+</span></span><span style="display:flex;"><span>          $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">Entered the function&#34;</span>);  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">foreach</span>(arr[i])<span style="color:#66d9ef">begin</span>  
+</span></span><span style="display:flex;"><span>          arr[i]<span style="color:#f92672">=</span>i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>;  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span>          $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74"> values assigned to array elements starts from 1&#34;</span>);  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">endfunction</span>  
+</span></span></code></pre></div><p>In general, we can&rsquo;t return an array from a function, but can pass an array using pass-by-reference and can manipulate that array in the function as shown in this example.
+<strong>output:</strong></p>
+<p><img
+  src="https://user-images.githubusercontent.com/110412468/188604840-93f11301-2bff-48e8-b54e-cee307a35de9.png"
+  alt="func return arr1"
+  class="func return arr1"/>
+</p>
+<pre><code>          Fig.8- output for function passing an array through refrence 
+</code></pre>
+<p><strong>Github lab code link:</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/functions/func_return_arr/func_return_arr.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/functions/func_return_arr/func_return_arr.sv</a
+>
+<br>
+<strong>Github lab output link:</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/functions/func_return_arr/func_return_arr_log.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/functions/func_return_arr/func_return_arr_log.log</a
+>
+</p>
+<p>In this example, calling the function which passes an array, initially took an empty array of int type so will have all 0&rsquo;s initially and in function assigning the values starting from 1 and incrementing by 1 value and assigning for each index of the array with help of foreach loop, here we used reference to pass the array so all the array elements can be manipulated in the function</p>
+<h2 id='calling-a-function-with-variables-that-had-default-values'>Calling a function with variables that had default values<a href='#calling-a-function-with-variables-that-had-default-values' class='anchor'>#</a>
+</h2><p><strong>syntax:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>function_name()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#f92672">&lt;</span>return_type<span style="color:#f92672">&gt;</span> function_name(varable1<span style="color:#f92672">=</span>deafult_value,variable2<span style="color:#f92672">=</span>default_value)
+</span></span></code></pre></div><p><strong>Example:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>          <span style="color:#66d9ef">initial</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">begin</span>
+</span></span><span style="display:flex;"><span>              $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74"> ----output for function passing by values through variables-----&#34;</span>);
+</span></span><span style="display:flex;"><span>              $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">calling the function&#34;</span>);
+</span></span><span style="display:flex;"><span>              result<span style="color:#f92672">=</span>sum();
+</span></span><span style="display:flex;"><span>              $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">returned from function and&#34;</span>);
+</span></span><span style="display:flex;"><span>              $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">stored the value of sum in result&#34;</span>);
+</span></span><span style="display:flex;"><span>              $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n\t</span><span style="color:#e6db74">@ %0t ns, value of sum is %0d&#34;</span>,$time,result);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">function</span> <span style="color:#66d9ef">int</span> sum(<span style="color:#66d9ef">input</span> <span style="color:#66d9ef">int</span> var1<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>,var2<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span>              $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n\t</span><span style="color:#e6db74">entered into function &#34;</span>);
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">return</span> var1<span style="color:#f92672">+</span>var2;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">endfunction</span><span style="color:#f92672">:</span> sum
+</span></span></code></pre></div><p>In this example, calling the function but not passing any values or variables, then in that case the two variables required for the function will take the default values assigned to them i.e., in this case 2 &amp; 3 gives the sum as 5.</p>
+<p><strong>output:</strong></p>
+<p><img
+  src="https://user-images.githubusercontent.com/110412468/192244221-ea74cc55-47c0-4d1d-9398-6e3dac4a4043.png"
+  alt="02"
+  class="02"/>
+</p>
+<pre><code>          Fig.9- output for function which have default values for variables 
+</code></pre>
+<p>If the function is called without values and variables and the function does not have any default values then the simulator will throw an error as shown below.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/110412468/192244441-6d3a19a5-40d6-4710-9a71-3da9f878cceb.png"
+  alt="03"
+  class="03"/>
+</p>
+<pre><code>          Fig.10- output for error for not mentioning default values    
+</code></pre>
+<h2 id='calling-a-task-from-a-function'>Calling a task from a function<a href='#calling-a-task-from-a-function' class='anchor'>#</a>
+</h2><p>In general, calling a task from a function is illegal, the compiler will through an error but there is an exceptional case for that, the task can be called from a function by using a fork join_none as shown in the following example.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>          <span style="color:#66d9ef">initial</span>  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">begin</span>
+</span></span><span style="display:flex;"><span>          $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">@ %0t ns, In the initial block&#34;</span>,$time);  
+</span></span><span style="display:flex;"><span>          $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">calling function&#34;</span>);  
+</span></span><span style="display:flex;"><span>          #<span style="color:#ae81ff">1</span> <span style="color:#66d9ef">void</span>&#39;(function_call);  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">function</span> function_call;  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">fork</span>  
+</span></span><span style="display:flex;"><span>          $display( <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">@ %0t ns I&#39;m in function&#34;</span>,$time);  
+</span></span><span style="display:flex;"><span>          $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">@ %0t ns, calling task from func&#34;</span>,$time);  
+</span></span><span style="display:flex;"><span>          task_call;  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">join_none</span>  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">endfunction</span>  
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">task</span> task_call;  
+</span></span><span style="display:flex;"><span>          #<span style="color:#ae81ff">1</span> $display( <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">@ %0t ns , I&#39;m in task&#34;</span>,$time);  
+</span></span><span style="display:flex;"><span>          #<span style="color:#ae81ff">1</span> $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">@ %0t ns,leaving from task&#34;</span>,$time);  
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">endtask</span>  
+</span></span></code></pre></div><p><strong>Flowchart:</strong></p>
+<p><img
+  src="https://user-images.githubusercontent.com/110412468/192245228-aa83d3b3-60d2-4422-b76b-558db5c4e0bc.png"
+  alt="05"
+  class="05"/>
+</p>
+<pre><code>                Flowchart.4- calling a task from the function  
+</code></pre>
+<p><strong>output:</strong></p>
+<p><img
+  src="https://user-images.githubusercontent.com/110412468/188620923-5148ad27-001e-496a-8c10-918cf0c93e65.png"
+  alt="task from func1"
+  class="task from func1"/>
+</p>
+<pre><code>          Fig.10- output for calling a task from function      
+</code></pre>
+<p><strong>Github lab code link:</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/functions/task_from_func/task_from_func.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/functions/task_from_func/task_from_func.sv</a
+>
+<br>
+<strong>Github lab output link:</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/functions/task_from_func/task_from_func_log.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/functions/task_from_func/task_from_func_log.log</a
+>
+</p>
+<p>In the initial block, called a function that has some statements and calls a task inside the fork join_none so that the task from a function can be accomplished, here at 0 ns the simulator is in the initial block and a func is called, then @1 ns it printed that I&rsquo;m in function and task is called @1ns in func and from there simulator goes to task, @2ns it prints I&rsquo;m in task and waits for 1ns more and leaving the task.</p>
+</div><div class="column is-sticky is-paddingless" id="tocWrapper">
+  <div class="is-paddingless" id="tocContainer">
+    <div class="toc-header">
+      <h6 class="toc-title is-marginless">On this page:</h6>
+      <i
+        title="Back to top"
+        id="tocBackToTop"
+        class="fa-solid fa-circle-arrow-up"
+      ></i>
+    </div>
+    <div id="tocContent">
+      <div id="toc"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#functions">Functions</a>
+      <ul>
+        <li><a href="#calling-a-function-with-values-as-arguments">Calling a function with values as arguments</a></li>
+        <li><a href="#calling-a-function-with-variables-as-arguments">Calling a function with variables as arguments</a></li>
+        <li><a href="#calling-a-function-with-values-from-an-expression">Calling a function with values from an expression</a></li>
+        <li><a href="#calling-a-function-with-variables-with-positional-arguments">Calling a function with variables with positional arguments</a></li>
+        <li><a href="#calling-an-automatic-function">calling an automatic function</a></li>
+        <li><a href="#calling-a-function-with-variables-with-reference-of-variables">calling a function with variables with reference of variables</a></li>
+        <li><a href="#calling-a-function-with-a-void-return-type">calling a function with a void return type</a></li>
+        <li><a href="#calling-a-function-by-passing-an-array">Calling a function by passing an array</a></li>
+        <li><a href="#calling-a-function-with-variables-that-had-default-values">Calling a function with variables that had default values</a></li>
+        <li><a href="#calling-a-task-from-a-function">Calling a task from a function</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      <div id="taxonomies"><div class="taxonomy-wrapper"><div class="toc-header">
+                  <h6 class="toc-title is-marginless">Categories</h6>
+                </div><a href="/categories/systemverilog/" class="taxonomy"
+                    ><i class="fa-solid fa-circle-dot"></i>SystemVerilog</a
+                  ></div><div class="taxonomy-wrapper"><div class="toc-header">
+                  <h6 class="toc-title is-marginless">Tags</h6>
+                </div><a href="/tags/sv/" class="taxonomy"
+                    ><i class="fa-solid fa-circle-dot"></i>sv</a
+                  ></div></div>
+    </div>
+  </div>
+  <div
+    class="is-paddingless"
+    id="tocCollapsible"
+    title="Collapse/Uncollapse table of contents"
+  >
+    <i class="fa-solid fa-angles-right fa-lg"></i>
+  </div>
+</div>
+</div>
+</div><script type='text/javascript'>
+  const baseUrl = '\/';
+  const codeCopyBefore = 'Copy to clipboard';
+  const codeCopyAfter = 'Copied to clipboard';
+  const svgDownloadLabel = 'Download as SVG';
+  const helperLoadingLabel = 'Loading';
+  const searchNoResults = '没有找到';
+  const introNextLabel = 'Next';
+  const introPrevLabel = 'Previous';
+  const introSkipLabel = '✗';
+  const introDoneLabel = 'Done';
+  const printLabel = 'Print current page';
+  const qrCodeLabel = 'Show current page QR code';
+  const naCommonLabel = 'Not available';
+</script>
+<script
+      type="module"
+      src="/js/theme/modules/const.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/modules/helpers.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/modules/helpersGlobal.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/init.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/navbar.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/print.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/qrcode.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/search.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/shortcuts.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/sidebar.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/toc.min.js"
+    ></script><script
+      type="module"
+      src="/js/shortcuts.min.js"
+    ></script><script
+      type="text/javascript"
+      src="/js/theme/browserCompatibility.min.js"
+    ></script><script
+      type="text/javascript"
+      src="/js/external/flexsearch/flexsearch.bundle.min.js"
+    ></script><script
+      type="text/javascript"
+      src="/js/external/qrious/qrious.min.js"
+    ></script><script
+      type="text/javascript"
+      src="/js/external/overlay-scrollbars/overlayscrollbars.min.js"
+    ></script>
+</body>
+</html>

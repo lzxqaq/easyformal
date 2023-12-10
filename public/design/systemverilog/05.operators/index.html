@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html>
+  <head><meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="generator" content="Hugo 0.116.1">
+<meta name="viewport" content="width=device-width, initial-scale=1" /><title>SystemVerilog operators | Documentation du thème Shadocs</title>
+
+<link
+  rel="icon"
+  href="/images/favicon.png"
+  type="image/x-icon"
+/>
+<link
+    rel="stylesheet"
+    rel="preload"
+    type="text/css"
+    href="/css/main.css"
+  /><link
+      rel="stylesheet"
+      type="text/css"
+      href="/css/external/fontawesome.all.min.css"
+    /><link
+      rel="stylesheet"
+      type="text/css"
+      href="/css/external/overlay-scrollbars/overlayscrollbars.min.css"
+    /><link
+      rel="stylesheet"
+      type="text/css"
+      href="/css/shortcuts.min.css"
+    />
+</head>
+  <body onload="browserCompatibility()"><div id="navbarInfo" class="is-hidden modal-container">
+  <div class="modal-content-box modal-text-box">
+    <div class="card modal-title is-radiusless">
+      <div class="card-header">
+        <p class="card-header-title is-marginless">关于</p>
+      </div>
+    </div>
+    <div class="modal-content-container">
+      <div class="modal-content-block is-block"><div class="columns is-marginless is-multiline is-centered">
+  <div class="column">
+    <a
+      class="is-itext-link"
+      href="https://github.com/jgazeau/shadocs"
+      target="_blank"
+    >
+      <div>
+        <i class="fa-brands fa-github fa-2x"></i>
+        <p></p>
+      </div>
+    </a>
+  </div>
+  <div class="column">
+    <a
+      class="is-itext-link"
+      href="https://github.com/jgazeau/shadocs/archive/main.zip"
+      target="_blank"
+    >
+      <div>
+        <i class="fa-solid fa-download fa-2x"></i>
+        <p></p>
+      </div>
+    </a>
+  </div>
+  <div class="column">
+    <a
+      class="is-itext-link"
+      href="https://github.com/jgazeau/shadocs/issues"
+      target="_blank"
+    >
+      <div>
+        <i class="fa-solid fa-circle-info fa-2x"></i>
+        <p></p>
+      </div>
+    </a>
+  </div>
+  <div class="column">
+    <a
+      class="is-itext-link"
+      href="https://github.com/jgazeau/shadocs/fork"
+      target="_blank"
+    >
+      <div>
+        <i class="fa-solid fa-code-branch fa-2x"></i>
+        <p></p>
+      </div>
+    </a>
+  </div>
+</div>
+<p>(0.116.1)</p>
+<p>The MIT License (MIT) Copyright © 2023 Jordan GAZEAU</p>
+</div>
+    </div>
+  </div>
+</div>
+<div id="navbarShortcuts" class="is-hidden modal-container">
+  <div class="modal-content-box modal-text-box"><div class="card modal-title is-radiusless">
+        <div class="card-header">
+          <p class="card-header-title is-marginless">Keyboard shortcuts</p>
+        </div>
+      </div>
+      <div class="modal-content-container">
+        <div class="modal-content-block"><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>q</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Show current page QR code</p>
+  </div><div class="modal-content"><kbd>Escape</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Close modals</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>i</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Show website information</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>k</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Show shortcuts</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>h</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Go to homepage</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>f</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Find on website</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>m</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Collapse/Uncollapse sidebar</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>t</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Collapse/Uncollapse table of contents</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>↑</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Go to the top of the page</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>↓</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Go to the bottom of the page</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>p</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Print current page</p>
+  </div></div>
+      </div></div>
+</div>
+<div id="modalContainer" class="is-hidden modal-container">
+  <div id="modal" class="modal-content-box"></div>
+</div>
+<nav id="navbar" class="navbar" role="navigation" aria-label="main navigation">
+  <div id="navbarItemsContainer" class="navbar-brand"><div id="globalLogoContainer" class="is-flex">
+  <a
+    id="globalLogo"
+    class="navbar-item navbar-item-standard is-paddingless"
+    href="/"
+  >
+    <img
+      alt="主页"
+      src="/images/logo.png"
+    />
+  </a>
+  <a
+    id="globalTouchLogo"
+    class="navbar-item navbar-item-standard is-paddingless"
+    href="/"
+  >
+    <img
+      alt="主页"
+      src="/images/logoTouch.png"
+    />
+  </a>
+</div>
+<div id="navbarItems" class="is-flex">
+      <div id="navbarItemsStart" class="is-flex">
+        <div id="searchContainer" class="navbar-item"><div class="control has-icons-left">
+  <span id="searchInput" class="autocomplete">
+    <input
+      id="search"
+      autocomplete="off"
+      class="input"
+      type="search"
+      placeholder="搜索"
+    />
+  </span>
+  <span class="icon is-left">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </span>
+  <ul id="searchList" class="is-paddingless is-hidden"></ul>
+</div>
+</div>
+      </div>
+      <div id="navbarItemsEnd" class="is-flex is-invisible"><div class="navbar-item">
+  <a
+    id="printButton"
+    class="button navbar-item-standard"
+  >
+    <span class="icon-text">打印</span>
+    <span class="icon">
+      <i class="fa-solid fa-print fa-lg"></i>
+    </span>
+  </a>
+</div><div class="navbar-item"><div
+  id="taxonomiesSelectorContainer"
+  class="dropdown is-right"
+>
+  <div class="dropdown-trigger">
+    <button
+      id="taxonomiesSelector"
+      class="button navbar-item-standard"
+      aria-haspopup="true"
+      aria-controls="dropdown-menu"
+    >
+      <span class="icon-text">Taxonomies</span>
+      <span class="icon">
+        <i class="fa-solid fa-tags fa-lg"></i>
+      </span>
+    </button>
+  </div>
+  <div
+    id="dropdown-menu-taxonomies"
+    class="dropdown-menu"
+    role="menu"
+  >
+    <div class="dropdown-content is-paddingless"><a
+              href="/categories/"
+              class="dropdown-item has-text-weight-bold"
+            ><i class="fa-solid fa-table-cells"></i>Categories</a><a
+              href="/tags/"
+              class="dropdown-item has-text-weight-bold"
+            ><i class="fa-solid fa-tag"></i>Tags</a></div>
+  </div>
+</div>
+</div><div class="navbar-item">
+  <a
+    id="siteInfo"
+    trigger="navbarInfo"
+    class="button navbar-item-standard navbar-trigger"
+    title="关于"
+  >
+    <span class="icon-text">关于</span>
+    <span class="icon">
+      <i class="fa-solid fa-circle-question fa-lg"></i>
+    </span>
+  </a>
+</div>
+<div id="navbarExtend" class="navbar-item">
+  <div id="navbarExtendWrapper">
+    <a id="navbarExtendButton" class="button navbar-item-standard">
+      <span class="icon">
+        <i class="fa-solid fa-ellipsis fa-lg"></i>
+      </span>
+    </a>
+    <div id="navbarExtendItemsContainer">
+      <div id="navbarExtendItemsWrapper"><div class="navbar-item">
+  <a
+    id="printButtonExtend"
+    class="button navbar-item-standard"
+  >
+    <span class="icon-text">打印</span>
+    <span class="icon">
+      <i class="fa-solid fa-print fa-lg"></i>
+    </span>
+  </a>
+</div><div class="navbar-item"><div
+  id="taxonomiesSelectorContainerExtend"
+  class="dropdown is-right"
+>
+  <div class="dropdown-trigger">
+    <button
+      id="taxonomiesSelectorExtend"
+      class="button navbar-item-standard"
+      aria-haspopup="true"
+      aria-controls="dropdown-menu"
+    >
+      <span class="icon-text">Taxonomies</span>
+      <span class="icon">
+        <i class="fa-solid fa-tags fa-lg"></i>
+      </span>
+    </button>
+  </div>
+  <div
+    id="dropdown-menu-taxonomiesExtend"
+    class="dropdown-menu"
+    role="menu"
+  >
+    <div class="dropdown-content is-paddingless"><a
+              href="/categories/"
+              class="dropdown-item has-text-weight-bold"
+            ><i class="fa-solid fa-table-cells"></i>Categories</a><a
+              href="/tags/"
+              class="dropdown-item has-text-weight-bold"
+            ><i class="fa-solid fa-tag"></i>Tags</a></div>
+  </div>
+</div>
+</div><div class="navbar-item">
+  <a
+    id="siteInfoExtend"
+    trigger="navbarInfo"
+    class="button navbar-item-standard navbar-trigger"
+    title="关于"
+  >
+    <span class="icon-text">关于</span>
+    <span class="icon">
+      <i class="fa-solid fa-circle-question fa-lg"></i>
+    </span>
+  </a>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+</nav>
+<div id="navbarOverlay"></div>
+<div
+      class="columns is-mobile is-paddingless is-marginless"
+      id="mainContainer"
+    ><div
+  id="sidebarContainer"
+  class="column is-narrow is-paddingless is-marginless"
+>
+  <div id="sidebarWrapper" class="is-fixed">
+    <div id="sidebar" class="is-marginless">
+      <aside class="menu is-paddingless is-marginless">
+        <ul class="menu-list is-marginless is-paddingless"><div class="card is-fs-expandable-icon"><div class="card-header is-single-link">
+      <a
+        href='/digital/'
+        class='card-header-title'>
+        <i class='fa-solid fa-bars fa-lg'></i></a></div>
+      </div><div class="is-expandable">
+      <div class="is-sidebar-list-wrapper"><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/digital/'
+        class='card-header-title'
+          title='数字电路基础'>
+        <i class='fa-solid fa-bars fa-lg'></i><p class="pt-0 pb-0 pr-2 pl-1">数字电路基础</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="card is-fs-expandable-icon is-sidebar-active"><div class="card-header">
+      <a
+        href='/design/'
+        class='card-header-title'>
+        <i class='fa-solid fa-bars fa-lg'></i></a></div>
+      </div><div class="is-expandable">
+      <div class="is-sidebar-list-wrapper"><li class="is-marginless is-tree-active is-entries-expandable is-entries-expanded"><div
+            class="card"><div class="card-header">
+      <a
+        href='/design/'
+        class='card-header-title'
+          title='HDL 设计'>
+        <i class='fa-solid fa-bars fa-lg'></i><p class="pt-0 pb-0 pr-2 pl-1">HDL 设计</p></a><a class="card-header-icon is-icon-expandable is-paddingless is-icon-expanded">
+                <span class='icon'></span>
+              </a>
+            </div>
+          </div><ul class="is-marginless is-tree-active"><div class="">
+      <div class=""><li class="is-marginless is-entries-expandable is-entries-expanded"><div
+            class="card"><div class="card-header">
+      <a
+        href='/design/systemverilog/'
+        class='card-header-title'
+          title='SystemVerilog 教程'>
+        <i class='fa-solid fa-bars'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 教程</p></a><a class="card-header-icon is-icon-expandable is-paddingless is-icon-expanded">
+                <span class='icon'></span>
+              </a>
+            </div>
+          </div><ul class="is-marginless"><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/01.data-types/'
+        class='card-header-title'
+          title='SystemVerilog 数据类型'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 数据类型</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/02.array/'
+        class='card-header-title'
+          title='SystemVerilog 数组'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 数组</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/03.structure-and-union/'
+        class='card-header-title'
+          title='SystemVerilog 结构体和联合体'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 结构体和联合体</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/04.user-defined/'
+        class='card-header-title'
+          title='SystemVerilog 用户自定义'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 用户自定义</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card is-sidebar-active"id='sidebarActiveEntry'><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/05.operators/'
+        class='card-header-title'
+          title='SystemVerilog operators'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog operators</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/06.control-flow/'
+        class='card-header-title'
+          title='SystemVerilog 控制流'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 控制流</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/07.functions/'
+        class='card-header-title'
+          title='SystemVerilog 函数'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 函数</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/08.tasks/'
+        class='card-header-title'
+          title='SystemVerilog 任务'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 任务</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/09.loops/'
+        class='card-header-title'
+          title='SystemVerilog 循环'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 循环</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/10.scheduler-schematics/'
+        class='card-header-title'
+          title='Scheduler schematic'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Scheduler schematic</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/11.processes/'
+        class='card-header-title'
+          title='Processes'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Processes</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/12.fine-grain-process-control/'
+        class='card-header-title'
+          title='Fine Grain Process Control'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Fine Grain Process Control</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/13.interface/'
+        class='card-header-title'
+          title='Interface'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Interface</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/14.constraint/'
+        class='card-header-title'
+          title='Constraint'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Constraint</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/15.classes-and-oops/'
+        class='card-header-title'
+          title='类和面向对象'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">类和面向对象</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/17.functional-coverage/'
+        class='card-header-title'
+          title='Coverage'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Coverage</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/18.assertion/'
+        class='card-header-title'
+          title='Assertion'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Assertion</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/19.interprocess-communication/'
+        class='card-header-title'
+          title='Interprocess communication  '>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Interprocess communication  </p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/20.misc-constructs/'
+        class='card-header-title'
+          title='Program Block'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Program Block</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/choosing-an-array/'
+        class='card-header-title'
+          title='Choosing-an-array'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Choosing-an-array</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/control-flow-interview-questions/'
+        class='card-header-title'
+          title='Control-Flow-Interview-questions'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Control-Flow-Interview-questions</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/data-type-interview-questions/'
+        class='card-header-title'
+          title='Data-type-Interview-questions'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Data-type-Interview-questions</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/differences-between-macros-and-parameters/'
+        class='card-header-title'
+          title='Differences-between-macros-and-parameters'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Differences-between-macros-and-parameters</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/interface-interview-questions/'
+        class='card-header-title'
+          title='Interface-Interview-Questions'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Interface-Interview-Questions</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/processes-interviewquestions/'
+        class='card-header-title'
+          title='Processes-InterviewQuestions'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Processes-InterviewQuestions</p></a></div>
+          </div></li>
+      </div>
+    </div></ul></li>
+      </div>
+    </div></ul></li>
+      </div>
+    </div><div class="card is-fs-expandable-icon"><div class="card-header">
+      <a
+        href='/formal/'
+        class='card-header-title'>
+        <i class='fa-solid fa-bars fa-lg'></i></a></div>
+      </div><div class="is-expandable">
+      <div class="is-sidebar-list-wrapper"><li class="is-marginless is-entries-expandable is-entries-shrinked"><div
+            class="card"><div class="card-header">
+      <a
+        href='/formal/'
+        class='card-header-title'
+          title='形式验证'>
+        <i class='fa-solid fa-bars fa-lg'></i><p class="pt-0 pb-0 pr-2 pl-1">形式验证</p></a><a class="card-header-icon is-icon-expandable is-paddingless is-icon-shrinked">
+                <span class='icon'></span>
+              </a>
+            </div>
+          </div><ul class="is-marginless"><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/formal/model_checking/'
+        class='card-header-title'
+          title='模型检查'>
+        <i class='fa-solid fa-bars'></i><p class="pt-0 pb-0 pr-2 pl-0">模型检查</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/formal/equivalence_checking/'
+        class='card-header-title'
+          title='等价性检查'>
+        <i class='fa-solid fa-bars'></i><p class="pt-0 pb-0 pr-2 pl-0">等价性检查</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless is-entries-expandable is-entries-shrinked"><div
+            class="card"><div class="card-header">
+      <a
+        href='/formal/theorem_proving/'
+        class='card-header-title'
+          title='定理证明'>
+        <i class='fa-solid fa-bars'></i><p class="pt-0 pb-0 pr-2 pl-0">定理证明</p></a><a class="card-header-icon is-icon-expandable is-paddingless is-icon-shrinked">
+                <span class='icon'></span>
+              </a>
+            </div>
+          </div><ul class="is-marginless"><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/formal/theorem_proving/acl2/'
+        class='card-header-title'
+          title='一文了解定理证明器 ACL2'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">一文了解定理证明器 ACL2</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/formal/theorem_proving/acl2_hardware/'
+        class='card-header-title'
+          title='使用 ACL2 进行硬件验证'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">使用 ACL2 进行硬件验证</p></a></div>
+          </div></li>
+      </div>
+    </div></ul></li>
+      </div>
+    </div></ul></li>
+      </div>
+    </div></ul>
+      </aside>
+    </div>
+    <div id="sidebarCollapsible" class="is-marginless">
+      <div class="card is-uncollapse-action">
+        <div
+          id="sidebarUncollapse"
+          class="card-header is-single-link"
+          title="Collapse/Uncollapse sidebar"
+        >
+          <a class="card-header-title">
+            <i class="fa-solid fa-angles-right fa-lg"></i>
+          </a>
+        </div>
+      </div>
+      <div class="card is-collapse-action">
+        <div
+          id="sidebarCollapse"
+          class="card-header is-single-link"
+          title="Collapse/Uncollapse sidebar"
+        >
+          <a class="card-header-title">
+            <i class="fa-solid fa-angles-left fa-lg"></i>
+            <p>折叠</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="sidebarMobileWrapper" class="column is-narrow is-hidden-desktop"></div>
+<div class="columns is-mobile is-marginless is-scroll-smooth has-toc" id="contentContainer">
+  <div class="column" id="content"><div id="contentTitle">SystemVerilog operators</div>
+<p><strong><strong>Operators</strong></strong>  :<br>
+the operator is a character that represents a specific mathematical or logical action or process.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/106074838/188924259-c1baf802-b992-462a-9edc-033773c113c4.png"
+  alt="Untitled Diagram-Page-2 drawio (16)"
+  class="Untitled Diagram-Page-2 drawio (16)"/>
+</p>
+<pre><code>                     Figure.1 operators 
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">s.No.</th>
+<th style="text-align:left">Operator</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1.</td>
+<td style="text-align:left"><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/05.operators#1-arithmetic-operators"
+    class="is-pretty-link">Arithmetic Operator</a
+>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">2.</td>
+<td style="text-align:left"><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/05.operators#2relational-operator"
+    class="is-pretty-link">Relational operator</a
+>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">3.</td>
+<td style="text-align:left"><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/05.operators#3equality-operator"
+    class="is-pretty-link">Equality operator</a
+>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">4.</td>
+<td style="text-align:left"><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/05.operators#4logical-operator"
+    class="is-pretty-link">Logical Operator</a
+>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">5.</td>
+<td style="text-align:left"><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/05.operators#5bitwise-operator"
+    class="is-pretty-link">Bitwise Operator</a
+>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">6.</td>
+<td style="text-align:left"><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/05.operators#6shift-operator"
+    class="is-pretty-link">Shift Operator</a
+>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">7.</td>
+<td style="text-align:left"><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/05.operators#7conditional-operator"
+    class="is-pretty-link">Conditional Operator</a
+>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">8.</td>
+<td style="text-align:left"><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/05.operators#8reduction-operator"
+    class="is-pretty-link">Reduction Operator</a
+>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">9.</td>
+<td style="text-align:left"><a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/05.operators#9concatenation-and-replication-operators"
+    class="is-pretty-link">Concatenation and Replication Operators</a
+>
+</td>
+</tr>
+</tbody>
+</table>
+<h2 id='1-arithmetic-operators'>1. Arithmetic Operators<a href='#1-arithmetic-operators' class='anchor'>#</a>
+</h2><p>We use arithmetic operators to perform basic mathematic functions on our variables. These operators should already be familiar as they are mostly replications of common mathematic symbols.</p>
+<p><strong>The table below shows the full list of arithmetic operators in SystemVerilog.</strong> <br>
+<img
+  src="https://user-images.githubusercontent.com/106074838/188830091-fab594b8-522f-4c59-8fad-6268427aab03.PNG"
+  alt="airthmatic_1"
+  class="airthmatic_1"/>
+</p>
+<p>The below figure shows the output of the Arithmetic operator screenshot<br>
+<img
+  src="https://user-images.githubusercontent.com/106074838/188851432-89a890f2-25d9-42c2-9abe-dbe0d3398503.png"
+  alt="Untitled Diagram drawio (2)"
+  class="Untitled Diagram drawio (2)"/>
+</p>
+<pre><code>                   Figure.2. the output of the arithmetic operator. 
+</code></pre>
+<p>for Better understanding go through this code<br>
+<strong>GitHub lab code link:</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/operators/arithmetic/arithmetic_code.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/operators/arithmetic/arithmetic_code.sv</a
+>
+</p>
+<p><strong>GitHub lab output link:</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/operators/arithmetic/arithmetic_code_output.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/operators/arithmetic/arithmetic_code_output.log</a
+>
+</p>
+<hr>
+<h2 id='2relational-operator'>2.Relational operator<a href='#2relational-operator' class='anchor'>#</a>
+</h2><p><strong>Relation operator cheat sheet</strong></p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a &lt; b</td>
+<td>a less than b</td>
+</tr>
+<tr>
+<td>a &gt; b</td>
+<td>a greater than b</td>
+</tr>
+<tr>
+<td>a &lt;= b</td>
+<td>a less than or equal to b</td>
+</tr>
+<tr>
+<td>a &gt;= b</td>
+<td>a greater than or equal to b</td>
+</tr>
+</tbody>
+</table>
+<p>These operators compare operands and result in a 1-bit scalar Boolean value.</p>
+<ul>
+<li>0 if the relation is false</li>
+<li>1 if the relation is true</li>
+<li>x if any of the operands has unknown x bits</li>
+</ul>
+<p><strong><strong>Example:</strong></strong><br>
+Consider, a = 111  <br>
+b = 101</p>
+<ul>
+<li>
+<p><strong>a &lt; b</strong>:Here a is greater than b, the relation is false, so the result is 0.</p>
+</li>
+<li>
+<p><strong>a &gt; b</strong>:Here a is greater than b,  the relation is true, so the result is 1.</p>
+</li>
+<li>
+<p><strong>a &lt;= b</strong>:Here a is greater than b, the relation is false, so the result is 0.</p>
+</li>
+<li>
+<p><strong>a &gt;= b</strong>:Here a is greater than b,  the relation is true, so the result is 1.</p>
+</li>
+</ul>
+<p><img
+  src="https://user-images.githubusercontent.com/106074838/188854561-7c933302-bbc5-471c-99a3-ff545eac4ba6.png"
+  alt="relational"
+  class="relational"/>
+</p>
+<pre><code>          Figure.3. the output of the relation operator. 
+</code></pre>
+<p><strong>GitHub lab code link</strong>  <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/operators/relational/relational_code.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/operators/relational/relational_code.sv</a
+>
+</p>
+<p><strong>GitHub lab output link</strong>  <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/operators/relational/relational_code_output.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/operators/relational/relational_code_output.log</a
+>
+</p>
+<hr>
+<h2 id='3equality-operator'>3.Equality operator<a href='#3equality-operator' class='anchor'>#</a>
+</h2><p>The equality operators are used to compare expressions. If the comparison fails, then the result will be 0, otherwise, it will be 1.
+There are two types of Equality operators.</p>
+<ul>
+<li>Case Equality</li>
+<li>Logical Equality.</li>
+</ul>
+<p><strong>Equality operator cheat sheet</strong></p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a === b</td>
+<td>a equal to b, including x and z (Case equality)</td>
+</tr>
+<tr>
+<td>a !== b</td>
+<td>a not equal to b, including x and z (Case inequality)</td>
+</tr>
+<tr>
+<td>a == b</td>
+<td>a equal to b, the result may be unknown (logical equality)</td>
+</tr>
+<tr>
+<td>a != b</td>
+<td>a not equal to b, the result may be unknown (logical equality)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>If both operands of logical equality (==) or logical inequality (!=) contain unknown (x) or a high-impedance (z) value, then the result of the comparison will be unknown (x). Otherwise, it will be true or false.</p>
+</li>
+<li>
+<p>If operands of case equality (===) or case inequality (!==) contain unknown (x) or a high-impedance (z) value, then the result will be calculated bit by bit.</p>
+</li>
+</ul>
+<p><strong><strong>Example:</strong></strong><br>
+Consider, a = 111  <br>
+b = 101</p>
+<ul>
+<li><strong>a == b</strong>: Here we perform the logical equality of a,b, the result is zero when both numbers are the same then the result is 1.</li>
+<li><strong>a != b</strong>: Here we perform the logical inequality of a,b the result is 1 when both numbers are the same then the result is 0.</li>
+<li><strong>a === b</strong>: Here we perform the case equality of a,b the result is zero when both numbers are the same then the result is 1.</li>
+<li><strong>a !== b</strong>: Here we perform the case inequality of a,b the result is 1 when both numbers are the same then the result is 0.</li>
+</ul>
+<p><img
+  src="https://user-images.githubusercontent.com/106074838/188873316-cbe43fc7-65f3-4007-a299-2cb25b8e3e90.png"
+  alt="equality"
+  class="equality"/>
+</p>
+<pre><code>               Figure.4. the output of the equality operator. 
+</code></pre>
+<p><strong>GitHub lab code link</strong>  <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/operators/equality/equality_code.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/operators/equality/equality_code.sv</a
+>
+</p>
+<p><strong>GitHub lab output link</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/operators/equality/equality_code_output.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/operators/equality/equality_code_output.log</a
+>
+</p>
+<hr>
+<h2 id='4logical-operator'>4.Logical Operator<a href='#4logical-operator' class='anchor'>#</a>
+</h2><p>The Logical operators are similar to the bit-wise operators</p>
+<p>In the Logical Operator, these expressions return either a 1 (true) or 0 (false).</p>
+<p>There are only three logical operators for better understanding follow the below cheat sheet</p>
+<p><strong>Logical operator cheat sheet</strong><br>
+<img
+  src="https://user-images.githubusercontent.com/106074838/188828213-e579ba4e-f5b2-40ae-aaca-03c14515a34e.PNG"
+  alt="logical11"
+  class="logical11"/>
+</p>
+<p><strong><strong>Example:</strong></strong><br>
+Consider, a = 100  <br>
+b = 111</p>
+<ul>
+<li><strong>a &amp;&amp; b</strong>: Here we performing the Logical AND of a,b, and the result is 1.<br>
+when any one of the variable values is zero then the result is 0. and when one of the variable bit values is 1&rsquo;s then the result is 1.</li>
+<li><strong>a || b</strong>: Here we performing the Logical OR of a,b, and the result is 1.<br>
+if all the variable&rsquo;s values are zero then only the result is 0. and if any one of the variable bit values is 1&rsquo;s then the result is 1.</li>
+<li><strong>!a</strong>: Here we performing the Logical Not of a and the result is 0. if all variable value is zero then the result is 0. ( just vice versa).</li>
+</ul>
+<p><img
+  src="https://user-images.githubusercontent.com/106074838/194471527-35b922f4-7979-44b4-8cce-3b176190e10b.png"
+  alt="logical"
+  class="logical"/>
+</p>
+<pre><code>          Figure.5. the output of the Logical operator.  
+</code></pre>
+<p><strong>GitHub lab code link</strong>  <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/operators/logic/logic_code.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/operators/logic/logic_code.sv</a
+>
+</p>
+<p><strong>GitHub lab output link</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/operators/logic/logic_code_output.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/operators/logic/logic_code_output.log</a
+>
+</p>
+<hr>
+<h2 id='5bitwise-operator'>5.Bitwise operator<a href='#5bitwise-operator' class='anchor'>#</a>
+</h2><p>Bitwise operators perform a bit-wise operation on two operands.<br>
+They take each bit in one operand and perform the operation with the corresponding bit in the other operand. If one operand is shorter than the other, it will be extended on the left side with zeroes to match the length of the longer operand.</p>
+<p><strong>Bitwise operator cheat sheet</strong></p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>~</td>
+<td>negation</td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>and</td>
+</tr>
+<tr>
+<td>|</td>
+<td>inclusive or</td>
+</tr>
+<tr>
+<td>^</td>
+<td>exclusive or</td>
+</tr>
+<tr>
+<td>^~ or ~^</td>
+<td>exclusive nor (equivalence)</td>
+</tr>
+</tbody>
+</table>
+<p><strong><strong>Example:</strong></strong><br>
+Consider, a = 100<br>
+b=110</p>
+<ul>
+<li><strong>a &amp; b</strong>: bit-wise and of a,b the result is 100.</li>
+<li><strong>a | b</strong>: bit-wise or of a,b the result is 110.</li>
+<li><strong>a ~&amp; b</strong>: bit-wise nand of a,b the result is 011.</li>
+<li><strong>a ~| b</strong>: bit-wise nor of a,b the result is 001.</li>
+<li><strong>a ^ b</strong>: bit-wise xor of a,b the result is 101.</li>
+<li><strong>a ~^ b</strong>: bit-wise nxor of a,b the result is 010.</li>
+</ul>
+<p><img
+  src="https://user-images.githubusercontent.com/106074838/188878058-9c816249-4770-4567-bbfa-d7c102350f16.png"
+  alt="bitwise"
+  class="bitwise"/>
+</p>
+<pre><code>                     Figure.6. the output of the Bitwise operator. 
+</code></pre>
+<p><strong>GitHub lab code link</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/operators/bitwise/bitwise_code.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/operators/bitwise/bitwise_code.sv</a
+>
+</p>
+<p><strong>GitHub lab output link</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/operators/bitwise/bitwise_code_output.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/operators/bitwise/bitwise_code_output.log</a
+>
+</p>
+<hr>
+<h2 id='6shift-operator'>6.shift operator<a href='#6shift-operator' class='anchor'>#</a>
+</h2><p>There 2 types of shift operators</p>
+<ul>
+<li>Logical shift operators</li>
+<li>Arithmetic shift operators</li>
+</ul>
+<p><strong>Shift operator cheat sheet</strong></p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&laquo;</td>
+<td>shift left logical</td>
+</tr>
+<tr>
+<td>&raquo;</td>
+<td>shift right logical</td>
+</tr>
+<tr>
+<td>&laquo;&lt;</td>
+<td>shift left arithmetic</td>
+</tr>
+<tr>
+<td>&raquo;&gt;</td>
+<td>shift right arithmetic</td>
+</tr>
+</tbody>
+</table>
+<p>The shift operator actually requires two arguments. The first of these is the name of the signal which we want to shift. The second argument is the number of bits we want to shift.</p>
+<p>When we use the logical shift operators, all the blank positions are filled with 0&rsquo;s after the signal has been shifted by the required number of bits.</p>
+<p><strong><strong>Example:</strong></strong><br>
+Consider, a = 101</p>
+<ul>
+<li><strong>a &laquo;1</strong>: a is Logical shifted to the left by a 1-bit position and the result is 010.</li>
+<li><strong>a &raquo;1</strong>: a is Logical shifted to the right by a 1-bit position and the result is 010.</li>
+<li><strong>a &laquo;&lt;2</strong>: a is shifted to the left by a 2-bit position and the result is 100.</li>
+<li><strong>a &raquo;&gt;2</strong>: a is Arithmetic shifted to the right by a 2-bit position and when we use unsigned data type in the code, then Arithmetic right will take shifted 2 - bit position and filled with 0&rsquo;s. and the result is 001.</li>
+<li><strong>a &raquo;&gt;2</strong>: a is Arithmetic shifted to the right by a 2-bit position. when we use signed data type in the code, then Arithmetic right will take shifted 2- bit position and filled with 1&rsquo;s. and the result is 111.</li>
+</ul>
+<p><img
+  src="https://user-images.githubusercontent.com/106074838/188954310-9f39ee50-34d7-4ed5-b487-c66a94f3c01a.png"
+  alt="a1 drawio (2)"
+  class="a1 drawio (2)"/>
+</p>
+<pre><code>                 Figure.7. the output of the shift operator.   
+</code></pre>
+<p><strong>GitHub lab code link</strong>  <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/operators/shift/shift_code.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/operators/shift/shift_code.sv</a
+>
+</p>
+<p><strong>GitHub lab output link</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/operators/shift/shift_code_output.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/operators/shift/shift_code_output.log</a
+>
+</p>
+<hr>
+<h2 id='7conditional-operator'>7.Conditional Operator<a href='#7conditional-operator' class='anchor'>#</a>
+</h2><p>To use the conditional operator, we write a logical expression before the? the operator which is then evaluated to see if it is true or false.
+The output is assigned to one of two values depending on whether the expression is true or false.</p>
+<p>the general syntax for the conditional operator.</p>
+<p><code>output = &lt;condition&gt; ? &lt;true&gt; : &lt;false&gt;</code></p>
+<p><strong><strong>Example:</strong></strong><br>
+Consider, y = enable ? data1 : data2</p>
+<p>In the above example enable condition is true it will execute the data otherwise it going to the data2.</p>
+<p><img
+  src="https://user-images.githubusercontent.com/106074838/188886981-dc5abfe0-6d61-498a-a1da-a8bcb976c779.png"
+  alt="conditional"
+  class="conditional"/>
+</p>
+<pre><code>           Figure.8. the output of the Condition operator.   
+</code></pre>
+<p><strong>GitHub lab code link</strong>  <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/operators/conditional/conditional_code.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/operators/conditional/conditional_code.sv</a
+>
+</p>
+<p><strong>GitHub lab output link</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/operators/conditional/conditional_code_output.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/operators/conditional/conditional_code_output.log</a
+>
+</p>
+<hr>
+<h2 id='8reduction-operator'>8.Reduction operator<a href='#8reduction-operator' class='anchor'>#</a>
+</h2><p>Reduction operators are unary.<br>
+They perform a bit-wise operation on a single operand to produce a single-bit result.</p>
+<p><strong>Reduction operator cheat sheet</strong></p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&amp;</td>
+<td>and</td>
+</tr>
+<tr>
+<td>~&amp;</td>
+<td>nand</td>
+</tr>
+<tr>
+<td>|</td>
+<td>or</td>
+</tr>
+<tr>
+<td>~|</td>
+<td>nor</td>
+</tr>
+<tr>
+<td>^</td>
+<td>xor</td>
+</tr>
+<tr>
+<td>^~ or ~^</td>
+<td>xnor</td>
+</tr>
+</tbody>
+</table>
+<p><strong><strong>Example</strong></strong><br>
+Consider, a = 1010</p>
+<ul>
+<li><strong>&amp;a</strong>:  Here we performing the Reduction and operation, and the result is 0.</li>
+<li><strong>|a</strong>: Here we performing the Reduction or operation, and the result is 1.</li>
+<li><strong>~&amp;a</strong>: Here we performing the Reduction NAND operation, and the result is 1.</li>
+<li><strong>~|a</strong>: Here we performing the Reduction or operation, and the result is 0.</li>
+<li><strong>^a</strong>: Here we performing the Reduction or operation, and the result is 0.</li>
+<li><strong>~^a</strong>: Here we performing the Reduction or operation, and the result is 1.</li>
+</ul>
+<p><img
+  src="https://user-images.githubusercontent.com/106074838/188919502-6de9155c-d618-4697-9b38-2d9586a87eca.png"
+  alt="reduction"
+  class="reduction"/>
+</p>
+<pre><code>         Figure.9. the output of the Reduction operator.
+</code></pre>
+<p><strong>GitHub lab code link</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/operators/reduction/reduction_code.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/operators/reduction/reduction_code.sv</a
+>
+</p>
+<p><strong>GitHub lab output link</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/operators/reduction/reduction_code_output.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/operators/reduction/reduction_code_output.log</a
+>
+</p>
+<hr>
+<h2 id='9concatenation-and-replication-operators'>9.Concatenation and Replication Operators<a href='#9concatenation-and-replication-operators' class='anchor'>#</a>
+</h2><p><strong>Concatenation and Replication operator cheat sheet</strong></p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>{ }</td>
+<td>Concatenation operator</td>
+</tr>
+<tr>
+<td>{{ }}</td>
+<td>Replication operator</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>concatenation operator to combine two or more signals into a vector.<br>
+Concatenations are expressed using the brace characters { and },<br>
+with commas separating the expressions within.</li>
+</ul>
+<p><strong>Example:</strong>
+a=4&rsquo;b1010;
+b=4&rsquo;b1110;
+{a,b} -if a and b both are 8-bit numbers, and the results has 8 bits.<br>
+Concatenation output is  10101110</p>
+<p><strong>Replication Operator</strong><br>
+The replication operator is used to replicate a group of bits n times. Say you have a 4-bit variable and you want to replicate it 4 times to get a 16-bit variable.<br>
+a=4&rsquo;b1010;
+b=4&rsquo;b1110;
+{2{a},b} - this is equivalent to {a, a, b} and total number of bit is 12-bit.<br>
+Replication Output is 101010101110</p>
+<p><img
+  src="https://user-images.githubusercontent.com/106074838/188945957-401470d7-c4cd-4264-a817-a97c5d4792e5.png"
+  alt="a1 drawio (1)"
+  class="a1 drawio (1)"/>
+</p>
+<pre><code>           Figure.10. the output of the Concatenation and Replication operator.
+</code></pre>
+<p><strong>GitHub lab code link</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/operators/concatenation_Replication/concatenation_code.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/operators/concatenation_Replication/concatenation_code.sv</a
+>
+</p>
+<p><strong>GitHub lab output link</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/operators/concatenation_Replication/concatenation_code_output.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/operators/concatenation_Replication/concatenation_code_output.log</a
+>
+</p>
+</div><div class="column is-sticky is-paddingless" id="tocWrapper">
+  <div class="is-paddingless" id="tocContainer">
+    <div class="toc-header">
+      <h6 class="toc-title is-marginless">On this page:</h6>
+      <i
+        title="Back to top"
+        id="tocBackToTop"
+        class="fa-solid fa-circle-arrow-up"
+      ></i>
+    </div>
+    <div id="tocContent">
+      <div id="toc"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-arithmetic-operators">1. Arithmetic Operators</a></li>
+        <li><a href="#2relational-operator">2.Relational operator</a></li>
+        <li><a href="#3equality-operator">3.Equality operator</a></li>
+        <li><a href="#4logical-operator">4.Logical Operator</a></li>
+        <li><a href="#5bitwise-operator">5.Bitwise operator</a></li>
+        <li><a href="#6shift-operator">6.shift operator</a></li>
+        <li><a href="#7conditional-operator">7.Conditional Operator</a></li>
+        <li><a href="#8reduction-operator">8.Reduction operator</a></li>
+        <li><a href="#9concatenation-and-replication-operators">9.Concatenation and Replication Operators</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      <div id="taxonomies"><div class="taxonomy-wrapper"><div class="toc-header">
+                  <h6 class="toc-title is-marginless">Categories</h6>
+                </div><a href="/categories/systemverilog/" class="taxonomy"
+                    ><i class="fa-solid fa-circle-dot"></i>SystemVerilog</a
+                  ></div><div class="taxonomy-wrapper"><div class="toc-header">
+                  <h6 class="toc-title is-marginless">Tags</h6>
+                </div><a href="/tags/sv/" class="taxonomy"
+                    ><i class="fa-solid fa-circle-dot"></i>sv</a
+                  ></div></div>
+    </div>
+  </div>
+  <div
+    class="is-paddingless"
+    id="tocCollapsible"
+    title="Collapse/Uncollapse table of contents"
+  >
+    <i class="fa-solid fa-angles-right fa-lg"></i>
+  </div>
+</div>
+</div>
+</div><script type='text/javascript'>
+  const baseUrl = '\/';
+  const codeCopyBefore = 'Copy to clipboard';
+  const codeCopyAfter = 'Copied to clipboard';
+  const svgDownloadLabel = 'Download as SVG';
+  const helperLoadingLabel = 'Loading';
+  const searchNoResults = '没有找到';
+  const introNextLabel = 'Next';
+  const introPrevLabel = 'Previous';
+  const introSkipLabel = '✗';
+  const introDoneLabel = 'Done';
+  const printLabel = 'Print current page';
+  const qrCodeLabel = 'Show current page QR code';
+  const naCommonLabel = 'Not available';
+</script>
+<script
+      type="module"
+      src="/js/theme/modules/const.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/modules/helpers.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/modules/helpersGlobal.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/init.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/navbar.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/print.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/qrcode.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/search.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/shortcuts.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/sidebar.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/toc.min.js"
+    ></script><script
+      type="module"
+      src="/js/shortcuts.min.js"
+    ></script><script
+      type="text/javascript"
+      src="/js/theme/browserCompatibility.min.js"
+    ></script><script
+      type="text/javascript"
+      src="/js/external/flexsearch/flexsearch.bundle.min.js"
+    ></script><script
+      type="text/javascript"
+      src="/js/external/qrious/qrious.min.js"
+    ></script><script
+      type="text/javascript"
+      src="/js/external/overlay-scrollbars/overlayscrollbars.min.js"
+    ></script>
+</body>
+</html>

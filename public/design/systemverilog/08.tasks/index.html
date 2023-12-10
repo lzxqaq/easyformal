@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html>
+  <head><meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="generator" content="Hugo 0.116.1">
+<meta name="viewport" content="width=device-width, initial-scale=1" /><title>SystemVerilog 任务 | Documentation du thème Shadocs</title>
+
+<link
+  rel="icon"
+  href="/images/favicon.png"
+  type="image/x-icon"
+/>
+<link
+    rel="stylesheet"
+    rel="preload"
+    type="text/css"
+    href="/css/main.css"
+  /><link
+      rel="stylesheet"
+      type="text/css"
+      href="/css/external/fontawesome.all.min.css"
+    /><link
+      rel="stylesheet"
+      type="text/css"
+      href="/css/external/overlay-scrollbars/overlayscrollbars.min.css"
+    /><link
+      rel="stylesheet"
+      type="text/css"
+      href="/css/shortcuts.min.css"
+    />
+</head>
+  <body onload="browserCompatibility()"><div id="navbarInfo" class="is-hidden modal-container">
+  <div class="modal-content-box modal-text-box">
+    <div class="card modal-title is-radiusless">
+      <div class="card-header">
+        <p class="card-header-title is-marginless">关于</p>
+      </div>
+    </div>
+    <div class="modal-content-container">
+      <div class="modal-content-block is-block"><div class="columns is-marginless is-multiline is-centered">
+  <div class="column">
+    <a
+      class="is-itext-link"
+      href="https://github.com/jgazeau/shadocs"
+      target="_blank"
+    >
+      <div>
+        <i class="fa-brands fa-github fa-2x"></i>
+        <p></p>
+      </div>
+    </a>
+  </div>
+  <div class="column">
+    <a
+      class="is-itext-link"
+      href="https://github.com/jgazeau/shadocs/archive/main.zip"
+      target="_blank"
+    >
+      <div>
+        <i class="fa-solid fa-download fa-2x"></i>
+        <p></p>
+      </div>
+    </a>
+  </div>
+  <div class="column">
+    <a
+      class="is-itext-link"
+      href="https://github.com/jgazeau/shadocs/issues"
+      target="_blank"
+    >
+      <div>
+        <i class="fa-solid fa-circle-info fa-2x"></i>
+        <p></p>
+      </div>
+    </a>
+  </div>
+  <div class="column">
+    <a
+      class="is-itext-link"
+      href="https://github.com/jgazeau/shadocs/fork"
+      target="_blank"
+    >
+      <div>
+        <i class="fa-solid fa-code-branch fa-2x"></i>
+        <p></p>
+      </div>
+    </a>
+  </div>
+</div>
+<p>(0.116.1)</p>
+<p>The MIT License (MIT) Copyright © 2023 Jordan GAZEAU</p>
+</div>
+    </div>
+  </div>
+</div>
+<div id="navbarShortcuts" class="is-hidden modal-container">
+  <div class="modal-content-box modal-text-box"><div class="card modal-title is-radiusless">
+        <div class="card-header">
+          <p class="card-header-title is-marginless">Keyboard shortcuts</p>
+        </div>
+      </div>
+      <div class="modal-content-container">
+        <div class="modal-content-block"><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>q</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Show current page QR code</p>
+  </div><div class="modal-content"><kbd>Escape</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Close modals</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>i</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Show website information</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>k</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Show shortcuts</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>h</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Go to homepage</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>f</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Find on website</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>m</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Collapse/Uncollapse sidebar</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>t</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Collapse/Uncollapse table of contents</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>↑</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Go to the top of the page</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>↓</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Go to the bottom of the page</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>p</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Print current page</p>
+  </div></div>
+      </div></div>
+</div>
+<div id="modalContainer" class="is-hidden modal-container">
+  <div id="modal" class="modal-content-box"></div>
+</div>
+<nav id="navbar" class="navbar" role="navigation" aria-label="main navigation">
+  <div id="navbarItemsContainer" class="navbar-brand"><div id="globalLogoContainer" class="is-flex">
+  <a
+    id="globalLogo"
+    class="navbar-item navbar-item-standard is-paddingless"
+    href="/"
+  >
+    <img
+      alt="主页"
+      src="/images/logo.png"
+    />
+  </a>
+  <a
+    id="globalTouchLogo"
+    class="navbar-item navbar-item-standard is-paddingless"
+    href="/"
+  >
+    <img
+      alt="主页"
+      src="/images/logoTouch.png"
+    />
+  </a>
+</div>
+<div id="navbarItems" class="is-flex">
+      <div id="navbarItemsStart" class="is-flex">
+        <div id="searchContainer" class="navbar-item"><div class="control has-icons-left">
+  <span id="searchInput" class="autocomplete">
+    <input
+      id="search"
+      autocomplete="off"
+      class="input"
+      type="search"
+      placeholder="搜索"
+    />
+  </span>
+  <span class="icon is-left">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </span>
+  <ul id="searchList" class="is-paddingless is-hidden"></ul>
+</div>
+</div>
+      </div>
+      <div id="navbarItemsEnd" class="is-flex is-invisible"><div class="navbar-item">
+  <a
+    id="printButton"
+    class="button navbar-item-standard"
+  >
+    <span class="icon-text">打印</span>
+    <span class="icon">
+      <i class="fa-solid fa-print fa-lg"></i>
+    </span>
+  </a>
+</div><div class="navbar-item"><div
+  id="taxonomiesSelectorContainer"
+  class="dropdown is-right"
+>
+  <div class="dropdown-trigger">
+    <button
+      id="taxonomiesSelector"
+      class="button navbar-item-standard"
+      aria-haspopup="true"
+      aria-controls="dropdown-menu"
+    >
+      <span class="icon-text">Taxonomies</span>
+      <span class="icon">
+        <i class="fa-solid fa-tags fa-lg"></i>
+      </span>
+    </button>
+  </div>
+  <div
+    id="dropdown-menu-taxonomies"
+    class="dropdown-menu"
+    role="menu"
+  >
+    <div class="dropdown-content is-paddingless"><a
+              href="/categories/"
+              class="dropdown-item has-text-weight-bold"
+            ><i class="fa-solid fa-table-cells"></i>Categories</a><a
+              href="/tags/"
+              class="dropdown-item has-text-weight-bold"
+            ><i class="fa-solid fa-tag"></i>Tags</a></div>
+  </div>
+</div>
+</div><div class="navbar-item">
+  <a
+    id="siteInfo"
+    trigger="navbarInfo"
+    class="button navbar-item-standard navbar-trigger"
+    title="关于"
+  >
+    <span class="icon-text">关于</span>
+    <span class="icon">
+      <i class="fa-solid fa-circle-question fa-lg"></i>
+    </span>
+  </a>
+</div>
+<div id="navbarExtend" class="navbar-item">
+  <div id="navbarExtendWrapper">
+    <a id="navbarExtendButton" class="button navbar-item-standard">
+      <span class="icon">
+        <i class="fa-solid fa-ellipsis fa-lg"></i>
+      </span>
+    </a>
+    <div id="navbarExtendItemsContainer">
+      <div id="navbarExtendItemsWrapper"><div class="navbar-item">
+  <a
+    id="printButtonExtend"
+    class="button navbar-item-standard"
+  >
+    <span class="icon-text">打印</span>
+    <span class="icon">
+      <i class="fa-solid fa-print fa-lg"></i>
+    </span>
+  </a>
+</div><div class="navbar-item"><div
+  id="taxonomiesSelectorContainerExtend"
+  class="dropdown is-right"
+>
+  <div class="dropdown-trigger">
+    <button
+      id="taxonomiesSelectorExtend"
+      class="button navbar-item-standard"
+      aria-haspopup="true"
+      aria-controls="dropdown-menu"
+    >
+      <span class="icon-text">Taxonomies</span>
+      <span class="icon">
+        <i class="fa-solid fa-tags fa-lg"></i>
+      </span>
+    </button>
+  </div>
+  <div
+    id="dropdown-menu-taxonomiesExtend"
+    class="dropdown-menu"
+    role="menu"
+  >
+    <div class="dropdown-content is-paddingless"><a
+              href="/categories/"
+              class="dropdown-item has-text-weight-bold"
+            ><i class="fa-solid fa-table-cells"></i>Categories</a><a
+              href="/tags/"
+              class="dropdown-item has-text-weight-bold"
+            ><i class="fa-solid fa-tag"></i>Tags</a></div>
+  </div>
+</div>
+</div><div class="navbar-item">
+  <a
+    id="siteInfoExtend"
+    trigger="navbarInfo"
+    class="button navbar-item-standard navbar-trigger"
+    title="关于"
+  >
+    <span class="icon-text">关于</span>
+    <span class="icon">
+      <i class="fa-solid fa-circle-question fa-lg"></i>
+    </span>
+  </a>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+</nav>
+<div id="navbarOverlay"></div>
+<div
+      class="columns is-mobile is-paddingless is-marginless"
+      id="mainContainer"
+    ><div
+  id="sidebarContainer"
+  class="column is-narrow is-paddingless is-marginless"
+>
+  <div id="sidebarWrapper" class="is-fixed">
+    <div id="sidebar" class="is-marginless">
+      <aside class="menu is-paddingless is-marginless">
+        <ul class="menu-list is-marginless is-paddingless"><div class="card is-fs-expandable-icon"><div class="card-header is-single-link">
+      <a
+        href='/digital/'
+        class='card-header-title'>
+        <i class='fa-solid fa-bars fa-lg'></i></a></div>
+      </div><div class="is-expandable">
+      <div class="is-sidebar-list-wrapper"><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/digital/'
+        class='card-header-title'
+          title='数字电路基础'>
+        <i class='fa-solid fa-bars fa-lg'></i><p class="pt-0 pb-0 pr-2 pl-1">数字电路基础</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="card is-fs-expandable-icon is-sidebar-active"><div class="card-header">
+      <a
+        href='/design/'
+        class='card-header-title'>
+        <i class='fa-solid fa-bars fa-lg'></i></a></div>
+      </div><div class="is-expandable">
+      <div class="is-sidebar-list-wrapper"><li class="is-marginless is-tree-active is-entries-expandable is-entries-expanded"><div
+            class="card"><div class="card-header">
+      <a
+        href='/design/'
+        class='card-header-title'
+          title='HDL 设计'>
+        <i class='fa-solid fa-bars fa-lg'></i><p class="pt-0 pb-0 pr-2 pl-1">HDL 设计</p></a><a class="card-header-icon is-icon-expandable is-paddingless is-icon-expanded">
+                <span class='icon'></span>
+              </a>
+            </div>
+          </div><ul class="is-marginless is-tree-active"><div class="">
+      <div class=""><li class="is-marginless is-entries-expandable is-entries-expanded"><div
+            class="card"><div class="card-header">
+      <a
+        href='/design/systemverilog/'
+        class='card-header-title'
+          title='SystemVerilog 教程'>
+        <i class='fa-solid fa-bars'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 教程</p></a><a class="card-header-icon is-icon-expandable is-paddingless is-icon-expanded">
+                <span class='icon'></span>
+              </a>
+            </div>
+          </div><ul class="is-marginless"><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/01.data-types/'
+        class='card-header-title'
+          title='SystemVerilog 数据类型'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 数据类型</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/02.array/'
+        class='card-header-title'
+          title='SystemVerilog 数组'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 数组</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/03.structure-and-union/'
+        class='card-header-title'
+          title='SystemVerilog 结构体和联合体'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 结构体和联合体</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/04.user-defined/'
+        class='card-header-title'
+          title='SystemVerilog 用户自定义'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 用户自定义</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/05.operators/'
+        class='card-header-title'
+          title='SystemVerilog operators'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog operators</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/06.control-flow/'
+        class='card-header-title'
+          title='SystemVerilog 控制流'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 控制流</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/07.functions/'
+        class='card-header-title'
+          title='SystemVerilog 函数'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 函数</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card is-sidebar-active"id='sidebarActiveEntry'><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/08.tasks/'
+        class='card-header-title'
+          title='SystemVerilog 任务'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 任务</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/09.loops/'
+        class='card-header-title'
+          title='SystemVerilog 循环'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 循环</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/10.scheduler-schematics/'
+        class='card-header-title'
+          title='Scheduler schematic'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Scheduler schematic</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/11.processes/'
+        class='card-header-title'
+          title='Processes'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Processes</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/12.fine-grain-process-control/'
+        class='card-header-title'
+          title='Fine Grain Process Control'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Fine Grain Process Control</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/13.interface/'
+        class='card-header-title'
+          title='Interface'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Interface</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/14.constraint/'
+        class='card-header-title'
+          title='Constraint'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Constraint</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/15.classes-and-oops/'
+        class='card-header-title'
+          title='类和面向对象'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">类和面向对象</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/17.functional-coverage/'
+        class='card-header-title'
+          title='Coverage'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Coverage</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/18.assertion/'
+        class='card-header-title'
+          title='Assertion'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Assertion</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/19.interprocess-communication/'
+        class='card-header-title'
+          title='Interprocess communication  '>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Interprocess communication  </p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/20.misc-constructs/'
+        class='card-header-title'
+          title='Program Block'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Program Block</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/choosing-an-array/'
+        class='card-header-title'
+          title='Choosing-an-array'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Choosing-an-array</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/control-flow-interview-questions/'
+        class='card-header-title'
+          title='Control-Flow-Interview-questions'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Control-Flow-Interview-questions</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/data-type-interview-questions/'
+        class='card-header-title'
+          title='Data-type-Interview-questions'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Data-type-Interview-questions</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/differences-between-macros-and-parameters/'
+        class='card-header-title'
+          title='Differences-between-macros-and-parameters'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Differences-between-macros-and-parameters</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/interface-interview-questions/'
+        class='card-header-title'
+          title='Interface-Interview-Questions'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Interface-Interview-Questions</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/design/systemverilog/processes-interviewquestions/'
+        class='card-header-title'
+          title='Processes-InterviewQuestions'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Processes-InterviewQuestions</p></a></div>
+          </div></li>
+      </div>
+    </div></ul></li>
+      </div>
+    </div></ul></li>
+      </div>
+    </div><div class="card is-fs-expandable-icon"><div class="card-header">
+      <a
+        href='/formal/'
+        class='card-header-title'>
+        <i class='fa-solid fa-bars fa-lg'></i></a></div>
+      </div><div class="is-expandable">
+      <div class="is-sidebar-list-wrapper"><li class="is-marginless is-entries-expandable is-entries-shrinked"><div
+            class="card"><div class="card-header">
+      <a
+        href='/formal/'
+        class='card-header-title'
+          title='形式验证'>
+        <i class='fa-solid fa-bars fa-lg'></i><p class="pt-0 pb-0 pr-2 pl-1">形式验证</p></a><a class="card-header-icon is-icon-expandable is-paddingless is-icon-shrinked">
+                <span class='icon'></span>
+              </a>
+            </div>
+          </div><ul class="is-marginless"><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/formal/model_checking/'
+        class='card-header-title'
+          title='模型检查'>
+        <i class='fa-solid fa-bars'></i><p class="pt-0 pb-0 pr-2 pl-0">模型检查</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/formal/equivalence_checking/'
+        class='card-header-title'
+          title='等价性检查'>
+        <i class='fa-solid fa-bars'></i><p class="pt-0 pb-0 pr-2 pl-0">等价性检查</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless is-entries-expandable is-entries-shrinked"><div
+            class="card"><div class="card-header">
+      <a
+        href='/formal/theorem_proving/'
+        class='card-header-title'
+          title='定理证明'>
+        <i class='fa-solid fa-bars'></i><p class="pt-0 pb-0 pr-2 pl-0">定理证明</p></a><a class="card-header-icon is-icon-expandable is-paddingless is-icon-shrinked">
+                <span class='icon'></span>
+              </a>
+            </div>
+          </div><ul class="is-marginless"><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/formal/theorem_proving/acl2/'
+        class='card-header-title'
+          title='一文了解定理证明器 ACL2'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">一文了解定理证明器 ACL2</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/formal/theorem_proving/acl2_hardware/'
+        class='card-header-title'
+          title='使用 ACL2 进行硬件验证'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">使用 ACL2 进行硬件验证</p></a></div>
+          </div></li>
+      </div>
+    </div></ul></li>
+      </div>
+    </div></ul></li>
+      </div>
+    </div></ul>
+      </aside>
+    </div>
+    <div id="sidebarCollapsible" class="is-marginless">
+      <div class="card is-uncollapse-action">
+        <div
+          id="sidebarUncollapse"
+          class="card-header is-single-link"
+          title="Collapse/Uncollapse sidebar"
+        >
+          <a class="card-header-title">
+            <i class="fa-solid fa-angles-right fa-lg"></i>
+          </a>
+        </div>
+      </div>
+      <div class="card is-collapse-action">
+        <div
+          id="sidebarCollapse"
+          class="card-header is-single-link"
+          title="Collapse/Uncollapse sidebar"
+        >
+          <a class="card-header-title">
+            <i class="fa-solid fa-angles-left fa-lg"></i>
+            <p>折叠</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="sidebarMobileWrapper" class="column is-narrow is-hidden-desktop"></div>
+<div class="columns is-mobile is-marginless is-scroll-smooth has-toc" id="contentContainer">
+  <div class="column" id="content"><div id="contentTitle">SystemVerilog 任务</div>
+<h1 id='tasks'>Tasks<a href='#tasks' class='anchor'>#</a>
+</h1><p>Tasks are almost similar to Functions, but tasks can calculate multiple variables and return them using output or inout statements but are not necessary like function i.e., task is not a return type and tasks are capable of having time-consuming statements like #,@,wait. Task can call another task and functions also.</p>
+<p><strong>syntax:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>task_name(arguments); 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">task</span> task_name(arguments); 
+</span></span><span style="display:flex;"><span>statement1; 
+</span></span><span style="display:flex;"><span>statement2; 
+</span></span><span style="display:flex;"><span>. 
+</span></span><span style="display:flex;"><span>.  
+</span></span><span style="display:flex;"><span>statementN;  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">endtask</span>  
+</span></span></code></pre></div><p><strong>limitations:</strong></p>
+<ul>
+<li>tasks are not synthesizable</li>
+</ul>
+<p><strong>Flowchart:</strong></p>
+<p><img
+  src="https://user-images.githubusercontent.com/110412468/189890280-2f900ada-a451-46e0-960f-47664c39bc39.png"
+  alt="01"
+  class="01"/>
+</p>
+<pre><code>       Flowchart.1- task flowchart  
+</code></pre>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>          <span style="color:#66d9ef">int</span> multiplicand<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>,multiplicator<span style="color:#f92672">=</span><span style="color:#ae81ff">6</span>,result;
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">initial</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">begin</span>
+</span></span><span style="display:flex;"><span>          $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74"> ----output of simple task calling----&#34;</span>);
+</span></span><span style="display:flex;"><span>          mul(multiplicand,multiplicator,result);
+</span></span><span style="display:flex;"><span>          $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74"> @ %0t ns , %0d X %0d = %0d&#34;</span>,$time,multiplicand,multiplicator,result);
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">task</span> mul(<span style="color:#66d9ef">input</span> <span style="color:#66d9ef">int</span> var1,var2,<span style="color:#66d9ef">output</span> <span style="color:#66d9ef">int</span> res);
+</span></span><span style="display:flex;"><span>          #<span style="color:#ae81ff">2</span> res<span style="color:#f92672">=</span>var1<span style="color:#f92672">*</span>var2;
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">endtask</span>
+</span></span></code></pre></div><p><strong>output:</strong></p>
+<p><img
+  src="https://user-images.githubusercontent.com/110412468/188679971-23979b76-d9e2-4b50-80be-d274698b5407.png"
+  alt="simple task1"
+  class="simple task1"/>
+</p>
+<pre><code>          Fig.1 - output of calling a task  
+</code></pre>
+<p><strong>Github lab code link:</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/tasks/simple_task/simple_task.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/tasks/simple_task/simple_task.sv</a
+>
+<br>
+<strong>Github lab output link:</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/tasks/simple_task/simple_task_log.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/tasks/simple_task/simple_task_log.log</a
+>
+</p>
+<p>In the above example, a task named mul is called from initial module which is passing arguments multiplicand, multiplier as inputs, and result as output which is having a delay of 2 ns. In task, there will be no return but the result can be passed by mentioning as output as above.(for more about disable <a
+  href="https://github.com/HemanthVeeramalla/control_flow/wiki/Tasks#disable-task"
+    class="is-pretty-link">click here</a
+>
+)</p>
+<hr>
+<h2 id='automatic-task'>Automatic Task<a href='#automatic-task' class='anchor'>#</a>
+</h2><p>A Task whenever declared as automatic then for every time calling the task the simulator will assign new memory. Generally, tasks are static inside modules to make it automatic need to add automatic keyword as follows.</p>
+<p><strong>syntax:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span><span style="color:#66d9ef">task</span> <span style="color:#66d9ef">automatic</span> task_name()
+</span></span></code></pre></div><p><strong>Example:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>          <span style="color:#66d9ef">task</span> <span style="color:#66d9ef">automatic</span> factorial_automatic(<span style="color:#66d9ef">int</span> var1);
+</span></span><span style="display:flex;"><span>          #<span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">if</span>(var1<span style="color:#f92672">&gt;=</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">begin</span>
+</span></span><span style="display:flex;"><span>            factorial_automatic(var1<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>            result<span style="color:#f92672">=</span>result<span style="color:#f92672">*</span>var1;
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">begin</span>
+</span></span><span style="display:flex;"><span>            result<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>           <span style="color:#f92672">-&gt;</span>a;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">endtask</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">initial</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">begin</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">fork</span>
+</span></span><span style="display:flex;"><span>          factorial_static(<span style="color:#ae81ff">5</span>);
+</span></span><span style="display:flex;"><span>         factorial_automatic(<span style="color:#ae81ff">5</span>);
+</span></span><span style="display:flex;"><span>         <span style="color:#66d9ef">join</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">fork</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">wait</span>(a.triggered);
+</span></span><span style="display:flex;"><span>      $display(<span style="color:#e6db74">&#34;@ %0t ns , factorial_automatic:%0d&#34;</span>,$time,result);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">end</span>
+</span></span></code></pre></div><p><strong>Flowchart:</strong></p>
+<p><img
+  src="https://user-images.githubusercontent.com/110412468/189890331-6d132043-a683-4de5-bcd6-bcddd3287701.png"
+  alt="02"
+  class="02"/>
+</p>
+<pre><code>       Flowchart.2- automatic task flowchart  
+</code></pre>
+<p><strong>output:</strong></p>
+<p><img
+  src="https://user-images.githubusercontent.com/110412468/188771167-73ea13ea-a670-4ff2-91f7-16db6aaeacdd.png"
+  alt="fact static automatic1"
+  class="fact static automatic1"/>
+</p>
+<pre><code>          Fig.2 - output of calling an automatic task  
+</code></pre>
+<p><strong>Github lab code link:</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/tasks/task_automatic/task_fact.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/tasks/task_automatic/task_fact.sv</a
+>
+<br>
+<strong>Github lab output link:</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/tasks/task_automatic/task_fact_log.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/tasks/task_automatic/task_fact_log.log</a
+>
+</p>
+<p>Here, took an example of finding a factorial using tasks that can explain the difference between static &amp; automatic perfectly, in the example we gave the number 5 to find factorial of 5. when simulation goes with automatic then for the no. 5 task is called, at loc1 in which there is a condition if num=5&gt;2 so it again calls the task for finding factorial of num4, here for a new call of the task will create a new memory at loc2 and performs the task i.e., num=4&gt;2 and for no.3 at loc3, and at loc4 for no.2 and at loc5 num=1 condition becomes false, so result assigns as 1 and then comes back to loc4, multiplies with no.2(i.e.,1 * 2), and then at loc3 result with no.3(1 * 2 * 3) and so on till loc1(1 * 2 * 3 * 4 * 5) which gives factorial of 5 = 120;</p>
+<p>But in the case of the static task, when the task is called initially, memory is allocated at loc1 for num5 which internally has num5&gt;2 then calls again for the same task for factorial of num4, which again makes use of loc1 again instead of new memory so 5 is overwritten with 4 which goes on till num1 and at num1 result is assigned as 1 and comes back to initial procedural block, so the final result will be 1.</p>
+<p>so whenever need a new memory for performing the task, then need to include the keyword automatic (like when the same task is called inside the task)</p>
+<hr>
+<h2 id='calling-a-func-from-the-task'>calling a func from the task<a href='#calling-a-func-from-the-task' class='anchor'>#</a>
+</h2><p><strong>Example:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>       <span style="color:#66d9ef">initial</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">begin</span>
+</span></span><span style="display:flex;"><span>        $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74"> ----output for func from task----&#34;</span>);
+</span></span><span style="display:flex;"><span>        $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">@ %0t ns, In the initial block&#34;</span>,$time);
+</span></span><span style="display:flex;"><span>        $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">calling task&#34;</span>);
+</span></span><span style="display:flex;"><span>        task_sum;
+</span></span><span style="display:flex;"><span>        $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">returned to initial from function&#34;</span>);
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">end</span>  
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">task</span> task_sum;
+</span></span><span style="display:flex;"><span>        #<span style="color:#ae81ff">1</span> $display( <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">@ %0t ns , I&#39;m in task&#34;</span>,$time);
+</span></span><span style="display:flex;"><span>        $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">calling func inside a task&#34;</span>);
+</span></span><span style="display:flex;"><span>        #<span style="color:#ae81ff">1</span> <span style="color:#66d9ef">void</span>&#39;(function_sum);
+</span></span><span style="display:flex;"><span>        $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">returned to task from function&#34;</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">endtask</span>
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">function</span> function_sum;
+</span></span><span style="display:flex;"><span>        $display( <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">@ %0t ns I&#39;m in function&#34;</span>,$time);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">endfunction</span>
+</span></span></code></pre></div><p>Calling a task from the function is illegal but calling a func from the task is normal as functions do not have any time-consuming statements.</p>
+<p><strong>Flowchart:</strong></p>
+<p><img
+  src="https://user-images.githubusercontent.com/110412468/189890398-8efbf1e5-9cb0-44b0-b080-6050883104e0.png"
+  alt="03"
+  class="03"/>
+</p>
+<pre><code>       Flowchart.3- calling function from task flowchart    
+</code></pre>
+<p><strong>output:</strong></p>
+<p><img
+  src="https://user-images.githubusercontent.com/110412468/189890856-b6b57f6e-1661-4a03-b406-9cc2fa08e8ca.png"
+  alt="func from task1"
+  class="func from task1"/>
+</p>
+<pre><code>          Fig.3 - output of calling a task from function    
+</code></pre>
+<p><strong>Github lab code link:</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/tasks/func_from_task/func_from_task.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/tasks/func_from_task/func_from_task.sv</a
+>
+<br>
+<strong>Github lab output link:</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/tasks/func_from_task/func_from_task_log.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/tasks/func_from_task/func_from_task_log.log</a
+>
+</p>
+<p>Here, In the above example simulator is in the initial module and performs displays @0 ns I&rsquo;m in Initial, then after 1 ns task is called and in task, the display is performed that @1 ns I&rsquo;m in task and also calling a func inside task, and calls the function, in function, there is only one display which prints I&rsquo;m in function and can include other statements which can complete in 0 simulation time and returns back to task and then after endtask returns to initial block.</p>
+<hr>
+<h2 id='global-task'>Global task<a href='#global-task' class='anchor'>#</a>
+</h2><p>A Task is said to be global if it is declared out of module &amp; class, the default global task is static in nature.This global task can be called from any module, go through the following example for better understanding.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>      <span style="color:#66d9ef">task</span> mul(<span style="color:#66d9ef">input</span> <span style="color:#66d9ef">int</span> var1,var2,<span style="color:#66d9ef">output</span> <span style="color:#66d9ef">int</span> res);
+</span></span><span style="display:flex;"><span>         #<span style="color:#ae81ff">1</span> res<span style="color:#f92672">=</span>var1<span style="color:#f92672">*</span>var2;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">endtask</span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">module</span> task1();
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">int</span> multiplicand<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>,multiplicator<span style="color:#f92672">=</span><span style="color:#ae81ff">6</span>,result;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">initial</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">begin</span>
+</span></span><span style="display:flex;"><span>         $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74"> ----output of global task----&#34;</span>);
+</span></span><span style="display:flex;"><span>       mul(multiplicand,multiplicator,result);
+</span></span><span style="display:flex;"><span>       $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74"> @ %0t ns , %0d X %0d = %0d&#34;</span>,$time,multiplicand,multiplicator,result);
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">endmodule</span>
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">module</span> task2();
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">int</span> r;
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">initial</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">begin</span>
+</span></span><span style="display:flex;"><span>       #<span style="color:#ae81ff">2</span> mul(<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">8</span>,r);
+</span></span><span style="display:flex;"><span>       $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74"> @ %0t ns , 7 X 8 = %0d&#34;</span>,$time,r);
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">endmodule</span>
+</span></span></code></pre></div><p><strong>output:</strong></p>
+<p><img
+  src="https://user-images.githubusercontent.com/110412468/188776653-c002240a-f20a-4320-b08d-99eddf3b1ea5.png"
+  alt="global task1"
+  class="global task1"/>
+</p>
+<pre><code>          Fig.4 - output of calling a global task  
+</code></pre>
+<p><strong>Github lab code link:</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/tasks/global_task/global_task.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/tasks/global_task/global_task.sv</a
+>
+<br>
+<strong>Github lab output link:</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/tasks/global_task/global_task_log.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/tasks/global_task/global_task_log.log</a
+>
+</p>
+<p>Here, we have used two modules named task1 and task2 and a task that performs multiplication. Both modules run parallel,@ 0 ns from task1 mul task is called and the task is performed on initial multiplicator and multiplicand i.e., 5&amp;6 and gives output 5X6 = 30. Then @ 2 ns from task2 mul is again called with 7&amp;8 which gives output 7X8=56.</p>
+<p>so tasks that have the same set of instructions or code in multiple modules then this global task is suitable.</p>
+<hr>
+<h2 id='disable-task'>Disable task<a href='#disable-task' class='anchor'>#</a>
+</h2><p>Tasks can be disabled by using a keyword disable with the task name, which stops that particular task when the disable is called.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span>      <span style="color:#66d9ef">module</span> disable_task();
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">initial</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">begin</span>
+</span></span><span style="display:flex;"><span>       $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74"> ----output of disable task----&#34;</span>);
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">fork</span>
+</span></span><span style="display:flex;"><span>       display_task();
+</span></span><span style="display:flex;"><span>       #<span style="color:#ae81ff">20</span> <span style="color:#66d9ef">disable</span> display_task.task_A;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">join</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">task</span> display_task();
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">begin</span> <span style="color:#f92672">:</span> task_A
+</span></span><span style="display:flex;"><span>          $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74"> @ %0t ns , task_A initiated&#34;</span>,$time);
+</span></span><span style="display:flex;"><span>          #<span style="color:#ae81ff">30</span> $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74"> @ %0t ns , task_A finished&#34;</span>,$time);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">end</span> <span style="color:#f92672">:</span>task_A
+</span></span><span style="display:flex;"><span>   
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">begin</span> <span style="color:#f92672">:</span> task_B
+</span></span><span style="display:flex;"><span>        $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74"> @ %0t ns , task_B initiated&#34;</span>,$time);
+</span></span><span style="display:flex;"><span>        #<span style="color:#ae81ff">10</span> $display(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74"> @ %0t ns , task_B finished&#34;</span>,$time);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">end</span> <span style="color:#f92672">:</span>task_B
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">endtask</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">endmodule</span>
+</span></span></code></pre></div><p><strong>output:</strong></p>
+<p><img
+  src="https://user-images.githubusercontent.com/110412468/188779571-fb7bd80d-e726-41e4-9cc9-3c36291b4e35.png"
+  alt="disable task1"
+  class="disable task1"/>
+</p>
+<pre><code>          Fig.5 - output of calling a disable task   
+</code></pre>
+<p><strong>Github lab code link:</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/tasks/disable_task/disable_task.sv"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/tasks/disable_task/disable_task.sv</a
+>
+<br>
+<strong>Github lab output link:</strong> <a
+  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/tasks/disable_task/disable_task_log.log"
+    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/tasks/disable_task/disable_task_log.log</a
+>
+</p>
+<p>In the above example,display_task is the task which has two threads named task_A &amp; task_B.@ 0 ns display_task is called so @ 0 ns task_A initiated and after 20 ns task_A thread is terminated using disable so even the delay 30 is mentioned(doesn&rsquo;t print task_A finished due to force disable), simulator comes out of thread task_A and performs the second thread task_B and prints @ 20 ns task_B initiated and after 10 ns i.e., @ 30 ns task_B is finished.</p>
+</div><div class="column is-sticky is-paddingless" id="tocWrapper">
+  <div class="is-paddingless" id="tocContainer">
+    <div class="toc-header">
+      <h6 class="toc-title is-marginless">On this page:</h6>
+      <i
+        title="Back to top"
+        id="tocBackToTop"
+        class="fa-solid fa-circle-arrow-up"
+      ></i>
+    </div>
+    <div id="tocContent">
+      <div id="toc"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#tasks">Tasks</a>
+      <ul>
+        <li><a href="#automatic-task">Automatic Task</a></li>
+        <li><a href="#calling-a-func-from-the-task">calling a func from the task</a></li>
+        <li><a href="#global-task">Global task</a></li>
+        <li><a href="#disable-task">Disable task</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      <div id="taxonomies"><div class="taxonomy-wrapper"><div class="toc-header">
+                  <h6 class="toc-title is-marginless">Categories</h6>
+                </div><a href="/categories/systemverilog/" class="taxonomy"
+                    ><i class="fa-solid fa-circle-dot"></i>SystemVerilog</a
+                  ></div><div class="taxonomy-wrapper"><div class="toc-header">
+                  <h6 class="toc-title is-marginless">Tags</h6>
+                </div><a href="/tags/sv/" class="taxonomy"
+                    ><i class="fa-solid fa-circle-dot"></i>sv</a
+                  ></div></div>
+    </div>
+  </div>
+  <div
+    class="is-paddingless"
+    id="tocCollapsible"
+    title="Collapse/Uncollapse table of contents"
+  >
+    <i class="fa-solid fa-angles-right fa-lg"></i>
+  </div>
+</div>
+</div>
+</div><script type='text/javascript'>
+  const baseUrl = '\/';
+  const codeCopyBefore = 'Copy to clipboard';
+  const codeCopyAfter = 'Copied to clipboard';
+  const svgDownloadLabel = 'Download as SVG';
+  const helperLoadingLabel = 'Loading';
+  const searchNoResults = '没有找到';
+  const introNextLabel = 'Next';
+  const introPrevLabel = 'Previous';
+  const introSkipLabel = '✗';
+  const introDoneLabel = 'Done';
+  const printLabel = 'Print current page';
+  const qrCodeLabel = 'Show current page QR code';
+  const naCommonLabel = 'Not available';
+</script>
+<script
+      type="module"
+      src="/js/theme/modules/const.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/modules/helpers.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/modules/helpersGlobal.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/init.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/navbar.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/print.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/qrcode.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/search.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/shortcuts.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/sidebar.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/toc.min.js"
+    ></script><script
+      type="module"
+      src="/js/shortcuts.min.js"
+    ></script><script
+      type="text/javascript"
+      src="/js/theme/browserCompatibility.min.js"
+    ></script><script
+      type="text/javascript"
+      src="/js/external/flexsearch/flexsearch.bundle.min.js"
+    ></script><script
+      type="text/javascript"
+      src="/js/external/qrious/qrious.min.js"
+    ></script><script
+      type="text/javascript"
+      src="/js/external/overlay-scrollbars/overlayscrollbars.min.js"
+    ></script>
+</body>
+</html>
