@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>等价性检查 on Documentation du thème Shadocs</title>
+    <title>等价性检查 on EasyFormal</title>
     <link>/formal/equivalence_checking/</link>
-    <description>Recent content in 等价性检查 on Documentation du thème Shadocs</description>
+    <description>Recent content in 等价性检查 on EasyFormal</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>The MIT License (MIT) Copyright © 2023 Jordan GAZEAU</copyright>

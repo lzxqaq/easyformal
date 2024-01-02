@@ -45,7 +45,7 @@ themesdir              = "themes"
 
   [Languages.zh]
     contentDir   = "content/zh"
-    title        = "Documentation du thème Shadocs"
+    title        = "EasyFormal"
     weight       = 1
     languageName = "简体中文"
 

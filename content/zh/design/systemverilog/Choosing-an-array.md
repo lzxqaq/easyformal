@@ -2,6 +2,7 @@
 title: "Choosing-an-array"
 categories: ["SystemVerilog"]
 tags: "sv"
+titleIcon: "fa-solid"
 weight: 21
 ---
 

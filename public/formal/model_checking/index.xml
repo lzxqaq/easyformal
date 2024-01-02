@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>模型检查 on Documentation du thème Shadocs</title>
+    <title>模型检查 on EasyFormal</title>
     <link>/formal/model_checking/</link>
-    <description>Recent content in 模型检查 on Documentation du thème Shadocs</description>
+    <description>Recent content in 模型检查 on EasyFormal</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>The MIT License (MIT) Copyright © 2023 Jordan GAZEAU</copyright>

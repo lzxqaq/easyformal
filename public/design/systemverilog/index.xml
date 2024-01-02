@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>SystemVerilog 教程 on Documentation du thème Shadocs</title>
+    <title>SystemVerilog 详细教程 on EasyFormal</title>
     <link>/design/systemverilog/</link>
-    <description>Recent content in SystemVerilog 教程 on Documentation du thème Shadocs</description>
+    <description>Recent content in SystemVerilog 详细教程 on EasyFormal</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>The MIT License (MIT) Copyright © 2023 Jordan GAZEAU</copyright>
@@ -13,21 +13,21 @@
       <link>/design/systemverilog/01.data-types/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/design/systemverilog/01.data-types/</guid>
-      <description>SystemVerilog 数据类型# 在Verilog中，所有数据类型都是 4 值的，即可以表示 0、1、X 和 Z。但是，在 test benches 的中，不需要这些4态变量。例如，要计算数据包的数量，我们需要一个 2 值变量。因此，System Verilog 引入了一类新的 2 值变量，即 0 和 1。&#xA;数据类型列表# sr. no. data type 1. 4-state 2. 2-state 3. Arrays 4. Strings 5. Structures and Union 6. Enumerated 7. User defined Tabular column.1. data types 有符号和无符号数字&#xA;无符号数：无符号数的符号不使用任何标志，即无符号数只能存储正数。&#xA;无符号二进制数的范围从 0 到 ((2^n) - 1)，n 表示位数。&#xA;有符号数：通过有符号数中的符号标志来区分正值和负值。有符号位的零有两种可能表示形式（正 (0) 和负 (1)）。&#xA;有符号二进制数的范围从 -2^(n-1) 到 2^(n-1)-1，n表示位数。&#xA;有符号二进制数在计算机系统中，一般用补码来表示：&#xA;有符号二进制数的补码：&#xA;正数的补码：与原码相同。 例如，+9的补码是00001001。 负数的补码：符号位为1，其余位为该数绝对值的原码按位取反；然后整个数加1。 例如，-7的补码：因为是负数，则符号位为“1”,整个为10000111；其余7位为-7的绝对值+7的原码 0000111按位取反为1111000；再加1，所以-7的补码是11111001。 已知一个数的补码，求原码：</description>
+      <description>在Verilog中，所有数据类型都是 4 值的，即可以表示 0、1、X 和 Z。但是，在 test benches 的中，不需要这些4态变量。例如，要计算数据包的数量，我们需要一个 2 值变量。因此，System Verilog 引入了一类新的 2 值变量，即 0 和 1。&#xA;数据类型列表# sr. no. data type 1. 4-state 2. 2-state 3. Arrays 4. Strings 5. Structures and Union 6. Enumerated 7. User defined Tabular column.1. data types 有符号和无符号数字&#xA;无符号数：无符号数的符号不使用任何标志，即无符号数只能存储正数。&#xA;无符号二进制数的范围从 0 到 ((2^n) - 1)，n 表示位数。&#xA;有符号数：通过有符号数中的符号标志来区分正值和负值。有符号位的零有两种可能表示形式（正 (0) 和负 (1)）。&#xA;有符号二进制数的范围从 -2^(n-1) 到 2^(n-1)-1，n表示位数。&#xA;有符号二进制数在计算机系统中，一般用补码来表示：&#xA;有符号二进制数的补码：&#xA;正数的补码：与原码相同。 例如，+9的补码是00001001。 负数的补码：符号位为1，其余位为该数绝对值的原码按位取反；然后整个数加1。 例如，-7的补码：因为是负数，则符号位为“1”,整个为10000111；其余7位为-7的绝对值+7的原码 0000111按位取反为1111000；再加1，所以-7的补码是11111001。 已知一个数的补码，求原码：&#xA;如果补码的符号位为“0”，表示是一个正数，所以补码就是该数的原码。 如果补码的符号位为“1”，表示是一个负数，求原码的操作可以是：符号位为1，其余各位取反，然后再整个数加1 有符号数和无符号数的示例</description>
     </item>
     <item>
       <title>SystemVerilog 数组</title>
       <link>/design/systemverilog/02.array/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/design/systemverilog/02.array/</guid>
-      <description>数组# 数组是元素的集合，所有元素都具有相同的类型，并使用其名称和一个或多个索引进行访问。 Verilog 2001 要求数组的下限和上限必须是数组声明的一部分。 System Verilog 引入了紧凑数组声明样式，只需给出数组大小以及数组名称声明就足够了。&#xA;下图显示了 System Verilog 中使用的不同类型的数组。 Fig.1 Types of arrays in SV 数组列表# Sr No. 数组类型 描述 1 合并数组(Packed Array) 先声明数组名称，后声明数组维度 2 非合并数组(Unpacked Array) 先声明数组维度，后声明数组名称 3 动态数组(Dynamic Array) 内存将在运行时分配 4 关联数组(Associative Array) Memories allocated only when it is used and any index type is used for indexing the array 5 队列(Queue) It is similar to fifo and we can add and remove elements from queue at run time 6 数组操作函数 它由数组定位函数、数组排序函数和数组缩减函数组成 Table.</description>
+      <description>数组是元素的集合，所有元素都具有相同的类型，并使用其名称和一个或多个索引进行访问。 Verilog 2001 要求数组的下限和上限必须是数组声明的一部分。 System Verilog 引入了紧凑数组声明样式，只需给出数组大小以及数组名称声明就足够了。&#xA;下图显示了 System Verilog 中使用的不同类型的数组。 数组类型一览表列表：&#xA;数组类型 描述 压缩数组(Packed Array) 先声明数组名称，后声明数组维度 非压缩数组(Unpacked Array) 先声明数组维度，后声明数组名称 动态数组(Dynamic Array) 内存将在运行时分配 关联数组(Associative Array) 仅在使用时分配内存并且使用任何索引类型对数组进行索引 队列(Queue) 它类似于 fifo，我们可以在运行时向队列添加和删除元素 数组的函数 它由数组定位函数、数组排序函数和数组缩减函数组成 静态数组# 在固定大小数组/静态数组中，数组大小在整个模拟过程中将保持不变，一旦声明数组就无需创建它。默认情况下，数组将初始化为值“0”。在这种类型的数组中，内存将在编译阶段被占用，并且我们无法在运行时重新分配内存。&#xA;静态数组有两种类型&#xA;压缩数组 非压缩数组. 压缩数组# 压缩数组（Packed Arrays）是一种在数组名称之前声明数组维度的数组。在此数组中的多个位存储在一个内存位置中。&#xA;注意： 它可以由任何单个位数据类型 bit、logic 和 reg 组成。我们不能对压缩数组使用多位数据类型。&#xA;语法： [data_type] [dimensions] [array_name];&#xA;示例：&#xA;1) bit [3:0]abc = 4&#39;b0110&#xA;2) logic [15:0]pqr = 16&#39;h10fe&#xA;3) reg [7:0]xyz = 8&#39;d16&#xA;一些注意事项：&#xA;如果压缩数组被声明为带符号的，则被视为单个向量的数组应被带符号。数组的各个元素都是无符号的，除非它们是声明为有符号的命名类型。 压缩数组的最大大小可以受到限制，但至少应为 65536 (2^16) 位。 压缩数组是可综合的。 下图展示了二维压缩数组中数组元素的存储方式。对于位 [2:0][3:0]xyz 示例，数组元素从左到右将占用内存。</description>
     </item>
     <item>
       <title>SystemVerilog 结构体和联合体</title>
       <link>/design/systemverilog/03.structure-and-union/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/design/systemverilog/03.structure-and-union/</guid>
-      <description>Structure# A structure contains different data types with different sizes which grouped under one single structure name. Structure is originally unpacked form by default, but we can use &amp;lsquo;packed&amp;rsquo; keyword for converting into packed structure. Structure is different from normal array because array uses only same type of elements with sizes whereas structure uses different data types. The unpacked structure declared using &amp;lsquo;struct&amp;rsquo; keyword.&#xA;The below figure shows different types of structures in System Verilog.</description>
+      <description>结构体# 结构包含具有不同大小的不同数据类型，这些数据类型分组在一个结构体名称下。默认情况下，结构体最初是未压缩的形式，但我们可以使用“packed”关键字将其转换为压缩结构。结构与普通数组不同，因为数组仅使用相同类型和大小的元素，而结构体使用不同的数据类型。使用“struct”关键字声明的非压缩结构。&#xA;下图显示了 System Verilog 中不同类型的结构体。&#xA;结构体类型&#xA;1.非压缩结构体 2.压缩结构体&#xA;非压缩结构体# 非压缩结构是默认的结构语法，与普通结构体相同。不同的变量在结构内部保存不同的数据，称为结构成员。结构成员被视为自变量。当我们想给结构体的成员赋值时，可以使&amp;rsquo;structure name. variable&amp;rsquo;的方式访问。&#xA;赋值给结构体成员：&#xA;structure name = &amp;lsquo;{value1, value2, value3};&#xA;赋值的替代方法：&#xA;structure name = &amp;lsquo;{variable1 : value1 , variable2 : value2 , variable 3 : value3};&#xA;该方法一步完成初始化。变量和值可以用冒号“.”分隔。&#xA;语法：&#xA;struct{ list of different types of variables with sizes } structure name;&#xA;示例：&#xA;struct{&#xA;string name;&#xA;bit[15:0] salary;&#xA;byte id;&#xA;} employee_s;&#xA;下图显示了非压缩结构的数据对齐情况。&#xA;&amp;lsquo;string&amp;rsquo; 为 sam 占用 24 位，这里 string 被视为 ascii 字符。然后 16 位表示位[15:0]，8 位表示字节。这里比特流大小是 48。未压缩的结构比压缩的结构具有更多的内存占用。</description>
     </item>
     <item>
       <title>SystemVerilog 用户自定义</title>
@@ -37,7 +37,7 @@
       <description>Typedef# Typedef used to create new identifiers from longer datatype specification. It is similar to alias command. Typedef uses mainly in complex testbenches in System Verilog because it replaces the longer datatypes like int(unsigned longint, signed shortint), byte ,bit[7:0],logic[7:0] with identifiers in the code. Typedef uses in Class, Structure and Enumeration to make the datatype declarations easier.&#xA;Syntax:&#xA;typedef &amp;lt;base_type&amp;gt; &amp;lt;size&amp;gt; &amp;lt;type_name&amp;gt;;&#xA;Typedef in Class# The main use of Typedef in class is that sometimes we use class variable before the declaration of the class itself.</description>
     </item>
     <item>
-      <title>SystemVerilog operators</title>
+      <title>SystemVerilog 运算符</title>
       <link>/design/systemverilog/05.operators/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/design/systemverilog/05.operators/</guid>

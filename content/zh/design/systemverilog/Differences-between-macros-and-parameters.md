@@ -2,6 +2,7 @@
 title: "Differences-between-macros-and-parameters"
 categories: ["SystemVerilog"]
 tags: "sv"
+titleIcon: "fa-solid"
 weight: 24
 ---
 
