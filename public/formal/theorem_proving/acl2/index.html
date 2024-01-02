@@ -2,7 +2,7 @@
 <html>
   <head><meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="generator" content="Hugo 0.116.1">
+<meta name="generator" content="Hugo 0.121.1">
 <meta name="viewport" content="width=device-width, initial-scale=1" /><title>一文了解定理证明器 ACL2 | Documentation du thème Shadocs</title>
 
 <link
@@ -87,7 +87,7 @@
     </a>
   </div>
 </div>
-<p>(0.116.1)</p>
+<p>(0.121.1)</p>
 <p>The MIT License (MIT) Copyright © 2023 Jordan GAZEAU</p>
 </div>
     </div>
@@ -775,7 +775,7 @@
 <p>析构消除（Destructor Elimination） — 通过用“构造”（如 (CONS A B)）替换变量（如 X）来摆脱“析构”（如 (CAR X) 和 (CDR X)）。你可以告诉 ACL2 新的析构器/构造器组合。</p>
 </li>
 <li>
-<p>受精（Fertilization） — 使用等价假设，用目标中的一侧替换另一侧。在归纳时，ACL2 可能会决定使用其所谓的交叉受精启发法来限制替换，如下所示：仅替换到结论的一侧，从而使用归纳假设为另一次归纳之前的可能泛化做好准备。请注意，仅在启用泛化时才使用交叉受精：使用提示：do-not &lsquo;（泛化）时，仅应用完全受精。</p>
+<p>施肥（Fertilization） — 使用等价假设，用目标中的一侧替换另一侧。在归纳时，ACL2 可能会决定使用其所谓的交叉施肥启发法来限制替换，如下所示：仅替换到结论的一侧，从而使用归纳假设为另一次归纳之前的可能泛化做好准备。请注意，仅在启用泛化时才使用交叉施肥：使用提示：do-not &lsquo;（泛化）时，仅应用完全施肥。</p>
 </li>
 <li>
 <p>泛化（Generalization） — 用新变量替换一个项，并限制新变量具有某些项的性质。你可以控制对新变量施加的限制。这是一种启发式方法，为另一个归纳做准备。</p>

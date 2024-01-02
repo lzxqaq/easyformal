@@ -2,7 +2,7 @@
 <html>
   <head><meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="generator" content="Hugo 0.116.1">
+<meta name="generator" content="Hugo 0.121.1">
 <meta name="viewport" content="width=device-width, initial-scale=1" /><title>SystemVerilog 数组 | Documentation du thème Shadocs</title>
 
 <link
@@ -87,7 +87,7 @@
     </a>
   </div>
 </div>
-<p>(0.116.1)</p>
+<p>(0.121.1)</p>
 <p>The MIT License (MIT) Copyright © 2023 Jordan GAZEAU</p>
 </div>
     </div>
@@ -716,9 +716,9 @@
 <div id="sidebarMobileWrapper" class="column is-narrow is-hidden-desktop"></div>
 <div class="columns is-mobile is-marginless is-scroll-smooth has-toc" id="contentContainer">
   <div class="column" id="content"><div id="contentTitle">SystemVerilog 数组</div>
-<h1 id='arrays'>Arrays<a href='#arrays' class='anchor'>#</a>
-</h1><p>An array is a collection of elements, all of the same type, and accessed using its name and one or more indices. Verilog 2001 required that the low and high array limits must be part of the array declaration. System Verilog has introduced the compact array declaration style, where just giving the array size along with the array name declaration is enough.</p>
-<p>The below figure shows the different types of arrays used in System Verilog.
+<h1 id='数组'>数组<a href='#%e6%95%b0%e7%bb%84' class='anchor'>#</a>
+</h1><p>数组是元素的集合，所有元素都具有相同的类型，并使用其名称和一个或多个索引进行访问。 Verilog 2001 要求数组的下限和上限必须是数组声明的一部分。 System Verilog 引入了紧凑数组声明样式，只需给出数组大小以及数组名称声明就足够了。</p>
+<p>下图显示了 System Verilog 中使用的不同类型的数组。
 <img
   src="https://user-images.githubusercontent.com/110448056/187371213-6de08da7-079a-4a4c-974b-9cc3304ae162.png"
   alt="arrays_sv"
@@ -726,69 +726,45 @@
 </p>
 <pre><code>                                                 Fig.1 Types of arrays in SV
 </code></pre>
-<h2 id='arrays-cheat-sheet'>Arrays cheat sheet<a href='#arrays-cheat-sheet' class='anchor'>#</a>
+<h2 id='数组列表'>数组列表<a href='#%e6%95%b0%e7%bb%84%e5%88%97%e8%a1%a8' class='anchor'>#</a>
 </h2><table>
 <thead>
 <tr>
 <th><strong>Sr No.</strong></th>
-<th><strong>Arrays Types</strong></th>
-<th><strong>Description</strong></th>
+<th><strong>数组类型</strong></th>
+<th><strong>描述</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1</td>
-<td><a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/02.Array#1packed-arrays"
-    class="is-pretty-link">Packed Array</a
->
-</td>
-<td>Dimension of array declared before array name declaration</td>
+<td>合并数组(Packed Array)</td>
+<td>先声明数组名称，后声明数组维度</td>
 </tr>
 <tr>
 <td>2</td>
-<td><a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/02.Array#2unpacked-arrays"
-    class="is-pretty-link">Unpacked Array</a
->
-</td>
-<td>Dimension of the array declared after array name declaration</td>
+<td>非合并数组(Unpacked Array)</td>
+<td>先声明数组维度，后声明数组名称</td>
 </tr>
 <tr>
 <td>3</td>
-<td><a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/02.Array#3dynamic-arrays"
-    class="is-pretty-link">Dynamic Array</a
->
-</td>
-<td>Memories will be allocated at run time</td>
+<td>动态数组(Dynamic Array)</td>
+<td>内存将在运行时分配</td>
 </tr>
 <tr>
 <td>4</td>
-<td><a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/02.Array#4associative-arrays"
-    class="is-pretty-link">Associative Array</a
->
-</td>
+<td>关联数组(Associative Array)</td>
 <td>Memories allocated only when it is used and any index type is used for indexing the array</td>
 </tr>
 <tr>
 <td>5</td>
-<td><a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/02.Array#5queue"
-    class="is-pretty-link">Queue</a
->
-</td>
+<td>队列(Queue)</td>
 <td>It is similar to fifo and we can add and remove elements from queue at run time</td>
 </tr>
 <tr>
 <td>6</td>
-<td><a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/wiki/02.Array#6array-manipulation-method"
-    class="is-pretty-link">Array Manipulation Methods</a
->
-</td>
-<td>It consist of array locator method, Array ordering method and Array Reduction method</td>
+<td>数组操作函数</td>
+<td>它由数组定位函数、数组排序函数和数组缩减函数组成</td>
 </tr>
 <tr>
 <td>Table.1. Array cheat sheet</td>
@@ -797,48 +773,30 @@
 </tr>
 </tbody>
 </table>
-<h2 id='static-arraysfixed-size-arrays'>Static Arrays(Fixed size arrays):<a href='#static-arraysfixed-size-arrays' class='anchor'>#</a>
-</h2><p>In fixed size array / Static arrays, array size will be constant throughout the simulation, Once the array is declared no need to create it. By default, the array will be initialized with value ‘0’. In this type of arrays memories will be occupied during compilation stage and we can&rsquo;t able to rellocate the memories at run time.</p>
+<h2 id='静态数组固定大小数组'>静态数组（固定大小数组）：<a href='#%e9%9d%99%e6%80%81%e6%95%b0%e7%bb%84%e5%9b%ba%e5%ae%9a%e5%a4%a7%e5%b0%8f%e6%95%b0%e7%bb%84' class='anchor'>#</a>
+</h2><p>在固定大小数组/静态数组中，数组大小在整个模拟过程中将保持不变，一旦声明数组就无需创建它。默认情况下，数组将初始化为值“0”。在这种类型的数组中，内存将在编译阶段被占用，并且我们无法在运行时重新分配内存。</p>
 <h2 id='static-arrays-has-two-types'>Static arrays has two types:<a href='#static-arrays-has-two-types' class='anchor'>#</a>
 </h2><ol>
-<li>Packed Arrays</li>
-<li>Unpacked Arrays.</li>
+<li>合并数组</li>
+<li>非合并数组.</li>
 </ol>
 <hr>
-<h3 id='1packed-arrays'>1.Packed Arrays:<a href='#1packed-arrays' class='anchor'>#</a>
-</h3><p>A packed array is one where the dimensions of the array is declared before the array name. In this multiple bits of array stored in one memory location.</p>
-<p><strong>Note:-</strong> It can be made of any single bit data types bit, logic and reg. we can&rsquo;t use multi bits data types for packed arrays.</p>
-<p><strong>Syntax:-</strong> <code>[data_type] [dimensions] [array_name];</code></p>
-<p><strong>Example,</strong></p>
+<h3 id='1合并数组-packed-arrays'>1.合并数组 Packed Arrays:<a href='#1%e5%90%88%e5%b9%b6%e6%95%b0%e7%bb%84-packed-arrays' class='anchor'>#</a>
+</h3><p>合并数组是一种在数组名称之前声明数组维度的数组。在此数组中的多个位存储在一个内存位置中。</p>
+<p><strong>注意：</strong> 它可以由任何单个位数据类型 bit、logic 和 reg 组成。我们不能对合并数组使用多位数据类型。</p>
+<p><strong>语法:-</strong> <code>[data_type] [dimensions] [array_name];</code></p>
+<p><strong>示例,</strong></p>
 <p><code>1) bit [3:0]abc = 4'b0110</code><br>
 <code>2) logic [15:0]pqr = 16'h10fe</code><br>
 <code>3) reg [7:0]xyz = 8'd16</code></p>
-<p><strong>Some Points about packed arrays:</strong></p>
+<p><strong>一些注意事项：</strong></p>
 <ul>
-<li>If a packed array is declared as signed, then the array viewed as a single vector shall be signed. The individual elements of the array are unsigned unless they are of a named type declared as signed.</li>
-<li>The maximum size of a packed array can be limited, but shall be at least 65536 (2^16) bits.</li>
-<li>Packed arrays are synthesizable.</li>
+<li>如果合并数组被声明为带符号的，则被视为单个向量的数组应被带符号。数组的各个元素都是无符号的，除非它们是声明为有符号的命名类型。</li>
+<li>合并数组的最大大小可以受到限制，但至少应为 65536 (2^16) 位。</li>
+<li>合并数组是可综合的。</li>
 </ul>
-<p>The below figure shows the output of single dimension packed array, here packed array consists of reg, logic and bit data type as mentioned in the above example.</p>
-<p><img
-  src="https://user-images.githubusercontent.com/110448056/186883341-d960ed62-8e66-4ff9-b729-2f03c7ffd57f.png"
-  alt="single_packed"
-  class="single_packed"/>
-</p>
-<pre><code>                               Figure.2 single dimension packed array ouptut
-</code></pre>
-<p><strong>Github lab code link:-</strong> <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/packed_array/single_packed/packed_array.sv"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/packed_array/single_packed/packed_array.sv</a
->
-</p>
-<p><strong>Github lab output link:-</strong> <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/packed_array/single_packed/packed_array.log"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/packed_array/single_packed/packed_array.log</a
->
-</p>
 <hr>
-<p>The below figure shows how the array elements stored in 2-dimensional packed array. for <code>bit [2:0][3:0]xyz</code> example going from left to right in dimensions elements will occupied the memory.</p>
+<p>下图展示了二维合并数组中数组元素的存储方式。对于位 [2:0][3:0]xyz 示例，数组元素从左到右将占用内存。</p>
 <p><img
   src="https://user-images.githubusercontent.com/110448056/187356323-2d671f63-2de6-4082-938f-c43ea6724534.png"
   alt="2d-packed"
@@ -846,64 +804,27 @@
 </p>
 <pre><code>                             Figure.3 two dimensional packed array memory layout
 </code></pre>
-<p>The below figure shows the output of multi dimension packed array, here it consists of <code>bit [2:0][3:0]xyz=12'hdfe</code>.
-Here, 2 dimensional packed array declared and and we can similarly create 3 dimensional array as same.</p>
-<p><img
-  src="https://user-images.githubusercontent.com/110448056/187356692-03d6a7a1-e02c-42d3-81af-7505e5d37c99.png"
-  alt="multi_packed"
-  class="multi_packed"/>
-</p>
-<pre><code>                              Figure.4 multi dimensional packed array output
-</code></pre>
-<p><strong>Github lab code link:-</strong> <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/packed_array/multi_packed/multi_packed.sv"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/packed_array/multi_packed/multi_packed.sv</a
->
-</p>
-<p><strong>Github lab output link:-</strong> <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/packed_array/multi_packed/multi_packed.log"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/packed_array/multi_packed/multi_packed.log</a
->
-</p>
 <hr>
-<p><strong>Applications of packed arrays:</strong></p>
-<p>They are used to store packet structures on which bit-select and part-select operations could be performed.</p>
+<p><strong>合并数组的应用：</strong></p>
+<p>它们用于存储可以执行位选择和部分选择操作的数据包结构。</p>
 <hr>
-<h3 id='2unpacked-arrays'>2.Unpacked Arrays:<a href='#2unpacked-arrays' class='anchor'>#</a>
-</h3><p>A unpacked array is one where the dimensions of the array is declared after the array name. In this multiple bits will be stored in different memory locations.</p>
-<p><strong>Syntax:-</strong>  <code>[data_type] [array_name] [dimension];</code></p>
-<p><strong>Example,</strong></p>
+<h3 id='2非合并数组-unpacked-arrays'>2.非合并数组 Unpacked Arrays:<a href='#2%e9%9d%9e%e5%90%88%e5%b9%b6%e6%95%b0%e7%bb%84-unpacked-arrays' class='anchor'>#</a>
+</h3><p>非合并数组是在数组名称之后声明数组维度的数组。在此，多个位将存储在不同的存储位置中。</p>
+<p><strong>语法:-</strong>  <code>[data_type] [array_name] [dimension];</code></p>
+<p><strong>示例,</strong></p>
 <p><code>byte a[8] = '{4,5,6,2,3,7,9,10}</code></p>
 <p><code>int abc[10] = $urandom_range(10,50);</code></p>
-<p>where, $urandom_range is inbuilt function which generates random numbers between 10 to 50.</p>
-<p><strong>Some Points about unpacked arrays:</strong></p>
+<p>其中，$urandom_range是内置函数，它生成10到50之间的随机数。</p>
+<p><strong>一些注意事项：</strong></p>
 <ul>
-<li>They can be of any data type.</li>
-<li>If an unpacked array is declared as signed, then this applies to the individual elements of the array, since the whole array cannot be viewed as a single vector.</li>
-<li>The unpacked dimensions can be arranged in memory in any way that the simulator chooses – does not have to be contiguous.</li>
-<li>They could be fixed-size arrays, dynamic arrays, associative arrays or queues.</li>
-<li>Unpacked arrays are Non-synthesizable.</li>
+<li>它们可以是任何数据类型。</li>
+<li>如果非合并数组被声明为有符号，则这适用于数组的各个元素，因为整个数组不能被视为单个向量。</li>
+<li>非合并数组可以以模拟器选择的任何方式排列在内存中——不必是连续的。</li>
+<li>它们可以是固定大小的数组、动态数组、关联数组或队列。</li>
+<li>非合并数组是不可综合的。</li>
 </ul>
-<p>The below figure shows the output of single dimension unpacked array.</p>
-<p><img
-  src="https://user-images.githubusercontent.com/110448056/186889154-0f23c201-ca8b-47cd-ae46-8fcd3c0d0cfd.png"
-  alt="single_unpacked"
-  class="single_unpacked"/>
-</p>
-<pre><code>                              Figure.5 single dimensional unpacked array output
-</code></pre>
-<p><strong>Github lab code link:-</strong> <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/unpacked_array/single_unpacked/unpacked.sv"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/unpacked_array/single_unpacked/unpacked.sv</a
->
-</p>
-<p><strong>Github lab output link:-</strong> <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/unpacked_array/single_unpacked/unpacked_array.log"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/unpacked_array/single_unpacked/unpacked_array.log</a
->
-</p>
 <hr>
-<p>The below figure shows how the array elements stored in 2-dimensional unpacked array. for <code>int abc[2][3]</code> example going from left to right in dimensions elements will occupied the memory.</p>
+<p>下图显示了数组元素如何存储在二维非合并数组中。对于 int abc[2][3] 示例，数组元素从左到右将占用内存。</p>
 <p><img
   src="https://user-images.githubusercontent.com/110448056/190572695-27a9bd88-04a6-4fdf-a6af-68a9fb986244.png"
   alt="2d-unpacked"
@@ -911,40 +832,21 @@ Here, 2 dimensional packed array declared and and we can similarly create 3 dime
 </p>
 <pre><code>                               Figure.6 two dimensional unpacked array memory layout
 </code></pre>
-<p>The below figure shows the output of multi dimension unpacked array, here it consists of <code>int abc[2][3] = $urandom_range(10,50)</code>.
-Here, 2 dimensional packed array declared and and we can similarly create 3 dimensional array as same.</p>
-<p><img
-  src="https://user-images.githubusercontent.com/110448056/186889779-c6758475-6199-4e4e-9cbf-e25e0e2abd29.png"
-  alt="multi_unpacked"
-  class="multi_unpacked"/>
-</p>
-<pre><code>                               Figure.5 multi dimensional unpacked array output
-</code></pre>
-<p><strong>Github lab code link:-</strong> <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/unpacked_array/multi_unpacked/multi_unpacked.sv"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/unpacked_array/multi_unpacked/multi_unpacked.sv</a
->
-</p>
-<p><strong>Github lab output link:-</strong> <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/unpacked_array/multi_unpacked/multi_unpacked.log"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/unpacked_array/multi_unpacked/multi_unpacked.log</a
->
-</p>
 <hr>
-<p><strong>Applications of unpacked arrays:</strong></p>
-<p>They are used to model Random Access Memories (RAMs), Read Only Memories (ROMs) and register files where one element is accessed at a time.</p>
+<p><strong>非合并数组的应用：</strong></p>
+<p>它们用于对随机存取存储器 (RAM)、只读存储器 (ROM) 和一次访问一个元素的寄存器文件进行建模。</p>
 <hr>
-<h2 id='mixed-multi-dimensional-arrays'>Mixed Multi Dimensional Arrays:<a href='#mixed-multi-dimensional-arrays' class='anchor'>#</a>
-</h2><p>Mix of Packed arrays and unpacked arrays are known as mixed multi dimensional array.</p>
-<p><strong>Syntax:-</strong>  <code>[data_type] [dimensions] [array_name] [dimensions];</code></p>
-<p><strong>Example,</strong></p>
+<h2 id='混合多维数组'>混合多维数组：<a href='#%e6%b7%b7%e5%90%88%e5%a4%9a%e7%bb%b4%e6%95%b0%e7%bb%84' class='anchor'>#</a>
+</h2><p>合并数组和非合并数组的混合称为混合多维数组。</p>
+<p><strong>语法:-</strong>  <code>[data_type] [dimensions] [array_name] [dimensions];</code></p>
+<p><strong>示例,</strong></p>
 <p><code>logic [2:0][3:0] mixed_array [2:0][3:0];</code></p>
-<p><strong>Some Points about mixed multidimensional arrays:</strong></p>
+<p><strong>一些注意事项：</strong></p>
 <ul>
-<li>All unpacked dimensions are first referenced from the left-most to the right-most dimension in that order.</li>
-<li>All packed dimensions are then referenced from the left-most to the right-most dimension in that order.</li>
+<li>首先按从最左边到最右边的顺序引用所有非合并数组</li>
+<li>然后按从最左边到最右边的顺序引用所有合并数组。</li>
 </ul>
-<p>In the given example, going from left to right side the memory will be allocated and for that first unpacked array dimension are considered as shown in diagram below and after that packed array dimensions are considered.</p>
+<p>在给定的示例中，将从左到右分配内存，并且对于第一个非合并数组维度将被考虑，如下图所示，然后考虑合并数组维度。</p>
 <p><img
   src="https://user-images.githubusercontent.com/110448056/190611850-07ad5b94-e594-44c8-a107-5aeb3768a508.png"
   alt="mixed-arrays"
@@ -953,142 +855,79 @@ Here, 2 dimensional packed array declared and and we can similarly create 3 dime
 <pre><code>                           Figure.7 mixed multi dimensional array memory allocation-
 </code></pre>
 <hr>
-<h2 id='3dynamic-arrays'>3.Dynamic Arrays:<a href='#3dynamic-arrays' class='anchor'>#</a>
-</h2><p>A dynamic array is an unpacked array whose size can be set or changed at run time. The space for a dynamic array does not exist until the array is explicitly created at run-time.</p>
-<p><strong>Syntax:-</strong> <code>&lt;data_type&gt; array_name []</code></p>
-<p><strong>Example,</strong></p>
+<h2 id='3-动态数组-dynamic-arrays'>3. 动态数组 Dynamic Arrays:<a href='#3-%e5%8a%a8%e6%80%81%e6%95%b0%e7%bb%84-dynamic-arrays' class='anchor'>#</a>
+</h2><p>动态数组是非合并的数组，其大小可以在运行时设置或更改。动态数组的空间在运行时显式创建之前并不存在。</p>
+<p><strong>语法:-</strong> <code>&lt;data_type&gt; array_name []</code></p>
+<p><strong>示例,</strong></p>
 <p><code>int abc[] = new[7];</code></p>
 <p><code>abc[7] = '{11,12,13,14,15,16,17};</code></p>
-<p><strong>Some Points about unpacked arrays:</strong></p>
+<p><strong>一些注意事项：</strong></p>
 <ul>
-<li>The default size of an un-initialized dynamic array is 0.</li>
-<li>Dynamic arrays support all variable data types as element types, including arrays.</li>
-<li>An out-of-bound access in a dynamic array leads to a default value of the data type.</li>
+<li>未初始化的动态数组的默认大小为 0。</li>
+<li>动态数组支持所有变量数据类型作为元素类型，包括数组。</li>
+<li>动态数组中的越界访问会指向数据类型的默认值。</li>
 </ul>
-<p><strong>Dynamic Arrays Methods cheat sheet:</strong></p>
+<p><strong>动态数组函数一览表</strong></p>
 <table>
 <thead>
 <tr>
-<th><strong>Sr No.</strong></th>
-<th><strong>Methods</strong></th>
-<th><strong>Example</strong></th>
-<th><strong>description</strong></th>
+<th><strong>序号</strong></th>
+<th><strong>函数</strong></th>
+<th><strong>示例</strong></th>
+<th><strong>描述</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1</td>
-<td>constructor new [value]</td>
+<td>构造函数： new [value]</td>
 <td>abc.new[]</td>
-<td>Sets the size of a dynamic array and initializes its elements or changes the size of the array at run-time. If the value is zero, the array shall become empty. If the value is negative, then it is an error.</td>
+<td>设置动态数组的大小并初始化其元素或在运行时更改数组的大小。如果该值为零，则数组将变为空。如果该值为负数，则表示错误。</td>
 </tr>
 <tr>
 <td>2</td>
-<td>function int size()</td>
+<td>函数： int size()</td>
 <td>abc.size()</td>
-<td>The size() method returns the current size of a dynamic array or returns zero if the array has not been created</td>
+<td>size() 方法返回动态数组的当前大小，如果数组尚未创建，则返回零</td>
 </tr>
 <tr>
 <td>3</td>
-<td>function void delete()</td>
+<td>函数： void delete()</td>
 <td>abc.delete()</td>
-<td>The delete() method empties the array, resulting in a zero-sized array</td>
+<td>delete() 方法清空数组，导致数组大小为零</td>
 </tr>
 </tbody>
 </table>
 <pre><code>                             Table.2. dynamic array methods
 </code></pre>
-<p>The below figure shows the output of dynamic array.</p>
-<p><img
-  src="https://user-images.githubusercontent.com/110448056/186890744-7a0a6733-b3a1-4e87-ae49-7956d8b5a7d1.png"
-  alt="dynamic"
-  class="dynamic"/>
-</p>
-<pre><code>                             Figure.8 dynamic array output
-</code></pre>
-<p><strong>Github lab code link:-</strong> <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/dynamic_array/dynamic/dynamic.sv"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/dynamic_array/dynamic/dynamic.sv</a
->
-</p>
-<p><strong>Github lab output link:-</strong> <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/dynamic_array/dynamic/dynamic_array.log"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/dynamic_array/dynamic/dynamic_array.log</a
->
-</p>
 <hr>
-<p>The below figure shows the output of dynamic array methods.
-In example,</p>
-<p><code>int xyz[] = new[10];</code></p>
-<p><code>xyz = '{11,12,13,14,15,16,17,18,19,20};</code></p>
-<p><img
-  src="https://user-images.githubusercontent.com/110448056/186891136-81fbb195-14c4-42b0-b355-fb280346ecc7.png"
-  alt="methods_dynamic"
-  class="methods_dynamic"/>
-</p>
-<pre><code>                          Figure.9 dynamic array methods output
-</code></pre>
-<p><strong>Github lab code link:-</strong> <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/dynamic_array/dynamic_method/methods.sv"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/dynamic_array/dynamic_method/methods.sv</a
->
-</p>
-<p><strong>Github lab output link:-</strong> <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/dynamic_array/dynamic_method/methods_dynamic.log"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/dynamic_array/dynamic_method/methods_dynamic.log</a
->
-</p>
+<p><strong>动态数组的应用：</strong></p>
+<p>可以在模拟期间分配和重新调整大小的动态数组将避免这种不必要的内存分配。</p>
 <hr>
-<p>The below figure shows the output of out-of-bound access in a dynamic array leads to default value of data_type.
-In example,</p>
-<p><code>int da[] =new[5];</code></p>
-<p><code>da[5] = '{1,2,5,6,8};</code></p>
-<p><code>out of bound access of dynamic array da[1024] = 0;</code></p>
-<p><img
-  src="https://user-images.githubusercontent.com/110412474/187175379-fa7e35e3-df71-4421-a5dd-a5fcabb4fb84.JPG"
-  alt="dynamic"
-  class="dynamic"/>
-</p>
-<pre><code>                             Figure.10 out-of-bound access of Dynamic array  
-</code></pre>
-<p><strong>Github lab code link:</strong> <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/dynamic_array/dynamic_unbound/dynamic.sv"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/dynamic_array/dynamic_unbound/dynamic.sv</a
->
-</p>
-<p><strong>Github lab output link:</strong> <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/dynamic_array/dynamic_unbound/dynamic.log"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/sv_arrays/dynamic_array/dynamic_unbound/dynamic.log</a
->
-</p>
-<hr>
-<p><strong>Applications of dynamic arrays:</strong></p>
-<p>A dynamic array that can be allocated and re-sized during simulation will avoid this unnecessary memory allocation.</p>
-<hr>
-<h2 id='4associative-arrays'>4.Associative Arrays:<a href='#4associative-arrays' class='anchor'>#</a>
-</h2><p>An associative array is an unpacked array data-type. It does not have any storage allocated until it is used, and the index type used to access elements is not restricted to integers.</p>
-<p><strong>Syntax:-</strong> <code>&lt;data_type&gt; array_name [index_type]</code></p>
-<p>where, index type is any data type or it&rsquo;s wildcard &ldquo;*&rdquo;.</p>
-<p><strong>Example,</strong></p>
+<h2 id='4关联数组-associative-arrays'>4.关联数组 Associative Arrays:<a href='#4%e5%85%b3%e8%81%94%e6%95%b0%e7%bb%84-associative-arrays' class='anchor'>#</a>
+</h2><p>关联数组是一种非合并数组数据类型。它在使用之前不会分配任何存储空间，并且用于访问元素的索引类型不限于整数。</p>
+<p><strong>语法:-</strong> <code>&lt;data_type&gt; array_name [index_type]</code></p>
+<p>其中，索引类型是任何数据类型或其通配符“*”。</p>
+<p><strong>示例,</strong></p>
 <p><code>int abc[*];</code></p>
 <p><code>abc  = '{ 1:20, 25:22, 38:66};</code></p>
 <p><code>string pqr[string];</code></p>
 <p><code>pqr = '{&quot;fruits&quot;:&quot;mango&quot; , &quot;vegetables&quot;:&quot;cucumber&quot; , &quot;season&quot;:&quot;monsoon&quot;};</code></p>
-<p><strong>Some Points about unpacked arrays:</strong></p>
+<p><strong>一些注意事项：</strong></p>
 <ul>
-<li>Associative array elements are unpacked.</li>
-<li>It can be stored by the simulator as a hash (lookup) table for extremely fast access of its elements. A hash table contains an array of groups of elements. A function called hash function generates a unique key to compute the index into this array, from which the correct array element value is obtained.</li>
-<li>Elements in an associative array can be accessed in a similar way as those in a one-dimensional array.</li>
-<li>If an attempt is made to read an invalid (non-existent) associative array entry, then the simulator will issue a warning and will return the value ‘x’ for a 4-state integral type or a value ‘0’ for a 2-state integral type.</li>
-<li>Use of &ldquo;*&rdquo; this wild card will increases the simulation time so avoid to use that while declaring the array.</li>
+<li>关联数组的元素都是非合并的。</li>
+<li>模拟器可以将其存储为哈希（查找）表，以便极快地访问其元素。哈希表包含一组元素的数组。称为哈希函数的函数生成一个唯一键来计算该数组的索引，从中获得正确的数组元素值。</li>
+<li>关联数组中的元素的访问方式与一维数组中的元素类似。</li>
+<li>如果尝试读取无效（不存在）的关联数组条目，则模拟器将发出警告，并为 4 状态整数类型返回值“x”，或为 2-状态整数类型返回值“0”。状态积分类型。</li>
+<li>使用“*”这个通配符会增加模拟时间，因此在声明数组时避免使用它。</li>
 </ul>
-<p><strong>Associative Arrays Methods cheat sheet:</strong></p>
+<p><strong>关联数组方法一览表：</strong></p>
 <table>
 <thead>
 <tr>
 <th><strong>Sr. No</strong></th>
 <th><strong>Function</strong></th>
-<th><strong>Example</strong></th>
+<th><strong>示例</strong></th>
 <th><strong>Description</strong></th>
 </tr>
 </thead>
@@ -1191,14 +1030,14 @@ In example,</p>
 <hr>
 <h1 id='5queue'>5.Queue<a href='#5queue' class='anchor'>#</a>
 </h1><p>Queue is a datatype used to have the variable size ordered collection of same datatypes in unpacked array format, it is used to insert the element in the array and delete the element in the array by both the ends. It is like buffer, used to model the first in first out(FIFO) and last in first out (LIFO).</p>
-<p><strong><strong>Syntax</strong></strong>: <code>data_type name[$];</code></p>
+<p><strong><strong>语法</strong></strong>: <code>data_type name[$];</code></p>
 <p>data_type - data_type of queue element<br>
 name - name of the queue<br>
 [$] - declare the unbounded queue</p>
 <p>There are two types of queue declaration</p>
 <h2 id='1-bounded'>1. bounded<a href='#1-bounded' class='anchor'>#</a>
 </h2><p>The queue as the size limit. we need to provide the max value while declare the queue</p>
-<p>syntax: <code>data_type name[$:255];</code></p>
+<p>语法: <code>data_type name[$:255];</code></p>
 <p>Here $- first element
 255 - last element</p>
 <p><img
@@ -1211,7 +1050,7 @@ name - name of the queue<br>
 <hr>
 <h2 id='2-unbounded'>2. unbounded<a href='#2-unbounded' class='anchor'>#</a>
 </h2><p>The queue as no size limit. we do not provide an size of queue it is a variable size queue.</p>
-<p>syntax: <code>data_type name[$];</code></p>
+<p>语法: <code>data_type name[$];</code></p>
 <p>Here 0 - first element
 $ - last element</p>
 <p><img
@@ -1606,7 +1445,7 @@ It will find all the index position of the element which will match the conditio
 </p>
 <hr>
 <h1 id='the-array-locator-method-optional-with-clause'>The Array Locator Method optional &lsquo;with&rsquo; clause<a href='#the-array-locator-method-optional-with-clause' class='anchor'>#</a>
-</h1><p><strong><strong>Example</strong></strong>: consider array of five elements, shown the output in Figure.16</p>
+</h1><p><strong><strong>示例</strong></strong>: consider array of five elements, shown the output in Figure.16</p>
 <p>array[8] = {1,9,9,7,2,7,0,6}</p>
 <ul>
 <li><strong><strong>min()</strong></strong>:</li>
@@ -1769,19 +1608,19 @@ ouptut: 111
     <div id="tocContent">
       <div id="toc"><nav id="TableOfContents">
   <ul>
-    <li><a href="#arrays">Arrays</a>
+    <li><a href="#数组">数组</a>
       <ul>
-        <li><a href="#arrays-cheat-sheet">Arrays cheat sheet</a></li>
-        <li><a href="#static-arraysfixed-size-arrays">Static Arrays(Fixed size arrays):</a></li>
+        <li><a href="#数组列表">数组列表</a></li>
+        <li><a href="#静态数组固定大小数组">静态数组（固定大小数组）：</a></li>
         <li><a href="#static-arrays-has-two-types">Static arrays has two types:</a>
           <ul>
-            <li><a href="#1packed-arrays">1.Packed Arrays:</a></li>
-            <li><a href="#2unpacked-arrays">2.Unpacked Arrays:</a></li>
+            <li><a href="#1合并数组-packed-arrays">1.合并数组 Packed Arrays:</a></li>
+            <li><a href="#2非合并数组-unpacked-arrays">2.非合并数组 Unpacked Arrays:</a></li>
           </ul>
         </li>
-        <li><a href="#mixed-multi-dimensional-arrays">Mixed Multi Dimensional Arrays:</a></li>
-        <li><a href="#3dynamic-arrays">3.Dynamic Arrays:</a></li>
-        <li><a href="#4associative-arrays">4.Associative Arrays:</a></li>
+        <li><a href="#混合多维数组">混合多维数组：</a></li>
+        <li><a href="#3-动态数组-dynamic-arrays">3. 动态数组 Dynamic Arrays:</a></li>
+        <li><a href="#4关联数组-associative-arrays">4.关联数组 Associative Arrays:</a></li>
       </ul>
     </li>
     <li><a href="#5queue">5.Queue</a>

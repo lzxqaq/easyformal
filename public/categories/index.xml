@@ -6,24 +6,21 @@
     <description>Recent content in Categories on Documentation du thème Shadocs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <copyright>The MIT License (MIT) Copyright © 2023 Jordan GAZEAU</copyright><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>The MIT License (MIT) Copyright © 2023 Jordan GAZEAU</copyright>
+    <atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SystemVerilog</title>
       <link>/categories/systemverilog/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>/categories/systemverilog/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Theorem Proving</title>
       <link>/categories/theorem-proving/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>/categories/theorem-proving/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

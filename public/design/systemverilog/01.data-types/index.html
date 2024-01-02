@@ -2,7 +2,7 @@
 <html>
   <head><meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="generator" content="Hugo 0.116.1">
+<meta name="generator" content="Hugo 0.121.1">
 <meta name="viewport" content="width=device-width, initial-scale=1" /><title>SystemVerilog 数据类型 | Documentation du thème Shadocs</title>
 
 <link
@@ -87,7 +87,7 @@
     </a>
   </div>
 </div>
-<p>(0.116.1)</p>
+<p>(0.121.1)</p>
 <p>The MIT License (MIT) Copyright © 2023 Jordan GAZEAU</p>
 </div>
     </div>
@@ -723,7 +723,7 @@
   alt="data_type"
   class="data_type"/>
 </p>
-<h2 id='数据类型备忘表'>数据类型备忘表<a href='#%e6%95%b0%e6%8d%ae%e7%b1%bb%e5%9e%8b%e5%a4%87%e5%bf%98%e8%a1%a8' class='anchor'>#</a>
+<h2 id='数据类型列表'>数据类型列表<a href='#%e6%95%b0%e6%8d%ae%e7%b1%bb%e5%9e%8b%e5%88%97%e8%a1%a8' class='anchor'>#</a>
 </h2><table>
 <thead>
 <tr>
@@ -909,7 +909,7 @@
 <p>在上面的例子中，最高位为符号位，最高位为 0 表示正，1 则表示负。<br>
 对于上面的 100，1 是符号位，表示负。先对 00 取反得到 11，然后加 1 得到 100，即 4。所以有符号数 100 是 4。</p>
 <hr>
-<h2 id='4-值数据类型备忘表'>4 值数据类型备忘表<a href='#4-%e5%80%bc%e6%95%b0%e6%8d%ae%e7%b1%bb%e5%9e%8b%e5%a4%87%e5%bf%98%e8%a1%a8' class='anchor'>#</a>
+<h2 id='4-值数据类型列表'>4 值数据类型列表<a href='#4-%e5%80%bc%e6%95%b0%e6%8d%ae%e7%b1%bb%e5%9e%8b%e5%88%97%e8%a1%a8' class='anchor'>#</a>
 </h2><table>
 <thead>
 <tr>
@@ -1029,7 +1029,7 @@
 <hr>
 <h2 id='2-wire'>2. wire<a href='#2-wire' class='anchor'>#</a>
 </h2><p>连线是一种 Verilog 数据类型，用于连接元件以及连接由单个门或连续分配驱动的网络。导线的默认值为 <strong>z</strong>。</p>
-<p><strong><strong>Syntax :</strong></strong> <code>wire variable_name;</code></p>
+<p><strong><strong>语法 ：</strong></strong> <code>wire variable_name;</code></p>
 <hr>
 <h2 id='3-tri'>3. tri<a href='#3-tri' class='anchor'>#</a>
 </h2><p>tri 类型可用于多个 driver 驱动一个 net 的情况。</p>
@@ -1075,7 +1075,7 @@
 >
 </p>
 <hr>
-<h2 id='2-state-data-type-cheat-sheet'>2-state data type cheat sheet<a href='#2-state-data-type-cheat-sheet' class='anchor'>#</a>
+<h2 id='2-值数据类型列表'>2 值数据类型列表<a href='#2-%e5%80%bc%e6%95%b0%e6%8d%ae%e7%b1%bb%e5%9e%8b%e5%88%97%e8%a1%a8' class='anchor'>#</a>
 </h2><table>
 <thead>
 <tr>
@@ -1148,283 +1148,67 @@
 </code></pre>
 <hr>
 <h2 id='1-bit'>1. bit<a href='#1-bit' class='anchor'>#</a>
-</h2><p>bit is 2-state which is used most often test benches. It can be either 0 or 1 which represents a single bit. Default value of bit data type is 0.</p>
-<p><strong><strong>Syntax :</strong></strong> <code>bit variable_name;</code></p>
-<p><strong><strong>Example :</strong></strong> <code>bit single_data;</code>     <br>
+</h2><p>bit 可以是 0 或 1，代表单个位。bit 数据类型的默认值为 0。</p>
+<p><strong><strong>语法 ：</strong></strong> <code>bit variable_name;</code></p>
+<p><strong><strong>示例 ：</strong></strong> <code>bit single_data;</code>     <br>
 <code>bit [3:0] multi_bit_data;</code></p>
-<p>The below figure shows the output of bit data type.</p>
-<p><img
-  src="https://user-images.githubusercontent.com/110448382/186825098-59e5284a-6a0f-4fdc-8ad6-ff434a685832.png"
-  alt="bit"
-  class="bit"/>
-</p>
-<pre><code>                                     Figure.5. bit output
-</code></pre>
-<p>Github lab code link: <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/bit_data_type/data_type_bit.sv"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/bit_data_type/data_type_bit.sv</a
->
-</p>
-<p>Github lab output link: <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/bit_data_type/data_type_bit.log"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/bit_data_type/data_type_bit.log</a
->
-</p>
 <hr>
 <h2 id='2-byte'>2. byte<a href='#2-byte' class='anchor'>#</a>
-</h2><p>byte is 2-state data type which is used most often test benches. It can be either 0 or 1 which represent a 8-bit signed integer. Default value of byte is 0.</p>
-<p><strong><strong>Syntax :</strong></strong> <code>byte variable_name;</code></p>
-<p><strong><strong>Example :</strong></strong> <code>byte byte_data;</code></p>
-<p>The below figure shows the output of byte data type.</p>
-<p><img
-  src="https://user-images.githubusercontent.com/110448382/186825136-81275ffc-0942-43fe-b7bf-5aa42ba24ca9.png"
-  alt="byte"
-  class="byte"/>
-</p>
-<pre><code>                              Figure.6. byte output
-</code></pre>
-<p>Github lab code link: <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/byte_data_type/data_type_byte.sv"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/byte_data_type/data_type_byte.sv</a
->
-</p>
-<p>Github lab output link: <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/byte_data_type/data_type_byte.log"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/byte_data_type/data_type_byte.log</a
->
-</p>
+</h2><p>byte 可以是 0 或 1，表示 8 位有符号整数。byte 的默认值为0。</p>
+<p><strong><strong>语法 ：</strong></strong> <code>byte variable_name;</code></p>
+<p><strong><strong>示例 ：</strong></strong> <code>byte byte_data;</code></p>
 <hr>
 <h2 id='3-shortint'>3. shortint<a href='#3-shortint' class='anchor'>#</a>
-</h2><p>shortint is 2-state data type. It can be either 0 or 1 which represent a 16-bit signed integer. Default value of shortint is 0.</p>
-<p><strong><strong>Syntax :</strong></strong> <code>shortint variable_name;</code></p>
-<p><strong><strong>Example :</strong></strong> <code>shortint shortint_data;</code></p>
-<p>The below figure shows the output of shortint data type.</p>
-<p><img
-  src="https://user-images.githubusercontent.com/110448382/186825172-17bb35a1-c1a4-4071-ad9f-6e45e9011b8f.png"
-  alt="shortint"
-  class="shortint"/>
-</p>
-<pre><code>                                   Figure.7. shortint output
-</code></pre>
-<p>Github lab code link: <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/shortint_data_type/data_type_shortint.sv"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/shortint_data_type/data_type_shortint.sv</a
->
-</p>
-<p>Github lab output link: <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/shortint_data_type/data_type_shortint.log"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/shortint_data_type/data_type_shortint.log</a
->
-</p>
+</h2><p>shortint 可以是 0 或 1，表示 16 位有符号整数。 shortint 的默认值为 0。</p>
+<p><strong><strong>语法 ：</strong></strong> <code>shortint variable_name;</code></p>
+<p><strong><strong>示例 ：</strong></strong> <code>shortint shortint_data;</code></p>
 <hr>
 <h2 id='4-int'>4. int<a href='#4-int' class='anchor'>#</a>
-</h2><p>int is 2-state data type which is used most often testbenches. It can be either 0 or 1 which represent a 32-bit signed integer. Default value of int is 0.</p>
-<p><strong><strong>Syntax :</strong></strong> <code>int variable_name;</code></p>
-<p><strong><strong>Example :</strong></strong> <code>int int_data;</code></p>
-<p>The below figure shows the output of int data type.</p>
-<p><img
-  src="https://user-images.githubusercontent.com/110448382/186825210-010b32ee-95c4-4c6e-b638-9f81ec703812.png"
-  alt="int"
-  class="int"/>
-</p>
-<pre><code>                                  Figure.8.int output
-</code></pre>
-<p>Github lab code link: <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/int_data_type/data_type_int.sv"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/int_data_type/data_type_int.sv</a
->
-</p>
-<p>Github lab output link: <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/int_data_type/data_type_int.log"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/int_data_type/data_type_int.log</a
->
-</p>
+</h2><p>int 可以是 0 或 1，表示 32 位有符号整数。 int 的默认值是 0。</p>
+<p><strong><strong>语法 ：</strong></strong> <code>int variable_name;</code></p>
+<p><strong><strong>示例 ：</strong></strong> <code>int int_data;</code></p>
 <hr>
 <h2 id='5-longint'>5. longint<a href='#5-longint' class='anchor'>#</a>
-</h2><p>longint is 2-state data type. It can be either 0 or 1 which represent a 64-bit signed integer. Default value of longint is 0.</p>
-<p><strong><strong>Syntax :</strong></strong> <code>longint variable_name;</code></p>
-<p><strong><strong>Example :</strong></strong> <code>longint longint_data;</code></p>
-<p>The below figure shows the output of longint data type.</p>
-<p><img
-  src="https://user-images.githubusercontent.com/110448382/186825249-c7470eb9-2738-4218-8d16-ce9634cd5c31.png"
-  alt="longint"
-  class="longint"/>
-</p>
-<pre><code>                                    Figure.9. longint output
-</code></pre>
-<p>Github lab code link: <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/longint_data_type/data_type_longint.sv"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/longint_data_type/data_type_longint.sv</a
->
-</p>
-<p>Github lab output link: <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/longint_data_type/data_type_longint.log"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/longint_data_type/data_type_longint.log</a
->
-</p>
+</h2><p>longint 可以是 0 或 1，表示 64 位有符号整数。 longint 的默认值为 0。</p>
+<p><strong><strong>语法 ：</strong></strong> <code>longint variable_name;</code></p>
+<p><strong><strong>示例 ：</strong></strong> <code>longint longint_data;</code></p>
 <hr>
-<h1 id='data-type-casting'>Data type casting<a href='#data-type-casting' class='anchor'>#</a>
-</h1><p>casting means the conversion of one data type to another datatype.</p>
-<p>There are two types of casting,</p>
+<h1 id='数据类型转换'>数据类型转换<a href='#%e6%95%b0%e6%8d%ae%e7%b1%bb%e5%9e%8b%e8%bd%ac%e6%8d%a2' class='anchor'>#</a>
+</h1><p>转换意味着将一种数据类型转换为另一种数据类型。
+转换有两种类型：</p>
 <ul>
-<li>Static casting</li>
-<li>Dynamic casting</li>
+<li>静态转换</li>
+<li>动态转换</li>
 </ul>
-<p><strong><strong>static casting :</strong></strong> The casting happens at compile time. So, there will not be any run time error. static casting is only applicable to fixed data types. It does not apply to the Object-Oriented programming concept.</p>
-<p><strong><strong>Syntax :</strong></strong></p>
+<p><strong><strong>静态转换 ：</strong></strong> 转换发生在编译时。因此，不会出现任何运行时错误。静态转换仅适用于固定数据类型。它不适用于面向对象的编程概念。</p>
+<p><strong><strong>语法 ：</strong></strong></p>
 <p><code>data_type'(variable or expression or value);</code></p>
-<p><strong><strong>dynamic casting :</strong></strong> Casting happens at run-time. If the casting is invalid, an error is reported. Dynamic casting is used to cast the assigned values to the variables that might not be ordinarily valid. The $cast is the system method. The $cast can be either function or task.</p>
-<p><strong><strong>Syntax :</strong></strong></p>
+<p><strong><strong>动态转换 :</strong></strong> 转换发生在运行时。如果转换无效，则会报告错误。动态转换用于将分配的值转换为通常无效的变量。 $cast 是系统方法。 $cast 可以是函数或任务。</p>
+<p><strong><strong>语法 ：</strong></strong></p>
 <p><code>$cast(destination_variable, source_expression_or_variable);</code></p>
-<h2 id='static-casting'>static casting<a href='#static-casting' class='anchor'>#</a>
+<h2 id='静态转换'>静态转换<a href='#%e9%9d%99%e6%80%81%e8%bd%ac%e6%8d%a2' class='anchor'>#</a>
 </h2><h3 id='1-integer-to-int'>1. integer to int<a href='#1-integer-to-int' class='anchor'>#</a>
-</h3><p><strong><strong>Example :</strong></strong> <code>int_data = int'(integer_data);</code></p>
-<p>The below figure shows the output of integer to int casting.</p>
-<p><img
-  src="https://user-images.githubusercontent.com/110448382/187766327-ff3b8330-7dd5-43a3-a8fe-f8b9246a9ed2.png"
-  alt="integer_to_int"
-  class="integer_to_int"/>
-</p>
-<pre><code>                                   Figure.10. integer to int casting output
-</code></pre>
-<p>Github lab code link: <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/integer_to_int/integer_to_int.sv"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/integer_to_int/integer_to_int.sv</a
->
-</p>
-<p>Github lab output link: <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/integer_to_int/integer_to_int.log"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/integer_to_int/integer_to_int.log</a
->
-</p>
+</h3><p><strong><strong>示例 ：</strong></strong> <code>int_data = int'(integer_data);</code></p>
 <h3 id='2-shortint-to--int-and-longint'>2. shortint to  int and longint<a href='#2-shortint-to--int-and-longint' class='anchor'>#</a>
-</h3><p><strong><strong>Example :</strong></strong> <code>int_data = int'(shortint_data);</code><br>
+</h3><p><strong><strong>示例 ：</strong></strong> <code>int_data = int'(shortint_data);</code><br>
 <code>longint_data = longint'(shortint_data);</code></p>
-<p>The below figure shows the output of shortint to int and shortint to longint casting.</p>
-<p><img
-  src="https://user-images.githubusercontent.com/110448382/187766716-381f7e0a-3943-48d8-8a45-67bde4a80d44.png"
-  alt="shortint_to_i_l"
-  class="shortint_to_i_l"/>
-</p>
-<pre><code>                                   Figure.11. shortint to int and shortint to longint casting output
-</code></pre>
-<p>Github lab code link: <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/shortint/shortint_casting.sv"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/shortint/shortint_casting.sv</a
->
-</p>
-<p>Github lab output link: <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/shortint/shortint_casting.log"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/shortint/shortint_casting.log</a
->
-</p>
 <h3 id='3-int-to-longint'>3. int to longint<a href='#3-int-to-longint' class='anchor'>#</a>
-</h3><p><strong><strong>Example :</strong></strong> <code>longint_data = longint'(int_data);</code></p>
-<p>The below figure shows the output of int to longint casting.</p>
-<p><img
-  src="https://user-images.githubusercontent.com/110448382/187766791-1c30b5a6-a71b-4bc2-b958-744e6c291330.png"
-  alt="int_to_longint"
-  class="int_to_longint"/>
-</p>
-<pre><code>                                   Figure.12. int to longint casting output
-</code></pre>
-<p>Github lab code link: <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/int_to_longint/int_to_longint.sv"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/int_to_longint/int_to_longint.sv</a
->
-</p>
-<p>Github lab output link: <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/int_to_longint/int_to_longint.log"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/int_to_longint/int_to_longint.log</a
->
-</p>
+</h3><p><strong><strong>示例 ：</strong></strong> <code>longint_data = longint'(int_data);</code></p>
 <h3 id='4-real-to-int'>4. real to int<a href='#4-real-to-int' class='anchor'>#</a>
-</h3><p><strong><strong>Example :</strong></strong> <code>int_data = int'(real_data);</code></p>
-<p>The below figure shows the output of real to int casting.</p>
-<p><img
-  src="https://user-images.githubusercontent.com/110448382/187766860-79a99293-f916-4314-824a-d77d92f624e8.png"
-  alt="real_to_int"
-  class="real_to_int"/>
-</p>
-<pre><code>                                   Figure.13. real to int casting output
-</code></pre>
-<p>Github lab code link: <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/real_to_int/real_to_int.sv"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/real_to_int/real_to_int.sv</a
->
-</p>
-<p>Github lab output link: <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/real_to_int/real_to_int.log"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/real_to_int/real_to_int.log</a
->
-</p>
+</h3><p><strong><strong>示例 ：</strong></strong> <code>int_data = int'(real_data);</code></p>
 <h3 id='5-real-to-time'>5. real to time<a href='#5-real-to-time' class='anchor'>#</a>
-</h3><p><strong><strong>Example :</strong></strong> <code>time_data = time'(real_data);</code></p>
-<p>The below figure shows the output of real to time casting.</p>
-<p><img
-  src="https://user-images.githubusercontent.com/110448382/187766904-fba98b9b-83a1-4e3d-96b8-1bde3deb23d6.png"
-  alt="real_to_time"
-  class="real_to_time"/>
-</p>
-<pre><code>                                   Figure.14. real to time casting output
-</code></pre>
-<p>Github lab code link: <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/real_to_time/real_to_time.sv"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/real_to_time/real_to_time.sv</a
->
-</p>
-<p>Github lab output link: <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/real_to_time/real_to_time.log"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/real_to_time/real_to_time.log</a
->
-</p>
+</h3><p><strong><strong>示例 ：</strong></strong> <code>time_data = time'(real_data);</code></p>
 <h3 id='6-logic-to-byte'>6. logic to byte<a href='#6-logic-to-byte' class='anchor'>#</a>
-</h3><p><strong><strong>Example :</strong></strong> <code>byte_data = byte'(logic_data);</code></p>
-<p>The below figure shows the output of logic to byte casting.</p>
-<p><img
-  src="https://user-images.githubusercontent.com/110448382/187766945-89a8639a-b1cf-45f3-acd5-ba1ffc44d49a.png"
-  alt="logic_to_byte"
-  class="logic_to_byte"/>
-</p>
-<pre><code>                                   Figure.15. logic to byte casting output
-</code></pre>
-<p>Github lab code link: <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/logic_to_byte/logic_to_byte.sv"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/logic_to_byte/logic_to_byte.sv</a
->
-</p>
-<p>Github lab output link: <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/logic_to_byte/logic_to_byte.log"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/logic_to_byte/logic_to_byte.log</a
->
-</p>
+</h3><p><strong><strong>示例 ：</strong></strong> <code>byte_data = byte'(logic_data);</code></p>
 <h3 id='7-bit-to-byte'>7. bit to byte<a href='#7-bit-to-byte' class='anchor'>#</a>
-</h3><p><strong><strong>Example :</strong></strong> <code>byte_data = byte'(bit_data);</code></p>
-<p>The below figure shows the output of bit to byte casting.</p>
-<p><img
-  src="https://user-images.githubusercontent.com/110448382/187766988-72a478dd-16ec-4321-989e-35fcc69afd5c.png"
-  alt="bit_to_byte"
-  class="bit_to_byte"/>
-</p>
-<pre><code>                                   Figure.16. bit to byte casting output
-</code></pre>
-<p>Github lab code link: <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/bit_to_byte/bit_to_byte.sv"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/bit_to_byte/bit_to_byte.sv</a
->
-</p>
-<p>Github lab output link: <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/bit_to_byte/bit_ti_byte.log"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/casting_data_type/bit_to_byte/bit_ti_byte.log</a
->
-</p>
+</h3><p><strong><strong>示例 ：</strong></strong> <code>byte_data = byte'(bit_data);</code></p>
 <hr>
-<h1 id='enum'>enum<a href='#enum' class='anchor'>#</a>
-</h1><p>Enumerated data types defines a set of named values.</p>
-<p><strong><strong>Syntax</strong></strong> : <code>enum enum_base_type(optional) {</code> <br>
+<h1 id='枚举-enum'>枚举 enum<a href='#%e6%9e%9a%e4%b8%be-enum' class='anchor'>#</a>
+</h1><p>枚举数据类型定义一组命名值。</p>
+<p><strong><strong>语法 ：</strong></strong> <code>enum enum_base_type(optional) {</code> <br>
 <code>&lt;enum_name_declaration&gt; = constant_expr(optional)... </code><br>
 <code>}&lt;enum_type_identifier&gt;;</code></p>
-<p><strong><strong>Example :</strong></strong> <code>enum {MONDAY,</code> <br>
+<p><strong><strong>示例 ：</strong></strong> <code>enum {MONDAY,</code> <br>
 <code>TUESDAY,</code> <br>
 <code> WEDNESDAY,</code> <br>
 <code>THURSDAY,</code> <br>
@@ -1433,49 +1217,13 @@
 <code> SUNDAY</code> <br>
 <code>} days;</code></p>
 <ul>
-<li>An enumerated type is stored as type ‘int’ unless specified as something else.</li>
-<li>This type automatically gives a unique value to every name in the list.</li>
-<li>Values default to the ‘int’ type starting at 0 and then incrementing by 1.</li>
-<li>If a value is not specified for a name, it gets the value of the previous name in the list incremented by 1.</li>
+<li>除非指定为其他类型，否则枚举类型存储为“int”类型。</li>
+<li>此类型会自动为列表中的每个名称赋予唯一值。</li>
+<li>值默认为“int”类型，从 0 开始，然后递增 1。</li>
+<li>如果没有为名称指定值，它将获取列表中前一个名称的值并加 1。</li>
 </ul>
-<p>In the below figure output of default value of enum.</p>
-<p><img
-  src="https://user-images.githubusercontent.com/110448382/187858568-1fbaa256-fe2c-4b54-87cd-5a66cfe8486e.png"
-  alt="default_value"
-  class="default_value"/>
-</p>
-<pre><code>                               Figure.17. Output of enum default value
-</code></pre>
-<p>Github lab code link: <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/enum_data_type/default_value_enum/default_value_enum.sv"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/enum_data_type/default_value_enum/default_value_enum.sv</a
->
-</p>
-<p>Github lab output link: <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/enum_data_type/default_value_enum/default_value_enum.log"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/enum_data_type/default_value_enum/default_value_enum.log</a
->
-</p>
-<p>In the below figure output of set value of enum.</p>
-<p><img
-  src="https://user-images.githubusercontent.com/110448382/187858661-cb20f4cf-b251-4448-bc72-3efecd8f8098.png"
-  alt="set_value"
-  class="set_value"/>
-</p>
-<pre><code>                               Figure.18. Output of set enum value
-</code></pre>
-<p>Github lab code link: <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/enum_data_type/set_value_enum/set_value_enum.sv"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/enum_data_type/set_value_enum/set_value_enum.sv</a
->
-</p>
-<p>Github lab output link: <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/enum_data_type/set_value_enum/set_value_enum.log"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/enum_data_type/set_value_enum/set_value_enum.log</a
->
-</p>
 <hr>
-<p><strong><strong>enum method :</strong></strong></p>
+<p><strong><strong>枚举函数：</strong></strong></p>
 <table>
 <thead>
 <tr>
@@ -1488,44 +1236,44 @@
 <tr>
 <td>1</td>
 <td>first()</td>
-<td>returns the value of the first member of the enumeration</td>
+<td>返回枚举的第一个成员的值</td>
 </tr>
 <tr>
 <td>2</td>
 <td>last()</td>
-<td>returns the value of the last member of the enumeration</td>
+<td>返回枚举最后一个成员的值</td>
 </tr>
 <tr>
 <td>3</td>
 <td>next()</td>
-<td>returns the value of next member of the enumeration</td>
+<td>返回枚举的下一个成员的值</td>
 </tr>
 <tr>
 <td>4</td>
 <td>prev()</td>
-<td>returns the value of previous member of the enumeration</td>
+<td>返回枚举中前一个成员的值</td>
 </tr>
 <tr>
 <td>5</td>
 <td>num()</td>
-<td>returns the number of elements in the given enumeration</td>
+<td>返回给定枚举中的元素数量</td>
 </tr>
 <tr>
 <td>6</td>
 <td>name()</td>
-<td>returns the string representation of the given enumeration value</td>
+<td>返回给定枚举值的字符串表示形式</td>
 </tr>
 </tbody>
 </table>
 <pre><code>                                      Tabular column.5. enum methods 
 </code></pre>
 <hr>
-<h3 id='typedef-enumerated-data-type'>typedef enumerated data type<a href='#typedef-enumerated-data-type' class='anchor'>#</a>
-</h3><p>In typedef a type name can be given so that the same type can be used in many places.</p>
-<p><strong><strong>Syntax</strong></strong> : <code>typedef enum enum_base_type(optional) {</code><br>
+<h3 id='typedef-枚举数据类型'>typedef 枚举数据类型<a href='#typedef-%e6%9e%9a%e4%b8%be%e6%95%b0%e6%8d%ae%e7%b1%bb%e5%9e%8b' class='anchor'>#</a>
+</h3><p>在 typedef 中可以给出类型名称，以便可以在许多地方使用相同的类型。在 typedef 中可以给出类型名称，以便可以在许多地方使用相同的类型。</p>
+<p><strong><strong>语法 ：</strong></strong> <code>typedef enum enum_base_type(optional) {</code><br>
 <code>&lt;enum_name_declaration&gt; = constant_expr(optional)...</code><br>
 <code>} &lt;enum_type_identifier&gt;;</code></p>
-<p><strong><strong>Example :</strong></strong> <code>typedef enum {MONDAY,</code><br>
+<p><strong><strong>示例 ：</strong></strong> <code>typedef enum {MONDAY,</code><br>
 <code>TUESDAY,</code> <br>
 <code> WEDNESDAY,</code> <br>
 <code>THURSDAY,</code> <br>
@@ -1534,36 +1282,18 @@
 <code> SUNDAY</code>
 <code>} week_e;</code><br>
 <code>week_e day;</code></p>
-<p>In below figure declare typedef type and output using enum methods.</p>
-<p><img
-  src="https://user-images.githubusercontent.com/110448382/187858749-d04ff2bd-96c8-4c20-8ab3-b6b7bc0e9ca3.png"
-  alt="enum_typedef"
-  class="enum_typedef"/>
-</p>
-<pre><code>                               Figure.19. Output of typedef enum using enum method
-</code></pre>
-<p>Github lab code link: <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/enum_data_type/typedef_enum/typedef_enum.sv"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/enum_data_type/typedef_enum/typedef_enum.sv</a
->
-</p>
-<p>Github lab output link: <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/enum_data_type/typedef_enum/typedef_enum.log"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/two_and_four_state/enum_data_type/typedef_enum/typedef_enum.log</a
->
-</p>
 <hr>
 <h1 id='string'>String<a href='#string' class='anchor'>#</a>
-</h1><p>A string type is a variable-length ordered collection of characters. The length of a string is the number of characters in the collection.</p>
-<p><strong><strong>Syntax</strong></strong> :<code>string variable_name =initial_value;</code></p>
+</h1><p>字符串类型是可变长度的有序字符集合。字符串的长度是集合中字符的数量。</p>
+<p><strong><strong>语法 ：</strong></strong><code>string variable_name =initial_value;</code></p>
 <p><strong><strong>Example</strong></strong>: <code>string str = &quot;Manipal&quot;;</code></p>
 <ul>
-<li>The memory space for strings is dynamically allocated.</li>
-<li>The indices of string variables shall be numbered from 0 to N–1 (where N is the length of the string) so that index 0 is the first (leftmost) character of the string and index N–1 is the last (rightmost) character of the string.</li>
-<li>An un-initialized or empty string is represented with the special value “”. An empty string has 0 length.</li>
+<li>字符串的内存空间是动态分配的。</li>
+<li>字符串变量的索引应从 0 到 N–1（其中 N 是字符串的长度）进行编号，以便索引 0 是字符串的第一个（最左边）字符，索引 N–1 是最后一个（最右边）字符字符串的。</li>
+<li>未初始化或空字符串用特殊值 &quot;&quot; 表示。空字符串的长度为 0。</li>
 </ul>
 <hr>
-<p><strong><strong>String operators cheat sheet</strong></strong></p>
+<p><strong><strong>字符串运算符列表</strong></strong></p>
 <table>
 <thead>
 <tr>
@@ -1574,91 +1304,39 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">Equality</td>
+<td style="text-align:left">等于</td>
 <td style="text-align:left">str1==str2</td>
-<td style="text-align:left">Returns 1 if the two strings are equal and 0 if they are not</td>
+<td style="text-align:left">如果两个字符串相等则返回 1，否则返回 0</td>
 </tr>
 <tr>
-<td style="text-align:left">Inequality</td>
+<td style="text-align:left">不等</td>
 <td style="text-align:left">str1!=str2</td>
-<td style="text-align:left">Returns 1 if the two strings are not equal and 0 if they are</td>
+<td style="text-align:left">如果两个字符串不相等则返回 1，如果相等则返回 0</td>
 </tr>
 <tr>
-<td style="text-align:left">Comparison</td>
+<td style="text-align:left">比较</td>
 <td style="text-align:left">str1 &lt; str2, str1 &lt;= str2, str1 &gt; str2, str1 &gt;= str2</td>
-<td style="text-align:left">Returns 1 if the corresponding condition is true and 0 if false</td>
+<td style="text-align:left">如果相应条件为 true，则返回 1；如果为 false，则返回 0</td>
 </tr>
 <tr>
-<td style="text-align:left">Concatenation</td>
+<td style="text-align:left">级联</td>
 <td style="text-align:left">{str1, str2, &hellip;, strN}</td>
-<td style="text-align:left">All strings will be concatenated into one resultant string</td>
+<td style="text-align:left">所有字符串将连接成一个结果字符串</td>
 </tr>
 <tr>
-<td style="text-align:left">Replication</td>
-<td style="text-align:left">{multiplier{str}}</td>
-<td style="text-align:left">Replicates the string N number of times, where N is specified by the multiplier</td>
+<td style="text-align:left">复制</td>
+<td style="text-align:left">{N{str}}</td>
+<td style="text-align:left">将字符串复制 N 次</td>
 </tr>
 <tr>
-<td style="text-align:left">Indexing</td>
+<td style="text-align:left">索引</td>
 <td style="text-align:left">str[index]</td>
-<td style="text-align:left">Returns a byte, the ASCII code at the given index. If given index is out of range, it returns 0</td>
+<td style="text-align:left">返回一个字节，即给定索引处的 ASCII 代码。如果给定索引超出范围，则返回 0</td>
 </tr>
 </tbody>
 </table>
 <pre><code>                                      Tabular column.6.string operators
 </code></pre>
-<p><strong><strong>Example:</strong></strong></p>
-<p>Consider 2 strings, str1 as Manipal and str2 as Udupi,</p>
-<ul>
-<li>
-<p><strong><strong>Equality operator</strong></strong> (str1 == str2), here the string 1 each letter ASCII value will be compared with string 2&rsquo;s of each letter sequentially, if it is equal then it will return 1 or else 0, here instead of 1 and 0 we&rsquo;re using statements. In this example, strings are not equal, because the ascii value of U is 85 and M is 77. Here the first letters ascii value are not same so it will display as strings are not equal.</p>
-</li>
-<li>
-<p><strong><strong>Inequality operator</strong></strong> (str1 != str2) , here the string 1 each letter ASCII value will be compared with string 2&rsquo;s of each letter sequentially, if it is not equal then it will return 1 or else 0, here instead of 1 and 0 we&rsquo;re using statements. In this example, strings are not equal, because the ascii value of U is 85 and M is 77. Here the first letters ascii value are not same so it will display as strings are not equal.</p>
-</li>
-<li>
-<p><strong><strong>Comparison operator</strong></strong>(&gt;, =&gt; ,&lt;, =&lt;), here the string 1 each letter ASCII value will be compared with string 2&rsquo;s of each letter sequentially, here it will check for &gt;, =&gt; ,&lt;, =&lt; condition, if any of these becomes true, it will return 1. Here as we discussed in the above points, U as large ascii value, so here string1 &lt; string2 and string1 =&lt; string2.</p>
-</li>
-<li>
-<p><strong><strong>Concatenation operator</strong></strong> ({str1,str2}), here 2 strings are concatenated and resultant is single string. So output will be ManipalUdupi.</p>
-</li>
-</ul>
-<p><strong><strong>Note</strong></strong>: Using concatenation operator, we can concatenate the undeclared strings also, for example,<br>
-<code>{str1,&quot;Mangalore&quot;,str2}</code>    <br>
-<strong>Output</strong> - ManipalMangaloreUdupi</p>
-<ul>
-<li>
-<p><strong><strong>Replication operator</strong></strong> ({2{str1}}), here it replicates the string N number of times, where N is specified by the multiplier. Here we&rsquo;re considering N as 2, so string1 will be replicated 2 times, and the output is ManipalManipal.</p>
-</li>
-<li>
-<p><strong><strong>Displaying index letter</strong></strong> (str1[i]), here we&rsquo;ll get the ascii character at mentioned index number. In this case, we&rsquo;ve included for loop to display all the ascii characters of a string, so we get the output as<br>
-M<br>
-a<br>
-n<br>
-i<br>
-p<br>
-a<br>
-l</p>
-</li>
-</ul>
-<p>The below figure.1 illustrates the output for string operators</p>
-<p><img
-  src="https://user-images.githubusercontent.com/110443214/186822122-a5f85160-9938-41d3-811f-5b155df68cb2.png"
-  alt="string_oper2"
-  class="string_oper2"/>
-</p>
-<pre><code>                               Figure.20. Output of string operators
-</code></pre>
-<p>Github lab code link: <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/string/string_op/string_op.sv"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/string/string_op/string_op.sv</a
->
-</p>
-<p>Github lab output link: <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/string/string_op/string_op.log"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/string/string_op/string_op.log</a
->
-</p>
 <hr>
 <p><strong><strong>String Methods cheat sheet</strong></strong></p>
 <table>
@@ -1671,86 +1349,40 @@ l</p>
 <tbody>
 <tr>
 <td>str.len()</td>
-<td>Returns length of string.</td>
+<td>返回字符串的长度。</td>
 </tr>
 <tr>
 <td>str.putc()</td>
-<td>Used to assign one character of string.</td>
+<td>修改字符串的一个字符</td>
 </tr>
 <tr>
 <td>str.getc()</td>
-<td>Returns a character.</td>
+<td>返回一个字符。</td>
 </tr>
 <tr>
 <td>str.tolower()</td>
-<td>Returns the lowercase of string.</td>
+<td>返回字符串的小写字母。</td>
 </tr>
 <tr>
 <td>str.toupper()</td>
-<td>Returns the uppercase of string.</td>
+<td>返回字符串的大写字母。</td>
 </tr>
 <tr>
 <td>str.compare(s)</td>
-<td>Returns the string compare result as ascii value.</td>
+<td>以 ascii 值形式返回字符串比较结果。</td>
 </tr>
 <tr>
 <td>str.icompare(s)</td>
-<td>Returns caseless string compare result as ascii value.</td>
+<td>以 ascii 值的形式返回不区分大小写的字符串比较结果。</td>
 </tr>
 <tr>
 <td>str.substr(i,j)</td>
-<td>Returns the sub string of main string.</td>
+<td>返回主字符串的子字符串。</td>
 </tr>
 </tbody>
 </table>
 <pre><code>             Tabular column.7. string methods
 </code></pre>
-<p><strong><strong>Example:</strong></strong></p>
-<p>Consider a string Manipal,</p>
-<ul>
-<li>
-<p><strong><strong>str.len()</strong></strong>, here it will give the length of a string. As we considered Manipal, here there are 7 ascii character. So the output is 7.</p>
-</li>
-<li>
-<p><strong><strong>str.putc()</strong></strong>, it is used to assign one character of a string. So consider one temp variable to store the changes of the string and assign character &ldquo;t&rdquo; for 3rd index as given temp.putc(3, &ldquo;t&rdquo;). And the output we&rsquo;ll get as Mantpal.</p>
-</li>
-<li>
-<p><strong><strong>str.getc()</strong></strong>, it returns a character as output. Here mention the index of a character, which we want to get as output as given str.getc(1). And the output we get as a.</p>
-</li>
-<li>
-<p><strong><strong>str.tolower()</strong></strong>, it gives a string in lowercase. So the output will be manipal.</p>
-</li>
-<li>
-<p><strong><strong>str.toupper()</strong></strong>, it gives a string in uppercase. So the output will be MANIPAL.</p>
-</li>
-<li>
-<p><strong><strong>str.compare(s)</strong></strong>, it will compare the string and gives output in ascii value. To make comparison, declare one more string as mirafra, and compare Manipal with mirafra. Here comparison will takes place with each character of a string Manipal with the each character of mirafra sequentially. Here ascii value of M = 77 and m = 109. So the difference between 77-109 is -32. So we get the output as -32.</p>
-</li>
-<li>
-<p><strong><strong>str.icompare(s)</strong></strong>, it will compare the string without considering the cases of letters, and gives output in ascii value. As mentioned above, the strings are Manipal and mirafra, here it&rsquo;s a case insensitive comparison, M and m will consider as same, and next letters are a = 97 and i = 105, hence the difference between them is (97 - 105) -8. So the output is -8.</p>
-</li>
-<li>
-<p><strong><strong>str.substr(i,j)</strong></strong>, it gives the sub string of main string. So we should mention the sub string indices which are to be displayed as given, str.substr(1,2). In Manipal the 1 and 2 index ascii characters are a and n. So the output will be an.</p>
-</li>
-</ul>
-<p>The below figure.2. shows the output of string methods.</p>
-<p><img
-  src="https://user-images.githubusercontent.com/110443214/187138876-6128baa0-5a0b-40cc-8a3a-4a7eded269ed.png"
-  alt="string_method"
-  class="string_method"/>
-</p>
-<pre><code>                                      Figure.21. Output of string methods
-</code></pre>
-<p>Github lab code link: <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/string/string_me/string_method.sv"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/string/string_me/string_method.sv</a
->
-</p>
-<p>Github lab output link: <a
-  href="https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/string/string_me/string_method.log"
-    class="is-pretty-link">https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/string/string_me/string_method.log</a
->
-</p>
 <hr>
 </div><div class="column is-sticky is-paddingless" id="tocWrapper">
   <div class="is-paddingless" id="tocContainer">
@@ -1767,8 +1399,8 @@ l</p>
   <ul>
     <li><a href="#systemverilog-数据类型">SystemVerilog 数据类型</a>
       <ul>
-        <li><a href="#数据类型备忘表">数据类型备忘表</a></li>
-        <li><a href="#4-值数据类型备忘表">4 值数据类型备忘表</a></li>
+        <li><a href="#数据类型列表">数据类型列表</a></li>
+        <li><a href="#4-值数据类型列表">4 值数据类型列表</a></li>
         <li><a href="#4-值">4 值</a></li>
         <li><a href="#1-reg">1. reg</a></li>
         <li><a href="#2-wire">2. wire</a></li>
@@ -1777,7 +1409,7 @@ l</p>
         <li><a href="#5-integer">5. integer</a></li>
         <li><a href="#5-time">5. time</a></li>
         <li><a href="#6-real">6. real</a></li>
-        <li><a href="#2-state-data-type-cheat-sheet">2-state data type cheat sheet</a></li>
+        <li><a href="#2-值数据类型列表">2 值数据类型列表</a></li>
         <li><a href="#1-bit">1. bit</a></li>
         <li><a href="#2-byte">2. byte</a></li>
         <li><a href="#3-shortint">3. shortint</a></li>
@@ -1785,9 +1417,9 @@ l</p>
         <li><a href="#5-longint">5. longint</a></li>
       </ul>
     </li>
-    <li><a href="#data-type-casting">Data type casting</a>
+    <li><a href="#数据类型转换">数据类型转换</a>
       <ul>
-        <li><a href="#static-casting">static casting</a>
+        <li><a href="#静态转换">静态转换</a>
           <ul>
             <li><a href="#1-integer-to-int">1. integer to int</a></li>
             <li><a href="#2-shortint-to--int-and-longint">2. shortint to  int and longint</a></li>
@@ -1800,11 +1432,11 @@ l</p>
         </li>
       </ul>
     </li>
-    <li><a href="#enum">enum</a>
+    <li><a href="#枚举-enum">枚举 enum</a>
       <ul>
         <li>
           <ul>
-            <li><a href="#typedef-enumerated-data-type">typedef enumerated data type</a></li>
+            <li><a href="#typedef-枚举数据类型">typedef 枚举数据类型</a></li>
           </ul>
         </li>
       </ul>

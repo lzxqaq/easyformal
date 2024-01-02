@@ -6,6 +6,7 @@
     <description>Recent content in 等价性检查 on Documentation du thème Shadocs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <copyright>The MIT License (MIT) Copyright © 2023 Jordan GAZEAU</copyright><atom:link href="/formal/equivalence_checking/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>The MIT License (MIT) Copyright © 2023 Jordan GAZEAU</copyright>
+    <atom:link href="/formal/equivalence_checking/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
