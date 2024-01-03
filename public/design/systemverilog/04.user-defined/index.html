@@ -3,7 +3,7 @@
   <head><meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="generator" content="Hugo 0.121.1">
-<meta name="viewport" content="width=device-width, initial-scale=1" /><title>SystemVerilog 用户自定义 | EasyFormal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" /><title>SystemVerilog 用户自定义类型 | EasyFormal</title>
 
 <link
   rel="icon"
@@ -394,8 +394,8 @@
       <a
         href='/design/systemverilog/04.user-defined/'
         class='card-header-title'
-          title='SystemVerilog 用户自定义'>
-        <i class='fa-solid'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 用户自定义</p></a></div>
+          title='SystemVerilog 用户自定义类型'>
+        <i class='fa-solid'></i><p class="pt-0 pb-0 pr-2 pl-0">SystemVerilog 用户自定义类型</p></a></div>
           </div></li>
       </div>
     </div><div class="">
@@ -715,16 +715,16 @@
 </div>
 <div id="sidebarMobileWrapper" class="column is-narrow is-hidden-desktop"></div>
 <div class="columns is-mobile is-marginless is-scroll-smooth has-toc" id="contentContainer">
-  <div class="column" id="content"><div id="contentTitle">SystemVerilog 用户自定义</div>
-<h1 id='typedef'><strong>Typedef</strong><a href='#typedef' class='anchor'>#</a>
-</h1><p>Typedef used to create new identifiers from longer datatype specification. It  is similar to alias command. Typedef uses mainly in complex testbenches in System Verilog because it replaces the longer datatypes like int(unsigned longint, signed shortint), byte ,bit[7:0],logic[7:0] with identifiers in the code. Typedef uses in Class, Structure and  Enumeration to  make the datatype declarations  easier.</p>
-<p><strong>Syntax:</strong></p>
+  <div class="column" id="content"><div id="contentTitle">SystemVerilog 用户自定义类型</div>
+<h2 id='typedef'>Typedef<a href='#typedef' class='anchor'>#</a>
+</h2><p>Typedef 用于根据较长的数据类型规范创建新的标识符。它类似于alias命令。 Typedef 主要用于 System Verilog 中的复杂测试平台，因为它用代码中的标识符替换了较长的数据类型，如 int(unsigned longint,signed Shortint)、byte、bit[7:0]、logic[7:0]。 Typedef 在类、结构和枚举中使用，使数据类型声明更容易。</p>
+<p><strong>语法：</strong></p>
 <p><code>typedef &lt;base_type&gt; &lt;size&gt; &lt;type_name&gt;;</code></p>
-<h2 id='typedef-in-class'><strong>Typedef in Class</strong><a href='#typedef-in-class' class='anchor'>#</a>
-</h2><p>The main use of Typedef in class is that sometimes we use class variable before the declaration of the class itself. At that time it will cause some compile errors to the code. So avoid that compile errors , we can use &rsquo;typedef class variable&rsquo; before the declaration of class itself.</p>
-<p><strong>Syntax:</strong></p>
+<h2 id='在类中的-typedef'>在类中的 Typedef<a href='#%e5%9c%a8%e7%b1%bb%e4%b8%ad%e7%9a%84-typedef' class='anchor'>#</a>
+</h2><p>Typedef 在类中的主要用途是有时我们在声明类本身之前使用类变量。这时候就会导致代码出现一些编译错误。因此，为了避免编译错误，我们可以在类本身的声明之前使用“typedef 类变量”。</p>
+<p><strong>语法：</strong></p>
 <p><code>typedef class class_name;</code></p>
-<p><strong>Example:</strong></p>
+<p><strong>示例</strong></p>
 <p><code>typedef class fruit2;</code><br>
 <code>class fruit1;</code> <br>
 <code>fruit2 f;</code><br>
@@ -732,91 +732,31 @@
 <p><code>class fruit2</code> <br>
 <code>fruit1 f;</code><br>
 <code>endclass</code></p>
-<p><strong>Output:</strong></p>
-<p>The below figure shows that output of typedef with class.</p>
-<p><img
-  src="https://user-images.githubusercontent.com/110484152/187588716-d102f765-7b5e-4d28-824e-7f6da953e085.png"
-  alt="typedef class"
-  class="typedef class"/>
-
-Fig 1 : Typedef with class</p>
-<p>The above example and output shows that how typedef avoids the compiler error in class1 because class2 declaration is not done  at that time.</p>
-<p><strong>Note:</strong> If we didn&rsquo;t use &rsquo;typdef class2&rsquo; at the beginning , it will show some compiler error. It will display the text given inside the $display. The below figure shows the error.</p>
-<p><img
-  src="https://user-images.githubusercontent.com/110484152/187746354-cf4365f0-d0dc-4116-a853-14ab77caae8c.png"
-  alt="class error"
-  class="class error"/>
-</p>
-<pre><code>                                           Fig 2 : Error when typedef not used with class.
-</code></pre>
-<p>Github lab code link:https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/typedef/classtypedef/classtypedef.sv</p>
-<p>Github lab output link:https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/typedef/classtypedef/classtypedef.log</p>
-<h2 id='typedef-in-structure'><strong>Typedef in Structure</strong><a href='#typedef-in-structure' class='anchor'>#</a>
-</h2><p>Without Typedef, Structure may happen some compile errors in large complex testbenches. Typedef also provide declarations make more easier.</p>
-<p><strong>Syntax:</strong></p>
+<h2 id='在结构体中的-typedef'>在结构体中的 Typedef<a href='#%e5%9c%a8%e7%bb%93%e6%9e%84%e4%bd%93%e4%b8%ad%e7%9a%84-typedef' class='anchor'>#</a>
+</h2><p>如果没有 Typedef，Structure 在大型复杂测试平台中可能会出现一些编译错误。 Typedef 还提供了使声明变得更加容易的功能。</p>
+<p><strong>语法：</strong></p>
 <p><code>typedef struct {</code><br>
 <code>datatype name;</code><br>
 <code>datatype name;</code><br>
 <code>}structure_name;</code></p>
-<p><strong>Example:</strong></p>
+<p><strong>示例</strong></p>
 <p><code>typedef struct{</code><br>
 <code>string name;</code><br>
 <code>byte id;</code><br>
 <code>longint age;</code><br>
 <code>} personal_ details_s;</code></p>
-<p><strong>Output:</strong></p>
-<p>The below figure shows the output of typedef with structure datatype.</p>
-<p><img
-  src="https://user-images.githubusercontent.com/110484152/187587821-78efe5d6-c0f7-433c-a014-eee8cee3dcd7.png"
-  alt="typestruct"
-  class="typestruct"/>
-</p>
-<pre><code>                                             Fig 3: Typedef with structure  
-</code></pre>
-<p>The above output shows that typedef in structure decreases the usage of longer datatypes by creating new variable. We can see that in example &rsquo;longint&rsquo; datatype changed to &lsquo;age&rsquo; ,it is a new variable that is created by using typedef in structure.</p>
-<p><strong>Note :</strong> The below figure shows that error when typedef is not used with structure</p>
-<p><img
-  src="https://user-images.githubusercontent.com/110484152/187746976-132c4e3c-2e96-4058-ab03-51692595e6db.png"
-  alt="struct error"
-  class="struct error"/>
-</p>
-<pre><code>                                      Fig 4 : Error when typedef is not used with structure.
-</code></pre>
-<p>Github lab code link:https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/typedef/structtypedef/structtypedef.sv</p>
-<p>Github lab output link:https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/typedef/structtypedef/structtypedef.log</p>
-<h2 id='typedef-in-enumeration'><strong>Typedef in Enumeration</strong><a href='#typedef-in-enumeration' class='anchor'>#</a>
-</h2><p>Typedef uses for when we need more than one variable to share the same enumeration values. Without Typedef we will get syntax error. Enumeration datatype create new variable for all values.</p>
-<p><strong>Syntax:</strong></p>
+<h2 id='在枚举中的-typedef'>在枚举中的 Typedef<a href='#%e5%9c%a8%e6%9e%9a%e4%b8%be%e4%b8%ad%e7%9a%84-typedef' class='anchor'>#</a>
+</h2><p>Typedef 用于当我们需要多个变量共享相同的枚举值时。如果没有 Typedef，我们将得到语法错误。枚举数据类型为所有值创建新变量。</p>
+<p><strong>语法：</strong></p>
 <p><code>typedef enum {</code>   <br>
 <code>values </code>  <br>
 <code> } &lt;type_ name&gt;;</code></p>
-<p><strong>Example:</strong></p>
+<p><strong>示例</strong></p>
 <p><code>typedef enum { </code><br>
 <code>RORITO,</code><br>
 <code>FLAIRFX,</code><br>
 <code>REYNOLDS</code><br>
 <code>}pen_e;</code></p>
-<p><strong>Output:</strong></p>
-<p>The below figure shows the typedef with &rsquo;enumeration datatype</p>
-<p><img
-  src="https://user-images.githubusercontent.com/110484152/186602985-64dd1698-8a5d-4951-9a30-523acc0ad1bc.png"
-  alt="typeenum"
-  class="typeenum"/>
-</p>
-<pre><code>                                         Fig 5 : Typedef with Enumeration 
-</code></pre>
-<p>The above output shows that enum datatype with typedef .</p>
-<p><strong>Note:</strong> The below figure shows the error when typedef is not used with enum datatype.</p>
-<p><img
-  src="https://user-images.githubusercontent.com/110484152/187746592-26eed55e-1a8a-4955-bbed-cf96e68261c9.png"
-  alt="enum error"
-  class="enum error"/>
-</p>
-<pre><code>                                         Fig 6 :  Error when typedef is not used with enum
-</code></pre>
-<p>If we didn&rsquo;t use typedef with enumeration datatype, it will show syntax error. The output shows that enumeration datatype created a new variable &rsquo;e_ pen&rsquo; and initialize a variable &lsquo;pen&rsquo;. After this, choose one value and assign to &lsquo;pen&rsquo;. It will display the assigned value.</p>
-<p>Github lab code link:https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/typedef/enumtypedef/enumtypedef.sv</p>
-<p>Github lab output link:https://github.com/muneeb-mbytes/SystemVerilog_Course/blob/production/data_type/typedef/enumtypedef/enumtypedef.log</p>
 </div><div class="column is-sticky is-paddingless" id="tocWrapper">
   <div class="is-paddingless" id="tocContainer">
     <div class="toc-header">
@@ -830,11 +770,12 @@ Fig 1 : Typedef with class</p>
     <div id="tocContent">
       <div id="toc"><nav id="TableOfContents">
   <ul>
-    <li><a href="#typedef"><strong>Typedef</strong></a>
+    <li>
       <ul>
-        <li><a href="#typedef-in-class"><strong>Typedef in Class</strong></a></li>
-        <li><a href="#typedef-in-structure"><strong>Typedef in Structure</strong></a></li>
-        <li><a href="#typedef-in-enumeration"><strong>Typedef in Enumeration</strong></a></li>
+        <li><a href="#typedef">Typedef</a></li>
+        <li><a href="#在类中的-typedef">在类中的 Typedef</a></li>
+        <li><a href="#在结构体中的-typedef">在结构体中的 Typedef</a></li>
+        <li><a href="#在枚举中的-typedef">在枚举中的 Typedef</a></li>
       </ul>
     </li>
   </ul>
