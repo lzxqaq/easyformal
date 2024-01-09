@@ -23,7 +23,6 @@
 
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.data.meta.title }}" href="{{ "/atom.xml" | prepend: site.url }}">
-  {{- template "_internal/google_analytics.html" . }}
 
   <meta property="og:url" content="{{ site.url }}">
   <meta property="og:type" content="website">
@@ -86,4 +85,5 @@
   <link rel="shortcut icon" href="{{ site.url }}/favicons/favicon.ico?v=201701041855">
   <meta name="msapplication-config" content="{{ site.url }}/favicons/browserconfig.xml?v=201701041855">
   <meta name="theme-color" content="#00d1b2">
+  {{- template "_internal/google_analytics.html" . }}
 </head>
