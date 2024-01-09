@@ -1,52 +1,52 @@
 [params]
-  # Website logo file paths
+  # Chemin des fichiers logo du site
   logo                    = "images/logo.png"
   logoTouch               = "images/logoTouch.png"
-  # Image file path displayed during a 404 error
+  # Chemin du fichier de l'image affichée en cas d'erreur 404
   image404                = "images/404.gif"
-  # Favicon website file path
+  # Chemin du fichier du favicon du site
   favicon                 = "images/favicon.png"
-  # Default layout used for the homepage
+  # Aperçu par défaut de la page d'accueil
   homeLayout              = "onboarding"
-  # Site content order (https://gohugo.io/templates/lists/#order-content)
+  # Ordre du contenu du site (https://gohugo.io/templates/lists/#order-content)
   siteContentOrder        = "weight"
-  # Activate/Deactivate the table of contents globally (sitewide)
+  # Active/Désactive la table des matières de manière globale (sur tout le site)
   toc                     = true
-  # Activate a global banner on all website pages
+  # Active une bannière globale sur toutes les pages du site
   globalBanner            = true
-  # Curent version of the website
+  # Version courante du site
   currentVersion          = "latest"
-  # Url of the latest version of the website
+  # Url de la dernière version du site
   latestVersionUrl        = "https://shadocs.netlify.app/"
-  # Enforce Link resolution using relref function (https://gohugo.io/content-management/cross-references/)
+  # Force la résolution des liens en utilisant la fonction relref (https://gohugo.io/content-management/cross-references/)
   enforceRefrelLinks      = true
-  # Keyboard shortcuts list
-  # For each shortcut following keys must be sets:
-  # - keys     = [Keyboard shortcuts table](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values)
-  # - function = "Javascript function name to call by the shortcut"
+  # Liste des raccourcis clavier
+  # Pour chaque raccourci il faut renseigner les clés suivantes:
+  # - keys     = [Table des touches de clavier du raccourci](https://developer.mozilla.org/fr/docs/Web/API/KeyboardEvent/key/Key_Values)
+  # - function = "Nom de la fonction javascript à appeler par le raccourci"
   [params.navbar.shortcuts]
-    # Example shortcut definition
+    # Définition du raccourci d'exemple
     [params.navbar.shortcuts.example]
       keys     = ["Shift","1"]
       function = "scExample"
-  # Taxonomies list
-  # For each taxonomy following keys can be sets:
-  # - icon = "Fontawesome classes associated to the taxonomy"
+  # Liste des taxonomies
+  # Pour chaque taxonomie il est possible de renseigner les clés suivantes:
+  # - icon = "Classes fontawesome associées à la taxonomie"
   [params.taxonomies]
     [params.taxonomies.categories]
       icon = "fa-solid fa-table-cells"
-  # Assets list (https://gohugo.io/hugo-pipes/resource-from-template/) to include
-  # Managed assets:
-  # - sass                  = [List of SASS files]
-  # - css                   = [List of CSS files]
-  # - js                    = [List of javascript files]
-  # - jsModules             = [List of javascript modules]
-  # - shortcodes.css        = [List of CSS files to includes when the associated shortcode exist in the page content]
-  # - shortcodes.js         = [List of javascript files to includes when the associated shortcode exist in the page content]
-  # - shortcodes.jsModules  = [List of javascript module files to includes when the associated shortcode exist in the page content]
-  # - fencedcodes.css       = [List of CSS files to includes when the associated language of fenced code exist in the page content]
-  # - fencedcodes.js        = [List of javascript files to includes when the associated language of fenced code exist in the page content]
-  # - fencedcodes.jsModules = [List of javascript module files to includes when the associated language of fenced code exist in the page content]
+  # Liste des assets (https://gohugo.io/hugo-pipes/resource-from-template/) à inclures
+  # Les assets gérés:
+  # - sass                  = [Liste des fichiers SASS]
+  # - css                   = [Liste des fichiers CSS]
+  # - js                    = [Liste des fichiers javascript]
+  # - jsModules             = [Liste des fichiers modules javascript]
+  # - shortcodes.css        = [Liste des fichiers CSS à inclure quand le shortcode associé est présent dans le contenu de la page]
+  # - shortcodes.js         = [Liste des fichiers javascript à inclure quand le shortcode associé est présent dans le contenu de la page]
+  # - shortcodes.jsModules  = [Liste des fichiers modules javascript à inclure quand le shortcode associé est présent dans le contenu de la page]
+  # - fencedcodes.css       = [Liste des fichiers CSS à inclure quand le language d'un bloc de code cloisonné associé est présent dans le contenu de la page]
+  # - fencedcodes.js        = [Liste des fichiers javascript à inclure quand le language d'un bloc de code cloisonné associé est présent dans le contenu de la page]
+  # - fencedcodes.jsModules = [Liste des fichiers modules javascript à inclure quand le language d'un bloc de code cloisonné associé est présent dans le contenu de la page]
   #
   [params.includes]
     sass = [
