@@ -1,11 +1,10 @@
 ---
 weight: 2
-title: "HDL 设计"
+title: "高阶综合"
 description: "HDL design."
-titleIcon: "fa-solid fa-bars"
+titleIcon: "fa-solid"
 
 ---
-Fixed Arrays/Static Arrays
 
 ---
 

@@ -1,8 +1,8 @@
 ---
-weight: 3
-title: "形式验证"
+weight: 4
+title: "形式验证 Formal"
 description: "HDL design."
-titleIcon: "fa-solid fa-bars"
+titleIcon: "fa-solid fa-bug-slash"
 
 ---
 

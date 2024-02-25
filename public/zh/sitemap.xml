@@ -2,73 +2,83 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/design/systemverilog/01.data-types/</loc>
+    <loc>/digital/systemverilog/</loc>
   </url><url>
-    <loc>/design/systemverilog/</loc>
+    <loc>/synthesis/logic_synthesis/</loc>
   </url><url>
     <loc>/formal/model_checking/</loc>
+  </url><url>
+    <loc>/digital/systemverilog/01.data-types/</loc>
   </url><url>
     <loc>/digital/</loc>
   </url><url>
     <loc>/formal/theorem_proving/acl2/</loc>
   </url><url>
-    <loc>/design/</loc>
-  </url><url>
-    <loc>/design/systemverilog/02.array/</loc>
-  </url><url>
     <loc>/formal/equivalence_checking/</loc>
   </url><url>
-    <loc>/design/systemverilog/03.structure-and-union/</loc>
+    <loc>/simulation/</loc>
+  </url><url>
+    <loc>/synthesis/high_level_synthesis/</loc>
+  </url><url>
+    <loc>/digital/systemverilog/02.array/</loc>
   </url><url>
     <loc>/formal/theorem_proving/</loc>
   </url><url>
+    <loc>/digital/systemverilog/03.structure-and-union/</loc>
+  </url><url>
+    <loc>/synthesis/</loc>
+  </url><url>
+    <loc>/eco/</loc>
+  </url><url>
     <loc>/formal/</loc>
   </url><url>
-    <loc>/design/systemverilog/04.user-defined/</loc>
+    <loc>/digital/systemverilog/04.user-defined/</loc>
   </url><url>
-    <loc>/design/systemverilog/05.operators/</loc>
+    <loc>/pr/</loc>
   </url><url>
-    <loc>/design/systemverilog/06.control-flow/</loc>
+    <loc>/digital/systemverilog/05.operators/</loc>
   </url><url>
-    <loc>/design/systemverilog/07.functions/</loc>
+    <loc>/digital/systemverilog/06.control-flow/</loc>
+  </url><url>
+    <loc>/digital/systemverilog/07.functions/</loc>
   </url><url>
     <loc>/formal/theorem_proving/acl2_hardware/</loc>
   </url><url>
-    <loc>/design/systemverilog/08.tasks/</loc>
+    <loc>/digital/systemverilog/08.tasks/</loc>
   </url><url>
-    <loc>/design/systemverilog/09.loops/</loc>
+    <loc>/digital/systemverilog/09.loops/</loc>
   </url><url>
-    <loc>/design/systemverilog/10.scheduler-schematics/</loc>
+    <loc>/digital/systemverilog/10.scheduler-schematics/</loc>
   </url><url>
-    <loc>/design/systemverilog/11.processes/</loc>
+    <loc>/digital/systemverilog/11.processes/</loc>
   </url><url>
-    <loc>/design/systemverilog/12.fine-grain-process-control/</loc>
+    <loc>/digital/systemverilog/12.fine-grain-process-control/</loc>
   </url><url>
-    <loc>/design/systemverilog/13.interface/</loc>
+    <loc>/digital/systemverilog/13.interface/</loc>
   </url><url>
-    <loc>/design/systemverilog/14.constraint/</loc>
+    <loc>/digital/systemverilog/14.constraint/</loc>
   </url><url>
-    <loc>/design/systemverilog/15.classes-and-oops/</loc>
+    <loc>/digital/systemverilog/15.classes-and-oops/</loc>
   </url><url>
-    <loc>/design/systemverilog/17.functional-coverage/</loc>
+    <loc>/digital/systemverilog/17.functional-coverage/</loc>
   </url><url>
-    <loc>/design/systemverilog/18.assertion/</loc>
+    <loc>/digital/systemverilog/18.assertion/</loc>
   </url><url>
-    <loc>/design/systemverilog/19.interprocess-communication/</loc>
+    <loc>/digital/systemverilog/19.interprocess-communication/</loc>
   </url><url>
-    <loc>/design/systemverilog/20.misc-constructs/</loc>
+    <loc>/digital/systemverilog/20.misc-constructs/</loc>
   </url><url>
-    <loc>/design/systemverilog/choosing-an-array/</loc>
+    <loc>/digital/systemverilog/choosing-an-array/</loc>
   </url><url>
-    <loc>/design/systemverilog/control-flow-interview-questions/</loc>
+    <loc>/digital/systemverilog/control-flow-interview-questions/</loc>
   </url><url>
-    <loc>/design/systemverilog/data-type-interview-questions/</loc>
+    <loc>/digital/systemverilog/data-type-interview-questions/</loc>
   </url><url>
-    <loc>/design/systemverilog/differences-between-macros-and-parameters/</loc>
+    <loc>/digital/systemverilog/differences-between-macros-and-parameters/</loc>
   </url><url>
-    <loc>/design/systemverilog/interface-interview-questions/</loc>
+    <loc>/digital/systemverilog/interface-interview-questions/</loc>
   </url><url>
-    <loc>/design/systemverilog/processes-interviewquestions/</loc>
+    <loc>/digital/systemverilog/processes-interviewquestions/</loc>
   </url><url>
     <loc>/tags/acl2/</loc>
   </url><url>
