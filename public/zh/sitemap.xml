@@ -14,6 +14,10 @@
   </url><url>
     <loc>/formal/theorem_proving/acl2/</loc>
   </url><url>
+    <loc>/synthesis/logic_synthesis/datapath_optimization/</loc>
+  </url><url>
+    <loc>/synthesis/logic_synthesis/ungrouping/</loc>
+  </url><url>
     <loc>/formal/equivalence_checking/</loc>
   </url><url>
     <loc>/simulation/</loc>
@@ -21,6 +25,8 @@
     <loc>/synthesis/high_level_synthesis/</loc>
   </url><url>
     <loc>/digital/systemverilog/02.array/</loc>
+  </url><url>
+    <loc>/synthesis/logic_synthesis/boundary_change/</loc>
   </url><url>
     <loc>/formal/theorem_proving/</loc>
   </url><url>
